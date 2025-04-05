@@ -1,6 +1,6 @@
-<aside class="w-[252px] min-h-screen bg-dark-secondary flex flex-col items-center py-6">
+<aside class="w-[252px] min-h-screen bg-dark-secondary flex flex-col items-center">
         <!-- Logo container -->
-        <div class="flex justify-center w-full px-6 mb-6">
+        <div class="flex justify-center w-full px-6 my-6">
             <img src="assets/images/Logo.png" alt="Logo" class="w-[123px] h-[40px] object-contain">
         </div>
 
@@ -24,27 +24,39 @@
             </button>
         </div>
 
-        <nav class="w-full py-8 space-y-6">
-            <div class="flex items-center justify-center gap-2 text-text-secondary hover:text-text-primary cursor-pointer">
-                <span>Exchange</span>
+        <nav class="w-30 mt-8 space-y-6 text-secondary">
+            <div class="flex items-start justify-start gap-2 text-secondary hover:text-primary cursor-pointer">
+                <a href="#" class="hover:text-primary">Exchange</a>
             </div>
-            <div class="flex items-center justify-center gap-2 text-text-secondary hover:text-text-primary cursor-pointer">
-                <span>Live Prices</span>
+            <div class="flex items-start justify-start gap-2 text-secondary hover:text-primary cursor-pointer">
+                <a href="#" class="hover:text-primary">Live Prices</a>
             </div>
-            <div class="flex items-center justify-center gap-2 text-text-secondary hover:text-text-primary cursor-pointer">
-                <span>Wallet</span>
+            <div class="flex items-start justify-start gap-2 text-secondary hover:text-primary cursor-pointer">
+                <a href="#" class="hover:text-primary">Wallet</a>
             </div>
-            <div class="flex items-center justify-center gap-2 text-text-secondary hover:text-text-primary cursor-pointer">
-                <span>NFT Market</span>
+            <div class="flex items-start justify-start gap-2 text-secondary hover:text-primary cursor-pointer">
+                <a href="#" class="hover:text-primary">NFT Market</a>
             </div>
-            <div class="flex items-center justify-center gap-2 text-text-secondary hover:text-text-primary cursor-pointer">
-                <span>Transactions</span>
+            <div class="flex items-start justify-start gap-2 text-secondary hover:text-primary cursor-pointer">
+                <a href="#" class="hover:text-primary">Transactions</a>
             </div>
-            <div class="flex items-center justify-center gap-2 text-text-secondary hover:text-text-primary cursor-pointer">
-                <span>Settings</span>
+            <div class="flex items-start justify-start gap-2 text-secondary hover:text-primary cursor-pointer">
+                <a href="#" class="hover:text-primary">Settings</a>
             </div>
-            <div class="flex items-center justify-center gap-2 text-text-secondary hover:text-text-primary cursor-pointer">
-                <span>News</span>
+            <div class="flex items-start justify-start gap-2 text-secondary hover:text-primary cursor-pointer">
+                <a href="#" class="hover:text-primary">News</a>
             </div>
         </nav>
+
+        <div class="w-30 flex flex-col gap-4 mt-14 mb-14 text-secondary">
+            <span>Insights</span>
+            <a href="#" class="hover:text-primary">Inbox</a>
+        </div>
+
+        <div class="w-30 flex flex-col text-secondary mt-4 mb-6">
+            <label class="inline-flex items-center cursor-pointer">
+                <input type="checkbox" value="" class="sr-only peer">
+                <div class="relative w-11 h-6 bg-dark-primary peer-focus:outline-none peer-focus:ring-4 rounded-full peer dark:bg-dark-primary peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+              </label>              
+        </div>
 </aside>
