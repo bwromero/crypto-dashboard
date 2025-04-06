@@ -1,27 +1,50 @@
-<div class="flex justify-between items-center p-4 pl-12 pr-8 bg-dark-secondary text-text-primary">
-    <div class="flex items-center gap-4">
-        <!-- Add your header content here -->
+<div class="flex items-center justify-between px-6 py-4 bg-dark-secondary text-text-primary">
+    <!-- Left section -->
+    <div class="flex items-center">
+        <img src="assets/images/mega-menu.png" alt="Menu" class="w-5 h-5 cursor-pointer">
+    </div>
 
-        <img src="assets/images/mega-menu.png" alt="logo" class="cursor-pointer w-5">
+    <!-- Center section - Search -->
+    <form role="search" class="max-w-xl w-full mx-auto">
+        <div class="relative">
+            <input type="search" 
+                placeholder="Search in dashboard..." 
+                class="w-full h-10 bg-dark-primary rounded-xl pl-10 pr-4 text-sm text-white placeholder:text-text-secondary focus:outline-none focus:ring-1 focus:ring-action"
+                required 
+            />
+            <button type="submit" class="absolute left-3 top-1/2 -translate-y-1/2">
+                <svg class="w-4 h-4 text-text-secondary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                </svg>
+                <span class="sr-only">Search</span>
+            </button>
+        </div>
+    </form>
 
-        <form class="max-w-lg mx-auto">
-            <div class="flex">
-                <div class="relative w-full">
-                    <input type="search" id="search-dropdown"
-                        class="block p-2.5 pl-10 pr-16 w-full z-20 text-sm text-white bg-dark-primary rounded-xl"
-                        placeholder="Search in dashboard..." required />
-                    <button type="submit"
-                        class="absolute top-0 start-0 px-4 text-sm font-medium h-full text-white bg-transparent rounded-e-lg">
-                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                        </svg>
-                        <span class="sr-only">Search in dashboard</span>
-                    </button>
-                </div>
-            </div>
-        </form>
+    <!-- Right section -->
+    <div class="flex items-center gap-3">
+        <!-- Language selector -->
+        <button type="button" class="flex items-center gap-1 px-3 py-2 bg-dark-primary rounded-xl text-sm">
+            <span>English</span>
+            <svg class="w-4 h-4 text-text-secondary" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+            </svg>
+        </button>
 
+        <!-- Wallet button -->
+        <button class="p-2 bg-dark-primary rounded-xl text-white hover:bg-opacity-90">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wallet"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>
+        </button>
+
+        <!-- Settings button -->
+        <button class="p-2 bg-dark-primary rounded-xl text-white hover:bg-opacity-90">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings"><circle cx="12" cy="12" r="3"/><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/></svg>
+        </button>
+
+        <!-- Notification button -->
+        <button class="p-2 bg-dark-primary rounded-xl text-white hover:bg-opacity-90">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg>
+        </button>
     </div>
 </div>
