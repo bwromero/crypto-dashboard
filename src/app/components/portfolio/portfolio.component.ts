@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { PortfolioItem } from '../../models/interfaces/portfolio-item';
 import { PortfolioCardComponent } from './portfolio-card/portfolio-card.component';
+import { AccountType, PortfolioItem } from '../../models/interfaces/portfolio.interface';
 @Component({
   selector: 'app-portfolio',
   standalone: true,
@@ -14,22 +14,22 @@ export class PortfolioComponent {
     {
       amount: 1000,
       currency: 'USD',
-      accountName: 'Account 1'
+      accountType: AccountType.MAIN
     },
     {
       amount: 2000,
       currency: 'USD',
-      accountName: 'Account 2'  
+      accountType: AccountType.TRADING
     },
     {
       amount: 3000,
       currency: 'USD',
-      accountName: 'Account 3'
+      accountType: AccountType.MARGIN
     },
     {
       amount: 4000,
       currency: 'USD',
-      accountName: 'Account 3'
+      accountType: AccountType.FUTURES
     }
   ];
 }
