@@ -1,0 +1,5 @@
+<div class="flex justify-between w-full">
+    @for (item of portfolioItems; track item) {
+        <app-portfolio-card [portfolioItem]="item"></app-portfolio-card>
+    }
+</div>
