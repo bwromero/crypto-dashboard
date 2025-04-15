@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { LayoutComponent } from '../../layout/layout.component';
 import { PortfolioComponent } from '../portfolio/portfolio.component';
+import { ActivityHistoryComponent } from '../activity-history/activity-history.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [PortfolioComponent],
+  imports: [PortfolioComponent, ActivityHistoryComponent],
   templateUrl: './dashboard.component.html',
   styles: ``
 })
