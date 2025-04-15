@@ -3,7 +3,7 @@
         <h3 class="flex items-center text-white text-base font-semibold">Recent Activities</h3>
         <div class="flex gap-4">
             <button type="button"
-                class="flex items-center gap-1 px-3 py-2 bg-dark-primary rounded-xl text-sm text-gray w-full">
+                class="flex items-center gap-1 bg-dark-primary px-3 py-2 rounded-xl text-sm text-gray w-full">
                 <span>Last 30 Days</span>
                 <svg class="w-4 h-4 text-secondary" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd"
@@ -12,7 +12,7 @@
                 </svg>
             </button>
             <button type="button"
-                class="flex items-center gap-1 px-3 py-2 bg-dark-primary rounded-xl text-sm text-gray w-full">
+                class="flex items-center gap-1 bg-dark-primary px-3 py-2 rounded-xl text-sm text-gray w-full">
                 <span>Aug 30</span>
                 <svg class="w-4 h-4 text-secondary" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd"
@@ -40,26 +40,9 @@
     </div>
 
 
-    <div class="relative overflow-x-auto sm:rounded-lg bg-dark-primary">
-        <div class="flex justify-between items-center p-6">
-            <h2 class="text-white text-xl">Recent Activities</h2>
-            <div class="flex items-center gap-4">
-                <div class="flex items-center gap-2">
-                    <span class="text-secondary">Last 30 Days</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-secondary"><path d="M6 9l6 6 6-6"/></svg>
-                </div>
-                <div class="flex items-center gap-2">
-                    <span class="text-secondary">Aug 2022</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-secondary"><path d="M6 9l6 6 6-6"/></svg>
-                </div>
-                <div class="flex items-center gap-2 bg-dark-secondary rounded-full px-4 py-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-secondary"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-                    <input type="text" placeholder="Search" class="bg-transparent text-secondary text-sm focus:outline-none">
-                </div>
-            </div>
-        </div>
+    <div class="relative overflow-x-auto">
         <table class="w-full text-sm text-left">
-            <thead class="text-xs text-secondary uppercase">
+            <thead class="text-xs text-secondary">
                 <tr class="border-b border-dark-secondary">
                     <th scope="col" class="px-6 py-4 font-medium">
                         Coin
@@ -88,73 +71,26 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="border-b border-dark-secondary">
+                <tr class="border-b border-dark-secondary" *ngFor="let transaction of transactions">
                     <td class="px-6 py-4">
                         <div class="flex items-center gap-3">
-                            <img src="assets/images/bitcoin.png" alt="Bitcoin" class="w-8 h-8">
+                            <img [src]="getCoinIcon(transaction.coin.symbol)" [alt]="transaction.coin.type" class="w-8 h-8">
                             <div class="flex flex-col">
-                                <span class="text-white font-medium">$659.10</span>
-                                <span class="text-secondary text-[11px]">Withdraw USDT</span>
+                                <span class="text-white font-medium">${{ transaction.coin.amount }}</span>
+                                <span class="text-secondary text-[11px]">{{ transaction.coin.type }}</span>
                             </div>
                         </div>
                     </td>
-                    <td class="px-6 py-4 text-secondary">#14525156</td>
-                    <td class="px-6 py-4 text-secondary">Mar 21, 2022</td>
+                    <td class="px-6 py-4 text-secondary">{{ transaction.id }}</td>
+                    <td class="px-6 py-4 text-secondary">{{ transaction.date }}</td>
                     <td class="px-6 py-4">
-                        <span class="px-3 py-1 rounded-full text-xs bg-[#0CAF60]/10 text-[#0CAF60]">Complited</span>
+                        <span class="px-3 py-1 rounded-full text-xs" 
+                              [style.background-color]="transaction.status.color + '1A'"
+                              [style.color]="transaction.status.color">
+                            {{ transaction.status.text }}
+                        </span>
                     </td>
-                    <td class="px-6 py-4 text-secondary">0.12000 BTC</td>
-                </tr>
-                <tr class="border-b border-dark-secondary">
-                    <td class="px-6 py-4">
-                        <div class="flex items-center gap-3">
-                            <img src="assets/images/tether.png" alt="Tether" class="w-8 h-8">
-                            <div class="flex flex-col">
-                                <span class="text-white font-medium">$659.10</span>
-                                <span class="text-secondary text-[11px]">Deposit BTC</span>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="px-6 py-4 text-secondary">#14525156</td>
-                    <td class="px-6 py-4 text-secondary">Mar 21, 2022</td>
-                    <td class="px-6 py-4">
-                        <span class="px-3 py-1 rounded-full text-xs bg-[#FF5449]/10 text-[#FF5449]">Declined</span>
-                    </td>
-                    <td class="px-6 py-4 text-secondary">0.12000 BTC</td>
-                </tr>
-                <tr class="border-b border-dark-secondary">
-                    <td class="px-6 py-4">
-                        <div class="flex items-center gap-3">
-                            <img src="assets/images/tron.png" alt="Tron" class="w-8 h-8">
-                            <div class="flex flex-col">
-                                <span class="text-white font-medium">$659.10</span>
-                                <span class="text-secondary text-[11px]">Deposit BTC</span>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="px-6 py-4 text-secondary">#14525156</td>
-                    <td class="px-6 py-4 text-secondary">Mar 21, 2022</td>
-                    <td class="px-6 py-4">
-                        <span class="px-3 py-1 rounded-full text-xs bg-[#FF8B3E]/10 text-[#FF8B3E]">Pending</span>
-                    </td>
-                    <td class="px-6 py-4 text-secondary">0.12000 BTC</td>
-                </tr>
-                <tr class="border-b border-dark-secondary">
-                    <td class="px-6 py-4">
-                        <div class="flex items-center gap-3">
-                            <img src="assets/images/tether.png" alt="Tether" class="w-8 h-8">
-                            <div class="flex flex-col">
-                                <span class="text-white font-medium">$659.10</span>
-                                <span class="text-secondary text-[11px]">Withdraw USDT</span>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="px-6 py-4 text-secondary">#14525156</td>
-                    <td class="px-6 py-4 text-secondary">Mar 21, 2022</td>
-                    <td class="px-6 py-4">
-                        <span class="px-3 py-1 rounded-full text-xs bg-[#0CAF60]/10 text-[#0CAF60]">Complited</span>
-                    </td>
-                    <td class="px-6 py-4 text-secondary">0.12000 BTC</td>
+                    <td class="px-6 py-4 text-secondary">{{ transaction.fees }}</td>
                 </tr>
             </tbody>
         </table>
