@@ -1,5 +1,22 @@
-<div class="flex justify-between w-full">
-    @for (item of portfolioItems; track item) {
-        <app-portfolio-card [portfolioItem]="item"></app-portfolio-card>
-    }
+<div class="flex flex-col gap-6">
+    <div class="grid grid-cols-4 gap-4">
+        @for (item of portfolioItems; track item) {
+            <app-portfolio-card [portfolioItem]="item"></app-portfolio-card>
+        }
+    </div>
+
+    <div class="p-6">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-white text-xl font-semibold">Portfolio Stats</h2>
+            <div class="flex gap-2">
+                <button class="px-4 cursor-pointer border border-light-gray py-1 rounded-lg bg-action text-white text-[10px]">All</button>
+                <button class="px-4 cursor-pointer border border-light-gray py-1 rounded-lg bg-dark-primary text-secondary hover:text-white text-[10px]">1M</button>
+                <button class="px-4 cursor-pointer border border-light-gray py-1 rounded-lg bg-dark-primary text-secondary hover:text-white text-[10px]">6M</button>
+                <button class="px-4 cursor-pointer border border-light-gray py-1 rounded-lg bg-dark-primary text-secondary hover:text-white text-[10px]">1Y</button>
+                <button class="px-4 cursor-pointer border border-light-gray py-1 rounded-lg bg-dark-primary text-secondary hover:text-white text-[10px]">YTD</button>
+            </div>
+        </div>
+        
+        <app-portfolio-chart></app-portfolio-chart>
+    </div>
 </div>

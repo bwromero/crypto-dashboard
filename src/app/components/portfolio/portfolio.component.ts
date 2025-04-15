@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { PortfolioCardComponent } from './portfolio-card/portfolio-card.component';
 import { AccountType, PortfolioItem } from '../../models/interfaces/portfolio.interface';
+import { PortfolioChartComponent } from './portfolio-chart/portfolio-chart.component';
 @Component({
   selector: 'app-portfolio',
   standalone: true,
-  imports: [PortfolioCardComponent],
+  imports: [PortfolioCardComponent, PortfolioChartComponent],
   templateUrl: './portfolio.component.html',
   styles: ``
 })
