@@ -75,6 +75,10 @@
                     <td class="px-6 py-4">
                         <div class="flex items-center gap-3">
                             <img [src]="getCoinIcon(transaction.coin.symbol)" [alt]="transaction.coin.type" class="w-8 h-8">
+                        </div>
+                    </td>
+                    <td class="px-6 py-4">
+                        <div class="flex items-center gap-3">
                             <div class="flex flex-col">
                                 <span class="text-white font-medium">${{ transaction.coin.amount }}</span>
                                 <span class="text-secondary text-[11px]">{{ transaction.coin.type }}</span>
