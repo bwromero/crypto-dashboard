@@ -3,7 +3,7 @@
         <h3 class="flex items-center text-white text-base font-semibold">Recent Activities</h3>
         <div class="flex gap-4">
             <button type="button"
-                class="flex justify-between items-center cursor-pointer gap-1 bg-dark-primary px-3 py-2 rounded-xl text-sm text-gray w-full">
+                class="flex justify-between items-center cursor-pointer gap-1 bg-dark-primary px-3 py-2 rounded-xl text-sm text-gray w-[200px]">
                 <span>Last 30 Days</span>
                 <svg class="w-4 h-4 text-secondary" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd"
@@ -12,7 +12,7 @@
                 </svg>
             </button>
             <button type="button"
-                class="flex justify-between items-center cursor-pointer gap-1 bg-dark-primary px-3 py-2 rounded-xl text-sm text-gray w-full">
+                class="flex justify-between items-center cursor-pointer gap-1 bg-dark-primary px-3 py-2 rounded-xl text-sm text-gray w-50 w-[200px]">
                 <span>Aug 30</span>
                 <svg class="w-4 h-4 text-secondary" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd"
@@ -21,9 +21,9 @@
                 </svg>
             </button>
 
-            <form role="search" class="max-w-xl w-full">
+            <form role="search" class="max-w-xl w-[247px]">
                 <div class="relative">
-                    <input type="search" placeholder="Search in dashboard..."
+                    <input type="search" placeholder="Search"
                         class="w-full h-10 bg-dark-primary rounded-xl pl-10 pr-4 text-sm text-white placeholder:text-gray focus:outline-none focus:ring-1 focus:ring-action"
                         required />
                     <button type="submit" class="absolute text-white left-3 top-1/2 -translate-y-1/2">
@@ -34,6 +34,10 @@
                         </svg>
                         <span class="sr-only">Search</span>
                     </button>
+                    <button class="absolute right-1 top-1/2 -translate-y-1/2 cursor-pointer bg-orange-500 rounded-lg">
+                        <svg class="w-6 h-6 text-white p-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M7 12h10"/><path d="M10 18h4"/></svg>
+                    </button>
+
                 </div>
             </form>
         </div>
