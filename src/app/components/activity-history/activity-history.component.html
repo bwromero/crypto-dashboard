@@ -3,7 +3,7 @@
         <h3 class="flex items-center text-white text-base font-semibold">Recent Activities</h3>
         <div class="flex gap-4">
             <button type="button"
-                class="flex items-center gap-1 bg-dark-primary px-3 py-2 rounded-xl text-sm text-gray w-full">
+                class="flex justify-between items-center cursor-pointer gap-1 bg-dark-primary px-3 py-2 rounded-xl text-sm text-gray w-full">
                 <span>Last 30 Days</span>
                 <svg class="w-4 h-4 text-secondary" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd"
@@ -12,7 +12,7 @@
                 </svg>
             </button>
             <button type="button"
-                class="flex items-center gap-1 bg-dark-primary px-3 py-2 rounded-xl text-sm text-gray w-full">
+                class="flex justify-between items-center cursor-pointer gap-1 bg-dark-primary px-3 py-2 rounded-xl text-sm text-gray w-full">
                 <span>Aug 30</span>
                 <svg class="w-4 h-4 text-secondary" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd"
@@ -42,39 +42,59 @@
 
     <div class="relative overflow-x-auto">
         <table class="w-full text-sm text-left">
-            <thead class="text-xs text-secondary">
+            <thead class="text-xs text-secondary border-b-indigo-500">
                 <tr class="border-b border-dark-secondary">
                     <th scope="col" class="px-6 py-4 font-medium">
                         Coin
-                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="inline-block ml-1"><path d="M6 9l6 6 6-6"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" class="inline-block ml-1">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
                     </th>
                     <th scope="col" class="px-6 py-4 font-medium">
                         Transaction
-                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="inline-block ml-1"><path d="M6 9l6 6 6-6"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" class="inline-block ml-1">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
                     </th>
                     <th scope="col" class="px-6 py-4 font-medium">
                         ID
-                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="inline-block ml-1"><path d="M6 9l6 6 6-6"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" class="inline-block ml-1">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
                     </th>
                     <th scope="col" class="px-6 py-4 font-medium">
                         Date
-                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="inline-block ml-1"><path d="M6 9l6 6 6-6"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" class="inline-block ml-1">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
                     </th>
                     <th scope="col" class="px-6 py-4 font-medium">
                         Status
-                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="inline-block ml-1"><path d="M6 9l6 6 6-6"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" class="inline-block ml-1">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
                     </th>
                     <th scope="col" class="px-6 py-4 font-medium">
                         Fees
-                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="inline-block ml-1"><path d="M6 9l6 6 6-6"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" class="inline-block ml-1">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
                     </th>
                 </tr>
             </thead>
+
             <tbody>
                 <tr class="border-b border-dark-secondary" *ngFor="let transaction of transactions">
                     <td class="px-6 py-4">
                         <div class="flex items-center gap-3">
-                            <img [src]="getCoinIcon(transaction.coin.symbol)" [alt]="transaction.coin.type" class="w-8 h-8">
+                            <img [src]="getCoinIcon(transaction.coin.symbol)" [alt]="transaction.coin.type"
+                                class="w-8 h-8">
                         </div>
                     </td>
                     <td class="px-6 py-4">
@@ -88,9 +108,9 @@
                     <td class="px-6 py-4 text-secondary">{{ transaction.id }}</td>
                     <td class="px-6 py-4 text-secondary">{{ transaction.date }}</td>
                     <td class="px-6 py-4">
-                        <span class="px-3 py-1 rounded-full text-xs" 
-                              [style.background-color]="transaction.status.color + '1A'"
-                              [style.color]="transaction.status.color">
+                        <span class="px-3 py-1 rounded-full text-xs"
+                            [style.background-color]="transaction.status.color + '1A'"
+                            [style.color]="transaction.status.color">
                             {{ transaction.status.text }}
                         </span>
                     </td>
