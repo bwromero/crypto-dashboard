@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   ChartComponent,
@@ -16,6 +16,9 @@ import {
   ApexTooltip,
   NgApexchartsModule
 } from "ng-apexcharts";
+import { CryptoService } from '../../../services/crypto.service';
+import { Subscription, interval } from 'rxjs';
+import { startWith, switchMap } from 'rxjs/operators';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -33,22 +36,25 @@ export type ChartOptions = {
   tooltip: ApexTooltip;
 };
 
+interface PriceData {
+  prices: [number, number][];  // Array of [timestamp, price] tuples
+}
+
 @Component({
   selector: 'app-portfolio-chart',
   standalone: true,
   imports: [CommonModule, NgApexchartsModule],
   templateUrl: './portfolio-chart.component.html'
 })
-export class PortfolioChartComponent {
+export class PortfolioChartComponent implements OnInit, OnDestroy {
   @ViewChild("chart") chart!: ChartComponent;
   public chartOptions: ChartOptions;
+  private updateSubscription?: Subscription;
+  private readonly coins = ['bitcoin', 'ethereum']; // Example coins
 
-  constructor() {
+  constructor(private cryptoService: CryptoService) {
     this.chartOptions = {
-      series: [{
-        name: "Portfolio Value",
-        data: [800, 840, 820, 880, 840, 880, 830, 800, 830]
-      }],
+      series: [],
       chart: {
         type: "area",
         height: 350,
@@ -68,7 +74,7 @@ export class PortfolioChartComponent {
         curve: "smooth",
         width: 2,
       },
-      colors: ['#0CAF60'], // Your green color
+      colors: ['#0CAF60', '#3B82F6'], // Green for Bitcoin, Blue for Ethereum
       fill: {
         type: "gradient",
         gradient: {
@@ -80,10 +86,6 @@ export class PortfolioChartComponent {
       },
       xaxis: {
         type: 'datetime',
-        categories: [
-          '2024-01-01', '2024-01-02', '2024-01-03', '2024-01-04',
-          '2024-01-05', '2024-01-06', '2024-01-07', '2024-01-08'
-        ],
         labels: {
           style: {
             colors: '#64748B'
@@ -101,7 +103,7 @@ export class PortfolioChartComponent {
           style: {
             colors: '#64748B'
           },
-          formatter: (value) => { return '$' + value }
+          formatter: (value) => { return '$' + value.toFixed(2) }
         }
       },
       grid: {
@@ -122,7 +124,12 @@ export class PortfolioChartComponent {
         size: 0
       },
       legend: {
-        show: false
+        show: true,
+        position: 'top',
+        horizontalAlign: 'right',
+        labels: {
+          colors: '#64748B'
+        }
       },
       title: {
         text: undefined
@@ -131,8 +138,49 @@ export class PortfolioChartComponent {
         theme: 'dark',
         x: {
           format: 'dd MMM yyyy'
+        },
+        y: {
+          formatter: (value) => { return '$' + value.toFixed(2) }
         }
       }
     };
+  }
+
+  ngOnInit() {
+    // Update every 5 minutes
+    this.updateSubscription = interval(300000).pipe(
+      startWith(0),
+      switchMap(() => this.cryptoService.getMultiplePriceHistories(this.coins, 7))
+    ).subscribe(priceMap => {
+      this.updateChartData(priceMap);
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.updateSubscription) {
+      this.updateSubscription.unsubscribe();
+    }
+  }
+
+  private updateChartData(priceMap: Map<string, PriceData>) {
+    const series = [];
+    
+    for (const [coinId, data] of priceMap.entries()) {
+      series.push({
+        name: coinId.charAt(0).toUpperCase() + coinId.slice(1),
+        data: data.prices.map(([timestamp, price]: [number, number]) => ({
+          x: new Date(timestamp),
+          y: price
+        }))
+      });
+    }
+
+    this.chartOptions.series = series;
+    
+    if (this.chart && this.chart.updateOptions) {
+      this.chart.updateOptions({
+        series: series
+      });
+    }
   }
 }
