@@ -43,7 +43,10 @@ interface PriceData {
 @Component({
   selector: 'app-portfolio-chart',
   standalone: true,
-  imports: [CommonModule, NgApexchartsModule],
+  imports: [
+    CommonModule,
+    NgApexchartsModule
+  ],
   templateUrl: './portfolio-chart.component.html'
 })
 export class PortfolioChartComponent implements OnInit, OnDestroy {
