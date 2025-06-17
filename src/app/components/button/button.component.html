@@ -1,0 +1,43 @@
+<div class="relative">
+    <!-- Normal Button -->
+    <button 
+      *ngIf="variant === 'normal'"
+      [class]="buttonClasses"
+      (click)="onClick()"
+      [disabled]="disabled">
+      <!-- Image icon -->
+      <img *ngIf="icon" [src]="icon" class="w-5 h-5" [alt]="label">
+      <!-- Dynamic Lucide icon -->
+      <i-lucide *ngIf="lucideIcon" [name]="lucideIcon" class="w-5 h-5"></i-lucide>
+      <span>{{ label }}</span>
+    </button>
+  
+    <!-- Dropdown Button -->
+    <div *ngIf="variant === 'dropdown'" class="relative">
+      <button 
+        [class]="buttonClasses"
+        (click)="onClick()"
+        [disabled]="disabled">
+        <span>{{ selectedOption?.label || label }}</span>
+        <i-lucide 
+          name="chevron-down"
+          class="w-4 h-4 transition-transform duration-200"
+          [class.rotate-180]="isDropdownOpen">
+        </i-lucide>
+      </button>
+  
+      <!-- Dropdown Menu -->
+      <div 
+        *ngIf="isDropdownOpen" 
+        class="absolute z-10 w-full mt-1 bg-dark-primary rounded-xl shadow-lg">
+        <div class="py-1">
+          <button 
+            *ngFor="let option of dropdownOptions"
+            (click)="selectOption(option)"
+            class="w-full px-4 py-2 text-sm text-gray hover:bg-dark-secondary text-left transition-colors duration-200">
+            {{ option.label }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
