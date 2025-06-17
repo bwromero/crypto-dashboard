@@ -19,6 +19,7 @@ export interface DropdownOption {
 export class ButtonComponent {
   @Input() type: ButtonType = 'primary';
   @Input() variant: ButtonVariant = 'normal';
+  @Input() bgColor: string = 'bg-dark-secondary';
   @Input() label: string = '';
   @Input() icon?: string;
   @Input() lucideIcon?: string;
@@ -36,7 +37,7 @@ export class ButtonComponent {
   protected icons = icons;
 
   get buttonClasses(): string {
-    const baseClasses = 'flex items-center bg-dark-secondary justify-center gap-2 px-4 py-2 rounded-xl text-sm transition-all duration-200';
+    const baseClasses = `'flex items-center ${this.bgColor}  justify-center gap-2 px-4 py-2 rounded-xl text-sm transition-all duration-200'`;
     const widthClass = this.fullWidth ? 'w-full' : '';
     const disabledClass = this.disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer';
 
