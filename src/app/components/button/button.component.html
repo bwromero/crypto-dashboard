@@ -19,11 +19,8 @@
         (click)="onClick()"
         [disabled]="disabled">
         <span>{{ selectedOption?.label || label }}</span>
-        <i-lucide 
-          name="chevron-down"
-          class="w-4 h-4 transition-transform duration-200"
-          [class.rotate-180]="isDropdownOpen">
-        </i-lucide>
+        <lucide-icon [img]="icons.ArrowDown" class="w-4 h-4 transition-transform duration-200"
+        [class.rotate-180]="isDropdownOpen"></lucide-icon>
       </button>
   
       <!-- Dropdown Menu -->
