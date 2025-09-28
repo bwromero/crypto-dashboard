@@ -5,13 +5,11 @@
       [class]="buttonClasses"
       (click)="onClick()"
       [disabled]="disabled">
-      <!-- Image icon -->
-      <img *ngIf="icon" [src]="icon" class="w-5 h-5" [alt]="label">
       <!-- Dynamic Lucide icon -->
-      <i-lucide *ngIf="lucideIcon" [name]="lucideIcon" class="w-5 h-5"></i-lucide>
+      <lucide-icon *ngIf="lucideIcon" [name]="lucideIcon" [img]="getIconImage" [size]="24"></lucide-icon>
       <span>{{ label }}</span>
     </button>
-  
+
     <!-- Dropdown Button -->
     <div *ngIf="variant === 'dropdown'" class="relative">
       <button 

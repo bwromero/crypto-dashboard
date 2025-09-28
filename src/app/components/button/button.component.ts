@@ -21,8 +21,8 @@ export class ButtonComponent {
   @Input() variant: ButtonVariant = 'normal';
   @Input() bgColor: string = 'bg-dark-secondary';
   @Input() label: string = '';
-  @Input() icon?: string;
-  @Input() lucideIcon?: string;
+  @Input() icon: string = '';
+  @Input() lucideIcon?: any;
   @Input() dropdownOptions: DropdownOption[] = [];
   @Input() selectedOption?: DropdownOption;
   @Input() disabled: boolean = false;
@@ -49,6 +49,15 @@ export class ButtonComponent {
     };
 
     return `${baseClasses} ${this.bgColor} ${typeClasses[this.type]} ${widthClass} ${disabledClass}`;
+  }
+
+  get getIconImage() {
+    if (!this.lucideIcon){
+      return this.icons['House'];
+
+    } else {
+      return this.icons[this.lucideIcon as keyof typeof this.icons];
+    };
   }
 
   onClick() {
