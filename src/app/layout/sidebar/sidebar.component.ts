@@ -2,12 +2,11 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LucideAngularModule, icons } from 'lucide-angular';
 import { NavigationItem, NavigationItemComponent } from '../../components/navigation-item/navigation-item.component';
-import { ButtonComponent } from '../../components/button/button.component';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule, LucideAngularModule, NavigationItemComponent, ButtonComponent],
+  imports: [CommonModule, LucideAngularModule, NavigationItemComponent],
   templateUrl: './sidebar.component.html',
   styles: ``
 })

@@ -1,11 +1,13 @@
-<div class="flex items-center justify-between px-6 py-4 bg-dark-primary text-text-primary">
+<div class="flex items-center justify-between px-12 py-4 bg-dark-primary text-text-primary">
 
 
     <!-- Left section -->
 
-    <div class="flex items-center gap-4">
-        <div *ngIf="false" class="flex items-center">
-            <img src="assets/images/mega-menu.png" alt="Menu" class="w-5 h-5 cursor-pointer">
+    <div class="flex gap-4">
+        <div class="flex items-center">
+            <a href="">
+                <lucide-icon [img]="LayoutDashboard" [size]="25"></lucide-icon>
+            </a>
         </div>
 
         <app-search-bar></app-search-bar>
