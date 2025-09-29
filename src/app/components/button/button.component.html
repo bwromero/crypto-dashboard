@@ -12,12 +12,12 @@
 
     
     <!-- Toggle Switch Button -->
-    <div *ngIf="variant === 'toggle'" class="flex bg-dark-secondary rounded-full py-2 px-1">
+    <div *ngIf="variant === 'toggle'" class="flex bg-dark-secondary rounded-full py-2 px-1 text-white">
       <button 
         *ngFor="let option of toggleOptions"
         (click)="selectToggleOption(option)"
         [class]="'flex items-center gap-2 px-3 py-2 rounded-full text-sm font-normal transition-all duration-200 ' + 
-                 (selectedToggleValue === option.value ? 'bg-action text-white' : 'text-white hover:text-white')"
+                 (selectedToggleValue === option.value ? 'bg-action' : 'hover:text-white')"
         [disabled]="disabled">
         <!-- Icon for toggle option -->
         <lucide-icon *ngIf="option.lucideIcon" [img]="getToggleIconImage(option.lucideIcon)" [size]="16"></lucide-icon>
