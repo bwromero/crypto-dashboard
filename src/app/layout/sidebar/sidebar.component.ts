@@ -1,17 +1,20 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { LucideAngularModule, icons } from 'lucide-angular';
 import { NavigationItem, NavigationItemComponent } from '../../components/navigation-item/navigation-item.component';
+import { ButtonComponent, ToggleOption } from '../../components/button/button.component';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule, LucideAngularModule, NavigationItemComponent],
+  imports: [CommonModule, RouterModule, LucideAngularModule, NavigationItemComponent, ButtonComponent],
   templateUrl: './sidebar.component.html',
   styles: ``
 })
 export class SidebarComponent {
   protected icons = icons;
+  selectedTheme = 'dark'; // Default to dark mode
 
   navigationItems: NavigationItem[] = [
     { label: 'Exchange', route: '/exchange', lucideIcon: 'ArrowLeftRight' },
@@ -23,4 +26,14 @@ export class SidebarComponent {
     { label: 'News', route: '/news', lucideIcon: 'Newspaper' }
   ];
 
+  themeToggleOptions: ToggleOption[] = [
+    { label: 'Light', value: 'light', lucideIcon: 'Sun' },
+    { label: 'Dark', value: 'dark', lucideIcon: 'Moon' }
+  ];
+
+  onThemeToggleChanged(value: string) {
+    this.selectedTheme = value;
+    console.log('Theme switched to:', value);
+    // Add your theme switching logic here
+  }
 }

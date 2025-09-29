@@ -3,13 +3,18 @@ import { CommonModule } from '@angular/common';
 import { LucideAngularModule, icons } from 'lucide-angular';
 
 export type ButtonType = 'primary' | 'secondary' | 'action' | 'dark';
-export type ButtonVariant = 'normal' | 'dropdown';
+export type ButtonVariant = 'normal' | 'dropdown' | 'toggle'; 
 
 export interface DropdownOption {
   label: string;
   value: string;
 }
-
+export interface ToggleOption {
+  label: string;
+  value: string;
+  icon?: string;
+  lucideIcon?: string;
+}
 @Component({
   selector: 'app-button',
   standalone: true,
@@ -25,11 +30,14 @@ export class ButtonComponent {
   @Input() lucideIcon?: any;
   @Input() dropdownOptions: DropdownOption[] = [];
   @Input() selectedOption?: DropdownOption;
+  @Input() toggleOptions: ToggleOption[] = [];
   @Input() disabled: boolean = false;
   @Input() fullWidth: boolean = false;
-
+  @Input() selectedToggleValue?: string;
+  
   @Output() clicked = new EventEmitter<void>();
   @Output() optionSelected = new EventEmitter<DropdownOption>();
+  @Output() toggleChanged = new EventEmitter<string>();
 
   isDropdownOpen: boolean = false;
 
@@ -60,6 +68,11 @@ export class ButtonComponent {
     };
   }
 
+  // Add this method to your ButtonComponent class
+getToggleIconImage(iconName: string) {
+  return this.icons[iconName as keyof typeof this.icons];
+}
+
   onClick() {
     if (this.disabled) return;
     
@@ -79,5 +92,10 @@ export class ButtonComponent {
     this.selectedOption = option;
     this.optionSelected.emit(option);
     this.isDropdownOpen = false;
+  }
+  
+  selectToggleOption(option: ToggleOption) {
+    this.selectedToggleValue = option.value;
+    this.toggleChanged.emit(option.value);
   }
 }
