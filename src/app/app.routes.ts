@@ -1,22 +1,18 @@
 import { Routes } from '@angular/router';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { LayoutComponent } from './layout/layout.component';
-import { PriceTableComponent } from './components/price-table/price-table.component';
 
 export const routes: Routes = [
-    {
+  {
+    path: '',
+    loadComponent: () => import('./layout/layout.component').then(m => m.LayoutComponent),
+    children: [
+      {
         path: '',
-        component: LayoutComponent,
-        children: [
-            {
-                path: '',
-                component: DashboardComponent
-            },
-            {
-                path: 'live-prices',
-                component: PriceTableComponent
-            }
-        ]
-    },
-    
+        loadComponent: () => import('./components/dashboard/dashboard.component').then(m => m.DashboardComponent)
+      },
+      {
+        path: 'live-prices',
+        loadComponent: () => import('./components/price-table/price-table.component').then(m => m.PriceTableComponent)
+      }
+    ]
+  }
 ];
