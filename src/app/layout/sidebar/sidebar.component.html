@@ -24,17 +24,15 @@
         </a>
     </div>
 
-    <!-- Navigation Items -->
-    <nav class="w-full px-6 mt-8 space-y-2">
-        <app-navigation-item *ngFor="let item of navigationItems" [item]="item">
-        </app-navigation-item>
-    </nav>
-
-
-    <div class="w-full flex flex-col gap-4 my-14 text-secondary">
-        <span>Insights</span>
-        <a href="#" class="hover:text-primary">Inbox</a>
-    </div>
+    <!-- Section Items -->
+     <nav class="w-full px-6 mt-8">
+        <div *ngFor="let section of navigationSections" class="mb-6">
+            <div *ngIf="section.title" class="text-secondary text-sm font-medium mb-2 mt-14">
+                {{ section.title }}
+            </div>     
+            <app-navigation-item *ngFor="let item of section.items" [section]="section" [item]="item"></app-navigation-item>
+        </div>    
+     </nav>
 
     <!-- Theme Toggle Switch (using your custom ButtonComponent) -->
     <div class="w-full px-6 mt-4 mb-6">

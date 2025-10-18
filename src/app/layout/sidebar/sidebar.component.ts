@@ -5,6 +5,11 @@ import { LucideAngularModule, icons } from 'lucide-angular';
 import { NavigationItem, NavigationItemComponent } from '../../components/navigation-item/navigation-item.component';
 import { ButtonComponent, ToggleOption } from '../../components/button/button.component';
 
+export interface NavigationSection {
+  title?: string;
+  items: NavigationItem[];
+}
+
 @Component({
   selector: 'app-sidebar',
   standalone: true,
@@ -16,14 +21,24 @@ export class SidebarComponent {
   protected icons = icons;
   selectedTheme = 'dark'; // Default to dark mode
 
-  navigationItems: NavigationItem[] = [
-    { label: 'Exchange', route: '/exchange', lucideIcon: 'ArrowLeftRight' },
-    { label: 'Live Prices', route: '/live-prices', lucideIcon: 'TrendingUp' },
-    { label: 'Wallet', route: '/wallet', lucideIcon: 'Wallet' },
-    { label: 'NFT Market', route: '/nft-market', lucideIcon: 'Store', badge: 'New', badgeColor: 'bg-orange-500 text-white' },
-    { label: 'Transactions', route: '/transactions', lucideIcon: 'ArrowUpDown' },
-    { label: 'Settings', route: '/settings', lucideIcon: 'Settings' },
-    { label: 'News', route: '/news', lucideIcon: 'Newspaper' }
+  navigationSections: NavigationSection[] = [
+    {
+      items: [
+        { label: 'Exchange', route: '/exchange', lucideIcon: 'ArrowLeftRight' },
+        { label: 'Live Prices', route: '/live-prices', lucideIcon: 'TrendingUp' },
+        { label: 'Wallet', route: '/wallet', lucideIcon: 'Wallet' },
+        { label: 'NFT Market', route: '/nft-market', lucideIcon: 'Store', badge: 'New', badgeColor: 'bg-orange-500 text-white' },
+        { label: 'Transactions', route: '/transactions', lucideIcon: 'ArrowUpDown' },
+        { label: 'Settings', route: '/settings', lucideIcon: 'Settings' },
+        { label: 'News', route: '/news', lucideIcon: 'Newspaper' }
+      ]
+    },
+    {
+      title: 'Insights',
+      items: [
+        { label: 'Inbox', route: '/inbox', lucideIcon: 'MessageCircle', badge: '8', badgeColor: 'bg-red-500 text-white' }
+      ]
+    }
   ];
 
   themeToggleOptions: ToggleOption[] = [

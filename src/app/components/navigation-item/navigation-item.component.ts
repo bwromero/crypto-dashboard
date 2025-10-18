@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { LucideAngularModule, icons } from 'lucide-angular';
+import { NavigationSection } from '../../layout/sidebar/sidebar.component';
 
 export interface NavigationItem {
   label: string;
@@ -19,6 +20,7 @@ export interface NavigationItem {
   templateUrl: './navigation-item.component.html'
 })
 export class NavigationItemComponent {
+  @Input() section!: NavigationSection;
   @Input() item!: NavigationItem;
   @Input() isActive: boolean = false;
 
