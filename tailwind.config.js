@@ -9,8 +9,8 @@ module.exports = {
         'dark-primary': '#171B21',
         'dark-secondary': '#1A1F25',
         'dark-tertiary': '#12181F',
-        'text-primary': '#FFFFFF',
-        'text-secondary': '#64748B',
+        'primary': '#FFFFFF',
+        'secondary': '#64748B',
         'border': '#808195',
         'accent': '#FF3E46',
         'success': '#00C087',
@@ -19,7 +19,6 @@ module.exports = {
         'gray': '#92929D',
         'gray-light': '#F0F4F7',
         'action': '#0CAF60',
-        'primary': '#FFFFFF',
         'secondary': '#C2C2C2',
         'light-gray': 'rgb(128 129 149 / 0.3)'
       },
