@@ -27,7 +27,7 @@ export class SidebarComponent {
         { label: 'Exchange', route: '/exchange', lucideIcon: 'ArrowLeftRight' },
         { label: 'Live Prices', route: '/live-prices', lucideIcon: 'TrendingUp' },
         { label: 'Wallet', route: '/wallet', lucideIcon: 'Wallet' },
-        { label: 'NFT Market', route: '/nft-market', lucideIcon: 'Store', badge: 'New', badgeColor: 'bg-orange-500 text-white' },
+        { label: 'NFT Market', route: '/nft-market', lucideIcon: 'Store', badge: 'New', badgeColor: 'bg-orange-500 text-primary' },
         { label: 'Transactions', route: '/transactions', lucideIcon: 'ArrowUpDown' },
         { label: 'Settings', route: '/settings', lucideIcon: 'Settings' },
         { label: 'News', route: '/news', lucideIcon: 'Newspaper' }
@@ -36,7 +36,7 @@ export class SidebarComponent {
     {
       title: 'Insights',
       items: [
-        { label: 'Inbox', route: '/inbox', lucideIcon: 'MessageCircle', badge: '8', badgeColor: 'bg-red-500 text-white' }
+        { label: 'Inbox', route: '/inbox', lucideIcon: 'MessageCircle', badge: '8', badgeColor: 'bg-red-500 text-primary' }
       ]
     }
   ];

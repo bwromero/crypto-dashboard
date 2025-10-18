@@ -50,10 +50,10 @@ export class ButtonComponent {
     const disabledClass = this.disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer';
 
     const typeClasses = {
-      primary: 'bg-primary text-white hover:bg-primary/90',
-      secondary: 'bg-secondary text-white hover:bg-secondary/90',
-      action: 'bg-action text-white hover:bg-action/90',
-      dark: 'bg-dark-primary text-white hover:bg-dark-primary/90'
+      primary: 'bg-primary text-primary hover:bg-primary/90',
+      secondary: 'bg-secondary text-primary hover:bg-secondary/90',
+      action: 'bg-action text-primary hover:bg-action/90',
+      dark: 'bg-dark-primary text-primary hover:bg-dark-primary/90'
     };
 
     return `${baseClasses} ${this.bgColor} ${typeClasses[this.type]} ${widthClass} ${disabledClass}`;
