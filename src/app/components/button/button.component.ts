@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LucideAngularModule, icons } from 'lucide-angular';
 
 export type ButtonType = 'primary' | 'secondary' | 'action' | 'dark';
-export type ButtonVariant = 'normal' | 'dropdown' | 'toggle'; 
+export type ButtonVariant = 'normal' | 'dropdown' | 'toggle' | 'sidebar-toggle'; 
 
 export interface DropdownOption {
   label: string;

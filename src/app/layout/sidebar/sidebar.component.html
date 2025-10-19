@@ -1,4 +1,4 @@
-<aside class="w-[252px] min-h-screen bg-dark-primary flex flex-col items-center">
+<aside class="w-[252px] min-h-screen bg-dark-primary flex flex-col items-center relative">
     <!-- Logo container -->
     <div class="flex justify-center w-full px-6 mt-6 pb-2 border-b-2 border-dark-secondary">
         <img src="assets/images/Logo.png" alt="Logo" class="w-[123px] h-[40px] object-contain">
@@ -6,7 +6,7 @@
 
 
     <!-- Avatar section -->
-    <div class="flex flex-col gap-3 items-center w-full px-6 mb-8 mt-4">
+    <div class="flex flex-col gap-3 items-center w-full px-6 mb-8 mt-7">
         <img src="assets/images/Avatar-Image.png" alt="avatar" class="w-12 h-12 rounded-2xl">
         <div class="flex flex-col items-center">
             <span class="text-primary text-sm font-medium">Erfan Amade</span>
@@ -18,31 +18,34 @@
     </div>
 
     <div class="w-full flex flex-col items-center">
-        <a href="" class="bg-action text-primary px-4 py-4 rounded-2xl hover:opacity-90 flex items-center gap-3 w-10/12 border-1 border-black">
+        <a href=""
+            class="bg-action text-primary px-4 py-4 rounded-2xl hover:opacity-90 flex items-center gap-3 w-10/12 border-1 border-black">
             <lucide-icon [img]="icons.LayoutDashboard" [size]="20"></lucide-icon>
             <span class="text-md font-extrabold text-shadow-dark text-stroke-dark">Dashboard</span>
         </a>
     </div>
- 
+
     <!-- Section Items -->
-     <nav class="w-full px-6 mt-8">
+    <nav class="w-full px-6 mt-8">
         <div *ngFor="let section of navigationSections" class="mb-6">
             <div *ngIf="section.title" class="text-secondary text-sm font-medium mb-2 mt-14 px-4">
                 {{ section.title }}
-            </div>     
-            <app-navigation-item *ngFor="let item of section.items" [section]="section" [item]="item"></app-navigation-item>
-        </div>    
-     </nav>
+            </div>
+            <app-navigation-item *ngFor="let item of section.items" [section]="section"
+                [item]="item"></app-navigation-item>
+        </div>
+    </nav>
 
     <!-- Theme Toggle Switch (using your custom ButtonComponent) -->
     <div class="w-full px-6 mt-4 mb-6">
         <div class="flex items-center justify-center">
-            <app-button 
-                variant="toggle" 
-                [toggleOptions]="themeToggleOptions"
-                [selectedToggleValue]="selectedTheme"
+            <app-button variant="toggle" [toggleOptions]="themeToggleOptions" [selectedToggleValue]="selectedTheme"
                 (toggleChanged)="onThemeToggleChanged($event)">
             </app-button>
         </div>
     </div>
+
+    <app-button variant="sidebar-toggle" [toggleOptions]="sideBarToggleOptions" [selectedToggleValue]="selectedSideBarToggle"
+        (toggleChanged)="onSideBarToggleChanged($event)">
+    </app-button>
 </aside>

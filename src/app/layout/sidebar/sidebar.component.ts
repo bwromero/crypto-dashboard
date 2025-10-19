@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { LucideAngularModule, icons } from 'lucide-angular';
+import { LucideAngularModule, icons, ChevronLeft } from 'lucide-angular';
 import { NavigationItem, NavigationItemComponent } from '../../components/navigation-item/navigation-item.component';
 import { ButtonComponent, ToggleOption } from '../../components/button/button.component';
 
@@ -20,6 +20,8 @@ export interface NavigationSection {
 export class SidebarComponent {
   protected icons = icons;
   selectedTheme = 'dark'; // Default to dark mode
+  selectedSideBarToggle = 'open'; // Default to dark mode
+  ChevronLeft = ChevronLeft;
 
   navigationSections: NavigationSection[] = [
     {
@@ -46,9 +48,18 @@ export class SidebarComponent {
     { label: 'Dark', value: 'dark', lucideIcon: 'Moon' }
   ];
 
+  sideBarToggleOptions: ToggleOption[] = [
+    { label: 'Open', value: 'open', lucideIcon: 'ChevronLeft' },
+    { label: 'Closed', value: 'closed', lucideIcon: 'ChevronRight' }
+  ]
+
   onThemeToggleChanged(value: string) {
     this.selectedTheme = value;
     console.log('Theme switched to:', value);
     // Add your theme switching logic here
+  }
+
+  onSideBarToggleChanged(value: string) {
+
   }
 }
