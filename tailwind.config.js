@@ -40,8 +40,8 @@ module.exports = {
             textShadow: '0 4px 8px rgba(23, 27, 33, 0.8)',
           },
           '.text-stroke-dark': {
-            WebkitTextStroke: '0.5px rgba(0, 0, 0, 0.8)',
-            textStroke: '0.5px rgba(0, 0, 0, 0.8)',
+            WebkitTextStroke: '1px rgba(0, 0, 0, 0.8)',
+            textStroke: '1px rgba(0, 0, 0, 0.8)',
           },
           '.text-stroke-dark-thick': {
             WebkitTextStroke: '2px rgba(23, 27, 33, 0.8)',
