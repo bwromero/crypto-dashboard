@@ -6,7 +6,7 @@
 
 
     <!-- Avatar section -->
-    <div class="flex flex-col gap-3 items-center w-full px-6 mb-6">
+    <div class="flex flex-col gap-3 items-center w-full px-6 mb-8">
         <img src="assets/images/Avatar-Image.png" alt="avatar" class="w-12 h-12 rounded-full">
         <div class="flex flex-col items-center">
             <span class="text-primary text-sm font-medium">Erfan Amade</span>
@@ -18,12 +18,12 @@
     </div>
 
     <div class="w-full flex flex-col items-center">
-        <a href="" class="bg-action text-primary px-4 py-2 rounded-xl hover:opacity-90 flex items-center gap-2">
+        <a href="" class="bg-action text-primary px-4 py-4 rounded-2xl hover:opacity-90 flex items-center gap-3 w-10/12">
             <lucide-icon [img]="icons.LayoutDashboard" [size]="20"></lucide-icon>
-            <span>Dashboard</span>
+            <span class="text-md font-extrabold text-shadow-dark text-stroke-dark">Dashboard</span>
         </a>
     </div>
-
+ 
     <!-- Section Items -->
      <nav class="w-full px-6 mt-8">
         <div *ngFor="let section of navigationSections" class="mb-6">
