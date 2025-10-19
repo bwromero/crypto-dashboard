@@ -12,6 +12,7 @@ export class SearchBarComponent {
   @Input() placeholder: string = 'Search...';
   @Input() dropdownOptions: string[] = [];
   @Input() selectedOption: string = '';
+  @Input() bgColor: string = 'bg-dark-secondary';
 
   @Output() search = new EventEmitter<string>();
   @Output() optionSelected = new EventEmitter<string>();
