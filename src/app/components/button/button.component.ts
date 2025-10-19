@@ -58,7 +58,7 @@ export class ButtonComponent {
       darkSecondary: 'bg-dark-secondary text-primary'
     };
 
-    return `${baseClasses} ${this.bgColor} ${typeClasses[this.type]} ${widthClass} ${disabledClass}`;
+    return `${baseClasses} ${typeClasses[this.type]} ${widthClass} ${disabledClass}`;
   }
 
   get getIconImage() {
