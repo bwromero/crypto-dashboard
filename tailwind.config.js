@@ -29,29 +29,39 @@ module.exports = {
   },
   plugins: [
     function({ addUtilities }) {
-        const newUtilities = {
-          '.text-shadow-dark': {
-            textShadow: '0 2px 4px rgba(0, 0, 0, 0.5)',
-          },
-          '.text-shadow-dark-sm': {
-            textShadow: '0 1px 2px rgba(23, 27, 33, 0.6)',
-          },
-          '.text-shadow-dark-lg': {
-            textShadow: '0 4px 8px rgba(23, 27, 33, 0.8)',
-          },
-          '.text-stroke-dark': {
-            WebkitTextStroke: '1px rgba(0, 0, 0, 0.8)',
-            textStroke: '1px rgba(0, 0, 0, 0.8)',
-          },
-          '.text-stroke-dark-thick': {
-            WebkitTextStroke: '2px rgba(23, 27, 33, 0.8)',
-            textStroke: '2px rgba(23, 27, 33, 0.8)',
-          },
-          '.text-stroke-dark-thin': {
-            WebkitTextStroke: '0.5px rgba(23, 27, 33, 0.8)',
-            textStroke: '0.5px rgba(23, 27, 33, 0.8)',
-          },
-        }
+      const newUtilities = {
+        '.text-shadow-dark': {
+          textShadow: '0 2px 4px rgba(0, 0, 0, 0.5)',
+        },
+        '.text-shadow-dark-sm': {
+          textShadow: '0 1px 2px rgba(23, 27, 33, 0.6)',
+        },
+        '.text-shadow-dark-lg': {
+          textShadow: '0 4px 8px rgba(23, 27, 33, 0.8)',
+        },
+        '.text-stroke-dark': {
+          WebkitTextStroke: '0.5px rgba(0, 0, 0, 0.8)',
+          textStroke: '0.5px rgba(0, 0, 0, 0.8)',
+        },
+        '.text-stroke-dark-thick': {
+          WebkitTextStroke: '2px rgba(23, 27, 33, 0.8)',
+          textStroke: '2px rgba(23, 27, 33, 0.8)',
+        },
+        '.text-stroke-dark-thin': {
+          WebkitTextStroke: '0.5px rgba(23, 27, 33, 0.8)',
+          textStroke: '0.5px rgba(23, 27, 33, 0.8)',
+        },
+        // Custom drop shadows
+        '.drop-shadow-dark': {
+          filter: 'drop-shadow(0 4px 2px rgba(0, 0, 0, 0.4))',
+        },
+        '.drop-shadow-dark-lg': {
+          filter: 'drop-shadow(0 8px 12px rgba(0, 0, 0, 0.9))',
+        },
+        '.drop-shadow-dark-xl': {
+          filter: 'drop-shadow(0 12px 16px rgba(0, 0, 0, 0.95))',
+        },
+      }
       addUtilities(newUtilities)
     }
   ],
