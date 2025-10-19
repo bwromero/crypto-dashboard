@@ -55,7 +55,7 @@ export class ButtonComponent {
       secondary: 'bg-secondary text-primary hover:bg-secondary/90',
       action: 'bg-action text-primary hover:bg-action/90',
       dark: 'bg-dark-primary text-primary hover:bg-dark-primary/90',
-      darkSecondary: 'bg-dark-secondary text-primary'
+      darkSecondary: 'bg-dark-secondary text-primary hover:bg-dark-secondary/90'
     };
 
     return `${baseClasses} ${typeClasses[this.type]} ${widthClass} ${disabledClass}`;
