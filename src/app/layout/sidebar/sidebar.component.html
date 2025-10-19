@@ -44,8 +44,11 @@
             </app-button>
         </div>
     </div>
+ 
+    <div class="absolute top-4 -right-4">
+        <app-button variant="sidebar-toggle" [toggleOptions]="sideBarToggleOptions"
+            [selectedToggleValue]="selectedSideBarToggle" (toggleChanged)="onSideBarToggleChanged($event)">
+        </app-button>
+    </div>
 
-    <app-button variant="sidebar-toggle" [toggleOptions]="sideBarToggleOptions" [selectedToggleValue]="selectedSideBarToggle"
-        (toggleChanged)="onSideBarToggleChanged($event)">
-    </app-button>
 </aside>
