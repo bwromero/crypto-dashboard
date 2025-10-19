@@ -19,7 +19,6 @@ module.exports = {
         'gray': '#92929D',
         'gray-light': '#F0F4F7',
         'action': '#0CAF60',
-        'secondary': '#C2C2C2',
         'light-gray': 'rgb(128 129 149 / 0.3)'
       },
       fontFamily: {
