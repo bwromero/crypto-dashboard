@@ -20,7 +20,7 @@
 
   <!-- Sidebar toggle -->
   <div *ngIf="variant === 'sidebar-toggle'">
-    <button [class]="'text-md font-bold border-2 border-dark-secondary rounded-full text-md px-2 py-2 text-secondary'">
+    <button [class]="'text-md font-bold border-2 bg-dark-primary border-dark-secondary rounded-full text-md px-2 py-2 text-secondary'">
       <div *ngFor="let option of toggleOptions">
         <lucide-icon *ngIf="option.show && option.lucideIcon" [img]="getToggleIconImage(option.lucideIcon)"
           [size]="16"></lucide-icon>
