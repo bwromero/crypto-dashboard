@@ -35,6 +35,7 @@ export class ButtonComponent {
   @Input() disabled: boolean = false;
   @Input() fullWidth: boolean = false;
   @Input() selectedToggleValue?: string;
+  @Input() buttonSelected: boolean = false;
   
   @Output() clicked = new EventEmitter<void>();
   @Output() optionSelected = new EventEmitter<DropdownOption>();
@@ -57,6 +58,8 @@ export class ButtonComponent {
       dark: 'bg-dark-primary text-primary hover:bg-dark-primary/90',
       darkSecondary: 'bg-dark-secondary text-primary hover:bg-dark-secondary/90'
     };
+
+    this.type = this.buttonSelected? 'action' : this.type;
 
     return `${baseClasses} ${typeClasses[this.type]} ${widthClass} ${disabledClass}`;
   }
