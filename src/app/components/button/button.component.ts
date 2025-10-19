@@ -14,6 +14,7 @@ export interface ToggleOption {
   value: string;
   icon?: string;
   lucideIcon?: string;
+  show?: boolean;
 }
 @Component({
   selector: 'app-button',

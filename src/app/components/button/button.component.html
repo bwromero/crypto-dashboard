@@ -19,10 +19,12 @@
   </div>
 
   <!-- Sidebar toggle -->
-  <div *ngIf="variant === 'sidebar-toggle'" class="px-4 py-2 text-secondary">
-    <button *ngFor="let option of toggleOptions" (click)="selectToggleOption(option)"
-      [class]="'text-md font-bold  border-2 border-dark-secondary rounded-full text-md'">
-      <lucide-icon *ngIf="option.lucideIcon" [img]="getToggleIconImage(option.lucideIcon)" [size]="16"></lucide-icon>
+  <div *ngIf="variant === 'sidebar-toggle'">
+    <button [class]="'text-md font-bold border-2 border-dark-secondary rounded-full text-md px-2 py-2 text-secondary'">
+      <div *ngFor="let option of toggleOptions">
+        <lucide-icon *ngIf="option.show && option.lucideIcon" [img]="getToggleIconImage(option.lucideIcon)"
+          [size]="16"></lucide-icon>
+      </div>
     </button>
   </div>
 
@@ -36,10 +38,10 @@
 
     <!-- Dropdown Menu -->
     <div *ngIf="isDropdownOpen" class="absolute z-10 w-full mt-1 bg-dark-primary shadow-lg">
-        <button *ngFor="let option of dropdownOptions" (click)="selectOption(option)"
-          class="w-full px-4 py-2 text-sm rounded-xl text-secondary hover:bg-dark-secondary text-left transition-colors duration-200">
-          {{ option.label }}
-        </button>
+      <button *ngFor="let option of dropdownOptions" (click)="selectOption(option)"
+        class="w-full px-4 py-2 text-sm rounded-xl text-secondary hover:bg-dark-secondary text-left transition-colors duration-200">
+        {{ option.label }}
+      </button>
     </div>
   </div>
 </div>

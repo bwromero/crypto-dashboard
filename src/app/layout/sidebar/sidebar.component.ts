@@ -49,8 +49,8 @@ export class SidebarComponent {
   ];
 
   sideBarToggleOptions: ToggleOption[] = [
-    { label: 'Open', value: 'open', lucideIcon: 'ChevronLeft' },
-    { label: 'Closed', value: 'closed', lucideIcon: 'ChevronRight' }
+    { label: 'Open', value: 'open', lucideIcon: 'ChevronLeft', show: true },
+    { label: 'Closed', value: 'closed', lucideIcon: 'ChevronRight', show: false  }
   ]
 
   onThemeToggleChanged(value: string) {
