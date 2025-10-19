@@ -51,6 +51,9 @@ export class ButtonComponent {
     const widthClass = this.fullWidth ? 'w-full' : '';
     const disabledClass = this.disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer';
 
+
+    //refactor and create button class 
+
     const typeClasses = {
       primary: 'bg-primary text-primary hover:bg-primary/90',
       secondary: 'bg-secondary text-primary hover:bg-secondary/90',

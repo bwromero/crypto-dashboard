@@ -12,7 +12,12 @@
     <app-search-bar bgColor="bg-dark-primary"></app-search-bar>
 
     <div class="flex bg-dark-primary p-2 rounded-full gap-2">
-        <app-button *ngFor="let button of buttonList" [variant]="button.variant" [type]="button.type" [lucideIcon]="button.lucideIcon" [buttonSelected]="button.isSelected">
+        <app-button *ngFor="let button of buttonList" 
+        [variant]="button.variant" 
+        [type]="button.type" 
+        [lucideIcon]="button.lucideIcon" 
+        [buttonSelected]="button.isSelected"
+        (clicked)="onButtonSelected(button)">
         </app-button>
     </div>
 </div>
