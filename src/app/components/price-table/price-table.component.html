@@ -1,26 +1,33 @@
 <div class="flex justify-between items-center gap-4">
-    <div class="flex flex-col gap-2">
-        <h1 class="text-2xl font-bold text-primary">CryptoCurrencies Prices</h1>
-        <span class="text-secondary text-sm">Updated 1 minute ago</span>
+  <div class="flex flex-col gap-2">
+    <h1 class="text-2xl font-bold text-primary">CryptoCurrencies Prices</h1>
+    <span class="text-secondary text-sm">Updated 1 minute ago</span>
+  </div>
+
+  <app-button
+    [variant]="'dropdown'"
+    [type]="'darkSecondary'"
+    [label] = "displayLabel"
+    [dropdownOptions]="rowDropDownOptions"
+    (optionSelected)="onRowOptionSelected($event)"
+  >
+  </app-button>
+
+  <!-- Center section - Search -->
+  <app-search-bar></app-search-bar>
+
+  <div class="flex">
+    <div class="w-full flex flex-col items-center">
+      <a
+        href=""
+        class="bg-action text-primary px-4 py-2 rounded-xl hover:opacity-90 flex items-center gap-2"
+      >
+        <img src="assets/images/Dashboard-icon.png" class="w-5 h-5" />
+      </a>
     </div>
-
-    <app-button [variant]="'dropdown'" [type]="'dark'" [dropdownOptions]="">
-
-    </app-button>
-
-    <!-- Center section - Search -->
-    <app-search-bar></app-search-bar>
-
-    <div class="flex">
-        <div class="w-full flex flex-col items-center">
-            <a href="" class="bg-action text-primary px-4 py-2 rounded-xl hover:opacity-90 flex items-center gap-2">
-                <img src="assets/images/Dashboard-icon.png" class="w-5 h-5">
-            </a>
-        </div>
-        <div>
-            <a href=""></a>
-        </div>
-        <div><a href=""></a>
-        </div>
+    <div>
+      <a href=""></a>
     </div>
+    <div><a href=""></a></div>
+  </div>
 </div>

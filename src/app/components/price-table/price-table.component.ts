@@ -9,6 +9,21 @@ import { ButtonComponent, DropdownOption } from '../../components/button/button.
   styles: ``
 })
 export class PriceTableComponent {
+  rowDropDownOptions:DropdownOption[] = [
+    {label: '', value: '10'},
+    {label: '', value: '20'},
+    {label: '', value: '30'},
+    {label: '', value: '40'},
+  ];
 
- 
+  selectedRowOption: DropdownOption = this.rowDropDownOptions[0];
+
+  get displayLabel(): string {
+    return `Show rows: ${this.selectedRowOption.value}`
+  }
+
+  onRowOptionSelected(option: any){
+    this.selectedRowOption = option;
+  }
+
 }
