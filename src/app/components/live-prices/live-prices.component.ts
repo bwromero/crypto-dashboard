@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { PriceTableComponent } from './price-table/price-table.component';
-import { ButtonConfig } from '../button/button.component';
 import { CommonModule } from '@angular/common';
 import { HeatMapComponent } from './heat-map/heat-map.component';
 import { BubbleViewComponent } from './bubble-view/bubble-view.component';
 
+enum ViewType {
+  LIST = 'list',
+  HEATMAP = 'heatmap',
+  BUBBLES = 'bubbles',
+}
 @Component({
   selector: 'app-live-prices',
   standalone: true,
@@ -15,12 +19,11 @@ import { BubbleViewComponent } from './bubble-view/bubble-view.component';
 })
 export class LivePricesComponent {
 
-  readonly views: string[] = ['list', 'heatmap', 'bubbles'];
+  readonly views: ViewType[] = [ViewType.LIST, ViewType.HEATMAP, ViewType.BUBBLES];
+  selectedView: ViewType = ViewType.LIST;
 
-  selectedView: string = 'list';
-
-  onViewSelected(view: any) {
-    this.selectedView = view.name;
+  onViewSelected(view: string) {
+    this.selectedView = view as ViewType;
     console.log(this.selectedView);
   }
 }

@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ToolbarComponent {
 
-  @Output() viewSelected: EventEmitter<ButtonConfig> = new EventEmitter<ButtonConfig>();
+  @Output() viewSelected: EventEmitter<string> = new EventEmitter<string>();
 
   rowDropDownOptions: DropdownOption[] = [
     {label: '', value: '10'},
@@ -47,6 +47,6 @@ export class ToolbarComponent {
     // Set the clicked button to action (green) and selected
     clickedButton.isSelected = true;
     clickedButton.type = 'action';
-    this.viewSelected.emit(clickedButton);
+    this.viewSelected.emit(clickedButton.name);
   }
 }
