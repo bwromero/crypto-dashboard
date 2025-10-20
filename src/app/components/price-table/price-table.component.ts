@@ -30,7 +30,7 @@ export class PriceTableComponent {
     return `Show rows: ${this.selectedRowOption.value}`
   }
 
-  onRowOptionSelected(option: any){
+  onRowOptionSelected(option: DropdownOption){
     this.selectedRowOption = option;
   }
 
