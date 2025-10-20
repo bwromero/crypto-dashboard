@@ -1,4 +1,6 @@
 <div class="flex flex-col gap-4">
-  <app-toolbar></app-toolbar>
-  <app-price-table></app-price-table>
+  <app-toolbar (viewSelected)="onViewSelected($event)"></app-toolbar>
+  <app-price-table *ngIf="selectedView === views[0]"></app-price-table>
+  <app-heat-map *ngIf="selectedView === views[1]"></app-heat-map>
+  <app-bubble-view *ngIf="selectedView === views[2]"></app-bubble-view>
 </div>
