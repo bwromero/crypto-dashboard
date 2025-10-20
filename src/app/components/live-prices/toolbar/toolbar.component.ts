@@ -39,11 +39,11 @@ export class ToolbarComponent {
     // Reset all buttons to darkSecondary
     this.buttonList.forEach(button => {
       button.isSelected = false;
-      button.type = 'darkSecondary' as ButtonType;
+      button.type = 'darkSecondary';
     });
     
     // Set the clicked button to action (green) and selected
     clickedButton.isSelected = true;
-    clickedButton.type = 'action' as ButtonType;
+    clickedButton.type = 'action';
   }
 }
