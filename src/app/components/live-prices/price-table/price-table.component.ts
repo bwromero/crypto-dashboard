@@ -7,26 +7,37 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [MatTableModule, CommonModule],
   templateUrl: './price-table.component.html',
-  styles: ``
+  styles: ``,
 })
 export class PriceTableComponent {
   @Input() dataSource: CryptoData[] = MOCK_CRYPTO_DATA;
-  
+
   displayedColumns: string[] = [
-    'rank', 'coin', 'price', 'change24h', 'change7d', 
-    'marketCap', 'volume24h', 'supply', 'chart', 'actions', 'favorite'
+    'rank',
+    'coin',
+    'price',
+    'change24h',
+    'change7d',
+    'marketCap',
+    'volume24h',
+    'supply',
+    'chart',
+    'actions',
+    'favorite',
   ];
 
   getChartPoints(data: number[]): string {
     const max = Math.max(...data);
     const min = Math.min(...data);
     const range = max - min;
-    
-    return data.map((value, index) => {
-      const x = (index / (data.length - 1)) * 64;
-      const y = 32 - ((value - min) / range) * 32;
-      return `${x},${y}`;
-    }).join(' ');
+
+    return data
+      .map((value, index) => {
+        const x = (index / (data.length - 1)) * 64;
+        const y = 32 - ((value - min) / range) * 32;
+        return `${x},${y}`;
+      })
+      .join(' ');
   }
 
   toggleFavorite(element: CryptoData) {
