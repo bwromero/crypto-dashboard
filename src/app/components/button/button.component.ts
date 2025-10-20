@@ -16,6 +16,19 @@ export interface ToggleOption {
   lucideIcon?: string;
   show?: boolean;
 }
+export interface ButtonConfig {
+  variant: ButtonVariant;
+  type: ButtonType;
+  lucideIcon?: string;
+  icon?: string;
+  label?: string;
+  isSelected?: boolean;
+  disabled?: boolean;
+  bgColor?: string;
+  dropdownOptions?: DropdownOption[];
+  toggleOptions?: ToggleOption[];
+  // Add more properties as needed for future use
+}
 @Component({
   selector: 'app-button',
   standalone: true,
