@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ButtonComponent, ButtonConfig, ButtonType, DropdownOption } from '../../button/button.component';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { ButtonComponent, ButtonConfig, DropdownOption } from '../../button/button.component';
 import { SearchBarComponent } from '../../search-bar/search-bar.component';
 import { CommonModule } from '@angular/common';
 
@@ -12,6 +12,8 @@ import { CommonModule } from '@angular/common';
 })
 export class ToolbarComponent {
 
+  @Output() viewSelected: EventEmitter<ButtonConfig> = new EventEmitter<ButtonConfig>();
+
   rowDropDownOptions: DropdownOption[] = [
     {label: '', value: '10'},
     {label: '', value: '20'},
@@ -22,9 +24,9 @@ export class ToolbarComponent {
   selectedRowOption: DropdownOption = this.rowDropDownOptions[0];
 
   buttonList: ButtonConfig[] = [
-    {variant: 'normal', type: 'action', lucideIcon: 'List', isSelected: false},
-    {variant: 'normal', type: 'darkSecondary', lucideIcon: 'LayoutDashboard', isSelected: false},
-    {variant: 'normal', type: 'darkSecondary', lucideIcon: 'Bubbles', isSelected: false},
+    {name: 'list', variant: 'normal', type: 'action', lucideIcon: 'List', isSelected: true},
+    {name: 'heatmap', variant: 'normal', type: 'darkSecondary', lucideIcon: 'LayoutDashboard', isSelected: false},
+    {name: 'bubbles', variant: 'normal', type: 'darkSecondary', lucideIcon: 'Bubbles', isSelected: false},
   ];
 
   get displayLabel(): string {
@@ -45,5 +47,6 @@ export class ToolbarComponent {
     // Set the clicked button to action (green) and selected
     clickedButton.isSelected = true;
     clickedButton.type = 'action';
+    this.viewSelected.emit(clickedButton);
   }
 }

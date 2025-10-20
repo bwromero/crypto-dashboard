@@ -17,6 +17,7 @@ export interface ToggleOption {
   show?: boolean;
 }
 export interface ButtonConfig {
+  name?: string;
   variant: ButtonVariant;
   type: ButtonType;
   lucideIcon?: string;
