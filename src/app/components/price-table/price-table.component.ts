@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchBarComponent } from '../search-bar/search-bar.component';
-import { ButtonComponent, ButtonType, ButtonVariant, DropdownOption } from '../../components/button/button.component';
+import { ButtonComponent, ButtonConfig, ButtonType, ButtonVariant, DropdownOption } from '../../components/button/button.component';
 
 @Component({
   selector: 'app-price-table',
@@ -20,10 +20,10 @@ export class PriceTableComponent {
 
   selectedRowOption: DropdownOption = this.rowDropDownOptions[0];
 
-  buttonList = [
-    {variant: 'normal' as ButtonVariant, type: 'action' as ButtonType, lucideIcon: 'List', isSelected: false},
-    {variant: 'normal' as ButtonVariant, type: 'darkSecondary' as ButtonType, lucideIcon: 'LayoutDashboard', isSelected: false},
-    {variant: 'normal' as ButtonVariant, type: 'darkSecondary' as ButtonType, lucideIcon: 'Bubbles', isSelected: false},
+  buttonList: ButtonConfig[] = [
+    {variant: 'normal', type: 'action', lucideIcon: 'List', isSelected: false},
+    {variant: 'normal', type: 'darkSecondary', lucideIcon: 'LayoutDashboard', isSelected: false},
+    {variant: 'normal', type: 'darkSecondary', lucideIcon: 'Bubbles', isSelected: false},
   ];
 
   get displayLabel(): string {
@@ -34,9 +34,7 @@ export class PriceTableComponent {
     this.selectedRowOption = option;
   }
 
-  onButtonSelected(clickedButton: any){
-    console.log('Button clicked:', clickedButton);
-    
+  onButtonSelected(clickedButton: ButtonConfig){
     // Reset all buttons to darkSecondary
     this.buttonList.forEach(button => {
       button.isSelected = false;

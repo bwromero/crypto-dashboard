@@ -22,7 +22,7 @@ export interface ButtonConfig {
   lucideIcon?: string;
   icon?: string;
   label?: string;
-  isSelected?: boolean;
+  isSelected: boolean;
   disabled?: boolean;
   bgColor?: string;
   dropdownOptions?: DropdownOption[];
@@ -63,10 +63,6 @@ export class ButtonComponent {
     const baseClasses = 'flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm transition-all duration-200';
     const widthClass = this.fullWidth ? 'w-full' : '';
     const disabledClass = this.disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer';
-
-
-    //refactor and create button class 
-
     const typeClasses = {
       primary: 'bg-primary text-primary hover:bg-primary/90',
       secondary: 'bg-secondary text-primary hover:bg-secondary/90',
@@ -89,7 +85,6 @@ export class ButtonComponent {
     };
   }
 
-  // Add this method to your ButtonComponent class
 getToggleIconImage(iconName: string) {
   return this.icons[iconName as keyof typeof this.icons];
 }
