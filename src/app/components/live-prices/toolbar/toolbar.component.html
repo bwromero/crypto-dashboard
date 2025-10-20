@@ -1,1 +1,20 @@
-<p>toolbar works!</p>
+<div class="flex justify-between items-center gap-4">
+
+    <div class="flex flex-col gap-2">
+        <h1 class="text-2xl font-bold text-primary">CryptoCurrencies Prices</h1>
+        <span class="text-secondary text-sm">Updated 1 minute ago</span>
+    </div>
+
+    <app-button [variant]="'dropdown'" [type]="'dark'" [label]="displayLabel" [dropdownOptions]="rowDropDownOptions"
+        (optionSelected)="onRowOptionSelected($event)">
+    </app-button>
+
+    <!-- Center section - Search -->
+    <app-search-bar bgColor="bg-dark-primary"></app-search-bar>
+
+    <div class="flex bg-dark-primary p-2 rounded-full gap-2">
+        <app-button *ngFor="let button of buttonList" [variant]="button.variant" [type]="button.type"
+            [lucideIcon]="button.lucideIcon" [buttonSelected]="button.isSelected" (clicked)="onButtonSelected(button)">
+        </app-button>
+    </div>
+</div>
