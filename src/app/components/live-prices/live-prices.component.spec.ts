@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PriceTableComponent } from './price-table.component';
+import { PriceTableComponent } from './live-prices.component';
 
 describe('PriceTableComponent', () => {
   let component: PriceTableComponent;

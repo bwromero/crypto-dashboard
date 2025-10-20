@@ -11,8 +11,8 @@ export const routes: Routes = [
       },
       {
         path: 'live-prices',
-        loadComponent: () => import('./components/price-table/price-table.component').then(m => m.PriceTableComponent)
-      }
+        loadComponent: () => import('./components/live-prices/live-prices.component').then(m => m.LivePricesComponent)
+      }  
     ]
   }
 ];

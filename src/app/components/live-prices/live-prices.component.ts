@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchBarComponent } from '../search-bar/search-bar.component';
-import { ButtonComponent, ButtonConfig, ButtonType, ButtonVariant, DropdownOption } from '../../components/button/button.component';
+import { ButtonComponent, ButtonConfig, ButtonType, DropdownOption } from '../button/button.component';
 
 @Component({
-  selector: 'app-price-table',
+  selector: 'app-live-prices',
   standalone: true,
   imports: [SearchBarComponent, ButtonComponent, CommonModule],
-  templateUrl: './price-table.component.html',
+  templateUrl: './live-prices.component.html',
   styles: ``
 })
-export class PriceTableComponent {
+export class LivePricesComponent {
   rowDropDownOptions: DropdownOption[] = [
     {label: '', value: '10'},
     {label: '', value: '20'},
