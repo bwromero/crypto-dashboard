@@ -1,1 +1,90 @@
-<p>heat-map works!</p>
+<div class="p-6 bg-dark-primary min-h-screen">
+  <!-- Categories Container -->
+  <div class="space-y-8">
+    
+    <!-- Store Of Value Section -->
+    <div class="space-y-4">
+      <h3 class="text-xl font-bold text-primary">Store Of Value</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div *ngFor="let crypto of getCryptosByCategory('store-of-value')" 
+             [class]="getBlockClasses(crypto)"
+             (click)="onCryptoClick(crypto)">
+          <div class="flex items-center space-x-3 mb-3">
+            <img [src]="crypto.icon" [alt]="crypto.symbol" class="w-8 h-8">
+            <span class="text-white font-bold text-lg">{{ crypto.symbol }}</span>
+          </div>
+          <div class="text-white">
+            <div class="text-xl font-semibold">${{ crypto.price | number:'1.2-2' }}</div>
+            <div [class]="crypto.change24h >= 0 ? 'text-green-300' : 'text-red-300'">
+              {{ crypto.change24h >= 0 ? '+' : '' }}{{ crypto.change24h | number:'1.2-2' }}%
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Smart Contracts Section -->
+    <div class="space-y-4">
+      <h3 class="text-xl font-bold text-primary">Smart Contracts</h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div *ngFor="let crypto of getCryptosByCategory('smart-contracts')" 
+             [class]="getBlockClasses(crypto)"
+             (click)="onCryptoClick(crypto)">
+          <div class="flex items-center space-x-2 mb-2">
+            <img [src]="crypto.icon" [alt]="crypto.symbol" class="w-6 h-6">
+            <span class="text-white font-bold text-sm">{{ crypto.symbol }}</span>
+          </div>
+          <div class="text-white">
+            <div class="text-lg font-semibold">${{ crypto.price | number:'1.2-2' }}</div>
+            <div [class]="crypto.change24h >= 0 ? 'text-green-300' : 'text-red-300'">
+              {{ crypto.change24h >= 0 ? '+' : '' }}{{ crypto.change24h | number:'1.2-2' }}%
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Exchanges Section -->
+    <div class="space-y-4">
+      <h3 class="text-xl font-bold text-primary">Exchanges</h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div *ngFor="let crypto of getCryptosByCategory('exchanges')" 
+             [class]="getBlockClasses(crypto)"
+             (click)="onCryptoClick(crypto)">
+          <div class="flex items-center space-x-2 mb-2">
+            <img [src]="crypto.icon" [alt]="crypto.symbol" class="w-6 h-6">
+            <span class="text-white font-bold text-sm">{{ crypto.symbol }}</span>
+          </div>
+          <div class="text-white">
+            <div class="text-lg font-semibold">${{ crypto.price | number:'1.2-2' }}</div>
+            <div [class]="crypto.change24h >= 0 ? 'text-green-300' : 'text-red-300'">
+              {{ crypto.change24h >= 0 ? '+' : '' }}{{ crypto.change24h | number:'1.2-2' }}%
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Meme Section -->
+    <div class="space-y-4">
+      <h3 class="text-xl font-bold text-primary">Meme</h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div *ngFor="let crypto of getCryptosByCategory('meme')" 
+             [class]="getBlockClasses(crypto)"
+             (click)="onCryptoClick(crypto)">
+          <div class="flex items-center space-x-2 mb-2">
+            <img [src]="crypto.icon" [alt]="crypto.symbol" class="w-6 h-6">
+            <span class="text-white font-bold text-sm">{{ crypto.symbol }}</span>
+          </div>
+          <div class="text-white">
+            <div class="text-lg font-semibold">${{ crypto.price | number:'1.2-2' }}</div>
+            <div [class]="crypto.change24h >= 0 ? 'text-green-300' : 'text-red-300'">
+              {{ crypto.change24h >= 0 ? '+' : '' }}{{ crypto.change24h | number:'1.2-2' }}%
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
