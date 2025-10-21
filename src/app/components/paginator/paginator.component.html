@@ -1,11 +1,12 @@
-<div class="flex justify-content-between">
-    <div *ngFor="let page of pages">
+<div class="flex justify-content-between gap-2">
+    <div *ngFor="let page of pages" 
+         class="cursor-pointer rounded-2xl border border-secondary hover:bg-dark-primary hover:border-primary transition-all duration-200 py-2 px-4 text-primary">
         {{page}}
     </div>
 
     <div>
-        <lucide-icon name="rectangle-ellipsis"><button >
-        </button></lucide-icon>
+        <!-- <lucide-icon name="rectangle-ellipsis"><button >
+        </button></lucide-icon> -->
 
     </div>
 </div>

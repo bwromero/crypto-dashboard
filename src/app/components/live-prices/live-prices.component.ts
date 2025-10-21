@@ -4,6 +4,7 @@ import { PriceTableComponent } from './price-table/price-table.component';
 import { CommonModule } from '@angular/common';
 import { HeatMapComponent } from './heat-map/heat-map.component';
 import { BubbleViewComponent } from './bubble-view/bubble-view.component';
+import { PaginatorComponent } from '../paginator/paginator.component';
 
 enum ViewType {
   LIST = 'list',
@@ -13,7 +14,7 @@ enum ViewType {
 @Component({
   selector: 'app-live-prices',
   standalone: true,
-  imports: [ToolbarComponent, PriceTableComponent, HeatMapComponent, BubbleViewComponent, CommonModule],
+  imports: [ToolbarComponent, PriceTableComponent, HeatMapComponent, BubbleViewComponent, CommonModule, PaginatorComponent],
   templateUrl: './live-prices.component.html',
   styles: ``,
 })
