@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { LucideAngularModule, icons } from 'lucide-angular';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from '../button/button.component';
@@ -11,7 +11,17 @@ import { ButtonComponent } from '../button/button.component';
   styles: ``
 })
 export class PaginatorComponent {
+  @Input() currentPage: number = 1;
+  @Input() totalPages: number = 10;
+  @Input() showLoadMore: boolean = true;
+  
+  @Output() loadMoreClicked = new EventEmitter<void>();
 
+  protected icons = icons;
+  rectangleEllipsis = icons.RectangleEllipsis;
   pages: number[] = [1, 2, 3, 4];
 
+  onLoadMore() {
+    this.loadMoreClicked.emit();
+  }
 }

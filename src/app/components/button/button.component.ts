@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LucideAngularModule, icons } from 'lucide-angular';
 
-export type ButtonType = 'primary' | 'secondary' | 'action' | 'dark' | 'darkSecondary';
+export type ButtonType = 'primary' | 'secondary' | 'action' | 'dark' | 'darkSecondary' | 'transparent';
 export type ButtonVariant = 'normal' | 'dropdown' | 'toggle' | 'sidebar-toggle'; 
 
 export interface DropdownOption {
@@ -69,7 +69,8 @@ export class ButtonComponent {
       secondary: 'bg-secondary text-primary hover:bg-secondary/90',
       action: 'bg-action text-primary hover:bg-action/90',
       dark: 'bg-dark-primary text-primary hover:bg-dark-primary/90',
-      darkSecondary: 'bg-dark-secondary text-primary hover:bg-dark-secondary/90'
+      darkSecondary: 'bg-dark-secondary text-primary hover:bg-dark-secondary/90',
+      transparent: 'bg-transparent text-primary hover:bg-dark-primary'
     };
 
     this.type = this.buttonSelected? 'action' : this.type;
