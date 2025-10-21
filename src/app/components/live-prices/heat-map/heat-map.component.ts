@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { CryptoData } from '../live-prices.component';
+import { CryptoData } from '../../models/crypto.interface';
 
 export interface CryptoCategory {
   id: string;

@@ -6,25 +6,9 @@ import { HeatMapComponent, HeatmapData } from './heat-map/heat-map.component';
 import { BubbleViewComponent } from './bubble-view/bubble-view.component';
 import { PaginatorComponent } from '../paginator/paginator.component';
 import { mockCryptoData, mockHeatmapData } from '../data/mock-crypto-data';
+import { CryptoData } from '../models/crypto.interface';
 
 // TypeScript interfaces for type safety
-export interface CryptoData {
-  id: string;
-  rank: number;
-  name: string;
-  symbol: string;
-  icon: string;
-  price: number;
-  change24h: number;
-  change7d: number;
-  marketCap: number;
-  volume24h: number;
-  circulatingSupply: number;
-  chartData: number[];
-  isFavorite: boolean;
-  categoryId: string;
-}
-
 enum ViewType {
   LIST = 'list',
   HEATMAP = 'heatmap',

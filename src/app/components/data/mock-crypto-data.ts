@@ -1,5 +1,5 @@
 import { HeatmapData } from '../live-prices/heat-map/heat-map.component';
-import { CryptoData } from '../live-prices/live-prices.component';
+import { CryptoData } from '../models/crypto.interface';
 
 export type CryptoCategory =
   | 'store-of-value'
