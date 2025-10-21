@@ -1,28 +1,21 @@
 <div class="flex justify-between">
     <div class="flex gap-2">
         <!-- Your page numbers here -->
-        <div *ngFor="let page of pages" 
-             class="cursor-pointer rounded-2xl border border-secondary hover:bg-dark-primary hover:border-primary transition-all duration-200 py-2 px-4 text-primary">
+        <div *ngFor="let page of pages"
+            class="cursor-pointer rounded-2xl border border-secondary hover:bg-dark-primary hover:border-primary transition-all duration-200 py-2 px-4 text-primary">
             {{page}}
         </div>
     </div>
 
     <div *ngIf="showLoadMore">
-        <!-- <button class="flex items-center gap-2 px-4 py-2 rounded-xl border border-secondary hover:bg-dark-primary hover:border-primary transition-all duration-200 text-primary" 
-                (click)="onLoadMore()">
-            <lucide-icon [name]="rectangleEllipsis" size="16"></lucide-icon>
-            <span>Load More</span>
-        </button> -->
-
         <app-button [variant]="'normal'" [type]="'transparent'" [disabled]="pages.length === 1"
-        [lucideIcon]="'RectangleEllipsis'" (clicked)="onLoadMore()" [label]="'Load More'"></app-button>
+            [lucideIcon]="'RectangleEllipsis'" (clicked)="onLoadMore()" [label]="'Load More'"></app-button>
     </div>
 
-    <div *ngIf="showLoadMore">
-        <button class="flex items-center gap-2 px-4 py-2 rounded-xl border border-secondary hover:bg-dark-primary hover:border-primary transition-all duration-200 text-primary" 
-                (click)="onLoadMore()">
-            <lucide-icon [name]="icons.Plus" size="16"></lucide-icon>
-            <span>Load More</span>
-        </button>
+    <div class="flex items-center">
+        <app-button [variant]="'normal'" [type]="'transparent'" [disabled]="pages.length === 1"
+        [lucideIcon]="'RefreshCw'" (clicked)="onRefresh()"></app-button>
+        <div class="flex text-primary text-sm gap-1">{{numberOfItems}} <span class="text-secondary text-sm">items</span></div>
     </div>
+
 </div>

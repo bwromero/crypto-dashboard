@@ -11,14 +11,16 @@ import { ButtonComponent } from '../button/button.component';
   styles: ``
 })
 export class PaginatorComponent {
+onRefresh() {
+throw new Error('Method not implemented.');
+}
   @Input() currentPage: number = 1;
   @Input() totalPages: number = 10;
   @Input() showLoadMore: boolean = true;
+  @Input() numberOfItems: number = 100;
   
   @Output() loadMoreClicked = new EventEmitter<void>();
 
-  protected icons = icons;
-  rectangleEllipsis = icons.RectangleEllipsis;
   pages: number[] = [1, 2, 3, 4];
 
   onLoadMore() {
