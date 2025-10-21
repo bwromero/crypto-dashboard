@@ -16,3 +16,14 @@ export interface CryptoData {
     categoryId: string;
   }
   
+  export interface CryptoCategory {
+    id: string;
+    name: string;
+    description: string;
+  }
+  
+  export interface HeatmapData {
+    categories: CryptoCategory[];
+    cryptos: CryptoData[];
+  }
+  

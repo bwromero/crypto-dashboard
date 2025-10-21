@@ -1,19 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { CryptoData } from '../../models/crypto.interface';
-
-export interface CryptoCategory {
-  id: string;
-  name: string;
-  description: string;
-}
-
-export interface HeatmapData {
-  categories: CryptoCategory[];
-  cryptos: CryptoData[];
-}
-
-
+import { CryptoData, HeatmapData } from '../../models/crypto.interface';
 @Component({
   selector: 'app-heat-map',
   standalone: true,
