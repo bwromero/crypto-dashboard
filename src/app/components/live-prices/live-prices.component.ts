@@ -8,14 +8,20 @@ import { PaginatorComponent } from '../paginator/paginator.component';
 import { mockCryptoData, mockHeatmapData } from '../data/mock-crypto-data';
 
 // TypeScript interfaces for type safety
-export interface CryptoAsset {
+export interface CryptoData {
   id: string;
+  rank: number;
   name: string;
   symbol: string;
+  icon: string;
   price: number;
   change24h: number;
+  change7d: number;
   marketCap: number;
   volume24h: number;
+  circulatingSupply: number;
+  chartData: number[];
+  isFavorite: boolean;
   categoryId: string;
 }
 
@@ -37,6 +43,7 @@ export class LivePricesComponent {
   readonly views: ViewType[] = [ViewType.LIST, ViewType.HEATMAP, ViewType.BUBBLES];
   selectedView: ViewType = ViewType.LIST;
   heatmapData: HeatmapData = mockHeatmapData;
+  cryptoData: CryptoData[] = mockCryptoData;
 
   onViewSelected(view: string) {
     this.selectedView = view as ViewType;

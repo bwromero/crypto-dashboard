@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { CryptoAsset } from '../live-prices.component';
+import { CryptoData } from '../live-prices.component';
 
 export interface CryptoCategory {
   id: string;
@@ -10,7 +10,7 @@ export interface CryptoCategory {
 
 export interface HeatmapData {
   categories: CryptoCategory[];
-  cryptos: CryptoAsset[];
+  cryptos: CryptoData[];
 }
 
 
@@ -24,11 +24,11 @@ export interface HeatmapData {
 export class HeatMapComponent {
   @Input() heatmapData: HeatmapData = {categories: [], cryptos: []};
 
-  getCryptosByCategory(categoryId: string): CryptoAsset[] {
+  getCryptosByCategory(categoryId: string): CryptoData[] {
     return this.heatmapData.cryptos.filter(crypto => crypto.categoryId === categoryId);
   }
 
-  getCryptoById(cryptoId: string): CryptoAsset[] | undefined {
+  getCryptoById(cryptoId: string): CryptoData[] | undefined {
     return this.heatmapData.cryptos.filter(crypto => crypto.id === cryptoId);
   }
 
