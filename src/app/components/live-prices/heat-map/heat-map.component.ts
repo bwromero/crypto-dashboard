@@ -251,14 +251,15 @@ export const HEATMAP_MOCK_DATA: HeatmapData = {
 })
 export class HeatMapComponent {
 
-  heatmapData = HEATMAP_MOCK_DATA;
-  
+  heatmapData = {categories: HEATMAP_MOCK_DATA.categories, cryptos: HEATMAP_MOCK_DATA.cryptos.sort((a, b) => a.marketCap - b.marketCap)};
+
+
   getCryptosByCategory(categoryId: string): HeatmapCryptoData[] {
     return this.heatmapData.cryptos.filter(crypto => crypto.categoryId === categoryId);
   }
-  
-  getCategoryById(categoryId: string): CryptoCategory | undefined {
-    return this.heatmapData.categories.find(cat => cat.id === categoryId);
+
+  getCryptoById(cryptoId: string): HeatmapCryptoData[] | undefined {
+    return this.heatmapData.cryptos.filter(crypto => crypto.id === cryptoId);
   }
 
   getSizeByMarketCap(marketCap: number): string {
