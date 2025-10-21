@@ -11,6 +11,10 @@ import { ButtonComponent } from '../button/button.component';
   styles: ``
 })
 export class PaginatorComponent {
+onPageClick(_t5: any) {
+throw new Error('Method not implemented.');
+}
+visiblePages : number[] = [1,2,3,4];
 onRefresh() {
 throw new Error('Method not implemented.');
 }

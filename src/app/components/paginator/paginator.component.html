@@ -1,15 +1,25 @@
-<div class="flex justify-between">
+<div class="flex justify-between items-center">
+    <!-- Page Numbers Section -->
     <div class="flex gap-2">
-        <!-- Your page numbers here -->
-        <div *ngFor="let page of pages"
-            class="cursor-pointer rounded-2xl border border-secondary hover:bg-dark-primary hover:border-primary transition-all duration-200 py-2 px-4 text-primary">
+        <div *ngFor="let page of visiblePages"
+             class="cursor-pointer rounded-2xl border text-primary transition-all duration-200 py-2 px-4"
+             [class.border-action]="page === currentPage"
+             [class.bg-action]="page === currentPage"
+             [class.border-secondary]="page !== currentPage"
+             [class.hover:bg-dark-primary]="page !== currentPage"
+             [class.hover:border-primary]="page !== currentPage"
+             (click)="onPageClick(page)">
             {{page}}
         </div>
     </div>
 
+    <!-- Load More Section -->
     <div *ngIf="showLoadMore">
-        <app-button [variant]="'normal'" [type]="'transparent'" [disabled]="pages.length === 1"
-            [lucideIcon]="'RectangleEllipsis'" (clicked)="onLoadMore()" [label]="'Load More'"></app-button>
+        <app-button [variant]="'normal'" [type]="'transparent'" 
+                    [lucideIcon]="'RectangleEllipsis'" 
+                    (clicked)="onLoadMore()" 
+                    [label]="'Load More'">
+        </app-button>
     </div>
 
     <div class="flex items-center">
@@ -18,5 +28,4 @@
         <div class="flex text-primary text-md gap-1 font-semibold">{{numberOfItems}} <span class="text-secondary text-sm">items</span>
         </div>
     </div>
-
 </div>
