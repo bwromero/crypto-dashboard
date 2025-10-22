@@ -27,16 +27,26 @@ export class LivePricesComponent {
   numOfRows: number = 10;
   searchQuery: string = '';
   heatmapData: HeatmapData = mockHeatmapData;
-  fullCryptoData: CryptoData[] = mockCryptoData; 
+  fullCryptoData: CryptoData[] = mockCryptoData;
 
   get cryptoData(): CryptoData[] {
-    return this.fullCryptoData.slice(0, this.numOfRows);
+    let filtered = this.fullCryptoData;
+
+    if (this.searchQuery.trim()) {
+      filtered = filtered.filter(
+        (asset) =>
+          asset.name.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+          asset.symbol.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    }
+
+    return filtered.slice(0, this.numOfRows);
   }
 
   get heatMapDataWithRows(): HeatmapData {
     return {
-      categories: this.heatmapData.categories,  
-      cryptos: this.heatmapData.cryptos.slice(0, this.numOfRows)  
+      categories: this.heatmapData.categories,
+      cryptos: this.heatmapData.cryptos.slice(0, this.numOfRows),
     };
   }
 
@@ -44,9 +54,15 @@ export class LivePricesComponent {
     this.numOfRows = numOfRows;
   }
 
-  onSearchQueryChanged(searchQuery: string) {
-    this.searchQuery = searchQuery;
-    console.log("search query", this.searchQuery);
+  onSearchQueryChanged(searchQuery: string | Event) {
+    if (searchQuery instanceof Event) {
+      const target = searchQuery.target as HTMLInputElement;
+      this.searchQuery = target.value || '';
+    } else {
+      this.searchQuery = searchQuery || '';
+    }
+    
+    console.log('search query', this.searchQuery);
   }
 
   onViewSelected(view: string) {

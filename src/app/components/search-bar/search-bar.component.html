@@ -5,7 +5,6 @@
             [placeholder]="placeholder" 
             [value]="searchText"
             (input)="onSearchInput($event)"
-            (keyup.enter)="onSearchInput($event)"
             [class]="'w-full h-10 ' + bgColor + ' rounded-xl pl-10 pr-4 text-sm text-primary placeholder:gray focus:outline-none focus:ring-1 focus:ring-action'"
             required />
         <button type="submit" class="absolute text-primary left-3 top-1/2 -translate-y-1/2">

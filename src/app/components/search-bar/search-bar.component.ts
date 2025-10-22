@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+
 export type SearchBarType = 'normal' | 'dropdown';
 
 @Component({
@@ -22,18 +23,29 @@ export class SearchBarComponent {
   isDropdownOpen: boolean = false;
   private searchTimeout!: ReturnType<typeof setTimeout>;
   
-  // Single method that handles both input and enter key
   onSearchInput(event: Event): void {
-    const target = event.target as HTMLInputElement;
-    this.searchText = target.value;
-
-    if (this.searchTimeout) {
-      clearTimeout(this.searchTimeout);
+    if (event.type === 'search') { // Form submission event
+      event.preventDefault();
+      const target = event.target as HTMLInputElement;
+      this.searchText = target.value;
+      
+      if (this.searchTimeout) {
+        clearTimeout(this.searchTimeout);
+      }
+      this.search.emit(this.searchText);
+      
+    } else {
+      const target = event.target as HTMLInputElement;
+      this.searchText = target.value;
+      
+      if (this.searchTimeout) {
+        clearTimeout(this.searchTimeout);
+      }
+      
+      this.searchTimeout = setTimeout(() => {
+        this.search.emit(this.searchText);
+      }, 500);
     }
-    
-    this.searchTimeout = setTimeout(() => {
-      this.search.emit(target.value);
-    }, 500);
   }
 
   selectOption(option: string) {

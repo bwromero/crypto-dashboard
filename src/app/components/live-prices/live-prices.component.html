@@ -1,5 +1,5 @@
 <div class="flex flex-col gap-4">
-  <app-toolbar (numOfRowsSelected)="onNumOfRowsSelected($event)" (searchQueryChanged)="onSearchQueryChanged(searchQuery)" (viewSelected)="onViewSelected($event)"></app-toolbar>
+  <app-toolbar (numOfRowsSelected)="onNumOfRowsSelected($event)" (searchQueryChanged)="onSearchQueryChanged($event)" (viewSelected)="onViewSelected($event)"></app-toolbar>
   <app-price-table *ngIf="selectedView === ViewType.LIST" [dataSource]="cryptoData"></app-price-table>
   <app-heat-map *ngIf="selectedView === ViewType.HEATMAP" [data]="heatMapDataWithRows"></app-heat-map>
   <app-bubble-view *ngIf="selectedView === ViewType.BUBBLES" [data]="cryptoData" [isLoading]="false"></app-bubble-view>
