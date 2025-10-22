@@ -1,7 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CryptoData } from '../../../../models/crypto.interface';
-import { BubbleNode } from '../../../../models/bubble-layout';
+import { BubbleNode, CryptoData } from '../../../../models';
 
 @Component({
   selector: 'app-bubble',

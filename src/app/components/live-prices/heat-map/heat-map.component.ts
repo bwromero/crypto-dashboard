@@ -12,8 +12,8 @@ import {
   HostListener,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CryptoData, HeatmapData } from '../../models/crypto.interface';
-import { calculateTreemapBSP, TreemapNode } from '../../models/treemap-layout';
+import { CryptoData, HeatmapData } from '../../models';
+import { calculateTreemapBSP, TreemapNode } from '../../models';
 import { TreemapCellComponent } from './treemap-cell/treemap-cell.component';
 
 @Component({

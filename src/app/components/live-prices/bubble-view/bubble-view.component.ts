@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BehaviorSubject, interval, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
-import { CryptoData } from '../../models/crypto.interface';
+import { CryptoData } from '../../models';
 import { fetchCryptoData } from '../../data/mock-crypto-data';
 import { BubbleChartComponent } from './bubble-chart/bubble-chart.component';
 import { LucideAngularModule, icons } from 'lucide-angular';

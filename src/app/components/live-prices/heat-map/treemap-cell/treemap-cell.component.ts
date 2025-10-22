@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { TreemapNode } from '../../../models/treemap-layout';
-import { CryptoData } from '../../../models/crypto.interface';
+import { TreemapNode, CryptoData } from '../../../models';
 import { CommonModule } from '@angular/common';
 import { LucideAngularModule, icons } from 'lucide-angular';
 

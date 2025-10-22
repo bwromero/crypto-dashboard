@@ -1,4 +1,4 @@
-import { CryptoData, HeatmapData } from '../models/crypto.interface';
+import { CryptoData, HeatmapData } from '../models';
 
 export type CryptoCategory =
   | 'store-of-value'

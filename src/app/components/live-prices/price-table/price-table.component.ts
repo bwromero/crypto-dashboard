@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { CommonModule } from '@angular/common';
-import { CryptoData } from '../../models/crypto.interface';
+import { CryptoData } from '../../models';
 
 @Component({
   selector: 'app-price-table',
