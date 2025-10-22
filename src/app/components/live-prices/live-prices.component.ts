@@ -26,10 +26,13 @@ export class LivePricesComponent {
   selectedView: ViewType = ViewType.LIST;
   numOfRows: number = 10;
   searchQuery: string = '';
+  currentPage: number = 1;
+  itemsPerPage: number = 10;
+  
   heatmapData: HeatmapData = mockHeatmapData;
   fullCryptoData: CryptoData[] = mockCryptoData;
 
-  get cryptoData(): CryptoData[] {
+  get filteredData(): CryptoData[] {
     let filtered = this.fullCryptoData;
 
     if (this.searchQuery.trim()) {
@@ -40,28 +43,67 @@ export class LivePricesComponent {
       );
     }
 
-    return filtered.slice(0, this.numOfRows);
+    return filtered;
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.filteredData.length / this.itemsPerPage);
+  }
+
+  get totalItems(): number {
+    return this.filteredData.length;
+  }
+
+  get cryptoData(): CryptoData[] {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.filteredData.slice(startIndex, endIndex);
   }
 
   get heatMapDataWithRows(): HeatmapData {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
     return {
       categories: this.heatmapData.categories,
-      cryptos: this.heatmapData.cryptos.slice(0, this.numOfRows),
+      cryptos: this.heatmapData.cryptos.slice(startIndex, endIndex),
     };
   }
 
+  get bubbleData(): CryptoData[] {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.filteredData.slice(startIndex, endIndex);
+  }
+
   onNumOfRowsSelected(numOfRows: number) {
-    this.numOfRows = numOfRows;
+    this.itemsPerPage = numOfRows;
+    this.currentPage = 1; // Reset to first page when changing items per page
   }
 
   onSearchQueryChanged(searchQuery: string | Event) {
     this.searchQuery = searchQuery instanceof Event 
       ? (searchQuery.target as HTMLInputElement)?.value || ''
       : searchQuery || '';
+    this.currentPage = 1; // Reset to first page when searching
   }
 
   onViewSelected(view: string) {
     this.selectedView = view as ViewType;
-    console.log(this.selectedView);
+    this.currentPage = 1; // Reset to first page when changing views
+  }
+
+  onPageChanged(page: number) {
+    this.currentPage = page;
+  }
+
+  onLoadMore() {
+    // For load more functionality, you could increase itemsPerPage
+    this.itemsPerPage += 10;
+  }
+
+  onRefresh() {
+    // Reset pagination and refresh data
+    this.currentPage = 1;
+    // You could add data refresh logic here
   }
 }

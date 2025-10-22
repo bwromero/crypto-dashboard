@@ -1,16 +1,43 @@
 <div class="flex justify-between items-center">
     <!-- Page Numbers Section -->
-    <div class="flex gap-2">
-        <div *ngFor="let page of visiblePages"
-             class="cursor-pointer rounded-2xl border text-primary transition-all duration-200 py-2 px-4"
-             [class.border-action]="page === currentPage"
-             [class.bg-action]="page === currentPage"
-             [class.border-secondary]="page !== currentPage"
-             [class.hover:bg-dark-primary]="page !== currentPage"
-             [class.hover:border-primary]="page !== currentPage"
-             (click)="onPageClick(page)">
+    <div class="flex gap-2 items-center">
+        <!-- First Page -->
+        <button *ngIf="currentPage > 3" 
+                class="cursor-pointer rounded-2xl border border-secondary text-primary transition-all duration-200 py-2 px-4 hover:bg-dark-primary hover:border-primary"
+                (click)="onFirstPage()">
+            1
+        </button>
+        
+        <!-- Start Ellipsis -->
+        <span *ngIf="showStartEllipsis" 
+              class="text-secondary px-2">
+            ...
+        </span>
+        
+        <!-- Visible Pages -->
+        <button *ngFor="let page of visiblePages"
+                class="cursor-pointer rounded-2xl border text-primary transition-all duration-200 py-2 px-4"
+                [class.border-action]="page === currentPage"
+                [class.bg-action]="page === currentPage"
+                [class.border-secondary]="page !== currentPage"
+                [class.hover:bg-dark-primary]="page !== currentPage"
+                [class.hover:border-primary]="page !== currentPage"
+                (click)="onPageClick(page)">
             {{page}}
-        </div>
+        </button>
+        
+        <!-- End Ellipsis -->
+        <span *ngIf="showEndEllipsis" 
+              class="text-secondary px-2">
+            ...
+        </span>
+        
+        <!-- Last Page -->
+        <button *ngIf="currentPage < totalPages - 2" 
+                class="cursor-pointer rounded-2xl border border-secondary text-primary transition-all duration-200 py-2 px-4 hover:bg-dark-primary hover:border-primary"
+                (click)="onLastPage()">
+            {{totalPages}}
+        </button>
     </div>
 
     <!-- Load More Section -->
@@ -22,11 +49,14 @@
         </app-button>
     </div>
 
-    <!-- refresh and item count section -->
-    <div class="flex items-center">
-        <app-button [variant]="'normal'" [type]="'transparent'" [disabled]="pages.length === 1"
-            [lucideIcon]="'RefreshCw'" (clicked)="onRefresh()"></app-button>
-                    <div class="flex text-primary text-md gap-1 font-semibold">{{numberOfItems}} <span class="text-secondary text-sm">items</span>
+    <!-- Refresh and Item Count Section -->
+    <div class="flex items-center gap-2">
+        <app-button [variant]="'normal'" [type]="'transparent'"
+                    [lucideIcon]="'RefreshCw'" 
+                    (clicked)="onRefresh()">
+        </app-button>
+        <div class="flex text-primary text-md gap-1 font-semibold">
+            {{numberOfItems}} <span class="text-secondary text-sm">items</span>
         </div>
     </div>
 </div>
