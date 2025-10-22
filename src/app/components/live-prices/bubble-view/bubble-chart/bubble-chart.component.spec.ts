@@ -27,13 +27,18 @@ describe('BubbleChartComponent', () => {
     expect(component.bubbleClick.emit).toHaveBeenCalledWith(mockAsset);
   });
 
-  it('should format change correctly', () => {
-    expect(component.formatChange(5.5)).toBe('+5.5%');
-    expect(component.formatChange(-3.2)).toBe('-3.2%');
+  it('should get asset by id', () => {
+    const mockData = [
+      { id: '1', name: 'Bitcoin', symbol: 'BTC', price: 50000, change24h: 5, marketCap: 1000000000, volume24h: 100000000, circulatingSupply: 19000000, chartData: [], isFavorite: false, categoryId: 'store-of-value', rank: 1, icon: '', change7d: 10 }
+    ];
+    component.data = mockData;
+    const asset = component.getAssetById('1');
+    expect(asset).toEqual(mockData[0]);
   });
 
-  it('should get crypto color', () => {
-    expect(component.getCryptoColor('BTC')).toBe('#F7931A');
-    expect(component.getCryptoColor('UNKNOWN')).toBe('#6B7280');
+  it('should track by bubble id', () => {
+    const mockBubble = { id: '1', x: 100, y: 100, radius: 50 };
+    const result = component.trackByBubbleId(0, mockBubble);
+    expect(result).toBe('1');
   });
 });

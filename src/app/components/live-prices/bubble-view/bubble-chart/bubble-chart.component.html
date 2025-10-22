@@ -10,66 +10,12 @@
 
   <!-- Bubbles -->
   <ng-container *ngIf="!isLoading">
-    <div
+    <app-bubble
       *ngFor="let bubble of bubbles; trackBy: trackByBubbleId"
-      class="absolute transition-all duration-300 cursor-pointer group"
-      [ngStyle]="getBubbleStyle(bubble)"
-      (click)="onBubbleClick(getAssetById(bubble.id)!)"
-      (mouseenter)="onBubbleHover($event, true)"
-      (mouseleave)="onBubbleHover($event, false)"
-    >
-      <div
-        class="w-full h-full rounded-full flex flex-col items-center justify-center relative overflow-visible transition-all duration-300"
-        [ngStyle]="getBubbleBackgroundStyle(bubble)"
-      >
-        <!-- Ring/Border -->
-        <div 
-          class="absolute inset-0 rounded-full pointer-events-none"
-          [ngStyle]="getBubbleRingStyle(bubble)"
-        ></div>
-
-        <!-- Glass shine effect -->
-        <div 
-          class="absolute inset-0 rounded-full pointer-events-none"
-          style="background: radial-gradient(ellipse 80% 40% at 30% 20%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.15) 35%, transparent 60%)"
-        ></div>
-
-        <!-- Content wrapper -->
-        <ng-container *ngIf="getAssetById(bubble.id) as asset">
-          <div class="relative z-10 flex flex-col items-center justify-center">
-            <!-- Icon -->
-            <div
-              *ngIf="bubble.radius > 40"
-              class="rounded-full mb-1 flex items-center justify-center shadow-lg relative"
-              [ngStyle]="getIconStyle(bubble, asset)"
-            >
-              <span class="text-white drop-shadow-sm">{{ asset.symbol.charAt(0) }}</span>
-            </div>
-            
-            <!-- Symbol -->
-            <div
-              class="text-white text-center drop-shadow-lg"
-              [ngStyle]="getSymbolStyle(bubble)"
-            >
-              {{ asset.symbol }}
-            </div>
-            
-            <!-- Change percentage -->
-            <div
-              class="text-white/95 text-center flex items-center gap-0.5 drop-shadow-md"
-              [ngStyle]="getChangeStyle(bubble)"
-            >
-              {{ formatChange(asset.change24h) }}
-            </div>
-          </div>
-        </ng-container>
-
-        <!-- Outer border rim -->
-        <div 
-          class="absolute inset-0 rounded-full pointer-events-none"
-          [ngStyle]="getBorderStyle(bubble)"
-        ></div>
-      </div>
-    </div>
+      [node]="bubble"
+      [asset]="getAssetById(bubble.id)!"
+      [isSelected]="false"
+      (bubbleClick)="onBubbleClick($event)">
+    </app-bubble>
   </ng-container>
 </div>
