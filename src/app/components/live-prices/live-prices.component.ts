@@ -6,7 +6,7 @@ import { HeatMapComponent } from './heat-map/heat-map.component';
 import { BubbleViewComponent } from './bubble-view/bubble-view.component';
 import { PaginatorComponent } from '../paginator/paginator.component';
 import { mockCryptoData, mockHeatmapData } from '../data/mock-crypto-data';
-import { CryptoData, HeatmapData, ViewType } from '../models/crypto.interface';
+import { CryptoData, HeatmapData, ViewType } from '../models';
 @Component({
   selector: 'app-live-prices',
   standalone: true,

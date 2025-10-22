@@ -1,6 +1,3 @@
-import * as BubbleLayout from './bubble-layout';
-import * as CryptoInterface from './crypto.interface';
-import * as TreemapLayout from './treemap-layout';
-
-
-export { BubbleLayout, CryptoInterface, TreemapLayout };
+export * from './crypto.interface';
+export * from './treemap-layout';
+export * from './bubble-layout';
