@@ -4,7 +4,6 @@ import { BehaviorSubject, interval, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { CryptoData } from '../../models/crypto.interface';
 import { fetchCryptoData } from '../../data/mock-crypto-data';
-import { BubbleViewHeaderComponent } from './bubble-view-header/bubble-view-header.component';
 import { BubbleChartComponent } from './bubble-chart/bubble-chart.component';
 import { PaginatorComponent } from '../../paginator/paginator.component';
 import { LucideAngularModule, icons } from 'lucide-angular';
@@ -14,7 +13,6 @@ import { LucideAngularModule, icons } from 'lucide-angular';
   standalone: true,
   imports: [
     CommonModule,
-    BubbleViewHeaderComponent,
     BubbleChartComponent,
     PaginatorComponent,
     LucideAngularModule
