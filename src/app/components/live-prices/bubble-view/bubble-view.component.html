@@ -1,12 +1,9 @@
 <div class="flex h-screen text-white overflow-hidden">
-  <!-- Main Content -->
   <div class="flex-1 flex flex-col overflow-hidden">
-    <!-- Content Area -->
     <main class="flex-1 overflow-auto">
       <div class="p-6">
-        <!-- Bubble Chart -->
         <app-bubble-chart
-          [data]="(filteredData$ | async) || []"
+          [data]="data"
           [isLoading]="isLoading"
           (bubbleClick)="onBubbleClick($event)">
         </app-bubble-chart>

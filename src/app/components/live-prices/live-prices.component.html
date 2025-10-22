@@ -2,6 +2,6 @@
   <app-toolbar (numOfRowsSelected)="onNumOfRowsSelected($event)" (viewSelected)="onViewSelected($event)"></app-toolbar>
   <app-price-table *ngIf="selectedView === ViewType.LIST" [dataSource]="cryptoData"></app-price-table>
   <app-heat-map *ngIf="selectedView === ViewType.HEATMAP" [data]="heatMapDataWithRows"></app-heat-map>
-  <app-bubble-view *ngIf="selectedView === ViewType.BUBBLES"></app-bubble-view>
+  <app-bubble-view *ngIf="selectedView === ViewType.BUBBLES" [data]="cryptoData" [isLoading]="false"></app-bubble-view>
   <app-paginator></app-paginator>
 </div>
