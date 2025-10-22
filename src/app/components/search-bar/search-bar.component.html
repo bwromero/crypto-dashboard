@@ -1,13 +1,10 @@
 <form role="search" class="max-w-xl w-full">
     <div class="relative">
-        <input type="search"
-            [placeholder]="placeholder"
-            (keyup.enter)="onSearch()"
+        <input type="search" [placeholder]="placeholder" (keyup.enter)="onSearch($event)"
             [class]="'w-full h-10 ' + bgColor + ' rounded-xl pl-10 pr-4 text-sm text-primary placeholder:gray focus:outline-none focus:ring-1 focus:ring-action'"
             required />
         <button type="submit" class="absolute text-primary left-3 top-1/2 -translate-y-1/2">
-            <svg class="w-4 h-4 text-secondary" xmlns="http://www.w3.org/2000/svg" fill="none"
-                viewBox="0 0 20 20">
+            <svg class="w-4 h-4 text-secondary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
             </svg>

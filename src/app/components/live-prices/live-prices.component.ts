@@ -7,9 +7,6 @@ import { BubbleViewComponent } from './bubble-view/bubble-view.component';
 import { PaginatorComponent } from '../paginator/paginator.component';
 import { mockCryptoData, mockHeatmapData } from '../data/mock-crypto-data';
 import { CryptoData, HeatmapData, ViewType } from '../models';
-import { BehaviorSubject } from 'rxjs';
-import { map } from 'rxjs/operators';
-
 @Component({
   selector: 'app-live-prices',
   standalone: true,
@@ -28,6 +25,7 @@ export class LivePricesComponent {
   readonly ViewType = ViewType;
   selectedView: ViewType = ViewType.LIST;
   numOfRows: number = 10;
+  searchQuery: string = '';
   heatmapData: HeatmapData = mockHeatmapData;
   fullCryptoData: CryptoData[] = mockCryptoData; 
 
@@ -37,13 +35,18 @@ export class LivePricesComponent {
 
   get heatMapDataWithRows(): HeatmapData {
     return {
-      categories: this.heatmapData.categories, // Keep all categories
-      cryptos: this.heatmapData.cryptos.slice(0, this.numOfRows) // Slice cryptos
+      categories: this.heatmapData.categories,  
+      cryptos: this.heatmapData.cryptos.slice(0, this.numOfRows)  
     };
   }
 
   onNumOfRowsSelected(numOfRows: number) {
     this.numOfRows = numOfRows;
+  }
+
+  onSearchQueryChanged(searchQuery: string) {
+    this.searchQuery = searchQuery;
+    console.log(this.searchQuery);
   }
 
   onViewSelected(view: string) {

@@ -10,7 +10,7 @@
     </app-button>
 
     <!-- Center section - Search -->
-    <app-search-bar bgColor="bg-dark-primary"></app-search-bar>
+    <app-search-bar bgColor="bg-dark-primary" (search)="onSearchQueryChanged($event)"></app-search-bar>
 
     <div class="flex bg-dark-primary p-2 rounded-full gap-2">
         <app-button *ngFor="let button of buttonList" [variant]="button.variant" [type]="button.type"

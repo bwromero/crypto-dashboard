@@ -20,7 +20,8 @@ export class SearchBarComponent {
   searchText: string = '';
   isDropdownOpen: boolean = false;
 
-  onSearch() {
+  onSearch(event: Event) {
+    event.preventDefault();
     this.search.emit(this.searchText);
   }
 

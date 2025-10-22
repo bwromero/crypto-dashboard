@@ -14,6 +14,7 @@ export class ToolbarComponent {
 
   @Output() viewSelected: EventEmitter<string> = new EventEmitter<string>();
   @Output() numOfRowsSelected: EventEmitter<number> = new EventEmitter<number>();
+  @Output() searchQueryChanged: EventEmitter<string> = new EventEmitter<string>();
 
   rowDropDownOptions: DropdownOption[] = [
     {label: '', value: '10'},
@@ -37,6 +38,10 @@ export class ToolbarComponent {
   onRowOptionSelected(option: DropdownOption){
     this.selectedRowOption = option;
     this.numOfRowsSelected.emit(parseInt(option.value || '10'));
+  }
+
+  onSearchQueryChanged(searchQuery: string) {
+    this.searchQueryChanged.emit(searchQuery);
   }
 
   onButtonSelected(clickedButton: ButtonConfig){

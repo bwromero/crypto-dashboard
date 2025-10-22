@@ -1,0 +1,204 @@
+CRYPTO DASHBOARD - DEVELOPMENT PHASES
+=====================================
+
+OVERVIEW
+--------
+This document outlines the development phases for the crypto dashboard project,
+focusing on creating an MVP for recruiter showcase using Vercel deployment.
+
+CURRENT STATUS: Phase 1 - Frontend Foundation
+DEPLOYMENT: Vercel (Static Site)
+TARGET: MVP for Recruiter Showcase
+
+=====================================
+PHASE 1: FRONTEND FOUNDATION (2-3 weeks)
+=====================================
+GOAL: Get all UI components working with mock data
+
+TASKS:
+- [x] Complete bubble chart visualization
+- [x] Complete heatmap visualization  
+- [x] Complete price table with sorting/filtering
+- [x] Implement row selection for all views
+- [ ] Add search functionality
+- [ ] Basic pagination controls
+- [ ] Responsive design across devices
+- [ ] Loading states and error handling
+
+DELIVERABLES:
+- Fully functional frontend with mock data
+- All components rendering correctly
+- Basic user interactions working
+- Clean, maintainable code structure
+
+TECHNICAL STACK:
+- Angular (Standalone Components)
+- TypeScript
+- Tailwind CSS
+- Lucide Icons
+- Mock Data (mockCryptoData)
+
+=====================================
+PHASE 2: DATA INTEGRATION (2-3 weeks)
+=====================================
+GOAL: Connect to real crypto APIs and implement data flow
+
+TASKS:
+- [ ] Integrate CoinGecko API for real-time prices
+- [ ] Implement WebSocket connections for live updates
+- [ ] Add data caching and optimization
+- [ ] Implement error handling and retry logic
+- [ ] Add data validation and sanitization
+- [ ] Performance optimization for large datasets
+
+DELIVERABLES:
+- Real-time crypto data integration
+- Optimized data loading and caching
+- Robust error handling
+- Performance benchmarks
+
+API INTEGRATION:
+- CoinGecko API (Free tier: 50 calls/minute)
+- WebSocket for real-time updates
+- Error handling and retry logic
+- Data caching strategies
+
+=====================================
+PHASE 3: BACKEND DEVELOPMENT (3-4 weeks)
+=====================================
+GOAL: Create Java Spring Boot backend with PostgreSQL
+
+TASKS:
+- [ ] Set up Spring Boot project structure
+- [ ] Design PostgreSQL database schema
+- [ ] Implement REST APIs for crypto data
+- [ ] Add user authentication and authorization
+- [ ] Implement data persistence and caching
+- [ ] Add API rate limiting and security
+- [ ] Create admin dashboard for data management
+
+DELIVERABLES:
+- Complete Java backend with PostgreSQL
+- RESTful APIs for all frontend needs
+- User authentication system
+- Database schema and migrations
+
+TECHNICAL STACK:
+- Java 17+
+- Spring Boot 3.x
+- Spring Security
+- PostgreSQL
+- JWT Authentication
+- Redis (Caching)
+
+DATABASE SCHEMA:
+- Users table (authentication)
+- Crypto assets table (current prices)
+- Price history table (historical data)
+- User portfolios table
+- Transactions table
+
+=====================================
+PHASE 4: INTEGRATION & TESTING (2-3 weeks)
+=====================================
+GOAL: Connect frontend to backend and implement comprehensive testing
+
+TASKS:
+- [ ] Connect Angular frontend to Java backend
+- [ ] Implement JWT authentication
+- [ ] Add comprehensive unit tests
+- [ ] Add integration tests
+- [ ] Add end-to-end tests
+- [ ] Performance testing and optimization
+- [ ] Security testing and hardening
+
+DELIVERABLES:
+- Fully integrated application
+- Comprehensive test suite
+- Performance benchmarks
+- Security audit results
+
+TESTING STRATEGY:
+- Unit tests (Jest/Karma)
+- Integration tests (Cypress)
+- API tests (Postman/Newman)
+- Performance tests (Lighthouse)
+
+=====================================
+PHASE 5: DEPLOYMENT & PRODUCTION (1-2 weeks)
+=====================================
+GOAL: Deploy to production and monitor performance
+
+TASKS:
+- [ ] Set up CI/CD pipeline
+- [ ] Deploy to cloud infrastructure
+- [ ] Set up monitoring and logging
+- [ ] Implement backup strategies
+- [ ] Add health checks and alerts
+- [ ] Performance monitoring
+
+DELIVERABLES:
+- Production-ready application
+- CI/CD pipeline
+- Monitoring and alerting system
+- Documentation
+
+DEPLOYMENT STRATEGY:
+- Frontend: Vercel (Current)
+- Backend: AWS/Google Cloud
+- Database: PostgreSQL (Cloud)
+- Monitoring: Sentry, LogRocket
+
+=====================================
+CURRENT FOCUS: MVP FOR RECRUITERS
+=====================================
+
+IMMEDIATE GOALS (Next 2 weeks):
+1. Complete all visualizations (bubble, heatmap, table)
+2. Implement row selection for all views
+3. Add search and filtering
+4. Ensure responsive design
+5. Deploy to Vercel with custom domain
+6. Create professional README
+7. Prepare demo scenarios
+
+RECRUITER SHOWCASE FEATURES:
+- Interactive bubble chart with crypto data
+- Heatmap visualization with color coding
+- Sortable price table with real-time updates
+- Responsive design (mobile, tablet, desktop)
+- Modern tech stack (Angular, TypeScript, Tailwind)
+- Professional deployment (Vercel)
+
+TECHNICAL HIGHLIGHTS TO MENTION:
+- Angular Standalone Components
+- TypeScript for type safety
+- Tailwind CSS for styling
+- Component-based architecture
+- Responsive design principles
+- Modern deployment practices
+
+=====================================
+NOTES & DECISIONS
+=====================================
+
+DEPLOYMENT DECISION:
+- Vercel for MVP (Perfect for static sites)
+- No backend needed initially
+- Can add Java backend later
+- Focus on frontend excellence
+
+DATABASE DECISION:
+- PostgreSQL for future backend
+- JSON support for crypto data
+- ACID compliance for financial data
+- Open source, no licensing costs
+
+DEVELOPMENT APPROACH:
+- Start simple (mock data)
+- Add complexity gradually
+- Focus on UI/UX first
+- Add state management later
+- Test after core functionality works
+
+=====================================
