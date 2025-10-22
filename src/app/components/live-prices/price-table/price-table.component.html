@@ -2,11 +2,7 @@
   <table mat-table [dataSource]="dataSource" class="w-full">
     <!-- Rank Column -->
     <ng-container matColumnDef="rank">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        class="text-secondary text-sm font-medium"
-      >
+      <th mat-header-cell *matHeaderCellDef class="text-secondary text-sm font-medium">
         #
       </th>
       <td mat-cell *matCellDef="let element" class="text-primary text-sm">
@@ -16,11 +12,7 @@
 
     <!-- Coin Column -->
     <ng-container matColumnDef="coin">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        class="text-secondary text-sm font-medium"
-      >
+      <th mat-header-cell *matHeaderCellDef class="text-secondary text-sm font-medium">
         Coin
       </th>
       <td mat-cell *matCellDef="let element">
@@ -37,11 +29,7 @@
 
     <!-- Price Column -->
     <ng-container matColumnDef="price">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        class="text-secondary text-sm font-medium"
-      >
+      <th mat-header-cell *matHeaderCellDef class="text-secondary text-sm font-medium">
         Price
       </th>
       <td mat-cell *matCellDef="let element" class="text-primary font-medium">
@@ -51,11 +39,7 @@
 
     <!-- 24h Change Column -->
     <ng-container matColumnDef="change24h">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        class="text-secondary text-sm font-medium"
-      >
+      <th mat-header-cell *matHeaderCellDef class="text-secondary text-sm font-medium">
         24h %
       </th>
       <td mat-cell *matCellDef="let element">
@@ -68,11 +52,7 @@
 
     <!-- 7d Change Column -->
     <ng-container matColumnDef="change7d">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        class="text-secondary text-sm font-medium"
-      >
+      <th mat-header-cell *matHeaderCellDef class="text-secondary text-sm font-medium">
         7d %
       </th>
       <td mat-cell *matCellDef="let element">
@@ -85,11 +65,7 @@
 
     <!-- Market Cap Column -->
     <ng-container matColumnDef="marketCap">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        class="text-secondary text-sm font-medium"
-      >
+      <th mat-header-cell *matHeaderCellDef class="text-secondary text-sm font-medium">
         Market Cap
       </th>
       <td mat-cell *matCellDef="let element" class="text-primary">
@@ -99,11 +75,7 @@
 
     <!-- Volume Column -->
     <ng-container matColumnDef="volume24h">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        class="text-secondary text-sm font-medium"
-      >
+      <th mat-header-cell *matHeaderCellDef class="text-secondary text-sm font-medium">
         Volume (24h)
       </th>
       <td mat-cell *matCellDef="let element" class="text-primary">
@@ -113,11 +85,7 @@
 
     <!-- Supply Column -->
     <ng-container matColumnDef="supply">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        class="text-secondary text-sm font-medium"
-      >
+      <th mat-header-cell *matHeaderCellDef class="text-secondary text-sm font-medium">
         Circulating Supply
       </th>
       <td mat-cell *matCellDef="let element" class="text-primary">
@@ -127,22 +95,14 @@
 
     <!-- Chart Column -->
     <ng-container matColumnDef="chart">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        class="text-secondary text-sm font-medium"
-      >
+      <th mat-header-cell *matHeaderCellDef class="text-secondary text-sm font-medium">
         Last 90 Days
       </th>
       <td mat-cell *matCellDef="let element">
         <div class="w-16 h-8">
           <svg viewBox="0 0 64 32" class="w-full h-full">
-            <polyline
-              [attr.points]="getChartPoints(element.chartData)"
-              [attr.stroke]="element.change7d >= 0 ? '#00C087' : '#FF3E46'"
-              stroke-width="2"
-              fill="none"
-            />
+            <polyline [attr.points]="getChartPoints(element.chartData)"
+              [attr.stroke]="element.change7d >= 0 ? '#00C087' : '#FF3E46'" stroke-width="2" fill="none" />
           </svg>
         </div>
       </td>
@@ -152,9 +112,7 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element">
-        <button
-          class="bg-action text-primary px-3 py-1 rounded-lg text-sm hover:opacity-90"
-        >
+        <button class="bg-action text-primary px-3 py-1 rounded-lg text-sm hover:opacity-90">
           Trade
         </button>
       </td>
@@ -164,40 +122,22 @@
     <ng-container matColumnDef="favorite">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element">
-        <button
-          (click)="toggleFavorite(element)"
-          class="text-secondary hover:text-warning"
-        >
-          <svg
-            class="w-4 h-4"
-            [class.fill-warning]="element.isFavorite"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
-            ></path>
+        <button (click)="toggleFavorite(element)" class="text-secondary hover:text-warning">
+          <svg class="w-4 h-4" [class.fill-warning]="element.isFavorite" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z">
+            </path>
           </svg>
         </button>
       </td>
     </ng-container>
 
     <!-- Header Row -->
-    <tr
-      mat-header-row
-      *matHeaderRowDef="displayedColumns"
-      class="border-b border-gray-700"
-    ></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="border-b border-gray-700"></tr>
 
     <!-- Data Rows -->
-    <tr
-      mat-row
-      *matRowDef="let row; columns: displayedColumns"
-      class="hover:bg-dark-secondary transition-colors border-b border-gray-800"
-    ></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"
+      class="hover:bg-dark-secondary transition-colors border-b border-gray-800"></tr>
   </table>
 </div>

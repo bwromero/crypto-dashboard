@@ -1,16 +1,11 @@
-<div #container class="w-full relative rounded-lg overflow-hidden"
-  [style.height.px]="dimensions.height">
+<div #container class="w-full relative rounded-lg overflow-hidden" [style.height.px]="dimensions.height">
   <ng-container *ngIf="isLoading; else treemap">
-    <div class="w-full h-full bg-slate-900/50 rounded-lg animate-pulse"></div>
+    <div class="w-full h-full rounded-lg animate-pulse"></div>
   </ng-container>
 
   <ng-template #treemap>
-    <app-treemap-cell
-      *ngFor="let node of nodes"
-      [node]="node"
-      [asset]="getAssetById(node.id)!"
-      [selected]="selectedId === node.id"
-      (clicked)="onCellClicked($event)">
+    <app-treemap-cell *ngFor="let node of nodes" [node]="node" [asset]="getAssetById(node.id)!"
+      [selected]="selectedId === node.id" (clicked)="onCellClicked($event)">
     </app-treemap-cell>
   </ng-template>
 </div>

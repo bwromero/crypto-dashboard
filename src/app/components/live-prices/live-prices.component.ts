@@ -18,14 +18,24 @@ enum ViewType {
 @Component({
   selector: 'app-live-prices',
   standalone: true,
-  imports: [ToolbarComponent, PriceTableComponent, HeatMapComponent, BubbleViewComponent, CommonModule, PaginatorComponent],
+  imports: [
+    ToolbarComponent,
+    PriceTableComponent,
+    HeatMapComponent,
+    BubbleViewComponent,
+    CommonModule,
+    PaginatorComponent,
+  ],
   templateUrl: './live-prices.component.html',
   styles: ``,
 })
 export class LivePricesComponent {
-
-  readonly views: ViewType[] = [ViewType.LIST, ViewType.HEATMAP, ViewType.BUBBLES];
-  selectedView: ViewType = ViewType.HEATMAP;
+  readonly views: ViewType[] = [
+    ViewType.LIST,
+    ViewType.HEATMAP,
+    ViewType.BUBBLES,
+  ];
+  selectedView: ViewType = ViewType.LIST;
   heatmapData: HeatmapData = mockHeatmapData;
   cryptoData: CryptoData[] = mockCryptoData;
 

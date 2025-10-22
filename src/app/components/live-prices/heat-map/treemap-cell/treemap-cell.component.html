@@ -1,51 +1,50 @@
-<div
-  class="absolute overflow-hidden cursor-pointer transition-all duration-200 border border-slate-950/20 hover:brightness-110"
-  [ngClass]="[ getColorClass(asset.change24h), selected ? 'ring-2 ring-white ring-offset-2 ring-offset-slate-950' : '' ]"
-  [ngStyle]="{ left: node.x + 'px', top: node.y + 'px', width: node.width + 'px', height: node.height + 'px' }"
-  (click)="onClick()"
->
-  <div class="p-2 h-full flex flex-col justify-between">
-    <ng-container [ngSwitch]="true">
-      <ng-container *ngSwitchCase="node.width > 150 && node.height > 100">
-        <div class="flex items-start justify-between">
-          <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs text-white"
-               [ngStyle]="{ 'background-color': getIconBg(asset.symbol) }">
-            {{ asset.symbol.charAt(0) }}
-          </div>
-          <div class="flex items-center gap-1 text-white/80">
-            <lucide-icon [name]="(asset.change24h >= 0 ? icons.TrendingUp : icons.TrendingDown)"></lucide-icon>
-          </div>
-        </div>
-        <div>
-          <div class="text-white text-3xl mb-1">{{ asset.symbol }}</div>
-          <div class="text-white/90 text-xl mb-1">{{ formatPrice(asset.price) }}</div>
-          <div class="text-white/80 text-lg">{{ formatChange(asset.change24h) }}</div>
-        </div>
-      </ng-container>
+<div class="absolute overflow-hidden cursor-pointer transition-all duration-200 border border-slate-950/20 hover:brightness-110"
+    [ngClass]="[ getColorClass(asset.change24h), selected ? 'ring-2 ring-white ring-offset-2 ring-offset-slate-950' : '' ]"
+    [ngStyle]="{ left: node.x + 'px', top: node.y + 'px', width: node.width + 'px', height: node.height + 'px' }"
+    (click)="onClick()">
+    <div class="p-2 h-full flex flex-col justify-between">
+        <ng-container [ngSwitch]="true">
+            <ng-container *ngSwitchCase="node.width > 150 && node.height > 100">
+                <div class="flex items-start justify-between">
+                    <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs text-white"
+                        [ngStyle]="{ 'background-color': getIconBg(asset.symbol) }">
+                        {{ asset.symbol.charAt(0) }}
+                    </div>
+                    <div class="flex items-center gap-1 text-white/80">
+                        <lucide-icon
+                            [name]="(asset.change24h >= 0 ? icons.TrendingUp : icons.TrendingDown)"></lucide-icon>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-white text-3xl mb-1">{{ asset.symbol }}</div>
+                    <div class="text-white/90 text-xl mb-1">{{ formatPrice(asset.price) }}</div>
+                    <div class="text-white/80 text-lg">{{ formatChange(asset.change24h) }}</div>
+                </div>
+            </ng-container>
 
-      <ng-container *ngSwitchCase="node.width > 80 && node.height > 60">
-        <div class="flex items-center gap-2">
-          <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs bg-white/20">
-            {{ asset.symbol.charAt(0) }}
-          </div>
-          <span class="text-white text-sm">{{ asset.symbol }}</span>
-        </div>
-        <div>
-          <div class="text-white/90 text-sm">{{ formatPrice(asset.price) }}</div>
-          <div class="text-white/80 text-xs">{{ formatChange(asset.change24h) }}</div>
-        </div>
-      </ng-container>
+            <ng-container *ngSwitchCase="node.width > 80 && node.height > 60">
+                <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs bg-white/20">
+                        {{ asset.symbol.charAt(0) }}
+                    </div>
+                    <span class="text-white text-sm">{{ asset.symbol }}</span>
+                </div>
+                <div>
+                    <div class="text-white/90 text-sm">{{ formatPrice(asset.price) }}</div>
+                    <div class="text-white/80 text-xs">{{ formatChange(asset.change24h) }}</div>
+                </div>
+            </ng-container>
 
-      <ng-container *ngSwitchCase="node.width > 50 && node.height > 40">
-        <div class="flex flex-col justify-between h-full">
-          <span class="text-white text-xs">{{ asset.symbol }}</span>
-          <div class="text-white/80 text-xs">{{ formatChange(asset.change24h) }}</div>
-        </div>
-      </ng-container>
+            <ng-container *ngSwitchCase="node.width > 50 && node.height > 40">
+                <div class="flex flex-col justify-between h-full">
+                    <span class="text-white text-xs">{{ asset.symbol }}</span>
+                    <div class="text-white/80 text-xs">{{ formatChange(asset.change24h) }}</div>
+                </div>
+            </ng-container>
 
-      <ng-container *ngSwitchDefault>
-        <div class="text-white text-xs truncate">{{ asset.symbol }}</div>
-      </ng-container>
-    </ng-container>
-  </div>
+            <ng-container *ngSwitchDefault>
+                <div class="text-white text-xs truncate">{{ asset.symbol }}</div>
+            </ng-container>
+        </ng-container>
+    </div>
 </div>
