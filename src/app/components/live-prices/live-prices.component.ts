@@ -25,7 +25,7 @@ enum ViewType {
 export class LivePricesComponent {
 
   readonly views: ViewType[] = [ViewType.LIST, ViewType.HEATMAP, ViewType.BUBBLES];
-  selectedView: ViewType = ViewType.LIST;
+  selectedView: ViewType = ViewType.HEATMAP;
   heatmapData: HeatmapData = mockHeatmapData;
   cryptoData: CryptoData[] = mockCryptoData;
 
