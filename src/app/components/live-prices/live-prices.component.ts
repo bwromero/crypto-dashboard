@@ -29,16 +29,21 @@ export class LivePricesComponent {
   selectedView: ViewType = ViewType.LIST;
   numOfRows: number = 10;
   heatmapData: HeatmapData = mockHeatmapData;
-  fullCryptoData: CryptoData[] = mockCryptoData; // Keep full data
+  fullCryptoData: CryptoData[] = mockCryptoData; 
 
-  // Computed property - no need to re-slice
   get cryptoData(): CryptoData[] {
     return this.fullCryptoData.slice(0, this.numOfRows);
   }
 
+  get heatMapDataWithRows(): HeatmapData {
+    return {
+      categories: this.heatmapData.categories, // Keep all categories
+      cryptos: this.heatmapData.cryptos.slice(0, this.numOfRows) // Slice cryptos
+    };
+  }
+
   onNumOfRowsSelected(numOfRows: number) {
     this.numOfRows = numOfRows;
-    // No need to call initCryptoData() - computed property handles it
   }
 
   onViewSelected(view: string) {
