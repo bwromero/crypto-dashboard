@@ -6,6 +6,7 @@ import { CryptoData } from '../../models/crypto.interface';
 import { fetchCryptoData } from '../../data/mock-crypto-data';
 import { BubbleViewHeaderComponent } from './bubble-view-header/bubble-view-header.component';
 import { BubbleChartComponent } from './bubble-chart/bubble-chart.component';
+import { PaginatorComponent } from '../../paginator/paginator.component';
 import { LucideAngularModule, icons } from 'lucide-angular';
 
 @Component({
@@ -15,6 +16,7 @@ import { LucideAngularModule, icons } from 'lucide-angular';
     CommonModule,
     BubbleViewHeaderComponent,
     BubbleChartComponent,
+    PaginatorComponent,
     LucideAngularModule
   ],
   templateUrl: './bubble-view.component.html',
@@ -129,6 +131,10 @@ export class BubbleViewComponent implements OnInit, OnDestroy {
   }
 
   onLoadMore(): void {
+    this.loadData();
+  }
+
+  onRefresh(): void {
     this.loadData();
   }
 }

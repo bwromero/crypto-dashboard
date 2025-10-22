@@ -23,63 +23,16 @@
         </app-bubble-chart>
 
         <!-- Bottom Controls -->
-        <div class="flex items-center justify-between mt-6">
-          <!-- Pagination -->
-          <div class="flex items-center gap-2">
-            <button class="w-8 h-8 rounded bg-slate-800/50 flex items-center justify-center hover:bg-slate-700 transition-colors border border-slate-700/50">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <rect x="2" y="2" width="5" height="5" fill="currentColor" class="text-slate-400"/>
-                <rect x="2" y="9" width="5" height="5" fill="currentColor" class="text-slate-400"/>
-                <rect x="9" y="2" width="5" height="5" fill="currentColor" class="text-slate-400"/>
-                <rect x="9" y="9" width="5" height="5" fill="currentColor" class="text-slate-400"/>
-              </svg>
-            </button>
-            
-            <button 
-              (click)="onPageChange(1)"
-              [class]="currentPage === 1 ? 'w-8 h-8 rounded flex items-center justify-center bg-emerald-500 text-white transition-colors' : 'w-8 h-8 rounded flex items-center justify-center bg-slate-800/50 text-slate-400 hover:bg-slate-700 border border-slate-700/50 transition-colors'"
-            >
-              <span class="text-sm">1</span>
-            </button>
-            
-            <button 
-              (click)="onPageChange(2)"
-              [class]="currentPage === 2 ? 'w-8 h-8 rounded flex items-center justify-center bg-emerald-500 text-white transition-colors' : 'w-8 h-8 rounded flex items-center justify-center bg-slate-800/50 text-slate-400 hover:bg-slate-700 border border-slate-700/50 transition-colors'"
-            >
-              <span class="text-sm">2</span>
-            </button>
-            
-            <button 
-              (click)="onPageChange(3)"
-              [class]="currentPage === 3 ? 'w-8 h-8 rounded flex items-center justify-center bg-emerald-500 text-white transition-colors' : 'w-8 h-8 rounded flex items-center justify-center bg-slate-800/50 text-slate-400 hover:bg-slate-700 border border-slate-700/50 transition-colors'"
-            >
-              <span class="text-sm">3</span>
-            </button>
-            
-            <span class="text-slate-600 px-1">...</span>
-            
-            <button 
-              (click)="onPageChange(4)"
-              [class]="currentPage === 4 ? 'w-8 h-8 rounded flex items-center justify-center bg-emerald-500 text-white transition-colors' : 'w-8 h-8 rounded flex items-center justify-center bg-slate-800/50 text-slate-400 hover:bg-slate-700 border border-slate-700/50 transition-colors'"
-            >
-              <span class="text-sm">4</span>
-            </button>
-          </div>
-
-          <!-- Load More -->
-          <button 
-            (click)="onLoadMore()"
-            class="flex items-center gap-2 px-4 py-2 bg-slate-800/50 hover:bg-slate-700 rounded-lg transition-colors border border-slate-700/50"
-          >
-            <lucide-icon [name]="icons.MoveHorizontal" class="w-4 h-4 text-slate-400"></lucide-icon>
-            <span class="text-sm text-slate-300">Load More</span>
-          </button>
-
-          <!-- Performance indicator -->
-          <div class="flex items-center gap-2 text-slate-500">
-            <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
-            <span class="text-sm">{{ (filteredData$ | async)?.length || 0 }} Item</span>
-          </div>
+        <div class="mt-6">
+          <app-paginator
+            [currentPage]="currentPage"
+            [totalPages]="10"
+            [showLoadMore]="true"
+            [numberOfItems]="(filteredData$ | async)?.length || 0"
+            (loadMoreClicked)="onLoadMore()"
+            (pageClick)="onPageChange($event)"
+            (refresh)="onRefresh()">
+          </app-paginator>
         </div>
       </div>
     </main>
