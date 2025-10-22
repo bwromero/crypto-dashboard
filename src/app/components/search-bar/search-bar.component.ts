@@ -20,12 +20,20 @@ export class SearchBarComponent {
   
   searchText: string = '';
   isDropdownOpen: boolean = false;
-
+  private searchTimeout!: ReturnType<typeof setTimeout>;
+  
   // Single method that handles both input and enter key
   onSearchInput(event: Event): void {
     const target = event.target as HTMLInputElement;
     this.searchText = target.value;
-    this.search.emit(target.value);
+
+    if (this.searchTimeout) {
+      clearTimeout(this.searchTimeout);
+    }
+    
+    this.searchTimeout = setTimeout(() => {
+      this.search.emit(target.value);
+    }, 500);
   }
 
   selectOption(option: string) {

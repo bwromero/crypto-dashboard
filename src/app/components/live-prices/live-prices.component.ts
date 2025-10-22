@@ -46,7 +46,7 @@ export class LivePricesComponent {
 
   onSearchQueryChanged(searchQuery: string) {
     this.searchQuery = searchQuery;
-    console.log(this.searchQuery);
+    console.log("search query", this.searchQuery);
   }
 
   onViewSelected(view: string) {
