@@ -26,4 +26,9 @@ export interface CryptoData {
     categories: CryptoCategory[];
     cryptos: CryptoData[];
   }
-  
+
+  export enum ViewType {
+    LIST = 'list',
+    HEATMAP = 'heatmap',
+    BUBBLES = 'bubbles',
+  }

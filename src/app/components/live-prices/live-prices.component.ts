@@ -6,15 +6,7 @@ import { HeatMapComponent } from './heat-map/heat-map.component';
 import { BubbleViewComponent } from './bubble-view/bubble-view.component';
 import { PaginatorComponent } from '../paginator/paginator.component';
 import { mockCryptoData, mockHeatmapData } from '../data/mock-crypto-data';
-import { CryptoData, HeatmapData } from '../models/crypto.interface';
-
-// TypeScript interfaces for type safety
-enum ViewType {
-  LIST = 'list',
-  HEATMAP = 'heatmap',
-  BUBBLES = 'bubbles',
-}
-
+import { CryptoData, HeatmapData, ViewType } from '../models/crypto.interface';
 @Component({
   selector: 'app-live-prices',
   standalone: true,
