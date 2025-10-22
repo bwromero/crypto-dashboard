@@ -7,11 +7,15 @@ export const routes: Routes = [
     children: [
       {
         path: '',
+        loadComponent: () => import('./components/live-prices/live-prices.component').then(m => m.LivePricesComponent)
+      },
+      {
+        path: 'dashboard',
         loadComponent: () => import('./components/dashboard/dashboard.component').then(m => m.DashboardComponent)
       },
       {
-        path: 'live-prices',
-        loadComponent: () => import('./components/live-prices/live-prices.component').then(m => m.LivePricesComponent)
+        path: 'bubble-view',
+        loadComponent: () => import('./components/live-prices/bubble-view/bubble-view.component').then(m => m.BubbleViewComponent)
       }  
     ]
   }
