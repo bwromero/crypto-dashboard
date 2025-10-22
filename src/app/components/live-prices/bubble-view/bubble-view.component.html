@@ -10,19 +10,6 @@
           [isLoading]="isLoading"
           (bubbleClick)="onBubbleClick($event)">
         </app-bubble-chart>
-
-        <!-- Bottom Controls -->
-        <div class="mt-6">
-          <app-paginator
-            [currentPage]="currentPage"
-            [totalPages]="10"
-            [showLoadMore]="true"
-            [numberOfItems]="(filteredData$ | async)?.length || 0"
-            (loadMoreClicked)="onLoadMore()"
-            (pageClick)="onPageChange($event)"
-            (refresh)="onRefresh()">
-          </app-paginator>
-        </div>
       </div>
     </main>
   </div>
