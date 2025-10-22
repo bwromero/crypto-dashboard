@@ -55,14 +55,9 @@ export class LivePricesComponent {
   }
 
   onSearchQueryChanged(searchQuery: string | Event) {
-    if (searchQuery instanceof Event) {
-      const target = searchQuery.target as HTMLInputElement;
-      this.searchQuery = target.value || '';
-    } else {
-      this.searchQuery = searchQuery || '';
-    }
-    
-    console.log('search query', this.searchQuery);
+    this.searchQuery = searchQuery instanceof Event 
+      ? (searchQuery.target as HTMLInputElement)?.value || ''
+      : searchQuery || '';
   }
 
   onViewSelected(view: string) {
