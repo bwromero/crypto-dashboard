@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 export type SearchBarType = 'normal' | 'dropdown';
 
 @Component({
   selector: 'app-search-bar',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './search-bar.component.html',
   styles: ``
 })
@@ -20,17 +21,11 @@ export class SearchBarComponent {
   searchText: string = '';
   isDropdownOpen: boolean = false;
 
-  onSearch(event: Event) {
-    event.preventDefault();
-    const target = event.target as HTMLInputElement;
-    this.searchText = target.value; // Store the value
-    this.search.emit(target.value); // Emit the string value, not the target
-  }
-
-  onInputChange(event: Event) {
+  // Single method that handles both input and enter key
+  onSearchInput(event: Event): void {
     const target = event.target as HTMLInputElement;
     this.searchText = target.value;
-    this.search.emit(target.value); // ✅ Emit on every keystroke
+    this.search.emit(target.value);
   }
 
   selectOption(option: string) {
