@@ -22,7 +22,15 @@ export class SearchBarComponent {
 
   onSearch(event: Event) {
     event.preventDefault();
-    this.search.emit(this.searchText);
+    const target = event.target as HTMLInputElement;
+    this.searchText = target.value; // Store the value
+    this.search.emit(target.value); // Emit the string value, not the target
+  }
+
+  onInputChange(event: Event) {
+    const target = event.target as HTMLInputElement;
+    this.searchText = target.value;
+    this.search.emit(target.value); // ✅ Emit on every keystroke
   }
 
   selectOption(option: string) {
