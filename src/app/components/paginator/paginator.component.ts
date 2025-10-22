@@ -11,21 +11,25 @@ import { ButtonComponent } from '../button/button.component';
   styles: ``
 })
 export class PaginatorComponent {
-onPageClick(_t5: any) {
-throw new Error('Method not implemented.');
-}
-visiblePages : number[] = [1,2,3,4];
-onRefresh() {
-throw new Error('Method not implemented.');
-}
   @Input() currentPage: number = 1;
   @Input() totalPages: number = 10;
   @Input() showLoadMore: boolean = true;
   @Input() numberOfItems: number = 100;
   
   @Output() loadMoreClicked = new EventEmitter<void>();
+  @Output() pageClick = new EventEmitter<number>();
+  @Output() refresh = new EventEmitter<void>();
 
+  visiblePages: number[] = [1, 2, 3, 4];
   pages: number[] = [1, 2, 3, 4];
+
+  onPageClick(page: number) {
+    this.pageClick.emit(page);
+  }
+
+  onRefresh() {
+    this.refresh.emit();
+  }
 
   onLoadMore() {
     this.loadMoreClicked.emit();
