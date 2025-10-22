@@ -5,7 +5,6 @@ import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { CryptoData } from '../../models/crypto.interface';
 import { fetchCryptoData } from '../../data/mock-crypto-data';
 import { BubbleChartComponent } from './bubble-chart/bubble-chart.component';
-import { PaginatorComponent } from '../../paginator/paginator.component';
 import { LucideAngularModule, icons } from 'lucide-angular';
 
 @Component({
@@ -14,9 +13,8 @@ import { LucideAngularModule, icons } from 'lucide-angular';
   imports: [
     CommonModule,
     BubbleChartComponent,
-    PaginatorComponent,
     LucideAngularModule
-  ],
+],
   templateUrl: './bubble-view.component.html',
   styles: ``
 })
