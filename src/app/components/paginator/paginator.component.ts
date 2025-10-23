@@ -30,27 +30,28 @@ export class PaginatorComponent implements OnChanges {
   }
 
   private calculateVisiblePages(): void {
-    const maxVisiblePages = 5;
-    const halfVisible = Math.floor(maxVisiblePages / 2);
-    
-    let startPage = Math.max(1, this.currentPage - halfVisible);
-    let endPage = Math.min(this.totalPages, this.currentPage + halfVisible);
-    
-    if (endPage - startPage + 1 < maxVisiblePages) {
-      if (startPage === 1) {
-        endPage = Math.min(this.totalPages, startPage + maxVisiblePages - 1);
+    if (this.totalPages <= 4) {
+      this.visiblePages = [];
+      for (let i = 1; i <= this.totalPages; i++) {
+        this.visiblePages.push(i);
+      }
+      this.showStartEllipsis = false;
+      this.showEndEllipsis = false;
+    } else {
+      if (this.currentPage <= 2) {
+        this.visiblePages = [1, 2, 3];
+        this.showStartEllipsis = false;
+        this.showEndEllipsis = true;
+      } else if (this.currentPage >= this.totalPages - 1) {
+        this.visiblePages = [this.totalPages - 2, this.totalPages - 1, this.totalPages];
+        this.showStartEllipsis = true;
+        this.showEndEllipsis = false;
       } else {
-        startPage = Math.max(1, endPage - maxVisiblePages + 1);
+        this.visiblePages = [this.currentPage - 1, this.currentPage, this.currentPage + 1];
+        this.showStartEllipsis = true;
+        this.showEndEllipsis = true;
       }
     }
-    
-    this.visiblePages = [];
-    for (let i = startPage; i <= endPage; i++) {
-      this.visiblePages.push(i);
-    }
-    
-    this.showStartEllipsis = startPage > 2;
-    this.showEndEllipsis = endPage < this.totalPages - 1;
   }
 
   onPageClick(page: number) {
@@ -85,3 +86,4 @@ export class PaginatorComponent implements OnChanges {
     }
   }
 }
+
