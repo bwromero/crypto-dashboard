@@ -13,7 +13,7 @@
     [currentPage]="currentPage"
     [totalPages]="totalPages"
     [numberOfItems]="totalItems"
-    [showLoadMore]="true"
+    [showLoadMore]="shouldShowLoadMore"
     (pageClick)="onPageChanged($event)"
     (loadMoreClicked)="onLoadMore()"
     (refresh)="onRefresh()">

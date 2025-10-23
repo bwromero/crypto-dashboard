@@ -75,6 +75,13 @@ export class LivePricesComponent {
     return this.filteredData.slice(startIndex, endIndex);
   }
 
+  get shouldShowLoadMore(): boolean {
+    // Show Load More when there are more items than currently displayed
+    const totalItems = this.filteredData.length;
+    const currentItemsShown = this.currentPage * this.itemsPerPage;
+    return currentItemsShown < totalItems;
+  }
+
   onNumOfRowsSelected(numOfRows: number) {
     this.itemsPerPage = numOfRows;
     this.currentPage = 1; // Reset to first page when changing items per page
