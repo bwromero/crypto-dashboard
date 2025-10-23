@@ -1,20 +1,16 @@
 <div class="flex justify-between items-center">
-    <!-- Page Numbers Section -->
     <div class="flex gap-2 items-center">
-        <!-- First Page -->
         <button *ngIf="currentPage > 3" 
                 class="cursor-pointer rounded-2xl border border-secondary text-primary transition-all duration-200 py-2 px-4 hover:bg-dark-primary hover:border-primary"
                 (click)="onFirstPage()">
             1
         </button>
         
-        <!-- Start Ellipsis -->
         <span *ngIf="showStartEllipsis" 
               class="text-secondary px-2">
             ...
         </span>
         
-        <!-- Visible Pages -->
         <button *ngFor="let page of visiblePages"
                 class="cursor-pointer rounded-2xl border text-primary transition-all duration-200 py-2 px-4"
                 [class.border-action]="page === currentPage"
@@ -26,13 +22,11 @@
             {{page}}
         </button>
         
-        <!-- End Ellipsis -->
         <span *ngIf="showEndEllipsis" 
               class="text-secondary px-2">
             ...
         </span>
         
-        <!-- Last Page -->
         <button *ngIf="currentPage < totalPages - 2" 
                 class="cursor-pointer rounded-2xl border border-secondary text-primary transition-all duration-200 py-2 px-4 hover:bg-dark-primary hover:border-primary"
                 (click)="onLastPage()">
@@ -40,7 +34,6 @@
         </button>
     </div>
 
-    <!-- Load More Section -->
     <div *ngIf="showLoadMore">
         <app-button [variant]="'normal'" [type]="'transparent'" 
                     [lucideIcon]="'RectangleEllipsis'" 
@@ -49,7 +42,6 @@
         </app-button>
     </div>
 
-    <!-- Refresh and Item Count Section -->
     <div class="flex items-center gap-2">
         <app-button [variant]="'normal'" [type]="'transparent'"
                     [lucideIcon]="'RefreshCw'" 

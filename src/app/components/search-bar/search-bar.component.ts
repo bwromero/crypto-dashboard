@@ -24,7 +24,7 @@ export class SearchBarComponent {
   private searchTimeout!: ReturnType<typeof setTimeout>;
   
   onSearchInput(event: Event): void {
-    if (event.type === 'search') { // Form submission event
+    if (event.type === 'search') {
       event.preventDefault();
       const target = event.target as HTMLInputElement;
       this.searchText = target.value;

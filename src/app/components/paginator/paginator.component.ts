@@ -36,7 +36,6 @@ export class PaginatorComponent implements OnChanges {
     let startPage = Math.max(1, this.currentPage - halfVisible);
     let endPage = Math.min(this.totalPages, this.currentPage + halfVisible);
     
-    // Adjust if we're near the beginning or end
     if (endPage - startPage + 1 < maxVisiblePages) {
       if (startPage === 1) {
         endPage = Math.min(this.totalPages, startPage + maxVisiblePages - 1);

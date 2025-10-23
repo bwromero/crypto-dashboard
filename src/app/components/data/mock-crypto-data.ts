@@ -6,7 +6,6 @@ export type CryptoCategory =
   | 'defi'
   | 'layer2';
 
-// Mock cryptocurrency data
 export const mockCryptoData: CryptoData[] = [
   {
     id: '1',
@@ -846,7 +845,6 @@ export const mockHeatmapData: HeatmapData = {
   cryptos: mockCryptoData,
 };
 
-// Function to generate random price changes (for refresh simulation)
 export const generateRandomPriceChanges = (
   data: CryptoData[]
 ): CryptoData[] => {
@@ -858,7 +856,6 @@ export const generateRandomPriceChanges = (
   }));
 };
 
-// Simulate API call with delay
 export const fetchCryptoData = async (
   delay: number = 1500
 ): Promise<CryptoData[]> => {

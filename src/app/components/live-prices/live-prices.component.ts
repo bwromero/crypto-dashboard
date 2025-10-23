@@ -76,7 +76,6 @@ export class LivePricesComponent {
   }
 
   get shouldShowLoadMore(): boolean {
-    // Show Load More when there are more items than currently displayed
     const totalItems = this.filteredData.length;
     const currentItemsShown = this.currentPage * this.itemsPerPage;
     return currentItemsShown < totalItems;
@@ -84,19 +83,19 @@ export class LivePricesComponent {
 
   onNumOfRowsSelected(numOfRows: number) {
     this.itemsPerPage = numOfRows;
-    this.currentPage = 1; // Reset to first page when changing items per page
+    this.currentPage = 1;
   }
 
   onSearchQueryChanged(searchQuery: string | Event) {
     this.searchQuery = searchQuery instanceof Event 
       ? (searchQuery.target as HTMLInputElement)?.value || ''
       : searchQuery || '';
-    this.currentPage = 1; // Reset to first page when searching
+    this.currentPage = 1;
   }
 
   onViewSelected(view: string) {
     this.selectedView = view as ViewType;
-    this.currentPage = 1; // Reset to first page when changing views
+    this.currentPage = 1;
   }
 
   onPageChanged(page: number) {
@@ -104,13 +103,10 @@ export class LivePricesComponent {
   }
 
   onLoadMore() {
-    // For load more functionality, you could increase itemsPerPage
     this.itemsPerPage += 10;
   }
 
   onRefresh() {
-    // Reset pagination and refresh data
     this.currentPage = 1;
-    // You could add data refresh logic here
   }
 }
