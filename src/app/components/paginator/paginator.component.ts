@@ -85,5 +85,6 @@ export class PaginatorComponent implements OnChanges {
       this.pageClick.emit(this.currentPage + 1);
     }
   }
+
 }
 

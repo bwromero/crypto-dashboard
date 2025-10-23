@@ -1,37 +1,39 @@
 <div class="flex justify-between items-center">
     <div class="flex gap-2 items-center">
-        <button *ngIf="currentPage > 3" 
-                class="cursor-pointer rounded-2xl border border-secondary text-primary transition-all duration-200 py-2 px-4 hover:bg-dark-primary hover:border-primary"
-                (click)="onFirstPage()">
-            1
-        </button>
+        <app-button *ngIf="currentPage > 3"
+                    [variant]="'normal'"
+                    [type]="'transparent'"
+                    (clicked)="onFirstPage()"
+                    [label]="'1'">
+        </app-button>
 
-        <span *ngIf="showStartEllipsis" 
-              class="text-secondary px-2">
-            ...
-        </span>
+        <app-button *ngIf="showStartEllipsis"
+                    [variant]="'normal'"
+                    [type]="'transparent'"
+                    [lucideIcon]="'Ellipsis'"
+                    (clicked)="onPreviousPage()">
+        </app-button>
         
-        <button *ngFor="let page of visiblePages"
-                class="cursor-pointer rounded-2xl border text-primary transition-all duration-200 py-2 px-4"
-                [class.border-action]="page === currentPage"
-                [class.bg-action]="page === currentPage"
-                [class.border-secondary]="page !== currentPage"
-                [class.hover:bg-dark-primary]="page !== currentPage"
-                [class.hover:border-primary]="page !== currentPage"
-                (click)="onPageClick(page)">
-            {{page}}
-        </button>
+        <app-button *ngFor="let page of visiblePages"
+                    [variant]="'normal'"
+                    [type]="page === currentPage ? 'primary' : 'transparent'"
+                    (clicked)="onPageClick(page)"
+                    [label]="page.toString()">
+        </app-button>
         
-        <span *ngIf="showEndEllipsis" 
-              class="text-secondary px-2">
-            ...
-        </span>
+        <app-button *ngIf="showEndEllipsis"
+                    [variant]="'normal'"
+                    [type]="'transparent'"
+                    [lucideIcon]="'Ellipsis'"
+                    (clicked)="onNextPage()">
+        </app-button>
         
-        <button *ngIf="currentPage < totalPages - 2" 
-                class="cursor-pointer rounded-2xl border border-secondary text-primary transition-all duration-200 py-2 px-4 hover:bg-dark-primary hover:border-primary"
-                (click)="onLastPage()">
-            {{totalPages}}
-        </button>
+        <app-button *ngIf="currentPage < totalPages - 2"
+                    [variant]="'normal'"
+                    [type]="'transparent'"
+                    (clicked)="onLastPage()"
+                    [label]="totalPages.toString()">
+        </app-button>
     </div>
 
     <div *ngIf="showLoadMore">

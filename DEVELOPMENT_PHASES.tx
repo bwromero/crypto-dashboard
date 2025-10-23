@@ -20,7 +20,7 @@ TASKS:
 - [x] Complete heatmap visualization  
 - [x] Complete price table with sorting/filtering
 - [x] Implement row selection for all views
-- [ ] Add search functionality
+- [x] Add search functionality
 - [ ] Basic pagination controls
 - [ ] Responsive design across devices
 - [ ] Loading states and error handling
