@@ -7,7 +7,7 @@
   
   <app-price-table *ngIf="selectedView === ViewType.LIST" [dataSource]="cryptoData"></app-price-table>
   <app-heat-map *ngIf="selectedView === ViewType.HEATMAP" [data]="heatMapDataWithRows"></app-heat-map>
-  <app-bubble-view *ngIf="selectedView === ViewType.BUBBLES" [data]="bubbleData" [isLoading]="false"></app-bubble-view>
+      <app-bubble-view *ngIf="selectedView === ViewType.BUBBLES" [data]="bubbleData" [isLoading]="isLoading"></app-bubble-view>
   
       <app-paginator 
         [currentPage]="currentPage"

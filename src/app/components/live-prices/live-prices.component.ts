@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { PriceTableComponent } from './price-table/price-table.component';
 import { CommonModule } from '@angular/common';
@@ -7,6 +7,8 @@ import { BubbleViewComponent } from './bubble-view/bubble-view.component';
 import { PaginatorComponent } from '../paginator/paginator.component';
 import { mockCryptoData, mockHeatmapData } from '../data/mock-crypto-data';
 import { CryptoData, HeatmapData, ViewType } from '../models';
+import { CryptoService } from '../../services/crypto.service';
+import { Subscription, interval } from 'rxjs';
 @Component({
   selector: 'app-live-prices',
   standalone: true,
@@ -21,7 +23,7 @@ import { CryptoData, HeatmapData, ViewType } from '../models';
   templateUrl: './live-prices.component.html',
   styles: ``,
 })
-export class LivePricesComponent {
+export class LivePricesComponent implements OnInit, OnDestroy {
   readonly ViewType = ViewType;
   selectedView: ViewType = ViewType.LIST;
   numOfRows: number = 10;
@@ -29,9 +31,55 @@ export class LivePricesComponent {
   currentPage: number = 1;
   itemsPerPage: number = 10;
   isRefreshing: boolean = false;
+  isLoading: boolean = false;
+  useRealData: boolean = true; // Toggle between real and mock data
   
   heatmapData: HeatmapData = mockHeatmapData;
   fullCryptoData: CryptoData[] = mockCryptoData;
+  
+  private refreshSubscription?: Subscription;
+  private autoRefreshInterval = 30000; // 30 seconds
+
+  constructor(private cryptoService: CryptoService) {}
+
+  ngOnInit() {
+    if (this.useRealData) {
+      this.loadRealData();
+      this.startAutoRefresh();
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.refreshSubscription) {
+      this.refreshSubscription.unsubscribe();
+    }
+  }
+
+  private loadRealData() {
+    this.isLoading = true;
+    this.cryptoService.getMarketData(1, 100).subscribe({
+      next: (data) => {
+        this.fullCryptoData = data;
+        this.isLoading = false;
+        this.isRefreshing = false;
+        console.log('Real crypto data loaded:', data.length, 'coins');
+      },
+      error: (error) => {
+        console.error('Error loading real data, falling back to mock data:', error);
+        this.fullCryptoData = mockCryptoData;
+        this.isLoading = false;
+        this.isRefreshing = false;
+      }
+    });
+  }
+
+  private startAutoRefresh() {
+    this.refreshSubscription = interval(this.autoRefreshInterval).subscribe(() => {
+      if (this.useRealData && !this.isRefreshing) {
+        this.loadRealData();
+      }
+    });
+  }
 
   get filteredData(): CryptoData[] {
     let filtered = this.fullCryptoData;
@@ -109,13 +157,18 @@ export class LivePricesComponent {
 
   onRefresh() {
     this.isRefreshing = true;
+    this.currentPage = 1;
+    this.searchQuery = '';
     
-    // Simulate API call delay
-    setTimeout(() => {
-      this.currentPage = 1;
-      this.searchQuery = '';
-      this.isRefreshing = false;
-      console.log('Data refreshed - page reset to 1, search cleared');
-    }, 1000);
+    if (this.useRealData) {
+      this.loadRealData();
+      // The isRefreshing will be set to false in loadRealData
+    } else {
+      // For mock data, just simulate a delay
+      setTimeout(() => {
+        this.isRefreshing = false;
+        console.log('Mock data refreshed - page reset to 1, search cleared');
+      }, 1000);
+    }
   }
 }
