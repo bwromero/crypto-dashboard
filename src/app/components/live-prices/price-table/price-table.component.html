@@ -2,17 +2,17 @@
   <table mat-table [dataSource]="dataSource" class="w-full border-0">
     <!-- Rank Column -->
     <ng-container matColumnDef="rank">
-      <th mat-header-cell *matHeaderCellDef class="text-secondary text-sm font-medium">
+      <th mat-header-cell *matHeaderCellDef class="text-primary text-sm font-light">
         #
       </th>
-      <td mat-cell *matCellDef="let element" class="text-primary text-sm">
+      <td mat-cell *matCellDef="let element" class="text-secondary text-sm">
         {{ element.rank }}
       </td>
     </ng-container>
 
     <!-- Coin Column -->
     <ng-container matColumnDef="coin">
-      <th mat-header-cell *matHeaderCellDef class="text-secondary text-sm font-medium">
+      <th mat-header-cell *matHeaderCellDef class="text-primary text-sm font-extralight">
         Coin
       </th>
       <td mat-cell *matCellDef="let element">
@@ -20,7 +20,7 @@
           <!-- <img [src]="element.icon" [alt]="element.symbol" class="w-8 h-8 rounded-full" 
                (error)="$event.target.src='assets/images/default-crypto.png'"> -->
           <div>
-            <div class="text-primary font-medium">{{ element.name }}</div>
+            <div class="text-primary font-bold">{{ element.name }}</div>
             <div class="text-secondary text-sm">{{ element.symbol }}</div>
           </div>
         </div>
@@ -29,7 +29,7 @@
 
     <!-- Price Column -->
     <ng-container matColumnDef="price">
-      <th mat-header-cell *matHeaderCellDef class="text-secondary text-sm font-medium">
+      <th mat-header-cell *matHeaderCellDef class="text-primary text-sm font-extralight">
         Price
       </th>
       <td mat-cell *matCellDef="let element" class="text-primary font-medium">
@@ -39,7 +39,7 @@
 
     <!-- 24h Change Column -->
     <ng-container matColumnDef="change24h">
-      <th mat-header-cell *matHeaderCellDef class="text-secondary text-sm font-medium">
+      <th mat-header-cell *matHeaderCellDef class="text-primary text-sm font-extralight">
         24h %
       </th>
       <td mat-cell *matCellDef="let element">
@@ -52,7 +52,7 @@
 
     <!-- 7d Change Column -->
     <ng-container matColumnDef="change7d">
-      <th mat-header-cell *matHeaderCellDef class="text-secondary text-sm font-medium">
+      <th mat-header-cell *matHeaderCellDef class="text-primary text-sm font-extralight">
         7d %
       </th>
       <td mat-cell *matCellDef="let element">
@@ -65,7 +65,7 @@
 
     <!-- Market Cap Column -->
     <ng-container matColumnDef="marketCap">
-      <th mat-header-cell *matHeaderCellDef class="text-secondary text-sm font-medium">
+      <th mat-header-cell *matHeaderCellDef class="text-primary text-sm font-extralight">
         Market Cap
       </th>
       <td mat-cell *matCellDef="let element" class="text-primary">
@@ -75,7 +75,7 @@
 
     <!-- Volume Column -->
     <ng-container matColumnDef="volume24h">
-      <th mat-header-cell *matHeaderCellDef class="text-secondary text-sm font-medium">
+      <th mat-header-cell *matHeaderCellDef class="text-primary text-sm font-extralight">
         Volume (24h)
       </th>
       <td mat-cell *matCellDef="let element" class="text-primary">
@@ -85,7 +85,7 @@
 
     <!-- Supply Column -->
     <ng-container matColumnDef="supply">
-      <th mat-header-cell *matHeaderCellDef class="text-secondary text-sm font-medium">
+      <th mat-header-cell *matHeaderCellDef class="text-primary text-sm font-extralight">
         Circulating Supply
       </th>
       <td mat-cell *matCellDef="let element" class="text-primary">
@@ -95,7 +95,7 @@
 
     <!-- Chart Column -->
     <ng-container matColumnDef="chart">
-      <th mat-header-cell *matHeaderCellDef class="text-secondary text-sm font-medium">
+      <th mat-header-cell *matHeaderCellDef class="text-primary text-sm font-extralight">
         Last 90 Days
       </th>
       <td mat-cell *matCellDef="let element">
