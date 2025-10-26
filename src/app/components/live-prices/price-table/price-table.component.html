@@ -1,5 +1,5 @@
-<div class="bg-dark-secondary rounded-xl overflow-hidden">
-  <table mat-table [dataSource]="dataSource" class="w-full">
+<div class="rounded-xl overflow-hidden">
+  <table mat-table [dataSource]="dataSource" class="w-full border-0">
     <!-- Rank Column -->
     <ng-container matColumnDef="rank">
       <th mat-header-cell *matHeaderCellDef class="text-secondary text-sm font-medium">
@@ -134,10 +134,10 @@
     </ng-container>
 
     <!-- Header Row -->
-    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="border-b border-gray-700"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 
     <!-- Data Rows -->
     <tr mat-row *matRowDef="let row; columns: displayedColumns"
-      class="hover:bg-dark-secondary transition-colors border-b border-gray-800"></tr>
+      class="hover:bg-dark-primary !border-transparent transition-colors"></tr>
   </table>
 </div>

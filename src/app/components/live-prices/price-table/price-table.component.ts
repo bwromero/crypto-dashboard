@@ -8,7 +8,24 @@ import { CryptoData } from '../../models';
   standalone: true,
   imports: [MatTableModule, CommonModule],
   templateUrl: './price-table.component.html',
-  styles: ``,
+  styles: [`
+  :host ::ng-deep {
+    .mat-mdc-table {
+      background-color: transparent;
+    }
+    
+    .mat-mdc-row,
+    .mat-mdc-header-row {
+      border-bottom-width: 0 !important;
+      border-color: transparent !important;
+    }
+    
+    .mat-mdc-cell,
+    .mat-mdc-header-cell {
+      border-bottom-width: 0 !important;
+    }
+  }
+`],
 })
 export class PriceTableComponent {
   @Input() dataSource: CryptoData[] = [];
