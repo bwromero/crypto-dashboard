@@ -3,7 +3,7 @@
         <app-button *ngIf="currentPage > 3"
                     [variant]="'normal'"
                     [type]="'transparent'"
-                    [borderClass]="'border-secondary'"
+                    [borderClass]="'border border-slate'"
                     (clicked)="onFirstPage()"
                     [label]="'1'">
         </app-button>
@@ -11,7 +11,7 @@
         <app-button *ngIf="showStartEllipsis"
                     [variant]="'normal'"
                     [type]="'transparent'"
-                    [borderClass]="'border border-primary'"
+                    [borderClass]="'border border-slate'"
                     [lucideIcon]="'Ellipsis'"
                     (clicked)="onPreviousPage()">
         </app-button>
@@ -19,7 +19,7 @@
         <app-button *ngFor="let page of visiblePages"
                     [variant]="'normal'"
                     [type]="page === currentPage ? 'action' : 'transparent'"
-                    [borderClass]="page === currentPage ? 'border-action' : 'border border-primary'"
+                    [borderClass]="page === currentPage ? 'border action' : 'border border-slate'"
                     (clicked)="onPageClick(page)"
                     [label]="page.toString()">
         </app-button>
@@ -27,7 +27,7 @@
         <app-button *ngIf="showEndEllipsis"
                     [variant]="'normal'"
                     [type]="'transparent'"  
-                    [borderClass]="'border border-primary'"
+                    [borderClass]="'border border-slate'"
                     [lucideIcon]="'Ellipsis'"
                     (clicked)="onNextPage()">
         </app-button>
@@ -35,7 +35,7 @@
         <app-button *ngIf="currentPage < totalPages - 2"
                     [variant]="'normal'"
                     [type]="'transparent'"
-                    [borderClass]="'border border-primary'"
+                    [borderClass]="'border border-slate'"
                     (clicked)="onLastPage()"
                     [label]="totalPages.toString()">
         </app-button>
