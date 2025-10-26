@@ -9,13 +9,14 @@
   <app-heat-map *ngIf="selectedView === ViewType.HEATMAP" [data]="heatMapDataWithRows"></app-heat-map>
   <app-bubble-view *ngIf="selectedView === ViewType.BUBBLES" [data]="bubbleData" [isLoading]="false"></app-bubble-view>
   
-  <app-paginator 
-    [currentPage]="currentPage"
-    [totalPages]="totalPages"
-    [numberOfItems]="totalItems"
-    [showLoadMore]="shouldShowLoadMore"
-    (pageClick)="onPageChanged($event)"
-    (loadMoreClicked)="onLoadMore()"
-    (refresh)="onRefresh()">
-  </app-paginator>
+      <app-paginator 
+        [currentPage]="currentPage"
+        [totalPages]="totalPages"
+        [numberOfItems]="totalItems"
+        [showLoadMore]="shouldShowLoadMore"
+        [isRefreshing]="isRefreshing"
+        (pageClick)="onPageChanged($event)"
+        (loadMoreClicked)="onLoadMore()"
+        (refresh)="onRefresh()">
+      </app-paginator>
 </div>

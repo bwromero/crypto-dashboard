@@ -21,7 +21,7 @@ TASKS:
 - [x] Complete price table with sorting/filtering
 - [x] Implement row selection for all views
 - [x] Add search functionality
-- [ ] Basic pagination controls
+- [x] Basic pagination controls
 - [ ] Responsive design across devices
 - [ ] Loading states and error handling
 

@@ -28,6 +28,7 @@ export class LivePricesComponent {
   searchQuery: string = '';
   currentPage: number = 1;
   itemsPerPage: number = 10;
+  isRefreshing: boolean = false;
   
   heatmapData: HeatmapData = mockHeatmapData;
   fullCryptoData: CryptoData[] = mockCryptoData;
@@ -107,6 +108,14 @@ export class LivePricesComponent {
   }
 
   onRefresh() {
-    this.currentPage = 1;
+    this.isRefreshing = true;
+    
+    // Simulate API call delay
+    setTimeout(() => {
+      this.currentPage = 1;
+      this.searchQuery = '';
+      this.isRefreshing = false;
+      console.log('Data refreshed - page reset to 1, search cleared');
+    }, 1000);
   }
 }

@@ -51,7 +51,8 @@
 
     <div class="flex items-center gap-2">
         <app-button [variant]="'normal'" [type]="'transparent'"
-                    [lucideIcon]="'RefreshCw'" 
+                    [lucideIcon]="isRefreshing ? 'Loader2' : 'RefreshCw'"
+                    [disabled]="isRefreshing"
                     (clicked)="onRefresh()">
         </app-button>
         <div class="flex text-primary text-md gap-1 font-semibold">
