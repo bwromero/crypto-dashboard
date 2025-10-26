@@ -4,7 +4,7 @@
             [borderClass]="'border border-slate'" [buttonSize]="'w-12 h-12'" (clicked)="onFirstPage()" [label]="'1'">
         </app-button>
 
-        <app-button *ngIf="showStartEllipsis" [variant]="'normal'" [type]="'transparent'"
+        <app-button *ngIf="showStartEllipsis" [gap]="'gap-0'" [variant]="'normal'" [type]="'transparent'"
             [borderClass]="'border border-slate'" [buttonSize]="'w-12 h-12'" [iconSize]="16" [lucideIcon]="'Ellipsis'"
             (clicked)="onPreviousPage()">
         </app-button>
@@ -15,7 +15,7 @@
             (clicked)="onPageClick(page)" [label]="page.toString()">
         </app-button>
 
-        <app-button *ngIf="showEndEllipsis" [variant]="'normal'" [type]="'transparent'"
+        <app-button *ngIf="showEndEllipsis" [gap]="'gap-0'" [variant]="'normal'" [type]="'transparent'"
             [borderClass]="'border border-slate'" [buttonSize]="'w-12 h-12'" [iconSize]="16" [lucideIcon]="'Ellipsis'"
             (clicked)="onNextPage()">
         </app-button>
