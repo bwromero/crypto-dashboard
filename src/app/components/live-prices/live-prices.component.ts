@@ -14,11 +14,11 @@ import { PriceTableComponent } from './price-table/price-table.component';
   standalone: true,
   imports: [
     ToolbarComponent,
-    PriceTableComponent,
     HeatMapComponent,
     BubbleViewComponent,
     CommonModule,
     PaginatorComponent,
+    PriceTableComponent,
   ],
   templateUrl: './live-prices.component.html',
   styles: ``,

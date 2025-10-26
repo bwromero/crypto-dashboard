@@ -6,6 +6,8 @@ import {
   priceTableColumns,
   TableColumn,
   SortDirection,
+  sortIcons,
+  SortIcon,
 } from '../../models/price-table-layout';
 
 @Component({
@@ -17,14 +19,13 @@ import {
 })
 export class PriceTableComponent {
   @Input() dataSource: CryptoData[] = [];
-  protected chevronsUpDown = icons.ChevronsUpDown;
-  protected chevronUp = icons.ChevronUp;
-  protected chevronDown = icons.ChevronDown;
   protected readonly SortDirection = SortDirection;
   sortColumn: keyof CryptoData | '' = '';
   sortDirection: SortDirection = SortDirection.ASC;
 
   columns: TableColumn[] = priceTableColumns;
+  sortIcons: SortIcon[] = sortIcons;
+
 
   sort(column: keyof CryptoData) {
     if (this.sortColumn === column) {

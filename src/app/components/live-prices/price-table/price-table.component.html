@@ -11,22 +11,11 @@
                          (column.align === 'center' ? 'justify-center' : '')">
             {{ column.label }}
             <lucide-icon 
-              *ngIf="column.sortable && sortColumn !== column.key" 
-              [img]="chevronsUpDown" 
+              *ngFor="let sortIcon of sortIcons"
+              [hidden]="!sortIcon.condition(column, sortColumn, sortDirection)"
+              [img]="sortIcon.icon" 
               [size]="16" 
-              class="text-secondary">
-            </lucide-icon>
-            <lucide-icon 
-              *ngIf="column.sortable && sortColumn === column.key && sortDirection === SortDirection.ASC" 
-              [img]="chevronUp" 
-              [size]="16" 
-              class="text-action">
-            </lucide-icon>
-            <lucide-icon 
-              *ngIf="column.sortable && sortColumn === column.key && sortDirection === SortDirection.DESC" 
-              [img]="chevronDown" 
-              [size]="16" 
-              class="text-action">
+              [class]="sortIcon.class">
             </lucide-icon>
           </span>
         </th>
