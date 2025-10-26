@@ -43,6 +43,8 @@ export class ButtonComponent {
   @Input() borderClass: string = '';
   @Input() label: string = '';
   @Input() icon: string = '';
+  @Input() buttonSize: string = '';
+  @Input() iconSize: number = 24;
   @Input() lucideIcon?: any;
   @Input() dropdownOptions: DropdownOption[] = [];
   @Input() selectedOption?: DropdownOption;
@@ -62,7 +64,7 @@ export class ButtonComponent {
   protected icons = icons;
 
   get buttonClasses(): string {
-    const baseClasses = 'flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm transition-all duration-200';
+    const baseClasses = 'flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm transition-all duration-200 ' + this.buttonSize;
     const widthClass = this.fullWidth ? 'w-full' : '';
     const disabledClass = this.disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer';
     const typeClasses = {

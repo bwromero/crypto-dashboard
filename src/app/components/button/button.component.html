@@ -2,7 +2,7 @@
   <!-- Normal Button -->
   <button *ngIf="variant === 'normal'" [class]="buttonClasses" (click)="onClick()" [disabled]="disabled">
     <!-- Dynamic Lucide icon -->
-    <lucide-icon *ngIf="lucideIcon" [name]="lucideIcon" [img]="getIconImage" [size]="24"></lucide-icon>
+    <lucide-icon *ngIf="lucideIcon" [name]="lucideIcon" [img]="getIconImage" [size]="iconSize"></lucide-icon>
     <span>{{ label }}</span>
   </button>
 
