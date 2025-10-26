@@ -53,6 +53,6 @@ export const priceTableColumns: TableColumn[] = [
     align: 'left',
   },
   { key: null, label: 'Last 90 Days', sortable: false, align: 'left' },
-  { key: null, label: '', sortable: false, align: 'left' },
+  { key: null, label: 'Action', sortable: false, align: 'left' },
   { key: null, label: '', sortable: false, align: 'left' },
 ];

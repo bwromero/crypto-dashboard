@@ -3,7 +3,7 @@
     <!-- Header -->
     <thead class="border-b border-slate-secondary">
       <tr>
-        <th *ngFor="let column of columns; let i = index" [class]="'text-' + (column.align || 'left') + ' text-primary text-sm pb-6 pt-4 px-2 ' + 
+        <th *ngFor="let column of columns; let i = index" [class]="'text-' + (column.align || 'left') + ' text-primary text-sm pb-3 pt-4 px-2 ' + 
                      (i === 0 ? 'font-light' : 'font-extralight') + 
                      (column.sortable ? ' cursor-pointer' : '')"
           (click)="column.sortable && column.key ? sort(column.key) : null">
