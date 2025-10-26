@@ -48,8 +48,8 @@
         <!-- 24h Change -->
         <td class="py-6 px-4 text-center">
           <span [class]="crypto.change24h >= 0 
-            ? 'text-action border border-action rounded-full px-3 py-2' 
-            : 'text-error border border-error rounded-full px-3 py-2'">
+            ? 'text-action border border-slate-success-40 rounded-full px-3 py-2' 
+            : 'text-error border border-slate-failure-40 rounded-full px-3 py-2'">
             {{ crypto.change24h >= 0 ? "▲" : "▼" }}{{ crypto.change24h | number : "1.2-2" }}%
           </span>
         </td>
@@ -57,8 +57,8 @@
         <!-- 7d Change -->
         <td class="py-6 px-4">
           <span [class]="crypto.change7d >= 0 
-            ? 'text-success border border-action rounded-full px-3 py-2' 
-            : 'text-error border border-error rounded-full px-3 py-2'">
+            ? 'text-success border border-slate-success-40 rounded-full px-3 py-2' 
+            : 'text-error border border-slate-failure-40 rounded-full px-3 py-2'">
             {{ crypto.change7d >= 0 ? "▲" : "▼" }}{{ crypto.change7d | number : "1.2-2" }}%
           </span>
         </td>
