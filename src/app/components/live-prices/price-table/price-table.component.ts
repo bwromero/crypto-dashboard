@@ -1,72 +1,46 @@
-import { Component, Input, ViewChild, AfterViewInit, OnChanges, SimpleChanges } from '@angular/core';
-import { MatTableModule, MatTableDataSource } from '@angular/material/table';
-import { MatSortModule, MatSort } from '@angular/material/sort';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CryptoData } from '../../models';
 
 @Component({
   selector: 'app-price-table',
   standalone: true,
-  imports: [MatTableModule, MatSortModule, CommonModule],
+  imports: [CommonModule],
   templateUrl: './price-table.component.html',
-  styles: [`
-  :host ::ng-deep {
-    .mat-mdc-table {
-      background-color: transparent;
-    }
-    
-    .mat-mdc-row,
-    .mat-mdc-header-row {
-      border-bottom-width: 0 !important;
-      border-color: transparent !important;
-    }
-    
-    .mat-mdc-header-row {
-      border-bottom: 1px solid #242D39 !important;
-    }
-    
-    .mat-mdc-header-cell {
-      padding-bottom: 1.5rem !important;  // More space below header
-      border-bottom-width: 0 !important;
-    }
-    
-    .mat-mdc-cell {
-      padding-top: 1.5rem !important;     // More space above body rows
-      padding-left: 0.3rem !important;     // More space above body rows
-      padding-right: 0.3rem !important;     // More space above body rows
-      border-bottom-width: 0 !important;
-    }
-  }
-`],
+  styles: []
 })
-export class PriceTableComponent implements AfterViewInit, OnChanges {
+export class PriceTableComponent {
   @Input() dataSource: CryptoData[] = [];
-  @ViewChild(MatSort) sort!: MatSort;
+  
+  sortColumn: keyof CryptoData | '' = '';
+  sortDirection: 'asc' | 'desc' = 'asc';
 
-  matDataSource = new MatTableDataSource<CryptoData>([]);
-
-  displayedColumns: string[] = [
-    'rank',
-    'coin',
-    'price',
-    'change24h',
-    'change7d',
-    'marketCap',
-    'volume24h',
-    'supply',
-    'chart',
-    'actions',
-    'favorite',
-  ];
-
-  ngAfterViewInit() {
-    this.matDataSource.sort = this.sort;
+  sort(column: keyof CryptoData) {
+    if (this.sortColumn === column) {
+      this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+    } else {
+      this.sortColumn = column;
+      this.sortDirection = 'asc';
+    }
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['dataSource']) {
-      this.matDataSource.data = this.dataSource;
+  get sortedData(): CryptoData[] {
+    if (!this.sortColumn) {
+      return this.dataSource;
     }
+
+    return [...this.dataSource].sort((a, b) => {
+      const aVal = a[this.sortColumn as keyof CryptoData];
+      const bVal = b[this.sortColumn as keyof CryptoData];
+      
+      if (typeof aVal === 'number' && typeof bVal === 'number') {
+        return this.sortDirection === 'asc' ? aVal - bVal : bVal - aVal;
+      }
+      
+      return this.sortDirection === 'asc' 
+        ? String(aVal).localeCompare(String(bVal))
+        : String(bVal).localeCompare(String(aVal));
+    });
   }
 
   getChartPoints(data: number[]): string {
@@ -87,5 +61,3 @@ export class PriceTableComponent implements AfterViewInit, OnChanges {
     element.isFavorite = !element.isFavorite;
   }
 }
-
-

@@ -1,28 +1,28 @@
-<div class="flex justify-between items-center ">
+<div class="flex justify-between items-center mt-8 py-4 border-t border-slate-secondary">
     <div class="flex gap-2 items-center">
         <app-button *ngIf="currentPage > 3" [variant]="'normal'" [type]="'transparent'"
-            [borderClass]="'border border-slate'" [rounded]="'rounded-3xl'" [buttonSize]="'w-12 h-12'" (clicked)="onFirstPage()" [label]="'1'">
+            [borderClass]="'border border-slate'" [rounded]="'rounded-2xl'" [buttonSize]="'w-12 h-12'" (clicked)="onFirstPage()" [label]="'1'">
         </app-button>
 
         <app-button *ngIf="showStartEllipsis" [gap]="'gap-0'" [variant]="'normal'" [type]="'transparent'"
-            [borderClass]="'border border-slate'" [rounded]="'rounded-3xl'" [buttonSize]="'w-12 h-12'" [iconSize]="14" [lucideIcon]="'Ellipsis'"
+            [borderClass]="'border border-slate'" [rounded]="'rounded-2xl'" [buttonSize]="'w-12 h-12'" [iconSize]="14" [lucideIcon]="'Ellipsis'"
             (clicked)="onPreviousPage()">
         </app-button>
 
         <app-button *ngFor="let page of visiblePages" [variant]="'normal'"
             [type]="page === currentPage ? 'action' : 'transparent'" 
-            [rounded]="'rounded-3xl'"
+            [rounded]="'rounded-2xl'"
             [borderClass]="page === currentPage ? 'border action' : 'border border-slate'" [buttonSize]="'w-12 h-12'"
             (clicked)="onPageClick(page)" [label]="page.toString()">
         </app-button>
 
         <app-button *ngIf="showEndEllipsis" [gap]="'gap-0'" [variant]="'normal'" [type]="'transparent'"
-            [borderClass]="'border border-slate'" [rounded]="'rounded-3xl'" [buttonSize]="'w-12 h-12'" [iconSize]="14" [lucideIcon]="'Ellipsis'"
+            [borderClass]="'border border-slate'" [rounded]="'rounded-2xl'" [buttonSize]="'w-12 h-12'" [iconSize]="14" [lucideIcon]="'Ellipsis'"
             (clicked)="onNextPage()">
         </app-button>
 
         <app-button *ngIf="currentPage < totalPages - 2" [variant]="'normal'" [type]="'transparent'"
-            [borderClass]="'border border-slate' " [rounded]="'rounded-3xl'" [buttonSize]="'w-12 h-12'" (clicked)="onLastPage()"
+            [borderClass]="'border border-slate'" [rounded]="'rounded-2xl'" [buttonSize]="'w-12 h-12'" (clicked)="onLastPage()"
             [label]="totalPages.toString()">
         </app-button>
     </div>
