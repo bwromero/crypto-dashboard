@@ -44,7 +44,7 @@ PHASE 2: DATA INTEGRATION (2-3 weeks)
 GOAL: Connect to real crypto APIs and implement data flow
 
 TASKS:
-- [ ] Integrate CoinGecko API for real-time prices
+- [x] Integrate CoinGecko API for real-time prices
 - [ ] Implement WebSocket connections for live updates
 - [ ] Add data caching and optimization
 - [ ] Implement error handling and retry logic
@@ -162,10 +162,19 @@ IMMEDIATE GOALS (Next 2 weeks):
 6. Create professional README
 7. Prepare demo scenarios
 
+FUTURE FEATURES (Priority Order):
+1. Portfolio management and tracking
+2. News feed integration (CryptoPanic API)
+3. Inbox/Chat messaging system
+4. User authentication and profiles
+5. Watchlist and alerts
+6. 🔄 NFT Market (Optional - Advanced feature, implement if time permits)
+
 RECRUITER SHOWCASE FEATURES:
 - Interactive bubble chart with crypto data
 - Heatmap visualization with color coding
 - Sortable price table with real-time updates
+- Real-time price updates from CoinGecko API
 - Responsive design (mobile, tablet, desktop)
 - Modern tech stack (Angular, TypeScript, Tailwind)
 - Professional deployment (Vercel)
@@ -179,6 +188,39 @@ TECHNICAL HIGHLIGHTS TO MENTION:
 - Modern deployment practices
 
 =====================================
+INBOX/CHAT IMPLEMENTATION PLAN
+=====================================
+
+FEATURES:
+- Real-time messaging between users
+- Notification system for new messages
+- Message history and persistence
+- Read/unread status tracking
+- User presence indicators
+
+TECHNICAL APPROACH:
+- WebSocket for real-time messaging
+- Spring Boot backend with WebSocket support
+- PostgreSQL for message storage
+- Redis for session management
+- Push notifications for new messages
+
+FRONTEND COMPONENTS:
+- Inbox list component (message threads)
+- Chat window component (conversation view)
+- Message input component
+- Notification badge component
+- User search/select component
+
+BACKEND REQUIREMENTS:
+- WebSocket server (Spring Boot)
+- Message persistence (PostgreSQL)
+- Authentication (JWT)
+- Message encryption (optional)
+- Typing indicators
+- Online/offline status
+
+=====================================
 NOTES & DECISIONS
 =====================================
 
@@ -187,6 +229,22 @@ DEPLOYMENT DECISION:
 - No backend needed initially
 - Can add Java backend later
 - Focus on frontend excellence
+
+NFT DECISION:
+- 🔄 Optional feature (implement if time permits)
+- Complex APIs (OpenSea, Rarible, Alchemy)
+- Rate limiting and costs to consider
+- Good learning opportunity for advanced API integration
+- Can showcase if implemented
+- Not critical for MVP, but impressive if added
+
+NFT IMPLEMENTATION (If Pursued):
+- OpenSea API for marketplace data
+- Alchemy NFT API for metadata
+- Display NFT collections and trending items
+- Basic NFT price tracking
+- Simple gallery view
+- Link to external marketplaces
 
 DATABASE DECISION:
 - PostgreSQL for future backend
