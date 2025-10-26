@@ -14,19 +14,24 @@ import { CryptoData } from '../../models';
     .mat-mdc-table {
       background-color: transparent;
     }
-
+    
+    .mat-mdc-row,
+    .mat-mdc-header-row {
+      border-bottom-width: 0 !important;
+      border-color: transparent !important;
+    }
+    
     .mat-mdc-header-row {
       border-bottom: 1px solid #242D39 !important;
     }
     
-    .mat-mdc-row {
+    .mat-mdc-header-cell {
+      padding-bottom: 1.5rem !important;  // More space below header
       border-bottom-width: 0 !important;
-      border-color: transparent !important;
-      gap: 3rem !important;
     }
     
-    .mat-mdc-cell,
-    .mat-mdc-header-cell {
+    .mat-mdc-cell {
+      padding-top: 1.5rem !important;     // More space above body rows
       border-bottom-width: 0 !important;
     }
   }
