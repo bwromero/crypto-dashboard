@@ -1,12 +1,13 @@
-import { Component, Input } from '@angular/core';
-import { MatTableModule } from '@angular/material/table';
+import { Component, Input, ViewChild, AfterViewInit, OnChanges, SimpleChanges } from '@angular/core';
+import { MatTableModule, MatTableDataSource } from '@angular/material/table';
+import { MatSortModule, MatSort } from '@angular/material/sort';
 import { CommonModule } from '@angular/common';
 import { CryptoData } from '../../models';
 
 @Component({
   selector: 'app-price-table',
   standalone: true,
-  imports: [MatTableModule, CommonModule],
+  imports: [MatTableModule, MatSortModule, CommonModule],
   templateUrl: './price-table.component.html',
   styles: [`
   :host ::ng-deep {
@@ -27,8 +28,11 @@ import { CryptoData } from '../../models';
   }
 `],
 })
-export class PriceTableComponent {
+export class PriceTableComponent implements AfterViewInit, OnChanges {
   @Input() dataSource: CryptoData[] = [];
+  @ViewChild(MatSort) sort!: MatSort;
+
+  matDataSource = new MatTableDataSource<CryptoData>([]);
 
   displayedColumns: string[] = [
     'rank',
@@ -43,6 +47,16 @@ export class PriceTableComponent {
     'actions',
     'favorite',
   ];
+
+  ngAfterViewInit() {
+    this.matDataSource.sort = this.sort;
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['dataSource']) {
+      this.matDataSource.data = this.dataSource;
+    }
+  }
 
   getChartPoints(data: number[]): string {
     const max = Math.max(...data);
