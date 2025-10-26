@@ -1,4 +1,4 @@
-<div class="flex flex-col gap-4 relative w-full h-full">
+<div class="flex flex-col gap-4 w-full h-full">
   <app-toolbar (numOfRowsSelected)="onNumOfRowsSelected($event)" (searchQueryChanged)="onSearchQueryChanged($event)"
     (viewSelected)="onViewSelected($event)">
   </app-toolbar>
@@ -8,11 +8,11 @@
   <app-bubble-view *ngIf="selectedView === ViewType.BUBBLES" [data]="bubbleData"
     [isLoading]="isLoading"></app-bubble-view>
 
-  <div class="absolute bottom-48 w-full">
+
     <app-paginator [currentPage]="currentPage" [totalPages]="totalPages" [numberOfItems]="totalItems"
       [showLoadMore]="shouldShowLoadMore" [isRefreshing]="isRefreshing" (pageClick)="onPageChanged($event)"
       (loadMoreClicked)="onLoadMore()" (refresh)="onRefresh()">
     </app-paginator>
-  </div>
+
 
 </div>
