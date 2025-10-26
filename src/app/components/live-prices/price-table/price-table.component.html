@@ -10,11 +10,8 @@
           <span [class]="'flex items-center gap-2 ' + 
                          (column.align === 'center' ? 'justify-center' : '')">
             {{ column.label }}
-            <lucide-icon 
-              *ngFor="let sortIcon of sortIcons"
-              [hidden]="!sortIcon.condition(column, sortColumn, sortDirection)"
-              [img]="sortIcon.icon" 
-              [size]="16" 
+            <lucide-icon *ngFor="let sortIcon of sortIcons"
+              [hidden]="!sortIcon.condition(column, sortColumn, sortDirection)" [img]="sortIcon.icon" [size]="16"
               [class]="sortIcon.class">
             </lucide-icon>
           </span>
