@@ -1,4 +1,4 @@
-<div class="rounded-xl overflow-hidden">
+<div class="rounded-xl overflow-hidden ml-16 mb-4">
   <table mat-table [dataSource]="matDataSource" matSort class="w-full border-0">
     <!-- Rank Column -->
     <ng-container matColumnDef="rank">
@@ -112,7 +112,7 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element">
-        <button class="bg-action text-primary px-3 py-1 rounded-lg text-sm hover:opacity-90">
+        <button class="bg-transparent border border-slate text-primary px-3 py-1 rounded-lg text-sm hover:bg-dark-secondary">
           Trade
         </button>
       </td>

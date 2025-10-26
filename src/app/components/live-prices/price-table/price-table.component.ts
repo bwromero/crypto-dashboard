@@ -32,6 +32,8 @@ import { CryptoData } from '../../models';
     
     .mat-mdc-cell {
       padding-top: 1.5rem !important;     // More space above body rows
+      padding-left: 0.3rem !important;     // More space above body rows
+      padding-right: 0.3rem !important;     // More space above body rows
       border-bottom-width: 0 !important;
     }
   }
