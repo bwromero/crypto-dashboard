@@ -3,100 +3,44 @@
     <!-- Header -->
     <thead class="border-b border-slate-secondary">
       <tr>
-        <th class="text-left text-primary text-sm font-light pb-6 pt-4 px-4">
-          <span class="flex items-center gap-2">
-            #
+        <th *ngFor="let column of columns; let i = index" [class]="'text-' + (column.align || 'left') + ' text-primary text-sm pb-6 pt-4 px-4 ' + 
+                     (i === 0 ? 'font-light' : 'font-extralight') + 
+                     (column.sortable ? ' cursor-pointer' : '')"
+          (click)="column.sortable && column.key ? sort(column.key) : null">
+          <span [class]="'flex items-center gap-2 ' + 
+                         (column.align === 'center' ? 'justify-center' : '')">
+            {{ column.label }}
+            <lucide-icon 
+              *ngIf="column.sortable && sortColumn !== column.key" 
+              [img]="chevronsUpDown" 
+              [size]="16" 
+              class="text-secondary">
+            </lucide-icon>
+            <lucide-icon 
+              *ngIf="column.sortable && sortColumn === column.key && sortDirection === 'asc'" 
+              [img]="chevronUp" 
+              [size]="16" 
+              class="text-action">
+            </lucide-icon>
+            <lucide-icon 
+              *ngIf="column.sortable && sortColumn === column.key && sortDirection === 'desc'" 
+              [img]="chevronDown" 
+              [size]="16" 
+              class="text-action">
+            </lucide-icon>
           </span>
         </th>
-        
-        <th (click)="sort('name')" 
-            class="text-left text-primary text-sm font-extralight pb-6 pt-4 px-4 cursor-pointer">
-          <span class="flex items-center gap-2">
-            Coin
-            <span *ngIf="sortColumn === 'name'" class="text-xs">
-              {{ sortDirection === 'asc' ? '↑' : '↓' }}
-            </span>
-          </span>
-        </th>
-        
-        <th (click)="sort('price')" 
-            class="text-left text-primary text-sm font-extralight pb-6 pt-4 px-4 cursor-pointer">
-          <span class="flex items-center gap-2">
-            Price
-            <span *ngIf="sortColumn === 'price'" class="text-xs">
-              {{ sortDirection === 'asc' ? '↑' : '↓' }}
-            </span>
-          </span>
-        </th>
-        
-        <th (click)="sort('change24h')" 
-            class="text-center text-primary text-sm font-extralight pb-6 pt-4 px-4 cursor-pointer">
-          <span class="flex items-center justify-center gap-2">
-            24h %
-            <span *ngIf="sortColumn === 'change24h'" class="text-xs">
-              {{ sortDirection === 'asc' ? '↑' : '↓' }}
-            </span>
-          </span>
-        </th>
-        
-        <th (click)="sort('change7d')" 
-            class="text-left text-primary text-sm font-extralight pb-6 pt-4 px-4 cursor-pointer">
-          <span class="flex items-center gap-2">
-            7d %
-            <span *ngIf="sortColumn === 'change7d'" class="text-xs">
-              {{ sortDirection === 'asc' ? '↑' : '↓' }}
-            </span>
-          </span>
-        </th>
-        
-        <th (click)="sort('marketCap')" 
-            class="text-left text-primary text-sm font-extralight pb-6 pt-4 px-4 cursor-pointer">
-          <span class="flex items-center gap-2">
-            Market Cap
-            <span *ngIf="sortColumn === 'marketCap'" class="text-xs">
-              {{ sortDirection === 'asc' ? '↑' : '↓' }}
-            </span>
-          </span>
-        </th>
-        
-        <th (click)="sort('volume24h')" 
-            class="text-left text-primary text-sm font-extralight pb-6 pt-4 px-4 cursor-pointer">
-          <span class="flex items-center gap-2">
-            Volume (24h)
-            <span *ngIf="sortColumn === 'volume24h'" class="text-xs">
-              {{ sortDirection === 'asc' ? '↑' : '↓' }}
-            </span>
-          </span>
-        </th>
-        
-        <th (click)="sort('circulatingSupply')" 
-            class="text-left text-primary text-sm font-extralight pb-6 pt-4 px-4 cursor-pointer">
-          <span class="flex items-center gap-2">
-            Circulating Supply
-            <span *ngIf="sortColumn === 'circulatingSupply'" class="text-xs">
-              {{ sortDirection === 'asc' ? '↑' : '↓' }}
-            </span>
-          </span>
-        </th>
-        
-        <th class="text-left text-primary text-sm font-extralight pb-6 pt-4 px-4">
-          Last 90 Days
-        </th>
-        
-        <th class="pb-6 pt-4 px-4"></th>
-        <th class="pb-6 pt-4 px-4"></th>
       </tr>
     </thead>
-    
+
     <!-- Body -->
     <tbody>
-      <tr *ngFor="let crypto of sortedData" 
-          class="hover:bg-dark-primary transition-colors border-b border-transparent">
+      <tr *ngFor="let crypto of sortedData" class="hover:bg-dark-primary transition-colors border-b border-transparent">
         <!-- Rank -->
         <td class="py-6 px-4 text-secondary text-sm">
           {{ crypto.rank }}
         </td>
-        
+
         <!-- Coin -->
         <td class="py-6 px-4">
           <div class="flex items-center gap-3">
@@ -106,12 +50,12 @@
             </div>
           </div>
         </td>
-        
+
         <!-- Price -->
         <td class="py-6 px-4 text-primary font-medium">
           ${{ crypto.price | number : "1.2-2" }}
         </td>
-        
+
         <!-- 24h Change -->
         <td class="py-6 px-4 text-center">
           <span [class]="crypto.change24h >= 0 
@@ -120,7 +64,7 @@
             {{ crypto.change24h >= 0 ? "▲" : "▼" }}{{ crypto.change24h | number : "1.2-2" }}%
           </span>
         </td>
-        
+
         <!-- 7d Change -->
         <td class="py-6 px-4">
           <span [class]="crypto.change7d >= 0 
@@ -129,55 +73,47 @@
             {{ crypto.change7d >= 0 ? "▲" : "▼" }}{{ crypto.change7d | number : "1.2-2" }}%
           </span>
         </td>
-        
+
         <!-- Market Cap -->
         <td class="py-6 px-4 text-primary">
           ${{ crypto.marketCap / 1000000000 | number : "1.1-1" }}B
         </td>
-        
+
         <!-- Volume -->
         <td class="py-6 px-4 text-primary">
           ${{ crypto.volume24h / 1000000000 | number : "1.1-1" }}B
         </td>
-        
+
         <!-- Circulating Supply -->
         <td class="py-6 px-4 text-primary">
           {{ crypto.circulatingSupply | number : "1.0-0" }} {{ crypto.symbol }}
         </td>
-        
+
         <!-- Chart -->
         <td class="py-6 px-4">
           <div class="w-16 h-8">
             <svg viewBox="0 0 64 32" class="w-full h-full">
-              <polyline 
-                [attr.points]="getChartPoints(crypto.chartData)"
-                [attr.stroke]="crypto.change7d >= 0 ? '#00C087' : '#FF3E46'" 
-                stroke-width="2" 
-                fill="none" />
+              <polyline [attr.points]="getChartPoints(crypto.chartData)"
+                [attr.stroke]="crypto.change7d >= 0 ? '#00C087' : '#FF3E46'" stroke-width="2" fill="none" />
             </svg>
           </div>
         </td>
-        
+
         <!-- Trade Button -->
         <td class="py-6 px-4">
-          <button class="bg-transparent border border-slate text-primary px-3 py-1 rounded-lg text-sm hover:bg-dark-secondary transition-colors">
+          <button
+            class="bg-transparent border border-slate text-primary px-3 py-1 rounded-lg text-sm hover:bg-dark-secondary transition-colors">
             Trade
           </button>
         </td>
-        
+
         <!-- Favorite -->
         <td class="py-6 px-4">
-          <button (click)="toggleFavorite(crypto)" 
-                  class="text-secondary hover:text-warning transition-colors">
-            <svg class="w-4 h-4" 
-                 [class.fill-warning]="crypto.isFavorite" 
-                 fill="none" 
-                 stroke="currentColor" 
-                 viewBox="0 0 24 24">
-              <path stroke-linecap="round" 
-                    stroke-linejoin="round" 
-                    stroke-width="2"
-                    d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z">
+          <button (click)="toggleFavorite(crypto)" class="text-secondary hover:text-warning transition-colors">
+            <svg class="w-4 h-4" [class.fill-warning]="crypto.isFavorite" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z">
               </path>
             </svg>
           </button>

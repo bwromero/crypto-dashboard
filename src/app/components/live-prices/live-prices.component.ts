@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ToolbarComponent } from './toolbar/toolbar.component';
-import { PriceTableComponent } from './price-table/price-table.component';
 import { CommonModule } from '@angular/common';
 import { HeatMapComponent } from './heat-map/heat-map.component';
 import { BubbleViewComponent } from './bubble-view/bubble-view.component';
@@ -9,6 +8,7 @@ import { mockCryptoData, mockHeatmapData } from '../data/mock-crypto-data';
 import { CryptoData, HeatmapData, ViewType } from '../models';
 import { CryptoService } from '../../services/crypto.service';
 import { Subscription, interval } from 'rxjs';
+import { PriceTableComponent } from './price-table/price-table.component';
 @Component({
   selector: 'app-live-prices',
   standalone: true,
