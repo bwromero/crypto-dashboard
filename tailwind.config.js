@@ -13,6 +13,7 @@ module.exports = {
         'secondary': '#64748B',
         'border': '#808195',
         'slate': '#303A46',
+        'slate-secondary': '#242D39',
         'accent': '#FF3E46',
         'success': '#00C087',
         'warning': '#F0B90B',

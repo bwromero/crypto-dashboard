@@ -14,11 +14,15 @@ import { CryptoData } from '../../models';
     .mat-mdc-table {
       background-color: transparent;
     }
-    
-    .mat-mdc-row,
+
     .mat-mdc-header-row {
+      border-bottom: 1px solid #242D39 !important;
+    }
+    
+    .mat-mdc-row {
       border-bottom-width: 0 !important;
       border-color: transparent !important;
+      gap: 3rem !important;
     }
     
     .mat-mdc-cell,

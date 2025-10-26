@@ -43,7 +43,7 @@
         24h %
       </th>
       <td mat-cell *matCellDef="let element">
-        <span [class]="element.change24h >= 0 ? 'text-success' : 'text-error'">
+        <span [class]="element.change24h >= 0 ? 'text-action border border-action rounded-full px-2 py-1' : 'text-error border border-error rounded-full px-2 py-1' ">
           {{ element.change24h >= 0 ? "▲" : "▼"
           }}{{ element.change24h | number : "1.2-2" }}%
         </span>
@@ -56,7 +56,7 @@
         7d %
       </th>
       <td mat-cell *matCellDef="let element">
-        <span [class]="element.change7d >= 0 ? 'text-success' : 'text-error'">
+        <span [class]="element.change7d >= 0 ? 'text-success border border-action rounded-full px-2 py-1' : 'text-error border border-error rounded-full px-2 py-1' ">
           {{ element.change7d >= 0 ? "▲" : "▼"
           }}{{ element.change7d | number : "1.2-2" }}%
         </span>
@@ -134,10 +134,9 @@
     </ng-container>
 
     <!-- Header Row -->
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="pt-5"></tr>
     <!-- Data Rows -->
     <tr mat-row *matRowDef="let row; columns: displayedColumns"
-      class="hover:bg-dark-primary !border-transparent transition-colors"></tr>
+      class="hover:bg-dark-primary transition-colors"></tr>
   </table>
 </div>
