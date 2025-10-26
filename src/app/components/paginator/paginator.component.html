@@ -3,6 +3,7 @@
         <app-button *ngIf="currentPage > 3"
                     [variant]="'normal'"
                     [type]="'transparent'"
+                    [borderClass]="'border-secondary'"
                     (clicked)="onFirstPage()"
                     [label]="'1'">
         </app-button>
@@ -10,20 +11,23 @@
         <app-button *ngIf="showStartEllipsis"
                     [variant]="'normal'"
                     [type]="'transparent'"
+                    [borderClass]="'border border-primary'"
                     [lucideIcon]="'Ellipsis'"
                     (clicked)="onPreviousPage()">
         </app-button>
         
         <app-button *ngFor="let page of visiblePages"
                     [variant]="'normal'"
-                    [type]="page === currentPage ? 'primary' : 'transparent'"
+                    [type]="page === currentPage ? 'action' : 'transparent'"
+                    [borderClass]="page === currentPage ? 'border-action' : 'border border-primary'"
                     (clicked)="onPageClick(page)"
                     [label]="page.toString()">
         </app-button>
         
         <app-button *ngIf="showEndEllipsis"
                     [variant]="'normal'"
-                    [type]="'transparent'"
+                    [type]="'transparent'"  
+                    [borderClass]="'border border-primary'"
                     [lucideIcon]="'Ellipsis'"
                     (clicked)="onNextPage()">
         </app-button>
@@ -31,6 +35,7 @@
         <app-button *ngIf="currentPage < totalPages - 2"
                     [variant]="'normal'"
                     [type]="'transparent'"
+                    [borderClass]="'border border-primary'"
                     (clicked)="onLastPage()"
                     [label]="totalPages.toString()">
         </app-button>

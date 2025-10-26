@@ -40,6 +40,7 @@ export class ButtonComponent {
   @Input() type: ButtonType = 'primary';
   @Input() variant: ButtonVariant = 'normal';
   @Input() bgColor: string = 'bg-dark-secondary';
+  @Input() borderClass: string = '';
   @Input() label: string = '';
   @Input() icon: string = '';
   @Input() lucideIcon?: any;
@@ -70,7 +71,7 @@ export class ButtonComponent {
       action: 'bg-action text-primary hover:bg-action/90',
       dark: 'bg-dark-primary text-primary hover:bg-dark-primary/90',
       darkSecondary: 'bg-dark-secondary text-primary hover:bg-dark-secondary/90',
-      transparent: 'bg-transparent text-primary hover:bg-dark-primary'
+      transparent: 'bg-transparent text-primary hover:bg-dark-primary ' + this.borderClass
     };
 
     this.type = this.buttonSelected? 'action' : this.type;
