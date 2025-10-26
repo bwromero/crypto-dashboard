@@ -30,6 +30,9 @@
         <!-- Coin -->
         <td class="py-6 px-4">
           <div class="flex items-center gap-3">
+            <img [src]="crypto.icon" 
+                 [alt]="crypto.symbol" 
+                 class="w-8 h-8 rounded-full">
             <div>
               <div class="text-primary font-bold">{{ crypto.name }}</div>
               <div class="text-secondary text-sm">{{ crypto.symbol }}</div>
