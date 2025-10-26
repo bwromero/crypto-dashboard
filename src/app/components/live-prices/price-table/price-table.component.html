@@ -4,7 +4,7 @@
     <thead class="border-b border-slate-secondary">
       <tr>
         <th (click)="sort('rank')" 
-            class="text-left text-primary text-sm font-light pb-6 pt-4 px-4 cursor-pointer hover:text-action transition-colors">
+            class="text-left text-primary text-sm font-light pb-6 pt-4 px-4 cursor-pointer">
           <span class="flex items-center gap-2">
             #
             <span *ngIf="sortColumn === 'rank'" class="text-xs">
@@ -14,7 +14,7 @@
         </th>
         
         <th (click)="sort('name')" 
-            class="text-left text-primary text-sm font-extralight pb-6 pt-4 px-4 cursor-pointer hover:text-action transition-colors">
+            class="text-left text-primary text-sm font-extralight pb-6 pt-4 px-4 cursor-pointer">
           <span class="flex items-center gap-2">
             Coin
             <span *ngIf="sortColumn === 'name'" class="text-xs">
@@ -24,7 +24,7 @@
         </th>
         
         <th (click)="sort('price')" 
-            class="text-left text-primary text-sm font-extralight pb-6 pt-4 px-4 cursor-pointer hover:text-action transition-colors">
+            class="text-left text-primary text-sm font-extralight pb-6 pt-4 px-4 cursor-pointer">
           <span class="flex items-center gap-2">
             Price
             <span *ngIf="sortColumn === 'price'" class="text-xs">
@@ -34,7 +34,7 @@
         </th>
         
         <th (click)="sort('change24h')" 
-            class="text-center text-primary text-sm font-extralight pb-6 pt-4 px-4 cursor-pointer hover:text-action transition-colors">
+            class="text-center text-primary text-sm font-extralight pb-6 pt-4 px-4 cursor-pointer">
           <span class="flex items-center justify-center gap-2">
             24h %
             <span *ngIf="sortColumn === 'change24h'" class="text-xs">
@@ -44,7 +44,7 @@
         </th>
         
         <th (click)="sort('change7d')" 
-            class="text-left text-primary text-sm font-extralight pb-6 pt-4 px-4 cursor-pointer hover:text-action transition-colors">
+            class="text-left text-primary text-sm font-extralight pb-6 pt-4 px-4 cursor-pointer">
           <span class="flex items-center gap-2">
             7d %
             <span *ngIf="sortColumn === 'change7d'" class="text-xs">
@@ -54,7 +54,7 @@
         </th>
         
         <th (click)="sort('marketCap')" 
-            class="text-left text-primary text-sm font-extralight pb-6 pt-4 px-4 cursor-pointer hover:text-action transition-colors">
+            class="text-left text-primary text-sm font-extralight pb-6 pt-4 px-4 cursor-pointer">
           <span class="flex items-center gap-2">
             Market Cap
             <span *ngIf="sortColumn === 'marketCap'" class="text-xs">
@@ -64,7 +64,7 @@
         </th>
         
         <th (click)="sort('volume24h')" 
-            class="text-left text-primary text-sm font-extralight pb-6 pt-4 px-4 cursor-pointer hover:text-action transition-colors">
+            class="text-left text-primary text-sm font-extralight pb-6 pt-4 px-4 cursor-pointer">
           <span class="flex items-center gap-2">
             Volume (24h)
             <span *ngIf="sortColumn === 'volume24h'" class="text-xs">
@@ -74,7 +74,7 @@
         </th>
         
         <th (click)="sort('circulatingSupply')" 
-            class="text-left text-primary text-sm font-extralight pb-6 pt-4 px-4 cursor-pointer hover:text-action transition-colors">
+            class="text-left text-primary text-sm font-extralight pb-6 pt-4 px-4 cursor-pointer">
           <span class="flex items-center gap-2">
             Circulating Supply
             <span *ngIf="sortColumn === 'circulatingSupply'" class="text-xs">
