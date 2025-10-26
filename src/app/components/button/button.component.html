@@ -37,10 +37,10 @@
     </button>
 
     <!-- Dropdown Menu -->
-    <div *ngIf="isDropdownOpen" class="absolute z-10 w-full mt-1 rounded-xl shadow-lg">
-      <div class="py-1">
+    <div *ngIf="isDropdownOpen" class="absolute z-10 w-full bg-dark-secondary rounded-xl shadow-lg">
+      <div class="py-0">
         <button *ngFor="let option of dropdownOptions" (click)="selectOption(option)"
-          class="w-full px-4 py-2 text-sm text-secondary hover:bg-dark-secondary text-left transition-colors duration-200">
+          class="w-full px-4 py-2 text-sm text-secondary hover:bg-dark-primary text-left transition-colors duration-200">
           {{ option?.label || option.value }}
         </button>
       </div>
