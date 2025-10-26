@@ -5,6 +5,7 @@ import { LucideAngularModule, icons } from 'lucide-angular';
 import {
   priceTableColumns,
   TableColumn,
+  SortDirection,
 } from '../../models/price-table-layout';
 
 @Component({
@@ -19,17 +20,18 @@ export class PriceTableComponent {
   protected chevronsUpDown = icons.ChevronsUpDown;
   protected chevronUp = icons.ChevronUp;
   protected chevronDown = icons.ChevronDown;
+  protected readonly SortDirection = SortDirection;
   sortColumn: keyof CryptoData | '' = '';
-  sortDirection: 'asc' | 'desc' = 'asc';
+  sortDirection: SortDirection = SortDirection.ASC;
 
   columns: TableColumn[] = priceTableColumns;
 
   sort(column: keyof CryptoData) {
     if (this.sortColumn === column) {
-      this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+      this.sortDirection = this.sortDirection === SortDirection.ASC ? SortDirection.DESC : SortDirection.ASC;
     } else {
       this.sortColumn = column;
-      this.sortDirection = 'asc';
+      this.sortDirection = SortDirection.ASC;
     }
   }
 
@@ -43,10 +45,10 @@ export class PriceTableComponent {
       const bVal = b[this.sortColumn as keyof CryptoData];
 
       if (typeof aVal === 'number' && typeof bVal === 'number') {
-        return this.sortDirection === 'asc' ? aVal - bVal : bVal - aVal;
+        return this.sortDirection === SortDirection.ASC ? aVal - bVal : bVal - aVal;
       }
 
-      return this.sortDirection === 'asc'
+      return this.sortDirection === SortDirection.ASC
         ? String(aVal).localeCompare(String(bVal))
         : String(bVal).localeCompare(String(aVal));
     });

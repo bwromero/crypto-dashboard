@@ -1,5 +1,10 @@
 import { CryptoData } from "./crypto.interface";
 
+export enum SortDirection {
+  ASC = 'asc',
+  DESC = 'desc'
+}
+
 export interface TableColumn {
     key: keyof CryptoData | null;
     label: string;

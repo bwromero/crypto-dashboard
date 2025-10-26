@@ -17,13 +17,13 @@
               class="text-secondary">
             </lucide-icon>
             <lucide-icon 
-              *ngIf="column.sortable && sortColumn === column.key && sortDirection === 'asc'" 
+              *ngIf="column.sortable && sortColumn === column.key && sortDirection === SortDirection.ASC" 
               [img]="chevronUp" 
               [size]="16" 
               class="text-action">
             </lucide-icon>
             <lucide-icon 
-              *ngIf="column.sortable && sortColumn === column.key && sortDirection === 'desc'" 
+              *ngIf="column.sortable && sortColumn === column.key && sortDirection === SortDirection.DESC" 
               [img]="chevronDown" 
               [size]="16" 
               class="text-action">
