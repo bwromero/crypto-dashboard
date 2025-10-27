@@ -31,6 +31,16 @@ export class TreemapCellComponent {
     return 'bg-red-600';
   }
 
+  getCryptoIconSize(node: TreemapNode){
+    if ((node.width > 80 && node.width < 150) && (node.height > 60 && node.height < 100)) {
+      return 'w-[48px] h-[48px]';
+    }
+    if (node.width > 150 && node.height > 100) {
+      return 'w-[64px] h-[64px]';
+    }
+    return 'w-[32px] h-[32px]';
+  }
+
   formatPrice(price: number): string {
     if (price >= 1000) return `$${price.toLocaleString('en-US', { maximumFractionDigits: 2 })}`;
     if (price >= 1) return `$${price.toFixed(2)}`;
@@ -39,20 +49,5 @@ export class TreemapCellComponent {
 
   formatChange(change: number): string {
     return `${change >= 0 ? '+' : ''}${change.toFixed(2)}%`;
-  }
-
-  getIconBg(symbol: string): string {
-    const map: Record<string, string> = {
-      BTC: '#F7931A',
-      ETH: '#627EEA',
-      BNB: '#F3BA2F',
-      SOL: '#14F195',
-      ADA: '#0033AD',
-      DOT: '#E6007A',
-      AVAX: '#E84142',
-      MATIC: '#8247E5',
-      LINK: '#2A5ADA',
-    };
-    return map[symbol] || '#6B7280';
   }
 }

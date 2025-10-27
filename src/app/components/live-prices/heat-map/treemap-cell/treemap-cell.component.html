@@ -5,7 +5,7 @@
     <div class="p-2 h-full flex flex-col items-center justify-center">
         <ng-container [ngSwitch]="true" class="flex flex-col items-center gap-2">
             <ng-container *ngSwitchCase="node.width > 150 && node.height > 100">
-                <img [src]="asset.icon" [alt]="asset.symbol" class="w-[64px] h-[64px] rounded-2xl flex-shrink-0">
+                <img [src]="asset.icon" [alt]="asset.symbol" class="rounded-2xl flex-shrink-0" [ngClass]="getCryptoIconSize(node)">
             </ng-container>
 
             <ng-container *ngSwitchCase="node.width > 80 && node.height > 60">
