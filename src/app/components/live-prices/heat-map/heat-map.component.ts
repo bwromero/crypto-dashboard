@@ -78,7 +78,7 @@ export class HeatMapComponent implements AfterViewInit, OnDestroy, OnChanges {
       this.nodes = [];
       return;
     }
-    const treemapData = this.data.cryptos.map(a => ({ id: a.id, value: a.marketCap }));
+    const treemapData = this.data.cryptos.map(a => ({ id: a.id, value: a.marketCap, icon: a.icon, symbol: a.symbol }));
     this.nodes = calculateTreemapBSP(treemapData, this.dimensions.width, this.dimensions.height);
   }
 

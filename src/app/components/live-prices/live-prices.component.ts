@@ -60,6 +60,10 @@ export class LivePricesComponent implements OnInit, OnDestroy {
     this.cryptoService.getMarketData(1, 100).subscribe({
       next: (data) => {
         this.fullCryptoData = data;
+        this.heatmapData = {
+          categories: this.heatmapData.categories,
+          cryptos: this.fullCryptoData,
+        };
         this.isLoading = false;
         this.isRefreshing = false;
         console.log('Real crypto data loaded:', data.length, 'coins');
