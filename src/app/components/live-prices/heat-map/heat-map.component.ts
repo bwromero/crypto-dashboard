@@ -65,7 +65,8 @@ export class HeatMapComponent implements AfterViewInit, OnDestroy, OnChanges {
 
     const width = el.offsetWidth || 1000;
     const height = Math.max(500, Math.min(width * 0.6, 700));
-    const changed = width !== this.dimensions.width || height !== this.dimensions.height;
+    const changed =
+      width !== this.dimensions.width || height !== this.dimensions.height;
 
     if (changed) {
       this.dimensions = { width, height };
@@ -78,12 +79,21 @@ export class HeatMapComponent implements AfterViewInit, OnDestroy, OnChanges {
       this.nodes = [];
       return;
     }
-    const treemapData = this.data.cryptos.map(a => ({ id: a.id, value: a.marketCap, icon: a.icon, symbol: a.symbol }));
-    this.nodes = calculateTreemapBSP(treemapData, this.dimensions.width, this.dimensions.height);
+    const treemapData = this.data.cryptos.map((a) => ({
+      id: a.id,
+      value: a.marketCap,
+      icon: a.icon,
+      symbol: a.symbol,
+    }));
+    this.nodes = calculateTreemapBSP(
+      treemapData,
+      this.dimensions.width,
+      this.dimensions.height
+    );
   }
 
   getAssetById(id: string): CryptoData | undefined {
-    return this.data.cryptos.find(a => a.id === id);
+    return this.data.cryptos.find((a) => a.id === id);
   }
 
   onCellClicked(asset: CryptoData) {
