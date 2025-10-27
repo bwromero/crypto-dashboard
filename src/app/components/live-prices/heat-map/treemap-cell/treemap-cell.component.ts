@@ -31,14 +31,39 @@ export class TreemapCellComponent {
     return 'bg-red-600';
   }
 
-  getCryptoIconSize(node: TreemapNode){
-    if ((node.width > 80 && node.width < 150) && (node.height > 60 && node.height < 100)) {
-      return 'w-[48px] h-[48px]';
-    }
-    if (node.width > 150 && node.height > 100) {
-      return 'w-[64px] h-[64px]';
-    }
-    return 'w-[32px] h-[32px]';
+  getCellSize(): 'large' | 'medium' | 'small' {
+    const minDim = Math.min(this.node.width, this.node.height);
+    if (minDim > 200) return 'large';
+    if (minDim > 100) return 'medium';
+    return 'small';
+  }
+
+  getCryptoIconSize(node: TreemapNode): string {
+    const minDim = Math.min(node.width, node.height);
+    if (minDim > 200) return 'w-16 h-16';     // 64px - large cells
+    if (minDim > 100) return 'w-10 h-10';     // 40px - medium cells
+    return 'w-6 h-6';                         // 24px - small cells
+  }
+
+  getSymbolTextSize(node: TreemapNode): string {
+    const minDim = Math.min(node.width, node.height);
+    if (minDim > 200) return 'text-4xl';      // large cells
+    if (minDim > 100) return 'text-xl';       // medium cells
+    return 'text-sm';                         // small cells
+  }
+
+  getPriceTextSize(node: TreemapNode): string {
+    const minDim = Math.min(node.width, node.height);
+    if (minDim > 200) return 'text-3xl';      // large cells
+    if (minDim > 100) return 'text-lg';       // medium cells
+    return 'text-xs';                         // small cells
+  }
+
+  getChangeTextSize(node: TreemapNode): string {
+    const minDim = Math.min(node.width, node.height);
+    if (minDim > 200) return 'text-2xl';      // large cells
+    if (minDim > 100) return 'text-base';     // medium cells
+    return 'text-xs';                         // small cells
   }
 
   formatPrice(price: number): string {

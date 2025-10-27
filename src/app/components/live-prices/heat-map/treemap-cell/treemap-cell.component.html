@@ -10,11 +10,11 @@
 
             <ng-container *ngSwitchCase="node.width > 80 && node.height > 60">
                 <div class="flex items-center gap-2">
-                    <h1 class="text-white text-[60px]">{{ asset.symbol }}</h1>
+                    <h1 class="text-white" [ngClass]="getSymbolTextSize(node)">{{ asset.symbol }}</h1>
                 </div>
                 <div>
-                    <div class="text-white/90 text-[40px] font-bold">{{ formatPrice(asset.price) }}</div>
-                    <div class="text-white/80 text-[40px]">{{ formatChange(asset.change24h) }}</div>
+                    <div class="text-white/90 font-semibold" [ngClass]="getPriceTextSize(node)">{{ formatPrice(asset.price) }}</div>
+                    <div class="text-white/80" [ngClass]="getChangeTextSize(node)">{{ formatChange(asset.change24h) }}</div>
                 </div>
             </ng-container>
 
