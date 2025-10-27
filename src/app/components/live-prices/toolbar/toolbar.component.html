@@ -12,7 +12,7 @@
     <!-- Center section - Search -->
     <app-search-bar bgColor="bg-dark-primary" (search)="onSearchQueryChanged($event)"></app-search-bar>
 
-    <div class="flex bg-dark-primary p-2 rounded-full gap-2">
+    <div class="flex bg-dark-primary p-2 rounded-xl gap-2">
         <app-button *ngFor="let button of buttonList" [variant]="button.variant" [type]="button.type"
             [lucideIcon]="button.lucideIcon" [buttonSelected]="button.isSelected" (clicked)="onButtonSelected(button)">
         </app-button>
