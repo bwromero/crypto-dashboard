@@ -6,7 +6,7 @@ export const routes: Routes = [
     loadComponent: () => import('./layout/layout.component').then(m => m.LayoutComponent),
     children: [
       {
-        path: 'live-prices',
+        path: '',
         loadComponent: () => import('./components/live-prices/live-prices.component').then(m => m.LivePricesComponent)
       },
       {
