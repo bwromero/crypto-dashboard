@@ -54,7 +54,7 @@ export class D3BubbleChartComponent implements AfterViewInit, OnChanges {
 
     const pack = d3.pack<any>()
       .size([this.width, this.height])
-      .padding(3);
+      .padding(4);
 
     pack(root);
 
@@ -63,6 +63,102 @@ export class D3BubbleChartComponent implements AfterViewInit, OnChanges {
       .attr('width', this.width)
       .attr('height', this.height)
       .attr('class', 'rounded-lg');
+
+    const defs = svg.append('defs');
+
+    root.leaves().forEach((d: any, i: number) => {
+      const crypto = d.data as CryptoData;
+      const isPositive = crypto.change24h >= 0;
+      const gradientId = `bubble-gradient-${i}`;
+      
+      const gradient = defs.append('radialGradient')
+        .attr('id', gradientId)
+        .attr('cx', '50%')
+        .attr('cy', '50%')
+        .attr('r', '50%');
+      
+      if (isPositive) {
+        gradient.append('stop')
+          .attr('offset', '0%')
+          .attr('stop-color', 'rgba(22, 29, 38, 0)')
+          .attr('stop-opacity', 0);
+        
+        gradient.append('stop')
+          .attr('offset', '30%')
+          .attr('stop-color', 'rgb(0, 180, 100)')
+          .attr('stop-opacity', 0.02);
+        
+        gradient.append('stop')
+          .attr('offset', '50%')
+          .attr('stop-color', 'rgb(0, 180, 100)')
+          .attr('stop-opacity', 0.08);
+        
+        gradient.append('stop')
+          .attr('offset', '70%')
+          .attr('stop-color', 'rgb(0, 180, 100)')
+          .attr('stop-opacity', 0.2);
+        
+        gradient.append('stop')
+          .attr('offset', '85%')
+          .attr('stop-color', 'rgb(0, 180, 100)')
+          .attr('stop-opacity', 0.4);
+        
+        gradient.append('stop')
+          .attr('offset', '95%')
+          .attr('stop-color', 'rgb(0, 180, 100)')
+          .attr('stop-opacity', 0.7);
+        
+        gradient.append('stop')
+          .attr('offset', '98%')
+          .attr('stop-color', 'rgb(0, 180, 100)')
+          .attr('stop-opacity', 0.95);
+        
+        gradient.append('stop')
+          .attr('offset', '100%')
+          .attr('stop-color', 'rgb(0, 180, 100)')
+          .attr('stop-opacity', 1);
+      } else {
+        gradient.append('stop')
+          .attr('offset', '0%')
+          .attr('stop-color', 'rgba(22, 29, 38, 0)')
+          .attr('stop-opacity', 0);
+        
+        gradient.append('stop')
+          .attr('offset', '30%')
+          .attr('stop-color', 'rgb(180, 0, 0)')
+          .attr('stop-opacity', 0.02);
+        
+        gradient.append('stop')
+          .attr('offset', '50%')
+          .attr('stop-color', 'rgb(180, 0, 0)')
+          .attr('stop-opacity', 0.08);
+        
+        gradient.append('stop')
+          .attr('offset', '70%')
+          .attr('stop-color', 'rgb(180, 0, 0)')
+          .attr('stop-opacity', 0.2);
+        
+        gradient.append('stop')
+          .attr('offset', '85%')
+          .attr('stop-color', 'rgb(180, 0, 0)')
+          .attr('stop-opacity', 0.4);
+        
+        gradient.append('stop')
+          .attr('offset', '95%')
+          .attr('stop-color', 'rgb(180, 0, 0)')
+          .attr('stop-opacity', 0.7);
+        
+        gradient.append('stop')
+          .attr('offset', '98%')
+          .attr('stop-color', 'rgb(180, 0, 0)')
+          .attr('stop-opacity', 0.95);
+        
+        gradient.append('stop')
+          .attr('offset', '100%')
+          .attr('stop-color', 'rgb(180, 0, 0)')
+          .attr('stop-opacity', 1);
+      }
+    });
 
     const nodes = svg
       .selectAll('g')
@@ -73,24 +169,31 @@ export class D3BubbleChartComponent implements AfterViewInit, OnChanges {
     nodes
       .append('circle')
       .attr('r', (d: any) => d.r)
-      .attr('fill', (d: any) => this.getColor((d.data as CryptoData).change24h))
-      .attr('stroke', '#1E293B')
-      .attr('stroke-width', 2)
-      .attr('class', 'cursor-pointer transition-all duration-200')
-      .style('filter', 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3))')
-      .on('mouseover', function() {
-        d3.select(this)
-          .transition()
-          .duration(200)
-          .attr('stroke-width', 3)
-          .style('filter', 'drop-shadow(0 6px 12px rgba(0, 0, 0, 0.5))');
+      .attr('fill', (d: any, i: number) => `url(#bubble-gradient-${i})`)
+      .attr('class', 'cursor-pointer')
+      .style('filter', (d: any) => {
+        const crypto = d.data as CryptoData;
+        const isPositive = crypto.change24h >= 0;
+        return `drop-shadow(0 0 15px ${isPositive ? 'rgba(0, 255, 144, 0.3)' : 'rgba(255, 0, 0, 0.3)'})`;
       })
-      .on('mouseout', function() {
+      .style('transition', 'all 0.3s ease')
+      .on('mouseover', function(event, d: any) {
+        const crypto = d.data as CryptoData;
+        const isPositive = crypto.change24h >= 0;
         d3.select(this)
           .transition()
-          .duration(200)
-          .attr('stroke-width', 2)
-          .style('filter', 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3))');
+          .duration(300)
+          .attr('r', d.r * 1.1)
+          .style('filter', `drop-shadow(0 0 30px ${isPositive ? 'rgba(0, 255, 144, 0.6)' : 'rgba(255, 0, 0, 0.6)'})`);
+      })
+      .on('mouseout', function(event, d: any) {
+        const crypto = d.data as CryptoData;
+        const isPositive = crypto.change24h >= 0;
+        d3.select(this)
+          .transition()
+          .duration(300)
+          .attr('r', d.r)
+          .style('filter', `drop-shadow(0 0 15px ${isPositive ? 'rgba(0, 255, 144, 0.3)' : 'rgba(255, 0, 0, 0.3)'})`);
       })
       .on('click', (event, d: any) => {
         this.bubbleClick.emit(d.data as CryptoData);
@@ -171,6 +274,24 @@ export class D3BubbleChartComponent implements AfterViewInit, OnChanges {
 
   private formatChange(change: number): string {
     return `${change >= 0 ? '+' : ''}${change.toFixed(1)}%`;
+  }
+
+  private lightenColor(color: string, percent: number): string {
+    const num = parseInt(color.replace('#', ''), 16);
+    const amt = Math.round(2.55 * percent);
+    const R = Math.min(255, (num >> 16) + amt);
+    const G = Math.min(255, (num >> 8 & 0x00FF) + amt);
+    const B = Math.min(255, (num & 0x0000FF) + amt);
+    return `#${(0x1000000 + R * 0x10000 + G * 0x100 + B).toString(16).slice(1)}`;
+  }
+
+  private darkenColor(color: string, percent: number): string {
+    const num = parseInt(color.replace('#', ''), 16);
+    const amt = Math.round(2.55 * percent);
+    const R = Math.max(0, (num >> 16) - amt);
+    const G = Math.max(0, (num >> 8 & 0x00FF) - amt);
+    const B = Math.max(0, (num & 0x0000FF) - amt);
+    return `#${(0x1000000 + R * 0x10000 + G * 0x100 + B).toString(16).slice(1)}`;
   }
 }
 
