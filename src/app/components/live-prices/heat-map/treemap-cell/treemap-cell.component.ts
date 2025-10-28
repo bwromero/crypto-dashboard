@@ -8,7 +8,27 @@ import { LucideAngularModule, icons } from 'lucide-angular';
   standalone: true,
   imports: [CommonModule, LucideAngularModule],
   templateUrl: './treemap-cell.component.html',
-  styles: ``
+  styles: `
+    .cell-icon {
+      width: 20%;
+      height: auto;
+      aspect-ratio: 1;
+      max-width: 64px;
+      min-width: 20px;
+    }
+    
+    .cell-symbol {
+      font-size: clamp(0.75rem, 2vw, 1.75rem);
+    }
+    
+    .cell-price {
+      font-size: clamp(0.625rem, 1.5vw, 1.25rem);
+    }
+    
+    .cell-change {
+      font-size: clamp(0.5rem, 1.2vw, 1rem);
+    }
+  `
 })
 export class TreemapCellComponent {
   @Input() node!: TreemapNode;
@@ -33,37 +53,9 @@ export class TreemapCellComponent {
 
   getCellSize(): 'large' | 'medium' | 'small' {
     const minDim = Math.min(this.node.width, this.node.height);
-    if (minDim > 200) return 'large';
+    if (minDim > 300) return 'large';
     if (minDim > 100) return 'medium';
     return 'small';
-  }
-
-  getCryptoIconSize(node: TreemapNode): string {
-    const minDim = Math.min(node.width, node.height);
-    if (minDim > 200) return 'w-16 h-16';     // 64px - large cells
-    if (minDim > 100) return 'w-10 h-10';     // 40px - medium cells
-    return 'w-6 h-6';                         // 24px - small cells
-  }
-
-  getSymbolTextSize(node: TreemapNode): string {
-    const minDim = Math.min(node.width, node.height);
-    if (minDim > 200) return 'text-4xl';      // large cells
-    if (minDim > 100) return 'text-xl';       // medium cells
-    return 'text-sm';                         // small cells
-  }
-
-  getPriceTextSize(node: TreemapNode): string {
-    const minDim = Math.min(node.width, node.height);
-    if (minDim > 200) return 'text-3xl';      // large cells
-    if (minDim > 100) return 'text-lg';       // medium cells
-    return 'text-xs';                         // small cells
-  }
-
-  getChangeTextSize(node: TreemapNode): string {
-    const minDim = Math.min(node.width, node.height);
-    if (minDim > 200) return 'text-2xl';      // large cells
-    if (minDim > 100) return 'text-base';     // medium cells
-    return 'text-xs';                         // small cells
   }
 
   formatPrice(price: number): string {
