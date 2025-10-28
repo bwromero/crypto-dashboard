@@ -8,8 +8,14 @@
   <app-bubble-view *ngIf="selectedView === ViewType.BUBBLES" [data]="bubbleData"
     [isLoading]="isLoading"></app-bubble-view>
 
-  <app-paginator [currentPage]="currentPage" [totalPages]="totalPages" [numberOfItems]="totalItems"
-    [showLoadMore]="shouldShowLoadMore" [isRefreshing]="isRefreshing" (pageClick)="onPageChanged($event)"
-    (loadMoreClicked)="onLoadMore()" (refresh)="onRefresh()">
+  <app-paginator [currentPage]="currentPage" 
+                 [totalPages]="totalPages" 
+                 [numberOfItems]="totalItems"
+                 [disablePagination]="selectedView === ViewType.HEATMAP 
+                 || selectedView === ViewType.BUBBLES"
+                 [showLoadMore]="shouldShowLoadMore" 
+                 [isRefreshing]="isRefreshing" 
+                 (pageClick)="onPageChanged($event)"
+                (loadMoreClicked)="onLoadMore()" (refresh)="onRefresh()">
   </app-paginator>
 </div>

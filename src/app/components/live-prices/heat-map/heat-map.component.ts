@@ -85,7 +85,7 @@ export class HeatMapComponent implements AfterViewInit, OnDestroy, OnChanges {
     
     const treemapData = this.data.cryptos.map((a) => ({
       id: a.id,
-      value: a.marketCap === maxMarketCap ? a.marketCap * 0.5 : a.marketCap,  // Reduce largest by 30%
+      value: a.marketCap === maxMarketCap ? a.marketCap * 0.4 : a.marketCap,  // Reduce largest by 30%
       icon: a.icon,
       symbol: a.symbol,
     }));

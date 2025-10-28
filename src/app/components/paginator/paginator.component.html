@@ -1,5 +1,5 @@
 <div class="flex justify-between items-center mt-8 py-4">
-    <div class="flex gap-2 items-center">
+    <div class="flex gap-2 items-center" [ngClass]="{'hidden': disablePagination}">
         <app-button *ngIf="currentPage > 3" [variant]="'normal'" [type]="'transparent'"
             [borderClass]="'border border-slate'" [rounded]="'rounded-2xl'" [buttonSize]="'w-12 h-12'" (clicked)="onFirstPage()" [label]="'1'">
         </app-button>

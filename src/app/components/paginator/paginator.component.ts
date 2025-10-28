@@ -16,6 +16,7 @@ export class PaginatorComponent implements OnChanges {
   @Input() showLoadMore: boolean = true;
   @Input() numberOfItems: number = 100;
   @Input() isRefreshing: boolean = false;
+  @Input() disablePagination: boolean = false;
   
   @Output() loadMoreClicked = new EventEmitter<void>();
   @Output() pageClick = new EventEmitter<number>();
