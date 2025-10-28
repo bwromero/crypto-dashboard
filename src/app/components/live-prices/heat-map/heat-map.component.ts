@@ -7,6 +7,8 @@ import {
   ElementRef,
   AfterViewInit,
   OnDestroy,
+  ChangeDetectorRef,
+  NgZone,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CryptoData, HeatmapData } from '../../models';
@@ -29,10 +31,18 @@ export class HeatMapComponent implements AfterViewInit, OnDestroy {
   dimensions = { width: 0, height: 0 };
   private resizeObs?: ResizeObserver;
 
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private ngZone: NgZone
+  ) {}
+
   ngAfterViewInit(): void {
     setTimeout(() => this.updateDimensions(), 0);
     this.resizeObs = new ResizeObserver(() => {
-      this.updateDimensions();
+      this.ngZone.run(() => {
+        this.updateDimensions();
+        this.cdr.detectChanges();
+      });
     });
     this.resizeObs.observe(this.containerRef.nativeElement);
   }
