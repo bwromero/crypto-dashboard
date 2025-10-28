@@ -1,11 +1,7 @@
-<div #container class="relative overflow-hidden ml-11" [style.height.px]="dimensions.height">
-  <ng-container *ngIf="isLoading; else treemap">
-    <div class="w-full h-full rounded-lg animate-pulse"></div>
-  </ng-container>
-
-  <ng-template #treemap>
-    <app-treemap-cell *ngFor="let node of nodes" [node]="node" [asset]="getAssetById(node.id)!"
-      [selected]="selectedId === node.id" (clicked)="onCellClicked($event)">
-    </app-treemap-cell>
-  </ng-template>
+<div class="w-full relative bg-dark-primary/50 rounded-lg overflow-hidden" #container>
+  @if (isLoading) {
+    <div class="absolute inset-0 flex items-center justify-center bg-dark-primary/50 animate-pulse">
+      <span class="text-secondary">Loading heatmap...</span>
+    </div>
+  }
 </div>
