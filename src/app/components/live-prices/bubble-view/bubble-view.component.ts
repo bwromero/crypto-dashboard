@@ -1,21 +1,67 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+  OnDestroy,
+  ChangeDetectorRef,
+  NgZone,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CryptoData } from '../../models';
-import { BubbleChartComponent } from './bubble-chart/bubble-chart.component';
+import { D3BubbleChartComponent } from './d3-bubble-chart/d3-bubble-chart.component';
 
 @Component({
   selector: 'app-bubble-view',
   standalone: true,
-  imports: [CommonModule, BubbleChartComponent],
-  templateUrl: './bubble-view.component.html',
-  styles: ``
+  imports: [CommonModule, D3BubbleChartComponent],
+  templateUrl: './bubble-view.component.html'
 })
-export class BubbleViewComponent {
+export class BubbleViewComponent implements AfterViewInit, OnDestroy {
   @Input() data: CryptoData[] = [];
   @Input() isLoading: boolean = false;
   @Output() bubbleClick = new EventEmitter<CryptoData>();
 
-  onBubbleClick(asset: CryptoData): void {
-    this.bubbleClick.emit(asset);
+  @ViewChild('container', { static: true })
+  containerRef!: ElementRef<HTMLDivElement>;
+
+  dimensions = { width: 0, height: 0 };
+  private resizeObs?: ResizeObserver;
+
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private ngZone: NgZone
+  ) {}
+
+  ngAfterViewInit(): void {
+    setTimeout(() => this.updateDimensions(), 0);
+    this.resizeObs = new ResizeObserver(() => {
+      this.ngZone.run(() => {
+        this.updateDimensions();
+        this.cdr.detectChanges();
+      });
+    });
+    this.resizeObs.observe(this.containerRef.nativeElement);
+  }
+
+  ngOnDestroy(): void {
+    this.resizeObs?.disconnect();
+  }
+
+  private updateDimensions() {
+    const el = this.containerRef?.nativeElement;
+    if (!el) return;
+
+    this.dimensions = {
+      width: el.clientWidth,
+      height: el.clientHeight
+    };
+  }
+
+  onBubbleClick(crypto: CryptoData) {
+    this.bubbleClick.emit(crypto);
   }
 }
