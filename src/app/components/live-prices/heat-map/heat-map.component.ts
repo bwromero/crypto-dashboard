@@ -79,12 +79,17 @@ export class HeatMapComponent implements AfterViewInit, OnDestroy, OnChanges {
       this.nodes = [];
       return;
     }
+    
+    // Find the max market cap
+    const maxMarketCap = Math.max(...this.data.cryptos.map(a => a.marketCap));
+    
     const treemapData = this.data.cryptos.map((a) => ({
       id: a.id,
-      value: a.marketCap,
+      value: a.marketCap === maxMarketCap ? a.marketCap * 0.5 : a.marketCap,  // Reduce largest by 30%
       icon: a.icon,
       symbol: a.symbol,
     }));
+    
     this.nodes = calculateTreemapBSP(
       treemapData,
       this.dimensions.width,
