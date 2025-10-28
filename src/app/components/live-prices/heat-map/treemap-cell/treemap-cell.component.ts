@@ -10,11 +10,9 @@ import { LucideAngularModule, icons } from 'lucide-angular';
   templateUrl: './treemap-cell.component.html',
   styles: `
     .cell-icon {
-      width: 20%;
+      width: clamp(24px, 3vw, 68px);  /* Reduced from 5vw to 4vw, max from 72px to 68px */
       height: auto;
       aspect-ratio: 1;
-      max-width: 64px;
-      min-width: 20px;
     }
     
     .cell-symbol {
