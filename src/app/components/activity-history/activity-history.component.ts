@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { CoingeckoService } from '../../services/coingecko.service';
+import { CryptoService } from '../../services/crypto.service';
 
 interface Transaction {
   coin: {
@@ -85,7 +85,7 @@ export class ActivityHistoryComponent implements OnInit {
     }
   ];
 
-  constructor(private coingeckoService: CoingeckoService) {}
+  constructor(private cryptoService: CryptoService) {}
 
   ngOnInit() {
     // If you want to fetch real-time data from CoinGecko API instead of using static images
@@ -97,7 +97,6 @@ export class ActivityHistoryComponent implements OnInit {
     // });
   }
 
-  getCoinIcon(symbol: string): string {
-    return this.coingeckoService.getStaticCoinImage(symbol);
-  }
+  // getCoinIcon(symbol: string): string {
+  // }
 }
