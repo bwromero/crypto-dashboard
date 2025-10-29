@@ -7,6 +7,7 @@ import { CryptoService, CoinGeckoDetailData, CoinGeckoTicker } from '../../servi
 import { LucideAngularModule, Info } from 'lucide-angular';
 import { D3PriceChartComponent, PricePoint } from './d3-price-chart/d3-price-chart.component';
 import { TabsComponent } from './tabs/tabs.component';
+
 @Component({
   selector: 'app-crypto-detail',
   standalone: true,
@@ -26,8 +27,11 @@ export class CryptoDetailComponent implements OnInit, OnDestroy {
   isLoadingTickers: boolean = false;
   isLoading: boolean = true;
   error: string | null = null;
-  activeTab: string = 'overview';
   selectedTimeframe: string = 'ALL';
+  
+  readonly tabs = ['Overview', 'Market', 'Project Info', 'Historical Data'];
+  activeTab = 'Overview';
+  
   private subscription?: Subscription;
 
   constructor(
@@ -143,16 +147,9 @@ export class CryptoDetailComponent implements OnInit, OnDestroy {
     });
   }
 
-  changeTab(tab: string): void {
-    const tabMap: { [key: string]: string } = {
-      'Overview': 'overview',
-      'Market': 'market',
-      'Historical Data': 'historical'
-    };
-    
-    this.activeTab = tabMap[tab] || tab.toLowerCase();
-    
-    if (this.activeTab === 'market' && this.tickers.length === 0 && !this.isLoadingTickers) {
+  changeTab(label: string): void {
+    this.activeTab = label;
+    if (this.activeTab === 'Market' && this.tickers.length === 0) {
       this.loadTickers();
     }
   }
@@ -171,7 +168,7 @@ export class CryptoDetailComponent implements OnInit, OnDestroy {
     });
   }
   onTabChange(): void {
-    if (this.activeTab === 'market') {
+    if (this.activeTab === 'Market') {
       this.loadTickers();
     }
   }

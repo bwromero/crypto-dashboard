@@ -107,13 +107,13 @@
       </div>
     </div>
 
-    <app-tabs [tabs]="['Overview', 'Market', 'Historical Data']" 
+    <app-tabs [tabs]="tabs" 
               [activeTab]="activeTab" 
               (activeTabChange)="changeTab($event)"></app-tabs>
 
 
     <div class="min-h-[600px]">
-      @if (activeTab === 'overview') {
+      @if (activeTab === 'Overview') {
       <div class="space-y-6">
         <div class="bg-transparent rounded-xl p-6">
           <div class="flex items-center justify-between mb-6">
@@ -142,13 +142,6 @@
               [color]="crypto.change24h >= 0 ? '#00C087' : '#FF3E46'"></app-d3-price-chart>
           </div>
         </div>
-
-        @if (cryptoDetail.description?.en) {
-        <div class="bg-transparent rounded-xl p-6">
-          <h3 class="text-lg font-semibold text-white mb-4">What is {{ crypto.name }}?</h3>
-          <p class="text-secondary text-sm leading-relaxed">{{ getDescription() }}</p>
-        </div>
-        }
 
         <div class="grid grid-cols-2 gap-6">
           @if (cryptoDetail.links) {
@@ -227,7 +220,7 @@
       </div>
       }
 
-      @if (activeTab === 'market') {
+      @if (activeTab === 'Market') {
       <div class="space-y-6">
         <div class="bg-transparent rounded-xl p-6">
           <h3 class="text-2xl font-bold text-white mb-2">{{ crypto.name }} Markets</h3>
@@ -295,7 +288,79 @@
       </div>
       }
 
-      @if (activeTab === 'historical') {
+      @if (activeTab === 'Project Info') {
+      <div class="space-y-6">
+        <div class="bg-transparent rounded-xl p-6">
+          <h3 class="text-lg font-semibold text-white mb-4">What is {{ crypto.name }}?</h3>
+          <p class="text-secondary text-sm leading-relaxed">{{ getDescription() }}</p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-6">
+          <div class="bg-transparent rounded-xl p-6">
+            <h3 class="text-sm font-semibold text-white mb-4">Official Resources</h3>
+            <div class="space-y-3">
+              @if (cryptoDetail.links?.homepage && cryptoDetail.links.homepage[0]) {
+              <a [href]="cryptoDetail.links.homepage[0]" target="_blank"
+                class="flex items-center gap-2 text-sm text-secondary hover:text-action transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                </svg>
+                Official Website
+              </a>
+              }
+              @for (forum of cryptoDetail.links?.official_forum_url; track forum) {
+              @if (forum) {
+              <a [href]="forum" target="_blank"
+                class="flex items-center gap-2 text-sm text-secondary hover:text-action transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                </svg>
+                Official Forum
+              </a>
+              }
+              }
+            </div>
+          </div>
+
+          <div class="bg-transparent rounded-xl p-6">
+            <h3 class="text-sm font-semibold text-white mb-4">Social Media</h3>
+            <div class="space-y-3">
+              @if (cryptoDetail.links?.twitter_screen_name) {
+              <a href="https://twitter.com/{{ cryptoDetail.links.twitter_screen_name }}" target="_blank"
+                class="flex items-center gap-2 text-sm text-secondary hover:text-action transition-colors">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                </svg>
+                Twitter
+              </a>
+              }
+              @if (cryptoDetail.links?.subreddit_url) {
+              <a [href]="cryptoDetail.links.subreddit_url" target="_blank"
+                class="flex items-center gap-2 text-sm text-secondary hover:text-action transition-colors">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z" />
+                </svg>
+                Reddit
+              </a>
+              }
+              @if (cryptoDetail.links?.telegram_channel_identifier) {
+              <a href="https://t.me/{{ cryptoDetail.links.telegram_channel_identifier }}" target="_blank"
+                class="flex items-center gap-2 text-sm text-secondary hover:text-action transition-colors">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+                </svg>
+                Telegram
+              </a>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+      }
+
+      @if (activeTab === 'Historical Data') {
       <div class="space-y-6">
         <div class="bg-transparent rounded-xl p-6">
           <div class="flex items-center justify-between mb-6">
