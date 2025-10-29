@@ -1,0 +1,9 @@
+<div class="flex items-center gap-1 mb-6 border-b border-slate-800/50">
+  @for (tab of tabs; track tab) {
+  <button (click)="changeTab(tab)" [class]="activeTab === tab 
+      ? 'px-6 py-3 text-sm font-medium text-action border-b-2 border-action' 
+      : 'px-6 py-3 text-sm font-medium text-secondary hover:text-primary transition-colors'">
+    {{ tab }}
+  </button>
+  }
+</div>

@@ -107,23 +107,10 @@
       </div>
     </div>
 
-    <div class="flex items-center gap-1 mb-6 border-b border-slate-800/50">
-      <button (click)="changeTab('overview')" [class]="activeTab === 'overview' 
-          ? 'px-6 py-3 text-sm font-medium text-action border-b-2 border-action' 
-          : 'px-6 py-3 text-sm font-medium text-secondary hover:text-primary transition-colors'">
-        Overview
-      </button>
-      <button (click)="changeTab('market')" [class]="activeTab === 'market' 
-          ? 'px-6 py-3 text-sm font-medium text-action border-b-2 border-action' 
-          : 'px-6 py-3 text-sm font-medium text-secondary hover:text-primary transition-colors'">
-        Market
-      </button>
-      <button (click)="changeTab('historical')" [class]="activeTab === 'historical' 
-          ? 'px-6 py-3 text-sm font-medium text-action border-b-2 border-action' 
-          : 'px-6 py-3 text-sm font-medium text-secondary hover:text-primary transition-colors'">
-        Historical Data
-      </button>
-    </div>
+    <app-tabs [tabs]="['Overview', 'Market', 'Historical Data']" 
+              [activeTab]="activeTab" 
+              (activeTabChange)="changeTab($event)"></app-tabs>
+
 
     <div class="min-h-[600px]">
       @if (activeTab === 'overview') {

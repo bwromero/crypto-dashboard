@@ -6,11 +6,11 @@ import { CryptoData } from '../models';
 import { CryptoService, CoinGeckoDetailData, CoinGeckoTicker } from '../../services/crypto.service';
 import { LucideAngularModule, Info } from 'lucide-angular';
 import { D3PriceChartComponent, PricePoint } from './d3-price-chart/d3-price-chart.component';
-
+import { TabsComponent } from './tabs/tabs.component';
 @Component({
   selector: 'app-crypto-detail',
   standalone: true,
-  imports: [CommonModule, LucideAngularModule, D3PriceChartComponent],
+  imports: [CommonModule, LucideAngularModule, D3PriceChartComponent, TabsComponent],
   templateUrl: './crypto-detail.component.html',
   styles: []
 })
@@ -26,8 +26,8 @@ export class CryptoDetailComponent implements OnInit, OnDestroy {
   isLoadingTickers: boolean = false;
   isLoading: boolean = true;
   error: string | null = null;
+  activeTab: string = 'overview';
   selectedTimeframe: string = 'ALL';
-  activeTab: 'overview' | 'market' | 'historical' = 'overview';
   private subscription?: Subscription;
 
   constructor(
@@ -143,9 +143,16 @@ export class CryptoDetailComponent implements OnInit, OnDestroy {
     });
   }
 
-  changeTab(tab: 'overview' | 'market' | 'historical'): void {
-    this.activeTab = tab;
-    if (tab === 'market' && this.tickers.length === 0 && !this.isLoadingTickers) {
+  changeTab(tab: string): void {
+    const tabMap: { [key: string]: string } = {
+      'Overview': 'overview',
+      'Market': 'market',
+      'Historical Data': 'historical'
+    };
+    
+    this.activeTab = tabMap[tab] || tab.toLowerCase();
+    
+    if (this.activeTab === 'market' && this.tickers.length === 0 && !this.isLoadingTickers) {
       this.loadTickers();
     }
   }
@@ -163,6 +170,12 @@ export class CryptoDetailComponent implements OnInit, OnDestroy {
       }
     });
   }
+  onTabChange(): void {
+    if (this.activeTab === 'market') {
+      this.loadTickers();
+    }
+  }
+
 
   getDescription(): string {
     if (!this.cryptoDetail?.description?.en) return 'No description available.';
