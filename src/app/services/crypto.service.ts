@@ -113,6 +113,30 @@ export class CryptoService {
     );
   }
 
+  getCryptoById(id: string, currency: string = 'usd'): Observable<CryptoData> {
+    this.isLoadingSubject.next(true);
+    
+    return this.http.get<CoinGeckoMarketData[]>(
+      `${this.baseUrl}/coins/markets`,
+      {
+        params: {
+          vs_currency: currency,
+          ids: id,
+          sparkline: 'true',
+          price_change_percentage: '24h,7d'
+        }
+      }
+    ).pipe(
+      map((data: CoinGeckoMarketData[]) => {
+        this.isLoadingSubject.next(false);
+        if (data && data.length > 0) {
+          return this.transformToCryptoData(data)[0];
+        }
+        throw new Error(`Crypto with id ${id} not found`);
+      })
+    );
+  }
+
   private transformToCryptoData(apiData: CoinGeckoMarketData[]): CryptoData[] {
     return apiData.map((coin, index) => ({
       id: coin.id,
@@ -126,6 +150,7 @@ export class CryptoService {
       marketCap: coin.market_cap || 0,
       volume24h: coin.total_volume || 0,
       circulatingSupply: coin.circulating_supply || 0,
+      totalSupply: coin.total_supply || 0,
       chartData: this.generateChartData(coin.sparkline_in_7d?.price || []),
       isFavorite: false,
       categoryId: this.getCategoryId(coin.symbol)

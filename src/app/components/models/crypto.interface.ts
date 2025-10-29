@@ -11,6 +11,7 @@ export interface CryptoData {
     marketCap: number;
     volume24h: number;
     circulatingSupply: number;
+    totalSupply?: number;
     chartData: number[];
     isFavorite: boolean;
     categoryId: string;

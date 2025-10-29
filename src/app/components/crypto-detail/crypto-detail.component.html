@@ -1,7 +1,50 @@
-<div class="p-6">
-  <h1 class="text-3xl font-bold text-white mb-4">Crypto Detail Page</h1>
-  <p class="text-secondary">Crypto ID: {{ cryptoId }}</p>
-  <p class="text-primary mt-4">This page will show detailed information about the selected cryptocurrency.</p>
-  <p class="text-secondary mt-2">Coming soon: Price charts, market data, news, and more!</p>
+<div class="flex w-full gap-6">
+  @if (isLoading) {
+    <div class="flex items-center justify-center w-full py-20">
+      <span class="text-secondary text-lg">Loading cryptocurrency data...</span>
+    </div>
+  } @else if (error) {
+    <div class="flex items-center justify-center w-full py-20">
+      <span class="text-error text-lg">{{ error }}</span>
+    </div>
+  } @else if (crypto) {
+    <div class="flex flex-col flex-1">
+      <div class="flex items-center gap-4 mb-4">
+        <img [src]="crypto.icon" [alt]="crypto.symbol" class="w-12 h-12 rounded-full">
+        <div>
+          <h1 class="text-3xl font-bold text-primary">{{ crypto.name }}</h1>
+          <p class="text-secondary">{{ crypto.symbol }}</p>
+        </div>
+      </div>
+      <div class="mt-4">
+        <p class="text-sm text-secondary">Rank #{{ crypto.rank }}</p>
+      </div>
+    </div>
+    <div class="flex flex-col flex-1">
+      <div class="text-4xl font-bold text-primary mb-2">
+        ${{ crypto.price | number : '1.2-2' }}
+      </div>
+      <div [class]="crypto.change24h >= 0 ? 'text-action' : 'text-error'">
+        {{ crypto.change24h >= 0 ? '▲' : '▼' }}{{ crypto.change24h | number : '1.2-2' }}%
+      </div>
+      <div class="mt-4 space-y-2">
+        <div class="flex justify-between">
+          <span class="text-secondary">Market Cap:</span>
+          <span class="text-primary">${{ crypto.marketCap / 1000000000 | number : '1.2-2' }}B</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-secondary">Volume (24h):</span>
+          <span class="text-primary">${{ crypto.volume24h / 1000000000 | number : '1.2-2' }}B</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-secondary">Circulating Supply:</span>
+          <span class="text-primary">{{ crypto.circulatingSupply | number : '1.0-0' }}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-secondary">Total Supply:</span>
+          <span class="text-primary">{{ crypto.totalSupply ? (crypto.totalSupply | number : '1.0-0') : 'N/A' }}</span>
+        </div>
+      </div>
+    </div>
+  }
 </div>
-
