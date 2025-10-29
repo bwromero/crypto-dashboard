@@ -28,7 +28,7 @@
       </div>
 
       <div class="flex items-center gap-3">
-        @if (cryptoDetail.links?.homepage && cryptoDetail.links.homepage[0]) {
+        @if (cryptoDetail.links.homepage && cryptoDetail.links.homepage[0]) {
         <a [href]="cryptoDetail.links.homepage[0]" target="_blank"
           class="flex items-center gap-2 px-4 py-2 bg-slate/50 hover:bg-slate rounded-lg text-sm text-primary transition-colors">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -38,7 +38,7 @@
           Website
         </a>
         }
-        @if (cryptoDetail.links?.twitter_screen_name) {
+        @if (cryptoDetail.links.twitter_screen_name) {
         <a href="https://twitter.com/{{ cryptoDetail.links.twitter_screen_name }}" target="_blank"
           class="p-2 bg-slate/50 hover:bg-slate rounded-lg transition-colors">
           <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 24 24">
@@ -47,7 +47,7 @@
           </svg>
         </a>
         }
-        @if (cryptoDetail.links?.subreddit_url) {
+        @if (cryptoDetail.links.subreddit_url) {
         <a [href]="cryptoDetail.links.subreddit_url" target="_blank"
           class="p-2 bg-slate/50 hover:bg-slate rounded-lg transition-colors">
           <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 24 24">
@@ -182,7 +182,7 @@
           </div>
           }
 
-          @if (cryptoDetail.links?.blockchain_site && cryptoDetail.links.blockchain_site.length > 0) {
+          @if (cryptoDetail.links.blockchain_site && cryptoDetail.links.blockchain_site.length > 0) {
           <div class="bg-transparent rounded-xl p-6">
             <h3 class="text-sm font-semibold text-white mb-4">Explorers</h3>
             <div class="space-y-3">
@@ -299,7 +299,7 @@
           <div class="bg-transparent rounded-xl p-6">
             <h3 class="text-sm font-semibold text-white mb-4">Official Resources</h3>
             <div class="space-y-3">
-              @if (cryptoDetail.links?.homepage && cryptoDetail.links.homepage[0]) {
+              @if (cryptoDetail.links.homepage && cryptoDetail.links.homepage[0]) {
               <a [href]="cryptoDetail.links.homepage[0]" target="_blank"
                 class="flex items-center gap-2 text-sm text-secondary hover:text-action transition-colors">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -309,7 +309,7 @@
                 Official Website
               </a>
               }
-              @for (forum of cryptoDetail.links?.official_forum_url; track forum) {
+              @for (forum of cryptoDetail.links.official_forum_url; track forum) {
               @if (forum) {
               <a [href]="forum" target="_blank"
                 class="flex items-center gap-2 text-sm text-secondary hover:text-action transition-colors">
@@ -327,7 +327,7 @@
           <div class="bg-transparent rounded-xl p-6">
             <h3 class="text-sm font-semibold text-white mb-4">Social Media</h3>
             <div class="space-y-3">
-              @if (cryptoDetail.links?.twitter_screen_name) {
+              @if (cryptoDetail.links.twitter_screen_name) {
               <a href="https://twitter.com/{{ cryptoDetail.links.twitter_screen_name }}" target="_blank"
                 class="flex items-center gap-2 text-sm text-secondary hover:text-action transition-colors">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -336,7 +336,7 @@
                 Twitter
               </a>
               }
-              @if (cryptoDetail.links?.subreddit_url) {
+              @if (cryptoDetail.links.subreddit_url) {
               <a [href]="cryptoDetail.links.subreddit_url" target="_blank"
                 class="flex items-center gap-2 text-sm text-secondary hover:text-action transition-colors">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -345,7 +345,7 @@
                 Reddit
               </a>
               }
-              @if (cryptoDetail.links?.telegram_channel_identifier) {
+              @if (cryptoDetail.links.telegram_channel_identifier) {
               <a href="https://t.me/{{ cryptoDetail.links.telegram_channel_identifier }}" target="_blank"
                 class="flex items-center gap-2 text-sm text-secondary hover:text-action transition-colors">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
