@@ -40,6 +40,43 @@ export interface CoinGeckoMarketData {
   };
 }
 
+export interface CoinGeckoDetailData {
+  id: string;
+  symbol: string;
+  name: string;
+  description: {
+    en: string;
+  };
+  links: {
+    homepage: string[];
+    blockchain_site: string[];
+    official_forum_url: string[];
+    chat_url: string[];
+    twitter_screen_name: string;
+    subreddit_url: string;
+    telegram_channel_identifier: string;
+  };
+  image: {
+    thumb: string;
+    small: string;
+    large: string;
+  };
+  market_data: {
+    current_price: { usd: number };
+    market_cap: { usd: number };
+    total_volume: { usd: number };
+    circulating_supply: number;
+    total_supply: number;
+    max_supply: number;
+    price_change_percentage_24h: number;
+    price_change_percentage_7d: number;
+  };
+  contract_address?: string;
+  platforms?: {
+    [key: string]: string;
+  };
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -133,6 +170,29 @@ export class CryptoService {
           return this.transformToCryptoData(data)[0];
         }
         throw new Error(`Crypto with id ${id} not found`);
+      })
+    );
+  }
+
+  getCryptoDetailById(id: string): Observable<CoinGeckoDetailData> {
+    this.isLoadingSubject.next(true);
+    
+    return this.http.get<CoinGeckoDetailData>(
+      `${this.baseUrl}/coins/${id}`,
+      {
+        params: {
+          localization: 'false',
+          tickers: 'false',
+          market_data: 'true',
+          community_data: 'true',
+          developer_data: 'false',
+          sparkline: 'false'
+        }
+      }
+    ).pipe(
+      map((data: CoinGeckoDetailData) => {
+        this.isLoadingSubject.next(false);
+        return data;
       })
     );
   }
