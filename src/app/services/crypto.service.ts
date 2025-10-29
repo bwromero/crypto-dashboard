@@ -4,7 +4,43 @@ import { Observable, map, BehaviorSubject } from 'rxjs';
 import { CryptoData } from '../components/models';
 
 export interface CryptoPrice {
-  prices: [number, number][]; // [timestamp, price]
+  prices: [number, number][];
+  market_caps?: [number, number][];
+  total_volumes?: [number, number][];
+}
+
+export interface CoinGeckoTicker {
+  base: string;
+  target: string;
+  market: {
+    name: string;
+    identifier: string;
+    has_trading_incentive: boolean;
+  };
+  last: number;
+  volume: number;
+  converted_last: {
+    usd: number;
+  };
+  converted_volume: {
+    usd: number;
+  };
+  trust_score: string;
+  bid_ask_spread_percentage: number;
+  timestamp: string;
+  last_traded_at: string;
+  last_fetch_at: string;
+  is_anomaly: boolean;
+  is_stale: boolean;
+  trade_url: string;
+  token_info_url: string | null;
+  coin_id: string;
+  target_coin_id?: string;
+}
+
+export interface CoinGeckoTickersResponse {
+  name: string;
+  tickers: CoinGeckoTicker[];
 }
 
 export interface CoinGeckoMarketData {
@@ -207,6 +243,26 @@ export class CryptoService {
           interval: 'daily'
         }
       }
+    );
+  }
+
+  getTickers(coinId: string): Observable<CoinGeckoTicker[]> {
+    return this.http.get<CoinGeckoTickersResponse>(
+      `${this.baseUrl}/coins/${coinId}/tickers`,
+      {
+        params: {
+          include_exchange_logo: 'false',
+          page: '1',
+          order: 'trust_score_desc',
+          depth: 'false'
+        }
+      }
+    ).pipe(
+      map(response => response.tickers.filter(ticker => 
+        !ticker.is_anomaly && 
+        !ticker.is_stale && 
+        ticker.trust_score !== 'red'
+      ))
     );
   }
 
