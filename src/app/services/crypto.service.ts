@@ -197,6 +197,19 @@ export class CryptoService {
     );
   }
 
+  getMarketChart(coinId: string, days: number = 90, currency: string = 'usd'): Observable<CryptoPrice> {
+    return this.http.get<CryptoPrice>(
+      `${this.baseUrl}/coins/${coinId}/market_chart`,
+      {
+        params: {
+          vs_currency: currency,
+          days: days.toString(),
+          interval: 'daily'
+        }
+      }
+    );
+  }
+
   private transformToCryptoData(apiData: CoinGeckoMarketData[]): CryptoData[] {
     return apiData.map((coin, index) => ({
       id: coin.id,

@@ -5,11 +5,12 @@ import { Subscription, forkJoin } from 'rxjs';
 import { CryptoData } from '../models';
 import { CryptoService, CoinGeckoDetailData } from '../../services/crypto.service';
 import { LucideAngularModule, Info } from 'lucide-angular';
+import { D3PriceChartComponent, PricePoint } from './d3-price-chart/d3-price-chart.component';
 
 @Component({
   selector: 'app-crypto-detail',
   standalone: true,
-  imports: [CommonModule, LucideAngularModule],
+  imports: [CommonModule, LucideAngularModule, D3PriceChartComponent],
   templateUrl: './crypto-detail.component.html',
   styles: []
 })
@@ -18,8 +19,10 @@ export class CryptoDetailComponent implements OnInit, OnDestroy {
   cryptoId: string = '';
   crypto: CryptoData | null = null;
   cryptoDetail: CoinGeckoDetailData | null = null;
+  chartData: PricePoint[] = [];
   isLoading: boolean = true;
   error: string | null = null;
+  selectedTimeframe: string = 'ALL';
   private subscription?: Subscription;
 
   constructor(
@@ -44,11 +47,16 @@ export class CryptoDetailComponent implements OnInit, OnDestroy {
 
     this.subscription = forkJoin({
       basic: this.cryptoService.getCryptoById(id),
-      detail: this.cryptoService.getCryptoDetailById(id)
+      detail: this.cryptoService.getCryptoDetailById(id),
+      chart: this.cryptoService.getMarketChart(id, 90)
     }).subscribe({
       next: (data) => {
         this.crypto = data.basic;
         this.cryptoDetail = data.detail;
+        this.chartData = data.chart.prices.map(([timestamp, price]) => ({
+          timestamp,
+          price
+        }));
         this.isLoading = false;
       },
       error: (err) => {
@@ -56,6 +64,29 @@ export class CryptoDetailComponent implements OnInit, OnDestroy {
         this.isLoading = false;
         console.error('Error loading crypto:', err);
       }
+    });
+  }
+
+  changeTimeframe(timeframe: string): void {
+    this.selectedTimeframe = timeframe;
+    const daysMap: { [key: string]: number } = {
+      '1D': 1,
+      '1M': 30,
+      '6M': 180,
+      '1Y': 365,
+      'YTD': 365,
+      'ALL': 'max' as any
+    };
+    
+    const days = daysMap[timeframe] || 90;
+    this.cryptoService.getMarketChart(this.cryptoId, days).subscribe({
+      next: (data) => {
+        this.chartData = data.prices.map(([timestamp, price]) => ({
+          timestamp,
+          price
+        }));
+      },
+      error: (err) => console.error('Error loading chart:', err)
     });
   }
 
