@@ -21,7 +21,9 @@
 
     <!-- Body -->
     <tbody>
-      <tr *ngFor="let crypto of sortedData" class="hover:bg-dark-primary transition-colors cursor-pointer">
+      <tr *ngFor="let crypto of sortedData" 
+          class="hover:bg-dark-primary transition-colors cursor-pointer"
+          (click)="onRowClick(crypto)">
         <!-- Rank -->
         <td class="pl-3 py-6 text-secondary text-sm w-min">
           {{ crypto.rank }}
@@ -98,7 +100,7 @@
 
         <!-- Favorite -->
         <td class="py-6 px-3">
-          <button (click)="toggleFavorite(crypto)" class="text-secondary hover:text-warning transition-colors">
+          <button (click)="toggleFavorite($event, crypto)" class="text-secondary hover:text-warning transition-colors">
             <svg class="w-4 h-4" [class.fill-warning]="crypto.isFavorite" fill="none" stroke="currentColor"
               viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

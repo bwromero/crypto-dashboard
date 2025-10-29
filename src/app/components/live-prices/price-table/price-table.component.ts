@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { CryptoData } from '../../models';
 import { LucideAngularModule, icons } from 'lucide-angular';
 import {
@@ -18,6 +19,7 @@ import {
   styles: [],
 })
 export class PriceTableComponent {
+  constructor(private router: Router) {}
   @Input() dataSource: CryptoData[] = [];
   protected readonly SortDirection = SortDirection;
   sortColumn: keyof CryptoData | '' = '';
@@ -69,7 +71,12 @@ export class PriceTableComponent {
       .join(' ');
   }
 
-  toggleFavorite(element: CryptoData) {
+  toggleFavorite(event: Event, element: CryptoData) {
+    event.stopPropagation();
     element.isFavorite = !element.isFavorite;
+  }
+
+  onRowClick(crypto: CryptoData) {
+    this.router.navigate(['/crypto', crypto.id]);
   }
 }
