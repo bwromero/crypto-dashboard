@@ -4,15 +4,17 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription, forkJoin } from 'rxjs';
 import { CryptoData } from '../models';
 import { CryptoService, CoinGeckoDetailData } from '../../services/crypto.service';
+import { LucideAngularModule, Info } from 'lucide-angular';
 
 @Component({
   selector: 'app-crypto-detail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, LucideAngularModule],
   templateUrl: './crypto-detail.component.html',
   styles: []
 })
 export class CryptoDetailComponent implements OnInit, OnDestroy {
+  readonly Info = Info;
   cryptoId: string = '';
   crypto: CryptoData | null = null;
   cryptoDetail: CoinGeckoDetailData | null = null;
