@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CoinGeckoDetailData } from '../../../services/crypto.service';
 import { CryptoData } from '../../models';
 import { DecimalPipe } from '@angular/common';
-import { LucideAngularModule, Info } from 'lucide-angular';
+import { LucideAngularModule, Info, Star } from 'lucide-angular';
 
 @Component({
   selector: 'app-crypto-header',
@@ -16,4 +16,5 @@ export class CryptoHeaderComponent {
   @Input() crypto?: CryptoData | null = null;
 
   readonly Info = Info;
+  readonly Star = Star;
 }
