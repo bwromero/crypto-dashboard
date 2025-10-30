@@ -21,34 +21,34 @@
         <div class="grid grid-cols-[auto_auto] text-secondary">
             <div class="flex flex-col gap-2 mr-5">
                 <label for="website">Website</label>
-                <label for="website">Community</label>
-                <label for="website">Explorers</label>
+                <label for="community">Community</label>
+                <label for="explorers">Explorers</label>
                 @if(cryptoDetail?.contract_address) {
-                <label for="website">Contract</label>
+                <label for="contract">Contract</label>
                 }
             </div>
             <div class="flex flex-col gap-2">
-                <div class="flex items-center gap-1">
+                <div class="flex items-center gap-1" id="website">
                     <lucide-icon [img]="BadgeCheck" [size]="16" class="text-slate-success" [strokeWidth]="1"
-                        fill="true"></lucide-icon>
+                        fill="true">
+                    </lucide-icon>
                     {{ cryptoDetail?.links?.homepage?.[0] | domain }}
                     <a href="{{ cryptoDetail?.links?.homepage?.[0] }}" target="_blank">
                         <lucide-icon [img]="SquareArrowOutUpRight" [size]="13" class="text-secondary" [strokeWidth]="2">
                         </lucide-icon>
                     </a>
                 </div>
-                <div class="gap-2 flex flex-wrap">
+                <div class="gap-2 flex flex-wrap" id="community">
                     @for(social of socialLinks; track social.name) {
                     <a href="{{ social.url }}" target="_blank"> <span class="text-primary">{{ social.url | social
                             }}</span></a>
 
                     }
                 </div>
-                <div class="flex"></div>
+                <div class="flex" id="explorers"></div>
                 @if(cryptoDetail?.contract_address) {
-                <div class="flex">
-                    <span
-                        class="text-secondary mr-1 border-r-1 border-slate p-2">
+                <div class="flex" id="contract">
+                    <span class="text-secondary mr-1 border-r-1 border-slate p-2">
                         {{cryptoDetail?.contract_address | shortenAddress}}
                     </span>
                     <button (click)="copyToClipboard(cryptoDetail?.contract_address || '')"
@@ -57,12 +57,7 @@
                     </button>
                 </div>
                 }
-
-
-
             </div>
-
-
         </div>
     </div>
 

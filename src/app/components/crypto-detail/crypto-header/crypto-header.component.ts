@@ -80,6 +80,13 @@ export class CryptoHeaderComponent {
     return social;
   }
 
+  get explorers(){
+    if(!this.cryptoDetail?.links) return [];
+    const { links } = this.cryptoDetail;
+    return links.blockchain_site.slice(0, 5);
+
+  }
+
   copyToClipboard(string: string) {
     if(!string) return;
     navigator.clipboard.writeText(string).then(() => {
