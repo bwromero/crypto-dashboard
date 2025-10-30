@@ -3,8 +3,8 @@
         <img [src]="cryptoDetail?.image?.large" [alt]="cryptoDetail?.name" class="w-16 h-16 rounded-full" />
         <div>
             <div class="flex items-center gap-3 mb-2">
-                <h1 class="text-2xl font-bold text-white">{{ cryptoDetail?.name }} Price ({{
-                    cryptoDetail?.symbol?.toUpperCase() }})</h1>
+                <h1 class="text-2xl font-bold text-white">{{ cryptoDetail?.name }} Price <span class="text-2xl text-secondary"> ({{
+                    cryptoDetail?.symbol?.toUpperCase() }})</span></h1>
                 <button class="text-secondary hover:text-action border border-slate rounded-2xl p-2 transition-colors">
                     <lucide-icon [img]="Star" [size]="18" class="text-secondary"></lucide-icon>
                 </button>
