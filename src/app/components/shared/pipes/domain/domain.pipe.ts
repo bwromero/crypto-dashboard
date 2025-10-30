@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'domain',
-  standalone: true, // 👈 important
+  standalone: true
 })
 export class DomainPipe implements PipeTransform {
   transform(value: string | undefined): string {

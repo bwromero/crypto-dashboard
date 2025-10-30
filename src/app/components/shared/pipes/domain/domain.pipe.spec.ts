@@ -1,4 +1,4 @@
-import { DomainPipe } from './domain.pipe';
+import { DomainPipe } from "./domain.pipe";
 
 describe('DomainPipe', () => {
   it('create an instance', () => {

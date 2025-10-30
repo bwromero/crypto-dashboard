@@ -4,7 +4,8 @@ import { CryptoData } from '../../models';
 import { DecimalPipe } from '@angular/common';
 import { LucideAngularModule, Info, Star } from 'lucide-angular';
 import { JsonPipe } from '@angular/common';
-import { DomainPipe } from '../../shared/pipes/domain.pipe';
+import { DomainPipe } from '../../shared/pipes/domain/domain.pipe';
+import { SocialPipe } from '../../shared/pipes/social/social.pipe';
 
 export type SocialLink = {
   name: string;
@@ -22,7 +23,7 @@ export enum SocialLinkName {
 @Component({
   selector: 'app-crypto-header',
   standalone: true,
-  imports: [DecimalPipe, LucideAngularModule, JsonPipe, DomainPipe],
+  imports: [DecimalPipe, LucideAngularModule, JsonPipe, DomainPipe, SocialPipe],
   templateUrl: './crypto-header.component.html',
   styles: ``
 })
