@@ -18,7 +18,7 @@
                         crypto.rank }}</span></p>
             </div>
         </div>
-        <div class="grid grid-cols-[auto_auto] text-secondary">
+        <div class="grid grid-cols-2 text-secondary">
             <div class="flex flex-col gap-2 mr-5">
                 <label for="website">Website</label>
                 <label for="community">Community</label>
@@ -42,10 +42,14 @@
                     @for(social of socialLinks; track social.name) {
                     <a href="{{ social.url }}" target="_blank"> <span class="text-primary">{{ social.url | social
                             }}</span></a>
-
                     }
                 </div>
-                <div class="flex" id="explorers"></div>
+                <div class="flex" id="explorers">
+                    @for(explorer of explorers; track explorer.name) {
+                    <a href="{{ explorer.url }}" target="_blank"> <span class="text-primary">{{ explorer.name | social
+                            }}</span></a>
+                    }
+                </div>
                 @if(cryptoDetail?.contract_address) {
                 <div class="flex" id="contract">
                     <span class="text-secondary mr-1 border-r-1 border-slate p-2">

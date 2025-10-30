@@ -2,16 +2,23 @@ import { Component, Input } from '@angular/core';
 import { CoinGeckoDetailData } from '../../../services/crypto.service';
 import { CryptoData } from '../../shared/models';
 import { DecimalPipe } from '@angular/common';
-import { LucideAngularModule, Info, Star, SquareArrowOutUpRight, BadgeCheck, Copy } from 'lucide-angular';
+import {
+  LucideAngularModule,
+  Info,
+  Star,
+  SquareArrowOutUpRight,
+  BadgeCheck,
+  Copy,
+} from 'lucide-angular';
 import { JsonPipe } from '@angular/common';
 import { DomainPipe } from '../../shared/pipes/domain/domain.pipe';
 import { SocialPipe } from '../../shared/pipes/social/social.pipe';
 import { ShortenAddressPipe } from '../../shared/pipes/shorten-address/shorten-address.pipe';
 
-export type SocialLink = {
+export type Link = {
   name: string;
   url: string;
-}
+};
 
 export enum SocialLinkName {
   Twitter = 'Twitter',
@@ -21,15 +28,31 @@ export enum SocialLinkName {
   Bitbucket = 'Bitbucket',
 }
 
+export enum ExplorerName {
+  Etherscan = 'etherscan',
+  Blockchair = 'blockchair',
+  Ethplorer = 'ethplorer',
+  Oklink = 'oklink',
+  BscScan = 'bscScan',
+  PolygonScan = 'polygonScan',
+  Explorer = 'explorer',
+}
+
 @Component({
   selector: 'app-crypto-header',
   standalone: true,
-  imports: [DecimalPipe, LucideAngularModule, JsonPipe, DomainPipe, SocialPipe, ShortenAddressPipe],
+  imports: [
+    JsonPipe,
+    DecimalPipe,
+    LucideAngularModule,
+    DomainPipe,
+    SocialPipe,
+    ShortenAddressPipe,
+  ],
   templateUrl: './crypto-header.component.html',
-  styles: ``
+  styles: ``,
 })
 export class CryptoHeaderComponent {
-
   @Input() cryptoDetail: CoinGeckoDetailData | null = null;
   @Input() crypto?: CryptoData | null = null;
 
@@ -44,7 +67,7 @@ export class CryptoHeaderComponent {
 
     const { links } = this.cryptoDetail;
 
-    const social: SocialLink[] = [];
+    const social: Link[] = [];
     // Twitter
     if (links.twitter_screen_name)
       social.push({
@@ -71,29 +94,55 @@ export class CryptoHeaderComponent {
         url: `https://github.com/${links.repos_url.github}`,
       });
 
-      if (links.repos_url.bitbucket)
-        social.push({
-          name: 'Bitbucket',
-          url: `https://bitbucket.com/${links.repos_url.bitbucket}`,
-        });
+    if (links.repos_url.bitbucket)
+      social.push({
+        name: 'Bitbucket',
+        url: `https://bitbucket.com/${links.repos_url.bitbucket}`,
+      });
 
     return social;
   }
 
-  get explorers(){
-    if(!this.cryptoDetail?.links) return [];
+  get explorers() {
+    if (!this.cryptoDetail?.links) return [];
     const { links } = this.cryptoDetail;
-    return links.blockchain_site.slice(0, 5);
 
+    const explorers: Link[] = [];
+
+    if (links.blockchain_site.some(url => url.includes(ExplorerName.Etherscan)))
+      explorers.push({
+        name: ExplorerName.Etherscan,
+        url: links.blockchain_site.find(url => url.includes(ExplorerName.Etherscan)) || '',
+      });
+    if (links.blockchain_site.some(url => url.includes(ExplorerName.Oklink)))
+      explorers.push({
+        name: ExplorerName.Oklink,
+        url: links.blockchain_site.find(url => url.includes(ExplorerName.Oklink)) || '',
+      });
+    if (links.blockchain_site.some(url => url.includes(ExplorerName.BscScan)))
+      explorers.push({
+        name: ExplorerName.BscScan,
+        url: links.blockchain_site.find(url => url.includes(ExplorerName.BscScan)) || '',
+      });
+    if (links.blockchain_site.some(url => url.includes(ExplorerName.PolygonScan)))
+      explorers.push({
+        name: ExplorerName.PolygonScan,
+        url:
+          links.blockchain_site.find(url => url.includes(ExplorerName.PolygonScan)) ||
+          '',
+      });
+    return explorers;
   }
 
   copyToClipboard(string: string) {
-    if(!string) return;
-    navigator.clipboard.writeText(string).then(() => {
-      console.log('Address copied to clipboard');
-    }).catch(err => {
-      console.error('Failed to copy:', err);
-    });
-    }
+    if (!string) return;
+    navigator.clipboard
+      .writeText(string)
+      .then(() => {
+        console.log('Address copied to clipboard');
+      })
+      .catch((err) => {
+        console.error('Failed to copy:', err);
+      });
+  }
 }
-
