@@ -26,10 +26,16 @@
                 <label for="website">Contract</label>
             </div>
             <div class="flex flex-col gap-2">
-                <span>{{ cryptoDetail?.links?.homepage?.[0] | domain }}</span>
+                <span class="flex items-center gap-1">{{ cryptoDetail?.links?.homepage?.[0] | domain }}
+                    <a href="{{ cryptoDetail?.links?.homepage?.[0] }}" target="_blank">
+                        <lucide-icon [img]="SquareArrowOutUpRight" [size]="13" class="text-secondary" [strokeWidth]="2">
+                        </lucide-icon>
+                    </a>
+                </span>
                 <div class="gap-2 flex flex-wrap">
                     @for(social of socialLinks; track social.name) {
-                    <a href="{{ social.url }}" target="_blank"> <span class="text-primary">{{ social.url | social }}</span></a>
+                    <a href="{{ social.url }}" target="_blank"> <span class="text-primary">{{ social.url | social
+                            }}</span></a>
 
                     }
                 </div>
