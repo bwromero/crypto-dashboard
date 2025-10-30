@@ -11,7 +11,7 @@ import {
   NgZone,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CryptoData, HeatmapData } from '../../models';
+import { CryptoData, HeatmapData } from '../../shared/models';
 import { D3TreemapComponent } from './d3-treemap/d3-treemap.component';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PortfolioItem, AccountType } from '../../models/portfolio.interface';
+import { PortfolioItem, AccountType } from '../../shared/models/portfolio.interface';
 
 @Component({
   selector: 'app-portfolio-card',

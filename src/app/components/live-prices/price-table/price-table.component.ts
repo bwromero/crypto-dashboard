@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { CryptoData } from '../../models';
+import { CryptoData } from '../../shared/models';
 import { LucideAngularModule, icons } from 'lucide-angular';
 import {
   priceTableColumns,
@@ -9,7 +9,7 @@ import {
   SortDirection,
   sortIcons,
   SortIcon,
-} from '../../models/price-table-layout';
+} from '../../shared/models/price-table-layout';
 
 @Component({
   selector: 'app-price-table',

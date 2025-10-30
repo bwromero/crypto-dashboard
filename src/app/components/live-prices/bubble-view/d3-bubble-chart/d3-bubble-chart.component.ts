@@ -10,7 +10,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CryptoData } from '../../../models';
+import { CryptoData } from '../../../shared/models';
 import * as d3 from 'd3';
 
 @Component({

@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription, forkJoin } from 'rxjs';
-import { CryptoData } from '../models';
+import { CryptoData } from '../shared/models';
 import { CryptoService, CoinGeckoDetailData, CoinGeckoTicker } from '../../services/crypto.service';
 import { LucideAngularModule, Info } from 'lucide-angular';
 import { D3PriceChartComponent, PricePoint } from './d3-price-chart/d3-price-chart.component';

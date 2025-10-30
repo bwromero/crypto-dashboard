@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { CoinGeckoDetailData } from '../../../services/crypto.service';
-import { CryptoData } from '../../models';
+import { CryptoData } from '../../shared/models';
 import { DecimalPipe } from '@angular/common';
-import { LucideAngularModule, Info, Star, SquareArrowOutUpRight } from 'lucide-angular';
+import { LucideAngularModule, Info, Star, SquareArrowOutUpRight, BadgeCheck } from 'lucide-angular';
 import { JsonPipe } from '@angular/common';
 import { DomainPipe } from '../../shared/pipes/domain/domain.pipe';
 import { SocialPipe } from '../../shared/pipes/social/social.pipe';
@@ -34,6 +34,7 @@ export class CryptoHeaderComponent {
   readonly Info = Info;
   readonly Star = Star;
   readonly SquareArrowOutUpRight = SquareArrowOutUpRight;
+  readonly BadgeCheck = BadgeCheck;
 
   get socialLinks() {
     if (!this.cryptoDetail?.links) return [];
