@@ -91,6 +91,10 @@ export interface CoinGeckoDetailData {
     twitter_screen_name: string;
     subreddit_url: string;
     telegram_channel_identifier: string;
+    repos_url: {
+      github: string;
+      bitbucket: string;
+    };
   };
   image: {
     thumb: string;

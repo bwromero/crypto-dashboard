@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { LucideAngularModule, icons, ChevronLeft } from 'lucide-angular';
 import { NavigationItem, NavigationItemComponent } from '../../components/navigation-item/navigation-item.component';
-import { ButtonComponent, ToggleOption } from '../../components/shared/button/button.component';
+import { ButtonComponent, ToggleOption } from '../../components/shared/components/button/button.component';
 
 export interface NavigationSection {
   title?: string;
