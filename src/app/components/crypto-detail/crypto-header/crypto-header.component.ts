@@ -2,10 +2,11 @@ import { Component, Input } from '@angular/core';
 import { CoinGeckoDetailData } from '../../../services/crypto.service';
 import { CryptoData } from '../../shared/models';
 import { DecimalPipe } from '@angular/common';
-import { LucideAngularModule, Info, Star, SquareArrowOutUpRight, BadgeCheck } from 'lucide-angular';
+import { LucideAngularModule, Info, Star, SquareArrowOutUpRight, BadgeCheck, Copy } from 'lucide-angular';
 import { JsonPipe } from '@angular/common';
 import { DomainPipe } from '../../shared/pipes/domain/domain.pipe';
 import { SocialPipe } from '../../shared/pipes/social/social.pipe';
+import { ShortenAddressPipe } from '../../shared/pipes/shorten-address/shorten-address.pipe';
 
 export type SocialLink = {
   name: string;
@@ -23,11 +24,12 @@ export enum SocialLinkName {
 @Component({
   selector: 'app-crypto-header',
   standalone: true,
-  imports: [DecimalPipe, LucideAngularModule, JsonPipe, DomainPipe, SocialPipe],
+  imports: [DecimalPipe, LucideAngularModule, JsonPipe, DomainPipe, SocialPipe, ShortenAddressPipe],
   templateUrl: './crypto-header.component.html',
   styles: ``
 })
 export class CryptoHeaderComponent {
+
   @Input() cryptoDetail: CoinGeckoDetailData | null = null;
   @Input() crypto?: CryptoData | null = null;
 
@@ -35,6 +37,7 @@ export class CryptoHeaderComponent {
   readonly Star = Star;
   readonly SquareArrowOutUpRight = SquareArrowOutUpRight;
   readonly BadgeCheck = BadgeCheck;
+  readonly Copy = Copy;
 
   get socialLinks() {
     if (!this.cryptoDetail?.links) return [];
@@ -76,5 +79,14 @@ export class CryptoHeaderComponent {
 
     return social;
   }
+
+  copyToClipboard(string: string) {
+    if(!string) return;
+    navigator.clipboard.writeText(string).then(() => {
+      console.log('Address copied to clipboard');
+    }).catch(err => {
+      console.error('Failed to copy:', err);
+    });
+    }
 }
 
