@@ -1,12 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CoinGeckoDetailData } from '../../../services/crypto.service';
+import { CryptoData } from '../../models';
+import { DecimalPipe } from '@angular/common';
+import { LucideAngularModule, Info } from 'lucide-angular';
 
 @Component({
   selector: 'app-crypto-header',
   standalone: true,
-  imports: [],
+  imports: [DecimalPipe, LucideAngularModule],
   templateUrl: './crypto-header.component.html',
   styles: ``
 })
 export class CryptoHeaderComponent {
+  @Input() cryptoDetail: CoinGeckoDetailData | null = null;
+  @Input() crypto?: CryptoData | null = null;
 
+  readonly Info = Info;
 }

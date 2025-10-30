@@ -7,11 +7,12 @@ import { CryptoService, CoinGeckoDetailData, CoinGeckoTicker } from '../../servi
 import { LucideAngularModule, Info } from 'lucide-angular';
 import { D3PriceChartComponent, PricePoint } from './d3-price-chart/d3-price-chart.component';
 import { TabsComponent } from './tabs/tabs.component';
+import { CryptoHeaderComponent } from './crypto-header/crypto-header.component';
 
 @Component({
   selector: 'app-crypto-detail',
   standalone: true,
-  imports: [CommonModule, LucideAngularModule, D3PriceChartComponent, TabsComponent],
+  imports: [CommonModule, LucideAngularModule, D3PriceChartComponent, TabsComponent, CryptoHeaderComponent],
   templateUrl: './crypto-detail.component.html',
   styles: []
 })
