@@ -36,13 +36,13 @@
                         </lucide-icon>
                     </a>
                 </div>
-                <div class="gap-2 flex flex-wrap" >
+                <div class="flex items-center gap-2  flex-wrap" >
                     @for(social of socialLinks; track social.name) {
                     <a href="{{ social.url }}" target="_blank"> <span class="text-primary">{{ social.url | social
                             }}</span></a>
                     }
                 </div>
-                <div class="flex" >
+                <div class="flex items-center gap-2 flex-wrap" >
                     @for(explorer of explorers; track explorer.name) {
                     <a href="{{ explorer.url }}" target="_blank"> <span class="text-primary">{{ explorer.name | social
                             }}</span></a>
@@ -50,7 +50,7 @@
                 </div>
                 @if(cryptoDetail?.contract_address) {
                 <div class="flex" >
-                    <span class="text-secondary mr-1 border-r-1 border-slate p-2">
+                    <span class="flex items-center text-secondary mr-1 border-r-1 border-slate p-2">
                         {{cryptoDetail?.contract_address | shortenAddress}}
                     </span>
                     <button (click)="copyToClipboard(cryptoDetail?.contract_address || '')"
@@ -76,7 +76,7 @@
                 {{ crypto.price * crypto.circulatingSupply | number : '1.2-2' }} {{ crypto.symbol.toUpperCase() }}
             </div>
         </div>
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
                 <div class="flex items-center gap-1 text-xs text-secondary mb-1">
                     Market Cap
