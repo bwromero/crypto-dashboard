@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { ButtonComponent, ButtonConfig, DropdownOption } from '../../button/button.component';
-import { SearchBarComponent } from '../../search-bar/search-bar.component';
+import { ButtonComponent, ButtonConfig, DropdownOption } from '../../shared/button/button.component';
+import { SearchBarComponent } from '../../shared/search-bar/search-bar.component';
 import { CommonModule } from '@angular/common';
 
 @Component({

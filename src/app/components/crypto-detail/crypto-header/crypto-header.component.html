@@ -18,8 +18,8 @@
                         crypto.rank }}</span></p>
             </div>
         </div>
-        <div class="grid grid-cols-2 text-secondary">
-            <div class="flex flex-col gap-2">
+        <div class="grid grid-cols-[auto_1fr] text-secondary">
+            <div class="flex flex-col gap-2 mr-5">
                 <label for="website">Website</label>
                 <label for="website">Community</label>
                 <label for="website">Explorers</label>
@@ -27,9 +27,14 @@
             </div>
             <div class="flex flex-col gap-2">
                 <span>{{ cryptoDetail?.links?.homepage?.[0] }}</span>
-                <span>{{ cryptoDetail?.links?.twitter_screen_name }}</span>
-                <span>{{ cryptoDetail?.links?.subreddit_url }}</span>
-                <span>{{ cryptoDetail?.contract_address }}</span>
+                <div class="flex"> @for(link of [cryptoDetail?.links]; track link) {
+                    <span>{{ link }}</span>
+                    }
+                </div>
+                <div class="flex"></div>
+               
+                
+                
             </div>
 
             <!-- @if (cryptoDetail?.links?.homepage && cryptoDetail?.links?.homepage?.[0] ) {
