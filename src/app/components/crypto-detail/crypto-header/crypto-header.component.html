@@ -19,12 +19,11 @@
             </div>
         </div>
         <div class="grid grid-rows-4 grid-flow-col gap-3 text-secondary">
-                <span class="flex items-center">Website</span>
-                <span class="flex items-center">Community</span>
-                <span class="flex items-center">Explorers</span>
-                @if(cryptoDetail?.contract_address) {
-                <span class="flex items-center">Contract</span>
-                }
+            
+                @if(cryptoDetail?.links?.homepage?.[0] !== '' && cryptoDetail?.links?.homepage?.[0] !== undefined)  {<span class="flex items-center">Website</span>}
+                @if(socialLinks.length > 0) {<span class="flex items-center">Community</span>}
+                @if(explorers.length > 0) {<span class="flex items-center">Explorers</span>}
+                @if(cryptoDetail?.contract_address) {<span class="flex items-center">Contract</span>}
 
                 <div class="flex items-center gap-1" >
                     <lucide-icon [img]="BadgeCheck" [size]="16" class="text-slate-success" [strokeWidth]="1"
@@ -66,7 +65,7 @@
 
     <div class="flex flex-col gap-14">
         <div class="">
-            <h2 class="text-sm text-secondary mb-2">{{ crypto.name }} Price ({{ crypto.symbol.toUpperCase() }})</h2>
+            <h2 class="text-sm text-primary mb-2">{{ crypto.name }} Price ({{ crypto.symbol.toUpperCase() }})</h2>
             <div class="flex items-end gap-3 mb-4">
                 <div class="text-4xl font-bold text-action">${{ crypto.price | number : '1.2-2' }}</div>
                 <div [class]="crypto.change24h >= 0 ? 'text-action' : 'text-error'" class="text-lg font-semibold mb-1">
