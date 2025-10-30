@@ -1,5 +1,5 @@
 @if (crypto) {
-<div class="grid md:grid-cols-2 grid-cols-1 gap-6 mb-6">
+<div class="grid lg:grid-cols-2 grid-cols-1 gap-6 mb-6">
     <div class="flex flex-col gap-6 mb-6">
         <div class="flex flex-col sm:flex-row items-start gap-4">
             <img [src]="cryptoDetail?.image?.large" [alt]="cryptoDetail?.name" class="w-16 h-16 rounded-full" />
@@ -76,7 +76,7 @@
                 {{ crypto.price * crypto.circulatingSupply | number : '1.2-2' }} {{ crypto.symbol.toUpperCase() }}
             </div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <div>
                 <div class="flex items-center gap-1 text-xs text-secondary mb-1">
                     Market Cap
