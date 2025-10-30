@@ -18,17 +18,15 @@
                         crypto.rank }}</span></p>
             </div>
         </div>
-        <div class="grid grid-cols-2 text-secondary">
-            <div class="flex flex-col gap-2 mr-5">
-                <label for="website">Website</label>
-                <label for="community">Community</label>
-                <label for="explorers">Explorers</label>
+        <div class="grid grid-rows-4 grid-flow-col gap-3 text-secondary">
+                <span class="flex items-center">Website</span>
+                <span class="flex items-center">Community</span>
+                <span class="flex items-center">Explorers</span>
                 @if(cryptoDetail?.contract_address) {
-                <label for="contract">Contract</label>
+                <span class="flex items-center">Contract</span>
                 }
-            </div>
-            <div class="flex flex-col gap-2">
-                <div class="flex items-center gap-1" id="website">
+
+                <div class="flex items-center gap-1" >
                     <lucide-icon [img]="BadgeCheck" [size]="16" class="text-slate-success" [strokeWidth]="1"
                         fill="true">
                     </lucide-icon>
@@ -38,20 +36,20 @@
                         </lucide-icon>
                     </a>
                 </div>
-                <div class="gap-2 flex flex-wrap" id="community">
+                <div class="gap-2 flex flex-wrap" >
                     @for(social of socialLinks; track social.name) {
                     <a href="{{ social.url }}" target="_blank"> <span class="text-primary">{{ social.url | social
                             }}</span></a>
                     }
                 </div>
-                <div class="flex" id="explorers">
+                <div class="flex" >
                     @for(explorer of explorers; track explorer.name) {
                     <a href="{{ explorer.url }}" target="_blank"> <span class="text-primary">{{ explorer.name | social
                             }}</span></a>
                     }
                 </div>
                 @if(cryptoDetail?.contract_address) {
-                <div class="flex" id="contract">
+                <div class="flex" >
                     <span class="text-secondary mr-1 border-r-1 border-slate p-2">
                         {{cryptoDetail?.contract_address | shortenAddress}}
                     </span>
@@ -61,7 +59,7 @@
                     </button>
                 </div>
                 }
-            </div>
+       
         </div>
     </div>
 
