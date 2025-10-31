@@ -9,10 +9,4 @@
 </div>
 
 <ng-content>
-  @for (tab of tabs; track tab) {
-  <app-tab [tabTitle]="tab" [cryptoData]="cryptoData" [selectedTimeframe]="selectedTimeframe" [chartData]="chartData"
-    [volumeData]="volumeData" [marketCapData]="marketCapData" [tickers]="tickers" [cryptoDetail]="cryptoDetail"
-    [isLoadingTickers]="isLoadingTickers">
-  </app-tab>
-  }
 </ng-content>

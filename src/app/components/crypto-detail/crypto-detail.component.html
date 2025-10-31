@@ -11,19 +11,17 @@
   <div class="max-w-7xl mx-auto">
     <app-crypto-header [cryptoDetail]="cryptoDetail" [crypto]="crypto"></app-crypto-header>
 
-    <app-tabs [tabs]="tabs" 
-              [activeTab]="activeTab"
-              [cryptoData]="crypto"
-              [cryptoDetail]="cryptoDetail!"
-              [selectedTimeframe]="selectedTimeframe"
-              [chartData]="chartData"
-              [volumeData]="volumeData"
-              [marketCapData]="marketCapData"
-              [tickers]="tickers"
-              (activeTabChange)="changeTab($event)"
-              (changeTimeframe)="changeTimeframe($event)"
-              [isLoadingTickers]="isLoadingTickers">
-             
+    <app-tabs [tabs]="tabs" [activeTab]="activeTab" [cryptoData]="crypto" [cryptoDetail]="cryptoDetail!"
+      [selectedTimeframe]="selectedTimeframe" [chartData]="chartData" [volumeData]="volumeData"
+      [marketCapData]="marketCapData" [tickers]="tickers" (activeTabChange)="changeTab($event)"
+      (changeTimeframe)="changeTimeframe($event)" [isLoadingTickers]="isLoadingTickers">
+      @for (tab of tabs; track tab) {
+      <app-tab [tabTitle]="tab" [cryptoData]="crypto" [selectedTimeframe]="selectedTimeframe"
+        [chartData]="chartData" [volumeData]="volumeData" [marketCapData]="marketCapData" [tickers]="tickers"
+        [cryptoDetail]="cryptoDetail" [isLoadingTickers]="isLoadingTickers">
+      </app-tab>
+      }
+
     </app-tabs>
   </div>
   }

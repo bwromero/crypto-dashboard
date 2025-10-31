@@ -10,11 +10,11 @@ import {
 } from '../../services/crypto.service';
 import { LucideAngularModule, Info } from 'lucide-angular';
 import {
-  D3PriceChartComponent,
   PricePoint,
 } from './d3-price-chart/d3-price-chart.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { CryptoHeaderComponent } from './crypto-header/crypto-header.component';
+import { TabComponent } from './tabs/tab/tab.component';
 
 @Component({
   selector: 'app-crypto-detail',
@@ -24,6 +24,8 @@ import { CryptoHeaderComponent } from './crypto-header/crypto-header.component';
     LucideAngularModule,
     TabsComponent,
     CryptoHeaderComponent,
+    TabsComponent,
+    TabComponent
   ],
   templateUrl: './crypto-detail.component.html',
   styles: [],
