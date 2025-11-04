@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import { CryptoService } from '../../services/crypto.service';
 
 interface Transaction {
@@ -21,7 +20,7 @@ interface Transaction {
 @Component({
   selector: 'app-activity-history',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule],
   templateUrl: './activity-history.component.html',
   styles: ``
 })
