@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CoinGeckoDetailData } from '../../../services/crypto.service';
 import { CryptoData } from '../../shared/models';
-import { DecimalPipe } from '@angular/common';
+
 import {
   LucideAngularModule,
   Info,
@@ -10,11 +10,10 @@ import {
   BadgeCheck,
   Copy,
 } from 'lucide-angular';
-import { JsonPipe } from '@angular/common';
 import { DomainPipe } from '../../shared/pipes/domain/domain.pipe';
 import { SocialPipe } from '../../shared/pipes/social/social.pipe';
 import { ShortenAddressPipe } from '../../shared/pipes/shorten-address/shorten-address.pipe';
-
+import { CommonModule } from '@angular/common';
 export type Link = {
   name: string;
   url: string;
@@ -41,13 +40,13 @@ export enum ExplorerName {
 @Component({
     selector: 'app-crypto-header',
     imports: [
-        JsonPipe,
-        DecimalPipe,
+        CommonModule,
         LucideAngularModule,
         DomainPipe,
         SocialPipe,
         ShortenAddressPipe,
     ],
+    standalone: true,
     templateUrl: './crypto-header.component.html',
     styles: ``
 })
