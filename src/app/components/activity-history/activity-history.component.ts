@@ -19,7 +19,8 @@ interface Transaction {
 
 @Component({
     selector: 'app-activity-history',
-    imports: [CommonModule],
+    imports: [],
+    standalone: true,
     templateUrl: './activity-history.component.html',
     styles: ``
 })

@@ -94,7 +94,8 @@
             </thead>
 
             <tbody>
-                <tr class="border-b border-dark-secondary" *ngFor="let transaction of transactions">
+                @for (transaction of transactions; track transaction.id) {
+                <tr class="border-b border-dark-secondary">
                     <td class="px-6 py-4">
                         <div class="flex items-center gap-3">
                             <!-- <img [src]="getCoinIcon(transaction.coin.symbol)" [alt]="transaction.coin.type"
@@ -120,6 +121,14 @@
                     </td>
                     <td class="px-6 py-4 text-secondary">{{ transaction.fees }}</td>
                 </tr>
+                }
+                @empty {
+                <tr>
+                    <td colspan="6" class="py-8 text-center text-secondary">
+                        No transactions found
+                    </td>
+                </tr>
+                }
             </tbody>
         </table>
     </div>
