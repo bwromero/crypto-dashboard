@@ -39,18 +39,17 @@ export enum ExplorerName {
 }
 
 @Component({
-  selector: 'app-crypto-header',
-  standalone: true,
-  imports: [
-    JsonPipe,
-    DecimalPipe,
-    LucideAngularModule,
-    DomainPipe,
-    SocialPipe,
-    ShortenAddressPipe,
-  ],
-  templateUrl: './crypto-header.component.html',
-  styles: ``,
+    selector: 'app-crypto-header',
+    imports: [
+        JsonPipe,
+        DecimalPipe,
+        LucideAngularModule,
+        DomainPipe,
+        SocialPipe,
+        ShortenAddressPipe,
+    ],
+    templateUrl: './crypto-header.component.html',
+    styles: ``
 })
 export class CryptoHeaderComponent {
   @Input() cryptoDetail: CoinGeckoDetailData | null = null;

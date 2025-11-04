@@ -3,11 +3,10 @@ import { PortfolioCardComponent } from './portfolio-card/portfolio-card.componen
 import { AccountType, PortfolioItem } from '../shared/models/portfolio.interface';
 import { PortfolioChartComponent } from './portfolio-chart/portfolio-chart.component';
 @Component({
-  selector: 'app-portfolio',
-  standalone: true,
-  imports: [PortfolioCardComponent, PortfolioChartComponent],
-  templateUrl: './portfolio.component.html',
-  styles: ``
+    selector: 'app-portfolio',
+    imports: [PortfolioCardComponent, PortfolioChartComponent],
+    templateUrl: './portfolio.component.html',
+    styles: ``
 })
 export class PortfolioComponent {
 

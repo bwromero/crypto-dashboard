@@ -15,10 +15,9 @@ import { CryptoData, HeatmapData } from '../../shared/models';
 import { D3TreemapComponent } from './d3-treemap/d3-treemap.component';
 
 @Component({
-  selector: 'app-heat-map',
-  standalone: true,
-  imports: [CommonModule, D3TreemapComponent],
-  templateUrl: './heat-map.component.html'
+    selector: 'app-heat-map',
+    imports: [CommonModule, D3TreemapComponent],
+    templateUrl: './heat-map.component.html'
 })
 export class HeatMapComponent implements AfterViewInit, OnDestroy {
   @Input() data: HeatmapData = { categories: [], cryptos: [] };

@@ -10,18 +10,17 @@ import { CryptoService } from '../../services/crypto.service';
 import { Subscription, interval } from 'rxjs';
 import { PriceTableComponent } from './price-table/price-table.component';
 @Component({
-  selector: 'app-live-prices',
-  standalone: true,
-  imports: [
-    ToolbarComponent,
-    HeatMapComponent,
-    BubbleViewComponent,
-    CommonModule,
-    PaginatorComponent,
-    PriceTableComponent,
-  ],
-  templateUrl: './live-prices.component.html',
-  styles: ``,
+    selector: 'app-live-prices',
+    imports: [
+        ToolbarComponent,
+        HeatMapComponent,
+        BubbleViewComponent,
+        CommonModule,
+        PaginatorComponent,
+        PriceTableComponent,
+    ],
+    templateUrl: './live-prices.component.html',
+    styles: ``
 })
 export class LivePricesComponent implements OnInit, OnDestroy {
   readonly ViewType = ViewType;

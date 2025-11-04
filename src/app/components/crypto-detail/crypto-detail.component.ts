@@ -10,11 +10,10 @@ import { TabsComponent } from './tabs/tabs.component';
 import { CryptoHeaderComponent } from './crypto-header/crypto-header.component';
 
 @Component({
-  selector: 'app-crypto-detail',
-  standalone: true,
-  imports: [CommonModule, LucideAngularModule, D3PriceChartComponent, TabsComponent, CryptoHeaderComponent],
-  templateUrl: './crypto-detail.component.html',
-  styles: []
+    selector: 'app-crypto-detail',
+    imports: [CommonModule, LucideAngularModule, D3PriceChartComponent, TabsComponent, CryptoHeaderComponent],
+    templateUrl: './crypto-detail.component.html',
+    styles: []
 })
 export class CryptoDetailComponent implements OnInit, OnDestroy {
   readonly Info = Info;

@@ -5,11 +5,10 @@ import { ButtonComponent, DropdownOption } from '../../components/shared/compone
 import { LucideAngularModule, LayoutDashboard } from 'lucide-angular';
 
 @Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [CommonModule, SearchBarComponent, ButtonComponent, LucideAngularModule],
-  templateUrl: './header.component.html',
-  styles: ``
+    selector: 'app-header',
+    imports: [CommonModule, SearchBarComponent, ButtonComponent, LucideAngularModule],
+    templateUrl: './header.component.html',
+    styles: ``
 })
 export class HeaderComponent {
   protected LayoutDashboard = LayoutDashboard;

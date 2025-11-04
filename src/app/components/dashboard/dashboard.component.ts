@@ -3,11 +3,10 @@ import { PortfolioComponent } from '../portfolio/portfolio.component';
 import { ActivityHistoryComponent } from '../activity-history/activity-history.component';
 import { BalanceWidgetComponent } from '../balance-widget/balance-widget.component';
 @Component({
-  selector: 'app-dashboard',
-  standalone: true,
-  imports: [PortfolioComponent, ActivityHistoryComponent, BalanceWidgetComponent],
-  templateUrl: './dashboard.component.html',
-  styles: ``
+    selector: 'app-dashboard',
+    imports: [PortfolioComponent, ActivityHistoryComponent, BalanceWidgetComponent],
+    templateUrl: './dashboard.component.html',
+    styles: ``
 })
 export class DashboardComponent {
 

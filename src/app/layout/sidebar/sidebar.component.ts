@@ -11,11 +11,10 @@ export interface NavigationSection {
 }
 
 @Component({
-  selector: 'app-sidebar',
-  standalone: true,
-  imports: [CommonModule, RouterModule, LucideAngularModule, NavigationItemComponent, ButtonComponent],
-  templateUrl: './sidebar.component.html',
-  styles: ``
+    selector: 'app-sidebar',
+    imports: [CommonModule, RouterModule, LucideAngularModule, NavigationItemComponent, ButtonComponent],
+    templateUrl: './sidebar.component.html',
+    styles: ``
 })
 export class SidebarComponent {
   protected icons = icons;

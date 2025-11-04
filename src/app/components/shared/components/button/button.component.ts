@@ -31,10 +31,9 @@ export interface ButtonConfig {
   // Add more properties as needed for future use
 }
 @Component({
-  selector: 'app-button',
-  standalone: true,
-  imports: [CommonModule, LucideAngularModule],
-  templateUrl: './button.component.html'
+    selector: 'app-button',
+    imports: [CommonModule, LucideAngularModule],
+    templateUrl: './button.component.html'
 })
 export class ButtonComponent {
   @Input() type: ButtonType = 'primary';

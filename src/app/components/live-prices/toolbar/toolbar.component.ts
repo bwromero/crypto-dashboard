@@ -4,11 +4,10 @@ import { SearchBarComponent } from '../../shared/components/search-bar/search-ba
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-toolbar',
-  standalone: true,
-  imports: [ButtonComponent, CommonModule, SearchBarComponent],
-  templateUrl: './toolbar.component.html',
-  styles: ``
+    selector: 'app-toolbar',
+    imports: [ButtonComponent, CommonModule, SearchBarComponent],
+    templateUrl: './toolbar.component.html',
+    styles: ``
 })
 export class ToolbarComponent {
 

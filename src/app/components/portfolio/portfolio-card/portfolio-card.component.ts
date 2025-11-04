@@ -3,11 +3,10 @@ import { CommonModule } from '@angular/common';
 import { PortfolioItem, AccountType } from '../../shared/models/portfolio.interface';
 
 @Component({
-  selector: 'app-portfolio-card',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './portfolio-card.component.html',
-  styles: ``
+    selector: 'app-portfolio-card',
+    imports: [CommonModule],
+    templateUrl: './portfolio-card.component.html',
+    styles: ``
 })
 export class PortfolioCardComponent {
 

@@ -14,10 +14,9 @@ export interface NavigationItem {
 }
 
 @Component({
-  selector: 'app-navigation-item',
-  standalone: true,
-  imports: [CommonModule, RouterModule, LucideAngularModule],
-  templateUrl: './navigation-item.component.html'
+    selector: 'app-navigation-item',
+    imports: [CommonModule, RouterModule, LucideAngularModule],
+    templateUrl: './navigation-item.component.html'
 })
 export class NavigationItemComponent {
   @Input() section!: NavigationSection;

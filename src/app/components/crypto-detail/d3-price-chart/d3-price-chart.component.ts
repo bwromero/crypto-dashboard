@@ -16,10 +16,9 @@ export interface PricePoint {
 }
 
 @Component({
-  selector: 'app-d3-price-chart',
-  standalone: true,
-  imports: [CommonModule],
-  template: `<div #container class="w-full h-full"></div>`
+    selector: 'app-d3-price-chart',
+    imports: [CommonModule],
+    template: `<div #container class="w-full h-full"></div>`
 })
 export class D3PriceChartComponent implements AfterViewInit, OnChanges {
   @Input() data: PricePoint[] = [];

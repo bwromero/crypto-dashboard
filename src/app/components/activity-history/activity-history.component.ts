@@ -18,11 +18,10 @@ interface Transaction {
 }
 
 @Component({
-  selector: 'app-activity-history',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './activity-history.component.html',
-  styles: ``
+    selector: 'app-activity-history',
+    imports: [CommonModule],
+    templateUrl: './activity-history.component.html',
+    styles: ``
 })
 export class ActivityHistoryComponent implements OnInit {
   transactions: Transaction[] = [

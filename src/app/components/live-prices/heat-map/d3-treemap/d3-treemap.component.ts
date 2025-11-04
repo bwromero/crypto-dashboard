@@ -14,10 +14,9 @@ import { CryptoData } from '../../../shared/models';
 import * as d3 from 'd3';
 
 @Component({
-  selector: 'app-d3-treemap',
-  standalone: true,
-  imports: [CommonModule],
-  template: `<div #container class="w-full h-full"></div>`
+    selector: 'app-d3-treemap',
+    imports: [CommonModule],
+    template: `<div #container class="w-full h-full"></div>`
 })
 export class D3TreemapComponent implements AfterViewInit, OnChanges {
   @Input() data: CryptoData[] = [];

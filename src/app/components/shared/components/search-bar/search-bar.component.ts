@@ -4,11 +4,10 @@ import { FormsModule } from '@angular/forms';
 export type SearchBarType = 'normal' | 'dropdown';
 
 @Component({
-  selector: 'app-search-bar',
-  standalone: true,
-  imports: [FormsModule],
-  templateUrl: './search-bar.component.html',
-  styles: ``
+    selector: 'app-search-bar',
+    imports: [FormsModule],
+    templateUrl: './search-bar.component.html',
+    styles: ``
 })
 export class SearchBarComponent {
   @Input() placeholder: string = 'Search...';

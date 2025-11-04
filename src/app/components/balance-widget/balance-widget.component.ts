@@ -9,10 +9,9 @@ interface PortfolioAsset {
 }
 
 @Component({
-  selector: 'app-balance-widget',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './balance-widget.component.html',
+    selector: 'app-balance-widget',
+    imports: [CommonModule],
+    templateUrl: './balance-widget.component.html'
 })
 export class BalanceWidgetComponent {
   // Main balance properties

@@ -4,11 +4,10 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-layout',
-  standalone: true,
-  imports: [HeaderComponent, SidebarComponent, RouterOutlet],
-  templateUrl: './layout.component.html',
-  styles: ``
+    selector: 'app-layout',
+    imports: [HeaderComponent, SidebarComponent, RouterOutlet],
+    templateUrl: './layout.component.html',
+    styles: ``
 })
 export class LayoutComponent {
 

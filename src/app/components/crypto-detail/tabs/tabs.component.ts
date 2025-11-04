@@ -1,11 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-tabs',
-  standalone: true,
-  imports: [],
-  templateUrl: './tabs.component.html',
-  styles: ``
+    selector: 'app-tabs',
+    imports: [],
+    templateUrl: './tabs.component.html',
+    styles: ``
 })
 export class TabsComponent {
   @Input() tabs: string[] = [];

@@ -4,11 +4,10 @@ import { CommonModule } from '@angular/common';
 import { ButtonComponent } from '../shared/components/button/button.component';
 
 @Component({
-  selector: 'app-paginator',
-  standalone: true,
-  imports: [CommonModule, LucideAngularModule, ButtonComponent],
-  templateUrl: './paginator.component.html',
-  styles: ``
+    selector: 'app-paginator',
+    imports: [CommonModule, LucideAngularModule, ButtonComponent],
+    templateUrl: './paginator.component.html',
+    styles: ``
 })
 export class PaginatorComponent implements OnChanges {
   @Input() currentPage: number = 1;

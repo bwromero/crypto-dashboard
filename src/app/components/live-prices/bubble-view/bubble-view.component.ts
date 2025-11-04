@@ -15,10 +15,9 @@ import { CryptoData } from '../../shared/models';
 import { D3BubbleChartComponent } from './d3-bubble-chart/d3-bubble-chart.component';
 
 @Component({
-  selector: 'app-bubble-view',
-  standalone: true,
-  imports: [CommonModule, D3BubbleChartComponent],
-  templateUrl: './bubble-view.component.html'
+    selector: 'app-bubble-view',
+    imports: [CommonModule, D3BubbleChartComponent],
+    templateUrl: './bubble-view.component.html'
 })
 export class BubbleViewComponent implements AfterViewInit, OnDestroy {
   @Input() data: CryptoData[] = [];

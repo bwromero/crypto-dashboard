@@ -12,11 +12,10 @@ import {
 } from '../../shared/models/price-table-layout';
 
 @Component({
-  selector: 'app-price-table',
-  standalone: true,
-  imports: [CommonModule, LucideAngularModule],
-  templateUrl: './price-table.component.html',
-  styles: [],
+    selector: 'app-price-table',
+    imports: [CommonModule, LucideAngularModule],
+    templateUrl: './price-table.component.html',
+    styles: []
 })
 export class PriceTableComponent {
   constructor(private router: Router) {}
