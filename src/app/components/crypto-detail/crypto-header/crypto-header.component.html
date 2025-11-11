@@ -18,7 +18,7 @@
                         crypto.rank }}</span></p>
             </div>
         </div>
-        <div class="grid grid-rows-4 grid-flow-col gap-3 text-secondary">
+        <!-- <div class="grid grid-rows-4 grid-flow-col gap-3 text-secondary">
 
             @if(cryptoDetail?.links?.homepage?.[0] !== '' && cryptoDetail?.links?.homepage?.[0] !== undefined) {<span
                 class="flex items-center">Website</span>}
@@ -61,11 +61,11 @@
             </div>
             }
 
-        </div>
+        </div> -->
     </div>
 
     <div class="flex flex-col gap-14">
-        <div class="flex justify-between">
+        <div class="flex md:flex-col justify-between">
             <div class="flex flex-col gap-1">
                 <h2 class="text-sm text-primary mb-1">
                     {{ crypto.name }} Price ({{ crypto.symbol.toUpperCase() }})
@@ -79,7 +79,7 @@
                     </span>
                 </div>
             </div>
-            <div>
+            <div class="md:w-fit">
                 <span
                     [class]="crypto.change24h >= 0 ? 'text-action border border-slate-success-40 rounded-xl px-3 py-1' : 'text-error border border-slate-failure-40 rounded-xl px-3 py-1'"
                     class="text-lg font-semibold mb-1 flex items-center gap-1">
@@ -87,7 +87,8 @@
             </div>
 
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- refactor needed -->
+        <!-- <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div>
                 <div class="flex items-center gap-1 text-md text-secondary mb-1">
                     Market Cap
@@ -118,7 +119,7 @@
 
                     .totalSupply ? (crypto.totalSupply | number : '1.0-0') : 'N/A' }}</div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 }

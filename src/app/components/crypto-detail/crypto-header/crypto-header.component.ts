@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 import { CoinGeckoDetailData } from '../../../services/crypto.service';
 import { CryptoData } from '../../shared/models';
 
@@ -53,6 +53,12 @@ export enum ExplorerName {
 export class CryptoHeaderComponent {
   @Input() cryptoDetail: CoinGeckoDetailData | null = null;
   @Input() crypto?: CryptoData | null = null;
+
+  count = signal(0);
+
+  increment() {
+    this.count.set(this.count() + 1);
+  }
 
   readonly Info = Info;
   readonly Star = Star;
