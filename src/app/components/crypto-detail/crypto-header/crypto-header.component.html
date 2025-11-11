@@ -1,6 +1,6 @@
 @if (crypto) {
-<div class="grid lg:grid-cols-2 grid-cols-1 gap-6 mb-6">
-    <div class="flex flex-col gap-6 mb-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="flex flex-col gap-6 mb-6 w-fit">
         <div class="flex flex-col sm:flex-row items-start gap-4">
             <img [src]="cryptoDetail?.image?.large" [alt]="cryptoDetail?.name" class="w-16 h-16 rounded-full" />
             <div>
@@ -71,7 +71,7 @@
                     {{ crypto.name }} Price ({{ crypto.symbol.toUpperCase() }})
                 </h2>
 
-                <div class="text-2xl font-bold text-action">
+                <div class="flex flex-col gap-2 text-2xl font-bold text-action">
                     ${{ crypto.price | number : '1.2-2' }}
                     <span class="text-sm text-primary">
                         {{ crypto.price * crypto.circulatingSupply | number : '1.2-2' }}

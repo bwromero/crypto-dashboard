@@ -8,7 +8,7 @@
     {{ error }}
   </div>
   } @else if (crypto && cryptoDetail) {
-  <div class="grid grid-cols-2 gap-6 max-w-7xl mx-auto">
+  <div class="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-6 max-w-7xl mx-auto">
 
     <div>
       <app-crypto-header [cryptoDetail]="cryptoDetail" [crypto]="crypto"></app-crypto-header>
@@ -16,7 +16,7 @@
       <app-tabs [tabs]="tabs" [activeTab]="activeTab" (activeTabChange)="changeTab($event)"></app-tabs>
 
 
-      <div class="min-h-[600px]">
+      <div class="min-h-[auto]">
         @if (activeTab === 'Overview') {
         <div class="space-y-6">
           <div class="bg-transparent rounded-xl p-6">
