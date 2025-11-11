@@ -10,5 +10,4 @@ import { Calculator, LucideAngularModule } from 'lucide-angular';
 export class CryptoCalculatorComponent {
 
   readonly calculatorIcon = Calculator;
-
 }
