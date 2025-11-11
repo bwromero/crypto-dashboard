@@ -40,12 +40,9 @@ export enum ExplorerName {
 @Component({
     selector: 'app-crypto-header',
     imports: [
-        CommonModule,
-        LucideAngularModule,
-        DomainPipe,
-        SocialPipe,
-        ShortenAddressPipe,
-    ],
+    CommonModule,
+    LucideAngularModule,
+],
     standalone: true,
     templateUrl: './crypto-header.component.html',
     styles: ``

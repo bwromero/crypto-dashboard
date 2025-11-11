@@ -8,10 +8,11 @@ import { LucideAngularModule, Info } from 'lucide-angular';
 import { D3PriceChartComponent, PricePoint } from './d3-price-chart/d3-price-chart.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { CryptoHeaderComponent } from './crypto-header/crypto-header.component';
+import { CryptoCalculatorComponent } from './crypto-calculator/crypto-calculator.component';
 
 @Component({
     selector: 'app-crypto-detail',
-    imports: [CommonModule, LucideAngularModule, D3PriceChartComponent, TabsComponent, CryptoHeaderComponent],
+    imports: [CommonModule, LucideAngularModule, D3PriceChartComponent, TabsComponent, CryptoCalculatorComponent  ,CryptoHeaderComponent],
     templateUrl: './crypto-detail.component.html',
     styles: []
 })
