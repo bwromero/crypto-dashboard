@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { ButtonComponent, ToggleOption } from '../shared/components/button/button.component';
 import { ArrowRight, AtSign, LucideAngularModule } from 'lucide-angular';
  
+enum ToggleValue {
+  LOGIN = 'login',
+  SIGNUP = 'signup'
+}
 @Component({
   selector: 'app-sign-up',
   imports: [ButtonComponent, LucideAngularModule],
@@ -15,14 +19,22 @@ export class SignUpComponent {
 
 
   toggleOptions: ToggleOption[] = [
-    { label: 'Login', value: 'login' },
-    { label: 'SignUp', value: 'signup' }
+    { label: 'Login', value: ToggleValue.LOGIN },
+    { label: 'SignUp', value: ToggleValue.SIGNUP }
   ]
 
-  selectedToggleValue: string = 'signup';
+  selectedToggleValue: string = ToggleValue.SIGNUP;
+
+  get isLoginMode(): boolean {
+    return this.selectedToggleValue === ToggleValue.LOGIN;
+  }
+
+  get isSignUpMode(): boolean {
+    return this.selectedToggleValue === ToggleValue.SIGNUP;
+  }
 
   onToggleChanged($event: string) {
-    throw new Error('Method not implemented.');
+    this.selectedToggleValue = $event;
   }
 
 }

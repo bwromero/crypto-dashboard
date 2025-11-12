@@ -2,10 +2,19 @@
     <div class="grid grid-cols-2 bg-midnight px-3 py-6 rounded-2xl">
         <div class="flex flex-col items-left justify-center bg-cool-gray py-12 px-16 rounded-2xl">
             <div class="flex flex-col items-left justify-center">
-                <h1 class="text-4xl font-bold text-primary">Create Your Account
+                <h1 class="text-4xl font-bold text-primary">
+                    @if(isLoginMode) {
+                    Create Your Account
+                    } @else {
+                    Login to your account
+                    }
                 </h1>
                 <span class="text-primary/70 text-2xl mt-2">
+                    @if(isLoginMode) {
+                    Please Enter your email and password
+                    } @else {
                     Setting up an account takes less than 1 minute.
+                    }
                 </span>
             </div>
 
@@ -51,6 +60,7 @@
                         class="bg-graphite placeholder:text-secondary pl-24 rounded-full border-none p-5 focus:outline-none focus:ring-0 focus:border-transparent"
                         type="password" id="password" placeholder="Password">
                 </div>
+                @if(isSignUpMode) {
                 <div class="flex flex-col relative">
                     <div class="absolute top-1/2 left-4 -translate-y-1/2 flex items-center gap-2 w-fit p-3">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -73,6 +83,7 @@
                         class="bg-graphite placeholder:text-secondary pl-24 rounded-full border-none p-5 focus:outline-none focus:ring-0 focus:border-transparent"
                         type="text" id="referralCode" placeholder="Referral Code">
                 </div>
+                }
                 <app-button type="action" variant="normal" label="Continue" rounded="rounded-full" padding="px-8 py-4"
                     iconPosition="right" textSize="text-lg" [fullWidth]="true"
                     [lucideIcon]="arrowRightIcon"></app-button>
