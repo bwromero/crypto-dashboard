@@ -56,6 +56,7 @@ export class ButtonComponent {
   @Input() buttonSelected: boolean = false;
   @Input() padding: string = 'px-4 py-2';
   @Input() iconPosition: string = 'left';
+  @Input() dropShadow: string = 'drop-shadow-dark';
   
   @Output() clicked = new EventEmitter<void>();
   @Output() optionSelected = new EventEmitter<DropdownOption>();
