@@ -9,10 +9,10 @@ import { D3PriceChartComponent, PricePoint } from './d3-price-chart/d3-price-cha
 import { TabsComponent } from './tabs/tabs.component';
 import { CryptoHeaderComponent } from './crypto-header/crypto-header.component';
 import { CryptoCalculatorComponent } from './crypto-calculator/crypto-calculator.component';
-
+import { CryptoMarketsComponent } from './crypto-markets/crypto-markets.component';
 @Component({
     selector: 'app-crypto-detail',
-    imports: [CommonModule, LucideAngularModule, D3PriceChartComponent, TabsComponent, CryptoCalculatorComponent  ,CryptoHeaderComponent],
+    imports: [CommonModule, LucideAngularModule, D3PriceChartComponent, TabsComponent, CryptoCalculatorComponent, CryptoHeaderComponent, CryptoMarketsComponent],
     templateUrl: './crypto-detail.component.html',
     styles: []
 })
