@@ -1,0 +1,20 @@
+<div class="flex items-center justify-between px-12 py-4 bg-dark-primary text-primary">
+    <div class="flex gap-4">
+        <div class="flex items-center">
+            <a href="">
+                <lucide-icon [img]="LayoutDashboard" [size]="25"></lucide-icon>
+            </a>
+        </div>
+    </div>
+
+    <!-- Right section -->
+    <div class="flex items-center gap-3 text-primary">
+        <!-- Language selector -->
+        <app-button type="darkSecondary" variant="dropdown" label="English" [dropdownOptions]="[
+          { label: 'English', value: 'en' },
+          { label: 'Spanish', value: 'es' },
+          { label: 'French', value: 'fr' }
+        ]" (optionSelected)="onLanguageSelected($event)">
+        </app-button>
+    </div>
+</div>
