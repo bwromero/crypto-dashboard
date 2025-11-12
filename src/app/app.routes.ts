@@ -24,9 +24,16 @@ export const routes: Routes = [
     loadComponent: () => import('./components/public-layout/public-layout.component').then(m => m.PublicLayoutComponent),
     children: [
       {
-        path: 'sign-up',
-        loadComponent: () => import('./components/sign-up/sign-up.component').then(m => m.SignUpComponent)
-      }
+        path: 'signup',
+        loadComponent: () => import('./components/auth/auth.component').then(m => m.AuthComponent),
+        data: { mode: 'signup' }
+      },
+      {
+        path: 'login',
+        loadComponent: () => import('./components/auth/auth.component').then(m => m.AuthComponent),
+        data: { mode: 'login' }
+      },
+
     ]
   }
 ];
