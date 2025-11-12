@@ -9,9 +9,11 @@
                 </span>
             </div>
 
-            <app-button variant="sidebar-toggle" [toggleOptions]="toggleOptions"
-                [selectedToggleValue]="selectedToggleValue"  (toggleChanged)="onToggleChanged($event)">
-            </app-button>
+            <div class="my-5">
+                <app-button variant="toggle" [toggleOptions]="toggleOptions" [selectedToggleValue]="selectedToggleValue"
+                    (toggleChanged)="onToggleChanged($event)">
+                </app-button>
+            </div>
 
             <form>
                 <div class="flex flex-col gap-2">

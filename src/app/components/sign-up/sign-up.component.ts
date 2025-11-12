@@ -14,7 +14,7 @@ export class SignUpComponent {
     { label: 'SignUp', value: 'signup' }
   ]
 
-  selectedToggleValue: string = 'SignUp';
+  selectedToggleValue: string = 'signup';
 
   onToggleChanged($event: string) {
     throw new Error('Method not implemented.');

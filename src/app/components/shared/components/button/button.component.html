@@ -8,7 +8,7 @@
 
 
   <!-- Toggle Switch Button -->
-  <div *ngIf="variant === 'toggle'" class="flex bg-dark-secondary rounded-full py-2 px-1 text-primary drop-shadow-dark">
+  <div *ngIf="variant === 'toggle'" class="flex bg-dark-secondary rounded-2xl py-2 px-1 text-primary drop-shadow-dark w-fit">
     <button *ngFor="let option of toggleOptions" (click)="selectToggleOption(option)" [class]="'flex items-center gap-2 px-3 py-2 rounded-full text-sm font-normal transition-all duration-200 ' + 
                  (selectedToggleValue === option.value ? 'bg-action border-1 border-black' : 'hover:text-primary')"
       [disabled]="disabled">
