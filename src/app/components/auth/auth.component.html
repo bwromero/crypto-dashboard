@@ -1,5 +1,5 @@
 <div class="flex flex-col items-center justify-center h-screen">
-    <div class="grid grid-cols-2 bg-midnight px-3 py-6 rounded-2xl">
+    <div class="grid grid-cols-1 md:grid-cols-2 bg-midnight px-3 py-6 rounded-2xl">
         <div class="flex flex-col items-left justify-center bg-cool-gray py-12 px-16 rounded-2xl">
             <div class="flex flex-col items-left justify-center">
                 <h1 class="text-4xl font-bold text-primary">
@@ -139,11 +139,15 @@
                 </div>
             </div>
         </div>
-        <div class="flex flex-col items-center justify-center">
+        <div class="hidden md:flex flex-col items-center justify-center">
             @if(isLoginMode) {
             <qrcode [qrdata]="qrCodeData" [width]="256" [errorCorrectionLevel]="'M'" [colorDark]="'#000000'"
                 [colorLight]="'#FFFFFF'">
             </qrcode>
+            } @else {
+                <div class="text-primary text-2xl font-bold">
+                    Coming soon
+                </div>
             }
         </div>
     </div>
