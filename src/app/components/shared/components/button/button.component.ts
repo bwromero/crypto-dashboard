@@ -57,7 +57,7 @@ export class ButtonComponent {
   @Input() padding: string = 'px-4 py-2';
   @Input() iconPosition: string = 'left';
   @Input() dropShadow: string = 'drop-shadow-dark';
-  
+  @Input() textSize: string = 'text-md';
   @Output() clicked = new EventEmitter<void>();
   @Output() optionSelected = new EventEmitter<DropdownOption>();
   @Output() toggleChanged = new EventEmitter<string>();

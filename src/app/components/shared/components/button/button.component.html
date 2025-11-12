@@ -5,7 +5,7 @@
     <div class="flex-1">
       <lucide-icon *ngIf="lucideIcon && iconPosition =='left'" [name]="lucideIcon" [img]="getIconImage"
         [size]="iconSize"></lucide-icon>
-      <span class="text-center text-md">{{ label }}</span>
+      <span [class]="`text-center ${textSize}`">{{ label }}</span>
     </div>
 
     <div class="flex justify-right"

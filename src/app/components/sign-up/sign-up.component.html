@@ -4,7 +4,7 @@
             <div class="flex flex-col items-left justify-center">
                 <h1 class="text-4xl font-bold text-primary">Create Your Account
                 </h1>
-                <span class="text-primary/70 text-2xl">
+                <span class="text-primary/70 text-2xl mt-2">
                     Setting up an account takes less than 1 minute.
                 </span>
             </div>
@@ -29,16 +29,17 @@
                         placeholder="Referral Code (optional)">
                 </div>
                 <app-button type="action" variant="normal" label="Continue" rounded="rounded-full" padding="px-8 py-4"
-                    iconPosition="right" [fullWidth]="true" [lucideIcon]="arrowRightIcon"></app-button>
+                    iconPosition="right" textSize="text-lg" [fullWidth]="true" [lucideIcon]="arrowRightIcon"></app-button>
             </form>
 
             <div class="flex flex-col gap-4 items-center justify-center text-primary mt-12">
-                <div class="flex">
-                    <span>Or Continue with</span>
+                <div class="flex justify-center items-center gap-4 w-full">
+                    <div class="w-12 border-t border-slate"></div>
+                    <span class="text-primary text-bold text-lg whitespace-nowrap">Or Continue with</span>
+                    <div class="w-12 border-t border-slate"></div>
                 </div>
 
-
-                <div class="flex items-center gap-5 justify-center">
+                <div class="flex items-center gap-6 justify-center">
                     <button class="bg-graphite rounded-full p-4">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
