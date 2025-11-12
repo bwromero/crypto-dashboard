@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Calculator, LucideAngularModule } from 'lucide-angular';
+import { ArrowUpDown, Calculator, LucideAngularModule } from 'lucide-angular';
 
 @Component({
   selector: 'app-crypto-calculator',
@@ -10,4 +10,5 @@ import { Calculator, LucideAngularModule } from 'lucide-angular';
 export class CryptoCalculatorComponent {
 
   readonly calculatorIcon = Calculator;
+  readonly arrowupanddownIcon = ArrowUpDown;
 }
