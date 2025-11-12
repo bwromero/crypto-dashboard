@@ -15,16 +15,21 @@
                 </app-button>
             </div>
 
-            <form class="flex flex-col gap-5">
+            <form class="flex flex-col gap-5" type="submit">
                 <div class="flex flex-col">
-                    <input type="email" id="email" placeholder="Email Address">
+                    <input class="bg-graphite rounded-full border-none p-5" type="email" id="email"
+                        placeholder="Email Address">
                 </div>
                 <div class="flex flex-col">
-                    <input class="bg-dark-primary rounded-xl border border-secondary p-5" type="email" id="email" placeholder="Password">
+                    <input class="bg-graphite rounded-full border-none p-5" type="password" id="password"
+                        placeholder="Password">
                 </div>
-                <div class="flex flex-col">
-                    <input type="email" id="email" placeholder="Referral Code (optional)">
+                <div class="flex flex-col mb-2">
+                    <input class="bg-graphite rounded-full border-none p-5" type="text" id="referralCode"
+                        placeholder="Referral Code (optional)">
                 </div>
+                <app-button type="action" variant="normal" label="Continue" rounded="rounded-full" padding="px-8 py-4"
+                    [fullWidth]="true"></app-button>
             </form>
         </div>
 

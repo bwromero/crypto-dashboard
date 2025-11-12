@@ -54,6 +54,7 @@ export class ButtonComponent {
   @Input() fullWidth: boolean = false;
   @Input() selectedToggleValue?: string;
   @Input() buttonSelected: boolean = false;
+  @Input() padding: string = 'px-4 py-2';
   
   @Output() clicked = new EventEmitter<void>();
   @Output() optionSelected = new EventEmitter<DropdownOption>();
@@ -65,7 +66,7 @@ export class ButtonComponent {
   protected icons = icons;
 
   get buttonClasses(): string {
-    const baseClasses = 'flex items-center justify-center ' + this.gap + ' px-4 py-2 ' + this.rounded + ' text-sm transition-all duration-200 ' + this.buttonSize;
+    const baseClasses = `flex items-center justify-center ${this.gap} ${this.padding} ${this.rounded} text-sm transition-all duration-200 ${this.buttonSize}`;
     const widthClass = this.fullWidth ? 'w-full' : '';
     const disabledClass = this.disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer';
     const typeClasses = {

@@ -26,7 +26,8 @@ module.exports = {
         'action': '#0CAF60',
         'light-gray': 'rgb(128 129 149 / 0.3)',
         'midnight': '#0B0E13',
-        'cool-gray': '#12181F'
+        'cool-gray': '#12181F',
+        'graphite': '#161D26'
       },
       fontFamily: {
         'display': ['Satoshi', 'sans-serif']
