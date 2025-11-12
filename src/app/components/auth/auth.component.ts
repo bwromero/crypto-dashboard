@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ButtonComponent, ToggleOption } from '../shared/components/button/button.component';
-import { ArrowRight, AtSign, LucideAngularModule } from 'lucide-angular';
+import { ArrowRight, AtSign, Lock, LucideAngularModule } from 'lucide-angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QRCodeComponent } from 'angularx-qrcode';
 
@@ -17,6 +17,7 @@ enum ToggleValue {
 export class AuthComponent {
   readonly arrowRightIcon = ArrowRight;
   readonly atSignIcon = AtSign;
+  readonly padlockIcon = Lock;
 
   qrCodeData: string = '';
   qrCodeSessionId: string = '';

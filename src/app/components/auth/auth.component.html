@@ -141,13 +141,32 @@
         </div>
         <div class="hidden md:flex flex-col items-center justify-center">
             @if(isLoginMode) {
-            <qrcode [qrdata]="qrCodeData" [width]="256" [errorCorrectionLevel]="'M'" [colorDark]="'#000000'"
-                [colorLight]="'#FFFFFF'">
-            </qrcode>
-            } @else {
-                <div class="text-primary text-2xl font-bold">
-                    Coming soon
+            <div class="flex flex-col items-center justify-center text-primary text-center">
+                <qrcode [qrdata]="qrCodeData" [width]="256" [errorCorrectionLevel]="'M'" [colorDark]="'#000000'"
+                    [colorLight]="'#FFFFFF'">
+                </qrcode>
+
+                <h1 class="text-2xl font-bold mt-5">Login with QR Code</h1>
+                <p class="mt-4">Scan QR code with <span class="text-action">app</span></p>
+                <div
+                    class="flex items-center justify-center bg-dark-primary border border-slate-secondary rounded-full px-4 py-2 mt-4">
+                    <div
+                        class="flex items-center justify-center bg-action rounded-full px-6 py-4 w-5 h-5 mr-3 text-primary">
+                        <lucide-icon [img]="padlockIcon" [size]="20"></lucide-icon>
+                    </div>
+                    <span class="text-action text-sm font-medium">https://www.someurl.com</span>
                 </div>
+                <div class="mt-20">
+                    <span class="text-secondary text-md">
+                        Whale.io, Trade anything anywhere <br> with Whale.io!
+                    </span>
+                </div>
+
+            </div>
+            } @else {
+            <div class="text-primary text-2xl font-bold">
+                Coming soon
+            </div>
             }
         </div>
     </div>
