@@ -20,7 +20,13 @@ export const routes: Routes = [
     ]
   },
   {
-    path: 'sign-up',
-    loadComponent: () => import('./components/sign-up/sign-up.component').then(m => m.SignUpComponent)
+    path: '',
+    loadComponent: () => import('./components/public-layout/public-layout.component').then(m => m.PublicLayoutComponent),
+    children: [
+      {
+        path: 'sign-up',
+        loadComponent: () => import('./components/sign-up/sign-up.component').then(m => m.SignUpComponent)
+      }
+    ]
   }
 ];
