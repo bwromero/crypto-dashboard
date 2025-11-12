@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import { ButtonComponent, ToggleOption } from '../shared/components/button/button.component';
-import { ArrowRight } from 'lucide-angular';
+import { ArrowRight, AtSign, LucideAngularModule } from 'lucide-angular';
  
 @Component({
   selector: 'app-sign-up',
-  imports: [ButtonComponent],
+  imports: [ButtonComponent, LucideAngularModule],
   templateUrl: './sign-up.component.html',
   styles: ``
 })
 export class SignUpComponent {
   readonly arrowRightIcon = ArrowRight;
-
+  readonly atSignIcon = AtSign;
 
 
 
