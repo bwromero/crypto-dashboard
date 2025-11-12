@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LucideAngularModule, icons } from 'lucide-angular';
+import { ArrowRight, LucideAngularModule, icons } from 'lucide-angular';
 
 export type ButtonType = 'primary' | 'secondary' | 'action' | 'dark' | 'darkSecondary' | 'transparent';
 export type ButtonVariant = 'normal' | 'dropdown' | 'toggle' | 'sidebar-toggle'; 
@@ -55,12 +55,15 @@ export class ButtonComponent {
   @Input() selectedToggleValue?: string;
   @Input() buttonSelected: boolean = false;
   @Input() padding: string = 'px-4 py-2';
+  @Input() iconPosition: string = 'left';
   
   @Output() clicked = new EventEmitter<void>();
   @Output() optionSelected = new EventEmitter<DropdownOption>();
   @Output() toggleChanged = new EventEmitter<string>();
 
   isDropdownOpen: boolean = false;
+
+  readonly arrowRightIcon = ArrowRight;
 
   // Make all Lucide icons available to the template
   protected icons = icons;

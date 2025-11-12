@@ -2,13 +2,24 @@
   <!-- Normal Button -->
   <button *ngIf="variant === 'normal'" [class]="buttonClasses" (click)="onClick()" [disabled]="disabled">
     <!-- Dynamic Lucide icon -->
-    <lucide-icon *ngIf="lucideIcon" [name]="lucideIcon" [img]="getIconImage" [size]="iconSize"></lucide-icon>
-    <span>{{ label }}</span>
+    <div class="flex-1">
+      <lucide-icon *ngIf="lucideIcon && iconPosition =='left'" [name]="lucideIcon" [img]="getIconImage"
+        [size]="iconSize"></lucide-icon>
+      <span class="text-center text-md">{{ label }}</span>
+    </div>
+
+    <div class="flex justify-right"
+      [ngClass]="lucideIcon === arrowRightIcon ? 'bg-success/80 rounded-2xl p-2 text-semibold' : ''">
+      <lucide-icon *ngIf="lucideIcon && iconPosition =='right'" [name]="lucideIcon" [img]="getIconImage"
+        [size]="iconSize"></lucide-icon>
+    </div>
+
   </button>
 
 
   <!-- Toggle Switch Button -->
-  <div *ngIf="variant === 'toggle'" class="flex bg-dark-secondary rounded-2xl py-2 px-1 text-primary drop-shadow-dark w-fit">
+  <div *ngIf="variant === 'toggle'"
+    class="flex bg-dark-secondary rounded-2xl py-2 px-1 text-primary drop-shadow-dark w-fit">
     <button *ngFor="let option of toggleOptions" (click)="selectToggleOption(option)" [class]="'flex items-center gap-2 px-3 py-2 rounded-full text-sm font-normal transition-all duration-200 ' + 
                  (selectedToggleValue === option.value ? 'bg-action border-1 border-black' : 'hover:text-primary')"
       [disabled]="disabled">
@@ -20,7 +31,8 @@
 
   <!-- Sidebar toggle -->
   <div *ngIf="variant === 'sidebar-toggle'">
-    <button [class]="'text-md font-bold border-2 bg-dark-primary border-dark-secondary rounded-full text-md px-2 py-2 text-secondary hover:text-primary hover:border-dark-secondary hover:bg-dark-secondary transition-all duration-200'">
+    <button
+      [class]="'text-md font-bold border-2 bg-dark-primary border-dark-secondary rounded-full text-md px-2 py-2 text-secondary hover:text-primary hover:border-dark-secondary hover:bg-dark-secondary transition-all duration-200'">
       <div *ngFor="let option of toggleOptions">
         <lucide-icon *ngIf="option.show && option.lucideIcon" [img]="getToggleIconImage(option.lucideIcon)"
           [size]="16"></lucide-icon>
@@ -44,5 +56,5 @@
           {{ option?.label || option.value }}
         </button>
       </div>
+    </div>
   </div>
-</div>

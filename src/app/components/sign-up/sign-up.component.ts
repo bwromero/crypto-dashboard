@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ButtonComponent, ToggleOption } from '../shared/components/button/button.component';
+import { ArrowRight } from 'lucide-angular';
 
 @Component({
   selector: 'app-sign-up',
@@ -8,6 +9,7 @@ import { ButtonComponent, ToggleOption } from '../shared/components/button/butto
   styles: ``
 })
 export class SignUpComponent {
+  readonly arrowRightIcon = ArrowRight;
 
   toggleOptions: ToggleOption[] = [
     { label: 'Login', value: 'login' },
