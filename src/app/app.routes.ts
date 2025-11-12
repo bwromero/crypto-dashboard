@@ -16,7 +16,11 @@ export const routes: Routes = [
       {
         path: 'crypto/:id',
         loadComponent: () => import('./components/crypto-detail/crypto-detail.component').then(m => m.CryptoDetailComponent)
-      }
+      },
     ]
+  },
+  {
+    path: 'sign-up',
+    loadComponent: () => import('./components/sign-up/sign-up.component').then(m => m.SignUpComponent)
   }
 ];
