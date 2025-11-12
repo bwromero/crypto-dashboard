@@ -1,1 +1,32 @@
-<p>sign-up works!</p>
+<div class="flex flex-col items-center justify-center h-screen">
+    <div class="grid grid-cols-2">
+        <div class="flex flex-col items-left justify-center">
+            <div class="flex flex-col items-left justify-center">
+                <h1 class="text-4xl font-bold text-primary">Create Your Account
+                </h1>
+                <span class="text-primary/70 text-2xl">
+                    Setting up an account takes less than 1 minute.
+                </span>
+            </div>
+
+            <app-button variant="sidebar-toggle" [toggleOptions]="toggleOptions"
+                [selectedToggleValue]="selectedToggleValue"  (toggleChanged)="onToggleChanged($event)">
+            </app-button>
+
+            <form>
+                <div class="flex flex-col gap-2">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Email">
+                </div>
+            </form>
+        </div>
+
+        <div class="flex flex-col items-center justify-center">
+
+            <div class="flex">
+
+            </div>
+        </div>
+
+    </div>
+</div>
