@@ -1,6 +1,6 @@
 <div class="flex flex-col items-center justify-center h-screen">
-    <div class="grid grid-cols-2">
-        <div class="flex flex-col items-left justify-center">
+    <div class="grid grid-cols-2 bg-midnight px-3 py-6 rounded-2xl">
+        <div class="flex flex-col items-left justify-center bg-cool-gray py-12 px-16 rounded-2xl">
             <div class="flex flex-col items-left justify-center">
                 <h1 class="text-4xl font-bold text-primary">Create Your Account
                 </h1>
@@ -9,16 +9,21 @@
                 </span>
             </div>
 
-            <div class="my-5">
+            <div class="my-6">
                 <app-button variant="toggle" [toggleOptions]="toggleOptions" [selectedToggleValue]="selectedToggleValue"
                     (toggleChanged)="onToggleChanged($event)">
                 </app-button>
             </div>
 
-            <form>
-                <div class="flex flex-col gap-2">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="Email">
+            <form class="flex flex-col gap-5">
+                <div class="flex flex-col">
+                    <input type="email" id="email" placeholder="Email Address">
+                </div>
+                <div class="flex flex-col">
+                    <input class="bg-dark-primary rounded-xl border border-secondary p-5" type="email" id="email" placeholder="Password">
+                </div>
+                <div class="flex flex-col">
+                    <input type="email" id="email" placeholder="Referral Code (optional)">
                 </div>
             </form>
         </div>
