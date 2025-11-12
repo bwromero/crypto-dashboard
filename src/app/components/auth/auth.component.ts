@@ -3,7 +3,7 @@ import { ButtonComponent, ToggleOption } from '../shared/components/button/butto
 import { ArrowRight, AtSign, LucideAngularModule } from 'lucide-angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QRCodeComponent } from 'angularx-qrcode';
- 
+
 enum ToggleValue {
   LOGIN = 'login',
   SIGNUP = 'signup'
@@ -53,19 +53,8 @@ export class AuthComponent {
   }
 
   generateQRCode(): void {
-    // Generate a unique session ID
     this.qrCodeSessionId = this.generateSessionId();
-    
-    // Create QR code data (URL-based for mobile app)
-    // Change this to match your authentication flow
     this.qrCodeData = `https://your-app.com/auth/qr?session=${this.qrCodeSessionId}`;
-    
-    // Alternative: JSON-based
-    // this.qrCodeData = JSON.stringify({
-    //   sessionId: this.qrCodeSessionId,
-    //   type: 'login',
-    //   timestamp: Date.now()
-    // });
   }
 
   private generateSessionId(): string {
