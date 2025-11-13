@@ -33,6 +33,10 @@ export const routes: Routes = [
         loadComponent: () => import('./components/auth/auth.component').then(m => m.AuthComponent),
         data: { mode: 'login' }
       },
+      {
+        path:'comfirmation-method',
+        loadComponent: () => import('./components/auth/comfirmation-method/comfirmation-method.component').then(m => m.ComfirmationMethodComponent)
+      }
 
     ]
   }
