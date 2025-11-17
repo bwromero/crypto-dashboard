@@ -1,5 +1,5 @@
-<div class="flex flex-col items-center justify-center h-screen">
-    <div class="grid grid-cols-1 md:grid-cols-2 bg-midnight px-3 py-6 rounded-2xl">
+<div class="flex flex-col items-center justify-center h-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 bg-midnight px-3 py-6 rounded-2xl w-75 h-auto">
         <div class="flex flex-col items-left justify-center bg-cool-gray py-12 px-16 rounded-2xl">
             <div class="flex flex-col items-left justify-center">
                 <h1 class="text-4xl font-bold text-primary">
@@ -21,17 +21,20 @@
             <form class="flex flex-col gap-5 text-primary" type="submit">
                 <div class="flex flex-col relative">
                     <input class="absolute accent-action top-1/2 left-6 h-6 w-6 -translate-y-1/2 bg-transparent focus:outline-none focus:bg-action transition-all duration-300" type="radio" name="comfirmation-method" id="system" [value]="radioButtonOptions[0].value" [checked]="radioButtonOptions[0].value">
+                    <span class="text-primary text-sm absolute top-4 left-20">Get the code via (SMS) at:</span>
                     <input
-                        class="bg-graphite placeholder:text-primary pl-20 pt-2 pb-12 rounded-full border-none p-5 focus:outline-none focus:ring-0 focus:border-transparent"
-                        type="email" id="email" placeholder="Get the code via (SMS) at:">
+                        class="bg-graphite placeholder:text-secondary pl-20 pt-12 pb-4 rounded-full border-none p-5 focus:outline-none focus:ring-0 focus:border-transparent"
+                        type="email" id="email" placeholder="Er*****de@gmail.com">
                 </div>
 
                 <div class="flex flex-col relative">
                     <input class="absolute accent-action top-1/2 left-6 h-6 w-6 -translate-y-1/2 bg-transparent focus:outline-none focus:bg-action transition-all duration-300" type="radio" name="comfirmation-method" id="system" [value]="radioButtonOptions[1].value" [checked]="radioButtonOptions[1].value">
+                    <span class="text-primary text-sm absolute top-4 left-20">Get the code via (Email) at:</span>
 
                     <input
-                        class="bg-graphite placeholder:text-primary pl-20 pt-2 pb-12 rounded-full border-none p-5 focus:outline-none focus:ring-0 focus:border-transparent"
-                        type="code" id="code" placeholder="Get the code via (Email) at:">
+                        class="bg-graphite placeholder:text-secondary pl-20 pt-12 pb-4 rounded-full border-none p-5 focus:outline-none focus:ring-0 focus:border-transparent"
+                        type="code" id="code" placeholder="+1 202 ****0151">
+
                 </div>
                 
                 <app-button type="action" variant="normal" label="Continue" rounded="rounded-full" padding="px-8 py-4"
@@ -101,7 +104,7 @@
                     class="flex items-center justify-center bg-dark-primary border border-slate-secondary rounded-full px-4 py-2 mt-4">
                     <div
                         class="flex items-center justify-center bg-action rounded-full px-6 py-4 w-5 h-5 mr-3 text-primary">
-                        <!-- <lucide-icon [img]="padlockIcon" [size]="20"></lucide-icon> -->
+                        <lucide-icon [img]="padlockIcon" [size]="20"></lucide-icon>
                     </div>
                     <span class="text-action text-sm font-medium">https://www.someurl.com</span>
                 </div>
