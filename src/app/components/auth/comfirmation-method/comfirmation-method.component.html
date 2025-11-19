@@ -5,7 +5,7 @@
                 <h1 class="text-4xl font-bold text-primary">
                     Let's comfirm is you!
                 </h1>
-                <span class="text-primary/70 text-2xl mt-2">
+                <span class="text-primary/70 text-xl mt-4">
                     @if(!showCodeInput){
                     Complete verification processs
                     } @else {
@@ -15,6 +15,7 @@
                 </span>
             </div>
 
+            @if(!showCodeInput){
             <div class="my-6">
                 <h3 class="text-primary text-lg font-bold">Select comfirmation method:</h3>
                 <app-button variant="toggle" dropShadow="drop-shadow-none" [toggleOptions]="toggleOptions"
@@ -50,9 +51,33 @@
 
                 <app-button type="action" variant="normal" label="Continue" rounded="rounded-full" padding="px-8 py-4"
                     iconPosition="right" textSize="text-lg" [fullWidth]="true" [lucideIcon]="arrowRightIcon"
-                    (onClick)="onContinueClick()"></app-button>
+                    (clicked)="onContinueClick($event)"></app-button>
             </form>
-
+            } @else {
+            <div class="flex flex-col">
+                <div class="flex flex-col mt-16 text-primary ">
+                    <p class="text-xl text-bold">Send verification code to : <br> </p>
+                    <div class="flex text-secondary">
+                        <span>example@example.com</span>
+                        <lucide-icon [img]="editIcon" [size]="20"></lucide-icon>
+                    </div>
+                </div>
+                <div class="grid grid-cols-4 gap-6 mt-4">
+                    <input
+                        class="bg-graphite text-center text-primary text-bold text-3xl rounded-2xl border-none p-5 focus:outline-none focus:ring-0 focus:border-transparent"
+                        type="number" id="first-digit">
+                    <input
+                        class="bg-graphite text-center text-primary text-bold text-3xl rounded-2xl border-none p-5 focus:outline-none focus:ring-0 focus:border-transparent"
+                        type="number" id="second-digit">
+                    <input
+                        class="bg-graphite text-center text-primary text-bold text-3xl rounded-2xl border-none p-5 focus:outline-none focus:ring-0 focus:border-transparent"
+                        type="number" id="third-digit">
+                    <input
+                        class="bg-graphite text-center text-primary text-bold text-3xl rounded-2xl border-none p-5 focus:outline-none focus:ring-0 focus:border-transparent"
+                        type="number" id="fourth-digit">
+                </div>
+            </div>
+            }
             <div class="flex flex-col gap-4 items-center justify-center text-primary mt-12">
                 <div class="flex justify-center items-center gap-4 w-full">
                     <div class="w-12 border-t border-slate"></div>

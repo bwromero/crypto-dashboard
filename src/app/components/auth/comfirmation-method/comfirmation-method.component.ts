@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ButtonComponent, ToggleOption } from '../../shared/components/button/button.component';
-import { ArrowRight, Lock, LucideAngularModule } from 'lucide-angular';
+import { ArrowRight, Edit, Lock, LucideAngularModule } from 'lucide-angular';
 import { QRCodeComponent } from 'angularx-qrcode';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QrCodeService } from '../../../services/qr-code-service/qrcode-service.service';
@@ -37,6 +37,7 @@ export class ComfirmationMethodComponent {
 
   readonly arrowRightIcon = ArrowRight;
   readonly padlockIcon = Lock;
+  readonly editIcon = Edit;
 
   qrCodeData: string = '';
   qrCodeSessionId: string = '';
@@ -60,7 +61,8 @@ export class ComfirmationMethodComponent {
     this.selectedToggleValue = $event;
   }
 
-  onContinueClick() {
+  onContinueClick(event: Event) {
+    event?.preventDefault();
      this.showCodeInput = true;
   }
 

@@ -58,7 +58,7 @@ export class ButtonComponent {
   @Input() iconPosition: string = 'left';
   @Input() dropShadow: string = 'drop-shadow-dark';
   @Input() textSize: string = 'text-md';
-  @Output() clicked = new EventEmitter<void>();
+  @Output() clicked = new EventEmitter<Event>();
   @Output() optionSelected = new EventEmitter<DropdownOption>();
   @Output() toggleChanged = new EventEmitter<string>();
 
@@ -106,7 +106,7 @@ getToggleIconImage(iconName: string) {
     if (this.variant === 'dropdown') {
       this.toggleDropdown();
     } else {
-      this.clicked.emit();
+      this.clicked.emit(event);
     }
   }
 
