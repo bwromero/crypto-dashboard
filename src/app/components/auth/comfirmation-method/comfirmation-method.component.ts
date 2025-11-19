@@ -3,6 +3,7 @@ import { ButtonComponent, ToggleOption } from '../../shared/components/button/bu
 import { ArrowRight, Lock, LucideAngularModule } from 'lucide-angular';
 import { QRCodeComponent } from 'angularx-qrcode';
 import { ActivatedRoute, Router } from '@angular/router';
+import { QrCodeService } from '../../../services/qr-code-service/qrcode-service.service';
 
 enum ToggleValue {
   SYSTEM = 'system',
@@ -20,10 +21,10 @@ enum RadioButtonValue {
   styles: ``,
 })
 export class ComfirmationMethodComponent {
-
-onVerificationMethodChange(arg0: any) {
-throw new Error('Method not implemented.');
-}
+  
+  onVerificationMethodChange(arg0: any) {
+    throw new Error('Method not implemented.');
+  }
   readonly toggleOptions: ToggleOption[] = [
     { label: 'System', value: ToggleValue.SYSTEM },
     { label: 'Google', value: ToggleValue.GOOGLE }
@@ -41,8 +42,13 @@ throw new Error('Method not implemented.');
   qrCodeSessionId: string = '';
   isSMSSelected: boolean = false;
   isEmailSelected: boolean = false;
+  showCodeInput: boolean = false;
 
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(private route: ActivatedRoute, private router: Router, private qrCodeService: QrCodeService) {
+    let codeData = this.qrCodeService.generateQRCodeData();
+    this.qrCodeData = codeData.qrCodeData;
+    this.qrCodeSessionId = codeData.sessionId;
+
     this.route.data.subscribe(data => {
       this.selectedToggleValue = data['mode'] || ToggleValue.SYSTEM;
     });
@@ -54,8 +60,9 @@ throw new Error('Method not implemented.');
     this.selectedToggleValue = $event;
   }
 
-
-
+  onContinueClick() {
+     this.showCodeInput = true;
+  }
 
   onRadioButtonChange(method: RadioButtonValue) {
     if (method === RadioButtonValue.SMS) {
@@ -66,4 +73,5 @@ throw new Error('Method not implemented.');
       this.isEmailSelected = true;
     }
   }
+  
 }

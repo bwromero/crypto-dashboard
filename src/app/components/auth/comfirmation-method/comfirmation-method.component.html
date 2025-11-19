@@ -6,7 +6,12 @@
                     Let's comfirm is you!
                 </h1>
                 <span class="text-primary/70 text-2xl mt-2">
+                    @if(!showCodeInput){
                     Complete verification processs
+                    } @else {
+                    Please enter the 4-digit verification code that was sent to your {{isEmailSelected? 'email':
+                    'phone'}}
+                    }
                 </span>
             </div>
 
@@ -20,7 +25,10 @@
 
             <form class="flex flex-col gap-5 text-primary" type="submit">
                 <div class="flex flex-col relative">
-                    <input class="absolute accent-action top-1/2 left-6 h-6 w-6 -translate-y-1/2 bg-transparent focus:outline-none focus:bg-action transition-all duration-300" type="radio" name="comfirmation-method" id="system" [value]="radioButtonOptions[0].value" [checked]="radioButtonOptions[0].value">
+                    <input
+                        class="absolute accent-action top-1/2 left-6 h-6 w-6 -translate-y-1/2 bg-transparent focus:outline-none focus:bg-action transition-all duration-300"
+                        type="radio" name="comfirmation-method" id="system" [value]="radioButtonOptions[0].value"
+                        [checked]="radioButtonOptions[0].value">
                     <span class="text-primary text-sm absolute top-4 left-20">Get the code via (SMS) at:</span>
                     <input
                         class="bg-graphite placeholder:text-secondary pl-20 pt-12 pb-4 rounded-full border-none p-5 focus:outline-none focus:ring-0 focus:border-transparent"
@@ -28,7 +36,10 @@
                 </div>
 
                 <div class="flex flex-col relative">
-                    <input class="absolute accent-action top-1/2 left-6 h-6 w-6 -translate-y-1/2 bg-transparent focus:outline-none focus:bg-action transition-all duration-300" type="radio" name="comfirmation-method" id="system" [value]="radioButtonOptions[1].value" [checked]="radioButtonOptions[1].value">
+                    <input
+                        class="absolute accent-action top-1/2 left-6 h-6 w-6 -translate-y-1/2 bg-transparent focus:outline-none focus:bg-action transition-all duration-300"
+                        type="radio" name="comfirmation-method" id="system" [value]="radioButtonOptions[1].value"
+                        [checked]="radioButtonOptions[1].value">
                     <span class="text-primary text-sm absolute top-4 left-20">Get the code via (Email) at:</span>
 
                     <input
@@ -36,10 +47,10 @@
                         type="code" id="code" placeholder="+1 202 ****0151">
 
                 </div>
-                
+
                 <app-button type="action" variant="normal" label="Continue" rounded="rounded-full" padding="px-8 py-4"
-                    iconPosition="right" textSize="text-lg" [fullWidth]="true"
-                    [lucideIcon]="arrowRightIcon"></app-button>
+                    iconPosition="right" textSize="text-lg" [fullWidth]="true" [lucideIcon]="arrowRightIcon"
+                    (onClick)="onContinueClick()"></app-button>
             </form>
 
             <div class="flex flex-col gap-4 items-center justify-center text-primary mt-12">

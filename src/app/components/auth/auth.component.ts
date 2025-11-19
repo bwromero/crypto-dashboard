@@ -3,6 +3,7 @@ import { ButtonComponent, ToggleOption } from '../shared/components/button/butto
 import { ArrowRight, AtSign, Lock, LucideAngularModule } from 'lucide-angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QRCodeComponent } from 'angularx-qrcode';
+import { QrCodeService } from '../../services/qr-code-service/qrcode-service.service';
 
 enum ToggleValue {
   LOGIN = 'login',
@@ -22,12 +23,16 @@ export class AuthComponent {
   qrCodeData: string = '';
   qrCodeSessionId: string = '';
 
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(private route: ActivatedRoute, private router: Router, private qrCodeService: QrCodeService) {
+
+
     this.route.data.subscribe(data => {
       this.selectedToggleValue = data['mode'] || ToggleValue.LOGIN;
 
       if (this.isLoginMode) {
-        this.generateQRCode();
+        let codeData = this.qrCodeService.generateQRCodeData();
+        this.qrCodeData = codeData.qrCodeData;
+        this.qrCodeSessionId = codeData.sessionId;
       }
     });
   }
@@ -51,20 +56,6 @@ export class AuthComponent {
     const targetRoute = $event === ToggleValue.LOGIN ? `/${ToggleValue.LOGIN}` : `/${ToggleValue.SIGNUP}`;
     this.router.navigate([targetRoute]);
     this.selectedToggleValue = $event;
-  }
-
-  generateQRCode(): void {
-    this.qrCodeSessionId = this.generateSessionId();
-    this.qrCodeData = `https://your-app.com/auth/qr?session=${this.qrCodeSessionId}`;
-  }
-
-  private generateSessionId(): string {
-    // Generate a unique session ID
-    return `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
-  }
-
-  onRefreshQRCode(): void {
-    this.generateQRCode();
   }
 
 }

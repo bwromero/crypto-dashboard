@@ -3,7 +3,7 @@ import { computed, Injectable, signal } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthServiceService {
+export class AuthService {
   private readonly _isLoggedIn = signal(false);
   readonly isLoggedIn = computed(() => this._isLoggedIn())
 
