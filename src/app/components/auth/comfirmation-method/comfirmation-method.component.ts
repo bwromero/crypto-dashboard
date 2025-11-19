@@ -42,7 +42,7 @@ export class ComfirmationMethodComponent {
   qrCodeData: string = '';
   qrCodeSessionId: string = '';
   isSMSSelected: boolean = false;
-  isEmailSelected: boolean = false;
+  isEmailSelected: boolean = true;
   showCodeInput: boolean = false;
 
   constructor(private route: ActivatedRoute, private router: Router, private qrCodeService: QrCodeService) {
