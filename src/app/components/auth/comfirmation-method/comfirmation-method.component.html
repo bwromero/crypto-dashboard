@@ -9,7 +9,8 @@
                     @if(!showCodeInput()){
                     Complete verification processs
                     } @else {
-                    Please enter the 4-digit verification code that was sent to your {{selectedMethod() === RadioButtonValue.EMAIL ? 'email':
+                    Please enter the 4-digit verification code that was sent to your {{selectedMethod() ===
+                    RadioButtonValue.EMAIL ? 'email':
                     'phone'}}
                     }
                 </span>
@@ -28,12 +29,8 @@
                 <div class="flex flex-col relative">
                     <input
                         class="absolute accent-action top-1/2 left-6 h-6 w-6 -translate-y-1/2 bg-transparent focus:outline-none focus:bg-action transition-all duration-300"
-                        type="radio" 
-                        name="comfirmation-method" 
-                        id="email-method" 
-                        [value]="RadioButtonValue.SMS"
-                        [checked]="selectedMethod() === RadioButtonValue.SMS" 
-                        (change)="onRadioButtonChange($event)">
+                        type="radio" name="comfirmation-method" id="email-method" [value]="RadioButtonValue.SMS"
+                        [checked]="selectedMethod() === RadioButtonValue.SMS" (change)="onRadioButtonChange($event)">
                     <span class="text-primary text-sm absolute top-4 left-20">Get the code via (SMS) at:</span>
                     <input
                         class="bg-graphite placeholder:text-secondary pl-20 pt-12 pb-4 rounded-full border-none p-5 focus:outline-none focus:ring-0 focus:border-transparent"
@@ -43,11 +40,8 @@
                 <div class="flex flex-col relative">
                     <input
                         class="absolute accent-action top-1/2 left-6 h-6 w-6 -translate-y-1/2 bg-transparent focus:outline-none focus:bg-action transition-all duration-300"
-                        type="radio" name="comfirmation-method" 
-                        id="sms-method" 
-                        [value]="RadioButtonValue.EMAIL"
-                        [checked]="selectedMethod() === RadioButtonValue.EMAIL" 
-                        (change)="onRadioButtonChange($event)">
+                        type="radio" name="comfirmation-method" id="sms-method" [value]="RadioButtonValue.EMAIL"
+                        [checked]="selectedMethod() === RadioButtonValue.EMAIL" (change)="onRadioButtonChange($event)">
                     <span class="text-primary text-sm absolute top-4 left-20">Get the code via (Email) at:</span>
 
                     <input
@@ -69,6 +63,7 @@
                         <lucide-icon [img]="editIcon" [size]="20"></lucide-icon>
                     </div>
                 </div>
+                @if(selectedMethod() === RadioButtonValue.EMAIL){
                 <div class="grid grid-cols-4 gap-6 mt-4">
                     <input
                         class="bg-graphite text-center text-primary text-bold text-3xl rounded-2xl border-none p-5 focus:outline-none focus:ring-0 focus:border-transparent"
@@ -83,6 +78,29 @@
                         class="bg-graphite text-center text-primary text-bold text-3xl rounded-2xl border-none p-5 focus:outline-none focus:ring-0 focus:border-transparent"
                         type="number" id="fourth-digit">
                 </div>
+                }
+                @if(selectedMethod() === RadioButtonValue.SMS){
+                <div class="grid grid-cols-6 gap-6 mt-4">
+                    <input
+                        class="bg-graphite text-center text-primary text-bold text-3xl rounded-2xl border-none p-5 focus:outline-none focus:ring-0 focus:border-transparent"
+                        type="number" id="first-digit">
+                    <input
+                        class="bg-graphite text-center text-primary text-bold text-3xl rounded-2xl border-none p-5 focus:outline-none focus:ring-0 focus:border-transparent"
+                        type="number" id="second-digit">
+                    <input
+                        class="bg-graphite text-center text-primary text-bold text-3xl rounded-2xl border-none p-5 focus:outline-none focus:ring-0 focus:border-transparent"
+                        type="number" id="third-digit">
+                    <input
+                        class="bg-graphite text-center text-primary text-bold text-3xl rounded-2xl border-none p-5 focus:outline-none focus:ring-0 focus:border-transparent"
+                        type="number" id="fourth-digit">
+                    <input
+                        class="bg-graphite text-center text-primary text-bold text-3xl rounded-2xl border-none p-5 focus:outline-none focus:ring-0 focus:border-transparent"
+                        type="number" id="fifth-digit">
+                    <input
+                        class="bg-graphite text-center text-primary text-bold text-3xl rounded-2xl border-none p-5 focus:outline-none focus:ring-0 focus:border-transparent"
+                        type="number" id="sixth-digit">
+                </div>
+                }
             </div>
             }
             <div class="flex flex-col gap-4 items-center justify-center text-primary mt-12">
