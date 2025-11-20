@@ -29,24 +29,24 @@
                 <div class="flex flex-col relative">
                     <input
                         class="absolute accent-action top-1/2 left-6 h-6 w-6 -translate-y-1/2 bg-transparent focus:outline-none focus:bg-action transition-all duration-300"
-                        type="radio" name="comfirmation-method" id="email-method" [value]="RadioButtonValue.SMS"
+                        type="radio" name="comfirmation-method" id="sms-method" [value]="RadioButtonValue.SMS"
                         [checked]="selectedMethod() === RadioButtonValue.SMS" (change)="onRadioButtonChange($event)">
                     <span class="text-primary text-sm absolute top-4 left-20">Get the code via (SMS) at:</span>
                     <input
                         class="bg-graphite placeholder:text-secondary pl-20 pt-12 pb-4 rounded-full border-none p-5 focus:outline-none focus:ring-0 focus:border-transparent"
-                        type="email" id="email" placeholder="+1 202 ****0151">
+                        type="tel" id="phone" placeholder="+1 202 ****0151">
                 </div>
 
                 <div class="flex flex-col relative">
                     <input
                         class="absolute accent-action top-1/2 left-6 h-6 w-6 -translate-y-1/2 bg-transparent focus:outline-none focus:bg-action transition-all duration-300"
-                        type="radio" name="comfirmation-method" id="sms-method" [value]="RadioButtonValue.EMAIL"
+                        type="radio" name="comfirmation-method" id="email-method" [value]="RadioButtonValue.EMAIL"
                         [checked]="selectedMethod() === RadioButtonValue.EMAIL" (change)="onRadioButtonChange($event)">
                     <span class="text-primary text-sm absolute top-4 left-20">Get the code via (Email) at:</span>
 
                     <input
                         class="bg-graphite placeholder:text-secondary pl-20 pt-12 pb-4 rounded-full border-none p-5 focus:outline-none focus:ring-0 focus:border-transparent"
-                        type="code" id="code" placeholder="Er*****de@gmail.com">
+                        type="email" id="email" placeholder="Er*****de@gmail.com">
 
                 </div>
 
