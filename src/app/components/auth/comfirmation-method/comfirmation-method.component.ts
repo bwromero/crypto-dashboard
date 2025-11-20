@@ -36,14 +36,15 @@ export class ComfirmationMethodComponent {
 
   //main state of selected confirmation method
   selectedMethod = signal<RadioButtonValue | null>(RadioButtonValue.EMAIL);
-  selectedToggleValue = signal<ToggleValue | null>(ToggleValue.GOOGLE);
+  selectedToggleValue = signal<ToggleValue | null>(ToggleValue.SYSTEM);
   qrCodeData = signal<string>('');
   qrCodeSessionId = signal<string | null>(null);
 
   showCodeInput = signal<boolean>(false);
 
   constructor(private route: ActivatedRoute, private router: Router, private qrCodeService: QrCodeService) {
-    const codeData = this.qrCodeService.generateQRCodeData(undefined, 'confirmation');    this.qrCodeData.set(codeData.qrCodeData);
+    const codeData = this.qrCodeService.generateQRCodeData(undefined, 'confirmation');    
+    this.qrCodeData.set(codeData.qrCodeData);
     this.qrCodeSessionId.set(codeData.sessionId);
 
     this.route.data.pipe(
