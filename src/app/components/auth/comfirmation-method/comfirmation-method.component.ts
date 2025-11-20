@@ -21,7 +21,7 @@ enum RadioButtonValue {
   styles: ``,
 })
 export class ComfirmationMethodComponent {
-  
+
   onVerificationMethodChange(arg0: any) {
     throw new Error('Method not implemented.');
   }
@@ -53,6 +53,18 @@ export class ComfirmationMethodComponent {
     this.route.data.subscribe(data => {
       this.selectedToggleValue = data['mode'] || ToggleValue.SYSTEM;
     });
+
+    this.route.queryParams.subscribe(params => {
+      if (params['method'] === 'sms') {
+        this.isSMSSelected = true;
+        this.isEmailSelected = false;
+        this.showCodeInput = true; // If method is in URL, show code input
+      } else if (params['method'] === 'email') {
+        this.isSMSSelected = false;
+        this.isEmailSelected = true;
+        this.showCodeInput = true;
+      }
+    });
   }
 
   selectedToggleValue: string = ToggleValue.SYSTEM;
@@ -63,7 +75,15 @@ export class ComfirmationMethodComponent {
 
   onContinueClick(event: Event) {
     event?.preventDefault();
-     this.showCodeInput = true;
+    const method = this.isSMSSelected ? RadioButtonValue.SMS : RadioButtonValue.EMAIL;
+
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: {
+        method: method
+      },
+      queryParamsHandling: 'merge'
+    })
   }
 
   onRadioButtonChange(method: RadioButtonValue) {
@@ -75,5 +95,5 @@ export class ComfirmationMethodComponent {
       this.isEmailSelected = true;
     }
   }
-  
+
 }
