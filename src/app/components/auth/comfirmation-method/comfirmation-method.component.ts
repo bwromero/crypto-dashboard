@@ -38,6 +38,7 @@ export class ComfirmationMethodComponent {
   readonly arrowRightIcon = ArrowRight;
   readonly padlockIcon = Lock;
   readonly editIcon = Edit;
+  selectedToggleValue: string = ToggleValue.SYSTEM;
 
   qrCodeData: string = '';
   qrCodeSessionId: string = '';
@@ -70,8 +71,6 @@ export class ComfirmationMethodComponent {
       }
     });
   }
-
-  selectedToggleValue: string = ToggleValue.SYSTEM;
 
   onToggleChanged($event: string) {
     this.selectedToggleValue = $event;
