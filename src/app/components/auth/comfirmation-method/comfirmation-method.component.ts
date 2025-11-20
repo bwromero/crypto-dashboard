@@ -4,81 +4,79 @@ import { ArrowRight, Edit, Lock, LucideAngularModule } from 'lucide-angular';
 import { QRCodeComponent } from 'angularx-qrcode';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QrCodeService } from '../../../services/qr-code-service/qrcode-service.service';
+import { signal, computed, effect } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
-enum ToggleValue {
+export enum ToggleValue {
   SYSTEM = 'system',
   GOOGLE = 'google'
 }
 
-enum RadioButtonValue {
+export enum RadioButtonValue {
   SMS = 'sms',
   EMAIL = 'email'
 }
 @Component({
   selector: 'app-comfirmation-method',
-  imports: [ButtonComponent, LucideAngularModule, QRCodeComponent],
+  imports: [ButtonComponent, LucideAngularModule, QRCodeComponent, ],
   templateUrl: './comfirmation-method.component.html',
   styles: ``,
 })
 export class ComfirmationMethodComponent {
 
-  onVerificationMethodChange(arg0: any) {
-    throw new Error('Method not implemented.');
-  }
   readonly toggleOptions: ToggleOption[] = [
     { label: 'System', value: ToggleValue.SYSTEM },
     { label: 'Google', value: ToggleValue.GOOGLE }
   ];
 
-  readonly radioButtonOptions = [
-    { label: 'SMS', value: RadioButtonValue.SMS, icon: 'sms' },
-    { label: 'Email', value: RadioButtonValue.EMAIL, icon: 'at-sign' }
-  ];
-
   readonly arrowRightIcon = ArrowRight;
   readonly padlockIcon = Lock;
   readonly editIcon = Edit;
-  selectedToggleValue: string = ToggleValue.SYSTEM;
+  readonly RadioButtonValue = RadioButtonValue;
 
-  qrCodeData: string = '';
-  qrCodeSessionId: string = '';
-  isSMSSelected: boolean = false;
-  isEmailSelected: boolean = true;
-  showCodeInput: boolean = false;
+  //main state of selected confirmation method
+  selectedMethod = signal<RadioButtonValue | null>(null);
+  selectedToggleValue = signal<ToggleValue | null>(ToggleValue.SYSTEM);
+  qrCodeData = signal<string>('');
+  qrCodeSessionId = signal<string | null>(null);
+
+  showCodeInput = signal<boolean>(false);
 
   constructor(private route: ActivatedRoute, private router: Router, private qrCodeService: QrCodeService) {
     let codeData = this.qrCodeService.generateQRCodeData();
-    this.qrCodeData = codeData.qrCodeData;
-    this.qrCodeSessionId = codeData.sessionId;
+    this.qrCodeData.set(codeData.qrCodeData);
+    this.qrCodeSessionId.set(codeData.sessionId);
 
-    this.route.data.subscribe(data => {
-      this.selectedToggleValue = data['mode'] || ToggleValue.SYSTEM;
+    this.route.data.pipe(
+      takeUntilDestroyed()
+    ).subscribe(data => {
+      this.selectedToggleValue.set(data['mode'] || ToggleValue.SYSTEM);
     });
 
-    this.route.queryParams.subscribe(params => {
-      if (params['method'] === RadioButtonValue.SMS) {
-        this.isSMSSelected = true;
-        this.isEmailSelected = false;
-        this.showCodeInput = true; // If method is in URL, show code input
-      } else if (params['method'] === RadioButtonValue.EMAIL) {
-        this.isSMSSelected = false;
-        this.isEmailSelected = true;
-        this.showCodeInput = true;
+    this.route.queryParams.pipe(
+      takeUntilDestroyed()
+    ).subscribe(params => {
+      const method = params['method'] as RadioButtonValue;
+      if (method === RadioButtonValue.SMS || method === RadioButtonValue.EMAIL) {
+        this.selectedMethod.set(method);
+        this.showCodeInput.set(true);
       } else {
-        this.showCodeInput = false;
-        this.isSMSSelected = false;
-        this.isEmailSelected = false;
+        this.selectedMethod.set(null);
+        this.showCodeInput.set(false);
       }
     });
   }
 
   onToggleChanged($event: string) {
-    this.selectedToggleValue = $event;
+    this.selectedToggleValue.set($event as ToggleValue);
   }
 
   onContinueClick(event: Event) {
     event?.preventDefault();
-    const method = this.isSMSSelected ? RadioButtonValue.SMS : RadioButtonValue.EMAIL;
+    const method = this.selectedMethod();
+    if (!method) {
+      return;
+    }
 
     this.router.navigate([], {
       relativeTo: this.route,
@@ -87,17 +85,12 @@ export class ComfirmationMethodComponent {
       },
       queryParamsHandling: 'merge'
     })
+    this.showCodeInput.set(true);
   }
 
   onRadioButtonChange($event: Event) {
     const method = ($event.target as HTMLInputElement).value as RadioButtonValue;
-    if (method === RadioButtonValue.SMS) {
-      this.isSMSSelected = true;
-      this.isEmailSelected = false;
-    } else {
-      this.isSMSSelected = false;
-      this.isEmailSelected = true;
-    }
+    this.selectedMethod.set(method);
   }
 
 }

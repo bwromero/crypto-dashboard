@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ArrowRight, LucideAngularModule, icons } from 'lucide-angular';
+import { ToggleValue } from '../../../auth/comfirmation-method/comfirmation-method.component';
 
 export type ButtonType = 'primary' | 'secondary' | 'action' | 'dark' | 'darkSecondary' | 'transparent';
 export type ButtonVariant = 'normal' | 'dropdown' | 'toggle' | 'sidebar-toggle'; 
@@ -52,7 +53,7 @@ export class ButtonComponent {
   @Input() toggleOptions: ToggleOption[] = [];
   @Input() disabled: boolean = false;
   @Input() fullWidth: boolean = false;
-  @Input() selectedToggleValue?: string;
+  @Input() selectedToggleValue?: string | null;
   @Input() buttonSelected: boolean = false;
   @Input() padding: string = 'px-4 py-2';
   @Input() iconPosition: string = 'left';
@@ -122,7 +123,7 @@ getToggleIconImage(iconName: string) {
   }
   
   selectToggleOption(option: ToggleOption) {
-    this.selectedToggleValue = option.value;
-    this.toggleChanged.emit(option.value);
+    this.selectedToggleValue = option.value as ToggleValue;
+    this.toggleChanged.emit(option.value as ToggleValue);
   }
 }

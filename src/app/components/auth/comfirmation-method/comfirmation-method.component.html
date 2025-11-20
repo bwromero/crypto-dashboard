@@ -6,20 +6,20 @@
                     Let's comfirm is you!
                 </h1>
                 <span class="text-primary/70 text-xl mt-4">
-                    @if(!showCodeInput){
+                    @if(!showCodeInput()){
                     Complete verification processs
                     } @else {
-                    Please enter the 4-digit verification code that was sent to your {{isEmailSelected? 'email':
+                    Please enter the 4-digit verification code that was sent to your {{selectedMethod() === RadioButtonValue.EMAIL ? 'email':
                     'phone'}}
                     }
                 </span>
             </div>
 
-            @if(!showCodeInput){
+            @if(!showCodeInput()){
             <div class="mt-6 mb-12">
                 <h3 class="text-primary text-lg font-bold">Select comfirmation method:</h3>
                 <app-button variant="toggle" dropShadow="drop-shadow-none" [toggleOptions]="toggleOptions"
-                    [selectedToggleValue]="selectedToggleValue" bgColor="bg-graphite"
+                    [selectedToggleValue]="selectedToggleValue()" bgColor="bg-graphite"
                     (toggleChanged)="onToggleChanged($event)">
                 </app-button>
             </div>
@@ -28,8 +28,12 @@
                 <div class="flex flex-col relative">
                     <input
                         class="absolute accent-action top-1/2 left-6 h-6 w-6 -translate-y-1/2 bg-transparent focus:outline-none focus:bg-action transition-all duration-300"
-                        type="radio" name="comfirmation-method" id="system" [value]="radioButtonOptions[0].value"
-                        [checked]="radioButtonOptions[0].value" (change)="onRadioButtonChange($event)">
+                        type="radio" 
+                        name="comfirmation-method" 
+                        id="email-method" 
+                        [value]="RadioButtonValue.SMS"
+                        [checked]="selectedMethod() === RadioButtonValue.SMS" 
+                        (change)="onRadioButtonChange($event)">
                     <span class="text-primary text-sm absolute top-4 left-20">Get the code via (SMS) at:</span>
                     <input
                         class="bg-graphite placeholder:text-secondary pl-20 pt-12 pb-4 rounded-full border-none p-5 focus:outline-none focus:ring-0 focus:border-transparent"
@@ -39,8 +43,11 @@
                 <div class="flex flex-col relative">
                     <input
                         class="absolute accent-action top-1/2 left-6 h-6 w-6 -translate-y-1/2 bg-transparent focus:outline-none focus:bg-action transition-all duration-300"
-                        type="radio" name="comfirmation-method" id="system" [value]="radioButtonOptions[1].value"
-                        [checked]="radioButtonOptions[1].value" (change)="onRadioButtonChange($event)">
+                        type="radio" name="comfirmation-method" 
+                        id="sms-method" 
+                        [value]="RadioButtonValue.EMAIL"
+                        [checked]="selectedMethod() === RadioButtonValue.EMAIL" 
+                        (change)="onRadioButtonChange($event)">
                     <span class="text-primary text-sm absolute top-4 left-20">Get the code via (Email) at:</span>
 
                     <input
@@ -130,7 +137,7 @@
         </div>
         <div class="hidden md:flex flex-col items-center justify-center">
             <div class="flex flex-col items-center justify-center text-primary text-center">
-                <qrcode [qrdata]="qrCodeData" [width]="190" [errorCorrectionLevel]="'M'" [colorDark]="'#000000'"
+                <qrcode [qrdata]="qrCodeData()" [width]="190" [errorCorrectionLevel]="'M'" [colorDark]="'#000000'"
                     [colorLight]="'#FFFFFF'">
                 </qrcode>
 
