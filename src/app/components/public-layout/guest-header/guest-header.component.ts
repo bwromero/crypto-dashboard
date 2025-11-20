@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ButtonComponent, DropdownOption } from '../../shared/components/button/button.component';
-import { LayoutDashboard, LucideAngularModule } from 'lucide-angular';
+import { LucideAngularModule } from 'lucide-angular';
+import { NavigationSection } from '../../../layout/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-guest-header',
@@ -10,8 +11,8 @@ import { LayoutDashboard, LucideAngularModule } from 'lucide-angular';
   styles: ``
 })
 export class GuestHeaderComponent {
-
-  protected LayoutDashboard = LayoutDashboard;
+  
+  @Input() navigationSections: NavigationSection[] = [];
 
   onLanguageSelected($event: DropdownOption) {
     throw new Error('Method not implemented.');
