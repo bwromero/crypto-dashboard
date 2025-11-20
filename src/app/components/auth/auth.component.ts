@@ -25,7 +25,6 @@ export class AuthComponent {
 
   constructor(private route: ActivatedRoute, private router: Router, private qrCodeService: QrCodeService) {
 
-
     this.route.data.subscribe(data => {
       this.selectedToggleValue = data['mode'] || ToggleValue.LOGIN;
 
@@ -56,6 +55,11 @@ export class AuthComponent {
     const targetRoute = $event === ToggleValue.LOGIN ? `/${ToggleValue.LOGIN}` : `/${ToggleValue.SIGNUP}`;
     this.router.navigate([targetRoute]);
     this.selectedToggleValue = $event;
+  }
+
+  onContinueClick(event: Event) {
+    event?.preventDefault();
+    this.router.navigate(['/comfirmation-method']);
   }
 
 }

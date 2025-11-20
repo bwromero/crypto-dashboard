@@ -85,7 +85,7 @@
                 </div>
                 }
                 <app-button type="action" variant="normal" label="Continue" rounded="rounded-full" padding="px-8 py-4"
-                    iconPosition="right" textSize="text-lg" [fullWidth]="true"
+                    (clicked)="onContinueClick($event)" iconPosition="right" textSize="text-lg" [fullWidth]="true"
                     [lucideIcon]="arrowRightIcon"></app-button>
             </form>
 
