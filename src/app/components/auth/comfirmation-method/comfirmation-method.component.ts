@@ -55,14 +55,18 @@ export class ComfirmationMethodComponent {
     });
 
     this.route.queryParams.subscribe(params => {
-      if (params['method'] === 'sms') {
+      if (params['method'] === RadioButtonValue.SMS) {
         this.isSMSSelected = true;
         this.isEmailSelected = false;
         this.showCodeInput = true; // If method is in URL, show code input
-      } else if (params['method'] === 'email') {
+      } else if (params['method'] === RadioButtonValue.EMAIL) {
         this.isSMSSelected = false;
         this.isEmailSelected = true;
         this.showCodeInput = true;
+      } else {
+        this.showCodeInput = false;
+        this.isSMSSelected = false;
+        this.isEmailSelected = false;
       }
     });
   }
