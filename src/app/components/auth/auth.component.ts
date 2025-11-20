@@ -59,7 +59,7 @@ export class AuthComponent {
 
   onContinueClick(event: Event) {
     event?.preventDefault();
-    this.router.navigate(['/comfirmation-method']);
+    this.router.navigate(['/confirmation-method']);
   }
 
 }

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ComfirmationMethodComponent } from './comfirmation-method.component';
+import { ComfirmationMethodComponent } from './confirmation-method.component';
 
 describe('ComfirmationMethodComponent', () => {
   let component: ComfirmationMethodComponent;

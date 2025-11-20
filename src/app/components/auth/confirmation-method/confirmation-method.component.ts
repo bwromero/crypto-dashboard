@@ -17,12 +17,12 @@ export enum RadioButtonValue {
   EMAIL = 'email'
 }
 @Component({
-  selector: 'app-comfirmation-method',
+  selector: 'app-confirmation-method',
   imports: [ButtonComponent, LucideAngularModule, QRCodeComponent, ],
-  templateUrl: './comfirmation-method.component.html',
+  templateUrl: './confirmation-method.component.html',
   styles: ``,
 })
-export class ComfirmationMethodComponent {
+export class ConfirmationMethodComponent {
 
   readonly toggleOptions: ToggleOption[] = [
     { label: 'System', value: ToggleValue.SYSTEM },

@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ArrowRight, LucideAngularModule, icons } from 'lucide-angular';
-import { ToggleValue } from '../../../auth/comfirmation-method/comfirmation-method.component';
+import { ToggleValue } from '../../../auth/confirmation-method/confirmation-method.component';
 
 export type ButtonType = 'primary' | 'secondary' | 'action' | 'dark' | 'darkSecondary' | 'transparent';
 export type ButtonVariant = 'normal' | 'dropdown' | 'toggle' | 'sidebar-toggle'; 
