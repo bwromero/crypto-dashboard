@@ -90,7 +90,8 @@ export class ComfirmationMethodComponent {
     })
   }
 
-  onRadioButtonChange(method: RadioButtonValue) {
+  onRadioButtonChange($event: Event) {
+    const method = ($event.target as HTMLInputElement).value as RadioButtonValue;
     if (method === RadioButtonValue.SMS) {
       this.isSMSSelected = true;
       this.isEmailSelected = false;
