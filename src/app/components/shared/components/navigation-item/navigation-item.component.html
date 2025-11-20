@@ -1,0 +1,24 @@
+<div class="relative">
+    <a 
+      [routerLink]="item.route" 
+      routerLinkActive="active"
+      class="flex items-center gap-3 px-4 py-3 text-secondary hover:text-primary hover:bg-dark-secondary rounded-xl transition-all duration-200 group"
+      [class.text-primary]="isActive"
+      [class.bg-dark-secondary]="isActive">
+      
+      <!-- Custom icon (image) -->
+      <img *ngIf="item.icon" [src]="item.icon" [alt]="item.label" class="w-5 h-5">
+      
+      <!-- Lucide icon -->
+      <lucide-icon *ngIf="item.lucideIcon" [img]="getIconImage(item.lucideIcon)" [size]="20" class="text-primary group-hover:text-primary"></lucide-icon>
+      
+      <!-- Label -->
+      <span class="text-sm font-medium">{{ item.label }}</span>
+      
+      <!-- Badge -->
+      <span *ngIf="item.badge" 
+            [class]="'px-2 py-1 text-xs rounded-lg font-medium ' + (item.badgeColor || 'bg-orange-500 text-primary')">
+        {{ item.badge }}
+      </span>
+    </a>
+  </div>
