@@ -19,14 +19,17 @@
             <span class="text-xl font-bold content-center">Whale.IO</span>
         </div>
 
-        <div class="flex gap-6">
-            <a href="" class="content-center">
+        <div class="flex gap-6 items-center">
+            <a href="">
                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M0 0H5.07693V5.07693H0V0ZM8.46154 0H13.5385V5.07693H8.46154V0ZM22 0H16.9231V5.07693H22V0ZM0 8.46154H5.07693V13.5385H0V8.46154ZM13.5385 8.46154H8.46154V13.5385H13.5385V8.46154ZM16.9231 8.46154H22V13.5385H16.9231V8.46154ZM5.07693 16.9231H0V22H5.07693V16.9231ZM8.46154 16.9231H13.5385V22H8.46154V16.9231ZM22 16.9231H16.9231V22H22V16.9231Z"
                         fill="white" />
                 </svg>
             </a>
+            @for(item of navigationItems; track item.label){
+                <app-navigation-item [item]="item" [isGuestHeader]="true"></app-navigation-item>
+            }
         </div>
 
     </div>
