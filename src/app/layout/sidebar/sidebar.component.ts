@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { LucideAngularModule, icons, ChevronLeft } from 'lucide-angular';
-import { NavigationItem, NavigationItemComponent } from '../../components/navigation-item/navigation-item.component';
 import { ButtonComponent, ToggleOption } from '../../components/shared/components/button/button.component';
+import { NavigationItemComponent, NavigationItem } from '../../components/shared/components/navigation-item/navigation-item.component';
 
 export interface NavigationSection {
   title?: string;
