@@ -146,14 +146,16 @@
     </div>
     <ng-template #defaultModalContent>
       <!-- Default modal button content -->
-      <div class="flex items-center gap-2 flex-1">
+      <div class="flex items-center gap-2">
         <lucide-icon
           *ngIf="lucideIcon && iconPosition == 'left'"
           [name]="lucideIcon"
           [img]="getIconImage"
           [size]="iconSize"
         ></lucide-icon>
+        @if(label) {
         <span [class]="`text-center ${textSize}`">{{ label }}</span>
+        }
         @if (modalConfig?.type == "language") {
           <lucide-icon
             [img]="icons.ChevronDown"
@@ -164,21 +166,22 @@
         }
       </div>
 
-      <div
-        class="flex justify-right"
-        [ngClass]="
-          lucideIcon === arrowRightIcon
-            ? 'bg-success/80 rounded-2xl p-2 text-semibold'
-            : ''
-        "
-      >
-        <lucide-icon
-          *ngIf="lucideIcon && iconPosition == 'right'"
-          [name]="lucideIcon"
-          [img]="getIconImage"
-          [size]="iconSize"
-        ></lucide-icon>
-      </div>
+      @if (lucideIcon && iconPosition == "right") {
+        <div
+          class="flex justify-right"
+          [ngClass]="
+            lucideIcon === arrowRightIcon
+              ? 'bg-success/80 rounded-2xl p-2 text-semibold'
+              : ''
+          "
+        >
+          <lucide-icon
+            [name]="lucideIcon"
+            [img]="getIconImage"
+            [size]="iconSize"
+          ></lucide-icon>
+        </div>
+      }
     </ng-template>
   </button>
 </div>
