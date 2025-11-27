@@ -7,11 +7,11 @@ import { ModalConfig } from '../../services/modal/modal.service';
 import { FLAG_ICONS } from '../../shared/constants/flag-icons';
 
 @Component({
-    selector: 'app-header',
-    imports: [CommonModule, SearchBarComponent, LucideAngularModule, ButtonComponent],
-    templateUrl: './header.component.html',
-    standalone: true,
-    styles: ``
+  selector: 'app-header',
+  imports: [CommonModule, SearchBarComponent, LucideAngularModule, ButtonComponent],
+  templateUrl: './header.component.html',
+  standalone: true,
+  styles: ``
 })
 export class HeaderComponent {
   protected LayoutDashboard = LayoutDashboard;
