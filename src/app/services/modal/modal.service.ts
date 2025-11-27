@@ -54,4 +54,14 @@ export class ModalService {
             this._config.set(null);
         }, 300);
     }
+
+    selectOption(value: string) {
+        const currentConfig = this._config();
+        if (currentConfig) {
+            this._config.set({
+                ...currentConfig,
+                selectedValue: value
+            });
+        }
+    }
 }

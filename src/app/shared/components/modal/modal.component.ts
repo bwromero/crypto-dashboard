@@ -61,7 +61,8 @@ export class ModalComponent implements OnInit, OnDestroy {
   }
 
   onOptionSelect(option: ModalOption) {
-    // emit selection event
+    // Update selected value in service
+    this.modalService.selectOption(option.value);
     this.close();
   }
 

@@ -1,7 +1,8 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ArrowRight, LucideAngularModule, icons } from 'lucide-angular';
-import { ModalConfig, ModalService } from '../../../services/modal/modal.service';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { ModalConfig, ModalService, ModalOption } from '../../../services/modal/modal.service';
 import { ToggleValue } from '../../../components/auth/confirmation-method/confirmation-method.component';
 
 export type ButtonType = 'primary' | 'secondary' | 'action' | 'dark' | 'darkSecondary' | 'transparent';
@@ -64,8 +65,12 @@ export class ButtonComponent {
   @Output() clicked = new EventEmitter<Event>();
   @Output() optionSelected = new EventEmitter<DropdownOption>();
   @Output() toggleChanged = new EventEmitter<string>();
+  @Output() modalOptionSelected = new EventEmitter<ModalOption>();
 
-  constructor(private modalService: ModalService) { }
+  constructor(
+    private modalService: ModalService,
+    private sanitizer: DomSanitizer
+  ) { }
 
   isDropdownOpen: boolean = false;
 
@@ -131,5 +136,16 @@ export class ButtonComponent {
   selectToggleOption(option: ToggleOption) {
     this.selectedToggleValue = option.value as ToggleValue;
     this.toggleChanged.emit(option.value as ToggleValue);
+  }
+
+  get selectedModalOption(): ModalOption | undefined {
+    if (!this.modalConfig?.options || !this.modalConfig?.selectedValue) {
+      return undefined;
+    }
+    return this.modalConfig.options.find(opt => opt.value === this.modalConfig?.selectedValue);
+  }
+
+  getSafeSvg(svgString: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(svgString);
   }
 }

@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchBarComponent } from '../../shared/components/search-bar/search-bar.component';
 import { ButtonComponent, DropdownOption } from '../../shared/components/button/button.component';
 import { LucideAngularModule, LayoutDashboard } from 'lucide-angular';
-import { ModalConfig } from '../../services/modal/modal.service';
+import { ModalConfig, ModalService } from '../../services/modal/modal.service';
 import { FLAG_ICONS } from '../../shared/constants/flag-icons';
 
 @Component({
@@ -22,15 +22,29 @@ export class HeaderComponent {
     title: 'Select Language',
     selectedValue: this.selectedLanguage, // Pass selected value
     options: [
-      // Using SVG flag for English (from Figma)
+      // Using SVG flags from Figma
       { label: 'English', value: 'en', flag: FLAG_ICONS.en },
-      // Using emoji flags for others until SVG flags are added
-      { label: 'German', value: 'de', flag: '🇩🇪' },
-      { label: 'French', value: 'fr', flag: '🇫🇷' },
-      { label: 'Chinese', value: 'zh', flag: '🇨🇳' },
-      { label: 'Swedish', value: 'sv', flag: '🇸🇪' },
-      { label: 'Spanish', value: 'es', flag: '🇪🇸' },
+      { label: 'German', value: 'de', flag: FLAG_ICONS.de },
+      { label: 'French', value: 'fr', flag: FLAG_ICONS.fr },
+      { label: 'Chinese', value: 'zh', flag: FLAG_ICONS.zh },
+      { label: 'Swedish', value: 'sv', flag: FLAG_ICONS.sv },
+      { label: 'Spanish', value: 'es', flag: FLAG_ICONS.es },
     ]
+  }
+
+  constructor(private modalService: ModalService) {
+    // Watch for modal config changes and update selected language
+    effect(() => {
+      const config = this.modalService.config();
+      if (config?.type === 'language' && config.selectedValue && config.selectedValue !== this.selectedLanguage) {
+        this.selectedLanguage = config.selectedValue;
+        // Update our local config to keep it in sync (create new object reference for change detection)
+        this.languageModalConfig = {
+          ...this.languageModalConfig,
+          selectedValue: config.selectedValue
+        };
+      }
+    });
   }
 
   onLanguageSelected(option: DropdownOption) {
