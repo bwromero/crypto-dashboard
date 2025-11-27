@@ -1,35 +1,51 @@
-<div class="flex items-center justify-between px-12 py-4 bg-dark-primary text-primary">
+<div
+  class="flex items-center justify-between px-12 py-4 bg-dark-primary text-primary"
+>
+  <!-- Left section -->
 
-
-    <!-- Left section -->
-
-    <div class="flex gap-4">
-        <div class="flex items-center">
-            <a href="">
-                <lucide-icon [img]="LayoutDashboard" [size]="25"></lucide-icon>
-            </a>
-        </div>
-
-        <app-search-bar></app-search-bar>
+  <div class="flex gap-4">
+    <div class="flex items-center">
+      <a href="">
+        <lucide-icon
+          [img]="LayoutDashboard"
+          [size]="25"
+        ></lucide-icon>
+      </a>
     </div>
 
-    <!-- Right section -->
-    <div class="flex items-center gap-3 text-primary">
-        <!-- Language selector -->
-        <app-button type="darkSecondary" variant="modal" [modalConfig]="languageModalConfig"
-            [label]="languageModalConfig.options?.[0]?.label || ''" icon="Globe">
-        </app-button>
+    <app-search-bar></app-search-bar>
+  </div>
 
-        <!-- Wallet button -->
-        <app-button type="darkSecondary" lucideIcon="Wallet">
-        </app-button>
-        <!-- Settings button -->
-        <app-button type="darkSecondary" lucideIcon="Settings">
-        </app-button>
+  <!-- Right section -->
+  <div class="flex items-center gap-3 text-primary">
+    <!-- Language selector -->
+    <app-button
+      type="darkSecondary"
+      variant="modal"
+      [modalConfig]="languageModalConfig"
+      [label]="languageModalConfig.options?.[0]?.label || ''"
+      icon="GlobeIcon"
+    >
+    </app-button>
 
-        <!-- Notification button -->
-        <app-button type="darkSecondary" lucideIcon="Bell">
-        </app-button>
+    <!-- Wallet button -->
+    <app-button
+      type="darkSecondary"
+      lucideIcon="Wallet"
+    >
+    </app-button>
+    <!-- Settings button -->
+    <app-button
+      type="darkSecondary"
+      lucideIcon="Settings"
+    >
+    </app-button>
 
-    </div>
+    <!-- Notification button -->
+    <app-button
+      type="darkSecondary"
+      lucideIcon="Bell"
+    >
+    </app-button>
+  </div>
 </div>
