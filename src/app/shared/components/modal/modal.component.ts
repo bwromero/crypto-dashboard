@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, computed, effect } from '@angular/core';
 import { icons, X, Check, LucideAngularModule } from 'lucide-angular';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { ModalOption, ModalService, ModalType, NotificationItem, ModalConfig } from '../../../../services/modal/modal.service';
+import { ModalOption, ModalService, ModalType, NotificationItem, ModalConfig } from '../../../services/modal/modal.service';
 
 @Component({
   selector: 'app-modal',

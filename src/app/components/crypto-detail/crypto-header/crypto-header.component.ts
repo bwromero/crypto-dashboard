@@ -1,6 +1,6 @@
 import { Component, Input, signal } from '@angular/core';
 import { CoinGeckoDetailData } from '../../../services/crypto.service';
-import { CryptoData } from '../../shared/models';
+import { CryptoData } from '../../../shared/models';
 
 import {
   LucideAngularModule,
@@ -10,9 +10,9 @@ import {
   BadgeCheck,
   Copy,
 } from 'lucide-angular';
-import { DomainPipe } from '../../shared/pipes/domain/domain.pipe';
-import { SocialPipe } from '../../shared/pipes/social/social.pipe';
-import { ShortenAddressPipe } from '../../shared/pipes/shorten-address/shorten-address.pipe';
+import { DomainPipe } from '../../../shared/pipes/domain/domain.pipe';
+import { SocialPipe } from '../../../shared/pipes/social/social.pipe';
+import { ShortenAddressPipe } from '../../../shared/pipes/shorten-address/shorten-address.pipe';
 import { CommonModule } from '@angular/common';
 export type Link = {
   name: string;

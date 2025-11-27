@@ -27,6 +27,7 @@ export interface ModalConfig {
     options?: ModalOption[];
     notifications?: NotificationItem[];
     settings?: ModalOption[];
+    selectedValue?: string; // Track selected value
     data?: any;
 }
 

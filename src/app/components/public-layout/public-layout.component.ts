@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { ButtonComponent, DropdownOption } from '../shared/components/button/button.component';
+import { ButtonComponent, DropdownOption } from '../../shared/components/button/button.component';
 import { LayoutDashboard, LucideAngularModule } from 'lucide-angular';
 import { RouterOutlet } from '@angular/router';
 import { GuestHeaderComponent } from './guest-header/guest-header.component';
 import { NavigationSection } from '../../layout/sidebar/sidebar.component';
-import { NavigationItem } from '../shared/components/navigation-item/navigation-item.component';
+import { NavigationItem } from '../../shared/components/navigation-item/navigation-item.component';
 
 @Component({
   selector: 'app-public-layout',

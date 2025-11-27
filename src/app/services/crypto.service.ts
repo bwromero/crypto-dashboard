@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map, BehaviorSubject } from 'rxjs';
-import { CryptoData } from '../components/shared/models';
+import { CryptoData } from '../shared/models';
 
 export interface CryptoPrice {
   prices: [number, number][];

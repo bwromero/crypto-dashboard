@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ButtonComponent, ToggleOption } from '../shared/components/button/button.component';
+import { ButtonComponent, ToggleOption } from '../../shared/components/button/button.component';
 import { ArrowRight, AtSign, Lock, LucideAngularModule } from 'lucide-angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QRCodeComponent } from 'angularx-qrcode';
