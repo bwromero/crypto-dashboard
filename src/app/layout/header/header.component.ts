@@ -5,6 +5,7 @@ import { ButtonComponent, DropdownOption } from '../../components/shared/compone
 import { LucideAngularModule, LayoutDashboard } from 'lucide-angular';
 import { ModalConfig } from '../../services/modal/modal.service';
 
+
 @Component({
     selector: 'app-header',
     imports: [CommonModule, SearchBarComponent, ButtonComponent, LucideAngularModule],
