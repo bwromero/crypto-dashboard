@@ -2,10 +2,10 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ArrowRight, LucideAngularModule, icons } from 'lucide-angular';
 import { ToggleValue } from '../../../auth/confirmation-method/confirmation-method.component';
+import { ModalConfig, ModalService } from '../../../../services/modal/modal.service';
 
 export type ButtonType = 'primary' | 'secondary' | 'action' | 'dark' | 'darkSecondary' | 'transparent';
-export type ButtonVariant = 'normal' | 'dropdown' | 'toggle' | 'sidebar-toggle'; 
-
+export type ButtonVariant = 'normal' | 'dropdown' | 'toggle' | 'sidebar-toggle' | 'modal';
 export interface DropdownOption {
   label: string;
   value: string;
@@ -32,9 +32,9 @@ export interface ButtonConfig {
   // Add more properties as needed for future use
 }
 @Component({
-    selector: 'app-button',
-    imports: [CommonModule, LucideAngularModule],
-    templateUrl: './button.component.html'
+  selector: 'app-button',
+  imports: [CommonModule, LucideAngularModule],
+  templateUrl: './button.component.html'
 })
 export class ButtonComponent {
   @Input() type: ButtonType = 'primary';
@@ -59,9 +59,13 @@ export class ButtonComponent {
   @Input() iconPosition: string = 'left';
   @Input() dropShadow: string = 'drop-shadow-dark';
   @Input() textSize: string = 'text-md';
+  @Input() modalConfig?: ModalConfig;
+
   @Output() clicked = new EventEmitter<Event>();
   @Output() optionSelected = new EventEmitter<DropdownOption>();
   @Output() toggleChanged = new EventEmitter<string>();
+
+  constructor(private modalService: ModalService) { }
 
   isDropdownOpen: boolean = false;
 
@@ -83,13 +87,13 @@ export class ButtonComponent {
       transparent: 'bg-transparent text-primary hover:bg-dark-primary ' + this.borderClass
     };
 
-    this.type = this.buttonSelected? 'action' : this.type;
+    this.type = this.buttonSelected ? 'action' : this.type;
 
     return `${baseClasses} ${typeClasses[this.type]} ${widthClass} ${disabledClass}`;
   }
 
   get getIconImage() {
-    if (!this.lucideIcon){
+    if (!this.lucideIcon) {
       return this.icons['House'];
 
     } else {
@@ -97,15 +101,17 @@ export class ButtonComponent {
     };
   }
 
-getToggleIconImage(iconName: string) {
-  return this.icons[iconName as keyof typeof this.icons];
-}
-
+  getToggleIconImage(iconName: string) {
+    return this.icons[iconName as keyof typeof this.icons];
+  }
+  
   onClick() {
     if (this.disabled) return;
-    
+
     if (this.variant === 'dropdown') {
       this.toggleDropdown();
+    } else if (this.variant === 'modal' && this.modalConfig) {
+      this.modalService.open(this.modalConfig);
     } else {
       this.clicked.emit(event);
     }
@@ -121,7 +127,7 @@ getToggleIconImage(iconName: string) {
     this.optionSelected.emit(option);
     this.isDropdownOpen = false;
   }
-  
+
   selectToggleOption(option: ToggleOption) {
     this.selectedToggleValue = option.value as ToggleValue;
     this.toggleChanged.emit(option.value as ToggleValue);
