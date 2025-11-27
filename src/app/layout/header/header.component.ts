@@ -32,6 +32,39 @@ export class HeaderComponent {
     ]
   }
 
+  selectedCurrency = 'USD';
+  selectedTheme = 'dark';
+
+  settingsModalConfig: ModalConfig = {
+    type: 'settings',
+    title: 'Settings',
+    settings: [
+      { 
+        label: 'Currency', 
+        value: 'currency', 
+        settingType: 'selectable',
+        displayValue: 'USD',
+        flag: FLAG_ICONS.en // Using US flag for USD
+      },
+      { 
+        label: 'Theme', 
+        value: 'theme', 
+        settingType: 'theme',
+        checked: true, // true = dark, false = light
+        themeOptions: [
+          { label: 'Light', value: 'light', icon: 'Sun' },
+          { label: 'Dark', value: 'dark', icon: 'Moon' }
+        ]
+      },
+      { 
+        label: 'Language', 
+        value: 'language', 
+        settingType: 'selectable',
+        displayValue: 'English US'
+      },
+    ]
+  }
+
   constructor(private modalService: ModalService) {
     // Watch for modal config changes and update selected language
     effect(() => {

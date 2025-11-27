@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, computed, effect } from '@angular/core';
-import { icons, X, Check, LucideAngularModule } from 'lucide-angular';
+import { icons, X, Check, ChevronRight, Sun, Moon, MoreVertical, LucideAngularModule } from 'lucide-angular';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ModalOption, ModalService, ModalType, NotificationItem, ModalConfig } from '../../../services/modal/modal.service';
@@ -13,6 +13,10 @@ import { ModalOption, ModalService, ModalType, NotificationItem, ModalConfig } f
 export class ModalComponent implements OnInit, OnDestroy {
   readonly closeIcon = X;
   readonly checkIcon = Check;
+  readonly chevronRightIcon = ChevronRight;
+  readonly sunIcon = Sun;
+  readonly moonIcon = Moon;
+  readonly moreVerticalIcon = MoreVertical;
   protected icons = icons;
   
   // Expose config data as computed signals for template access
@@ -68,6 +72,22 @@ export class ModalComponent implements OnInit, OnDestroy {
 
   onNotificationClick(notification: NotificationItem) {
     notification.read = true;
+  }
+
+  onSettingToggle(setting: ModalOption) {
+    // Toggle the setting using the service method
+    this.modalService.toggleSetting(setting.value);
+  }
+
+  onThemeSelect(themeValue: string, setting: ModalOption) {
+    // Update theme selection (checked = dark, unchecked = light)
+    this.modalService.updateSetting(setting.value, { checked: themeValue === 'dark' });
+  }
+
+  onSettingSelect(setting: ModalOption) {
+    // Handle selectable settings (currency, language)
+    // Could open another modal or navigate
+    console.log('Setting selected:', setting);
   }
 
   getIcon(iconName?: string) {

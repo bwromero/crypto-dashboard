@@ -9,6 +9,9 @@ export interface ModalOption {
     flag?: string; // For language selector
     symbol?: string; // For currency selector
     checked?: boolean; // For settings toggles
+    settingType?: 'selectable' | 'toggle' | 'theme'; // Type of setting
+    displayValue?: string; // Display value for selectable settings (e.g., "USD", "English US")
+    themeOptions?: { label: string; value: string; icon: string }[]; // For theme toggle
 }
 
 export interface NotificationItem {
@@ -61,6 +64,36 @@ export class ModalService {
             this._config.set({
                 ...currentConfig,
                 selectedValue: value
+            });
+        }
+    }
+
+    toggleSetting(settingValue: string) {
+        const currentConfig = this._config();
+        if (currentConfig?.settings) {
+            const updatedSettings = currentConfig.settings.map(setting => 
+                setting.value === settingValue 
+                    ? { ...setting, checked: !setting.checked }
+                    : setting
+            );
+            this._config.set({
+                ...currentConfig,
+                settings: updatedSettings
+            });
+        }
+    }
+
+    updateSetting(settingValue: string, updates: Partial<ModalOption>) {
+        const currentConfig = this._config();
+        if (currentConfig?.settings) {
+            const updatedSettings = currentConfig.settings.map(setting => 
+                setting.value === settingValue 
+                    ? { ...setting, ...updates }
+                    : setting
+            );
+            this._config.set({
+                ...currentConfig,
+                settings: updatedSettings
             });
         }
     }
