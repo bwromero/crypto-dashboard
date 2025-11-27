@@ -11,8 +11,8 @@ import {
   NgZone,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CryptoData } from '../../shared/models';
 import { D3BubbleChartComponent } from './d3-bubble-chart/d3-bubble-chart.component';
+import { CryptoData } from '../../../shared/models';
 
 @Component({
     selector: 'app-bubble-view',

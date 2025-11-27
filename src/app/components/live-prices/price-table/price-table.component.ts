@@ -1,16 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { CryptoData } from '../../shared/models';
 import { LucideAngularModule, icons } from 'lucide-angular';
-import {
-  priceTableColumns,
-  TableColumn,
-  SortDirection,
-  sortIcons,
-  SortIcon,
-} from '../../shared/models/price-table-layout';
-
+import { CryptoData, priceTableColumns, SortDirection, SortIcon, sortIcons, TableColumn } from '../../../shared/models';
+ 
 @Component({
     selector: 'app-price-table',
     imports: [CommonModule, LucideAngularModule],
