@@ -61,7 +61,7 @@
 
   <!-- Modal Button -->
   <button *ngIf="variant === 'modal'" [class]="buttonClasses" (click)="onClick()" [disabled]="disabled">
-    <div *ngIf="selectedModalOption && modalConfig?.type === 'language'; else defaultModalContent" class="flex items-center gap-2">
+    <div *ngIf="selectedModalOption && modalConfig?.type === 'language'; else defaultModalContent" class="flex items-center gap-2 flex-1">
       <!-- Language selector with flag and name -->
       <div *ngIf="selectedModalOption.flag" class="w-5 h-5 flex items-center justify-center">
         <div *ngIf="selectedModalOption.flag.startsWith('<svg'); else emojiFlag" 
@@ -72,13 +72,17 @@
         </ng-template>
       </div>
       <span [class]="textSize">{{ selectedModalOption.label }}</span>
+      <lucide-icon [img]="icons.ChevronDown" [size]="20" class="transition-transform duration-200 ml-auto"
+        [class.rotate-180]="isModalOpen"></lucide-icon>
     </div>
     <ng-template #defaultModalContent>
       <!-- Default modal button content -->
-      <div class="flex-1">
+      <div class="flex items-center gap-2 flex-1">
         <lucide-icon *ngIf="lucideIcon && iconPosition =='left'" [name]="lucideIcon" [img]="getIconImage"
           [size]="iconSize"></lucide-icon>
         <span [class]="`text-center ${textSize}`">{{ label }}</span>
+        <lucide-icon [img]="icons.ChevronDown" [size]="20" class="transition-transform duration-200 ml-auto"
+          [class.rotate-180]="isModalOpen"></lucide-icon>
       </div>
 
       <div class="flex justify-right"

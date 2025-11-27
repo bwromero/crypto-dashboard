@@ -1,6 +1,6 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ArrowRight, LucideAngularModule, icons } from 'lucide-angular';
+import { ArrowRight, ChevronDown, LucideAngularModule, icons } from 'lucide-angular';
 import { ToggleValue } from '../../../auth/confirmation-method/confirmation-method.component';
 import { ModalConfig, ModalService } from '../../../../services/modal/modal.service';
 
@@ -65,14 +65,20 @@ export class ButtonComponent {
   @Output() optionSelected = new EventEmitter<DropdownOption>();
   @Output() toggleChanged = new EventEmitter<string>();
 
-  constructor(private modalService: ModalService) { }
+  constructor(private modalService: ModalService) {
+    // Sync isModalOpen with modal service state
+    effect(() => {
+      this.isModalOpen = this.modalService.isOpen();
+    });
+  }
 
   isDropdownOpen: boolean = false;
-
+  isModalOpen: boolean = false;
   readonly arrowRightIcon = ArrowRight;
+  readonly chevronDownIcon = ChevronDown;
 
   // Make all Lucide icons available to the template
-  protected icons = icons;
+  icons = icons;
 
   get buttonClasses(): string {
     const baseClasses = `flex items-center justify-center ${this.gap} ${this.padding} ${this.rounded} text-sm transition-all duration-200 ${this.buttonSize}`;
@@ -104,7 +110,11 @@ export class ButtonComponent {
   getToggleIconImage(iconName: string) {
     return this.icons[iconName as keyof typeof this.icons];
   }
-  
+
+  getChevronDownIcon() {
+    return this.icons['ChevronDown'] || this.chevronDownIcon;
+  }
+
   onClick() {
     if (this.disabled) return;
 
@@ -112,6 +122,7 @@ export class ButtonComponent {
       this.toggleDropdown();
     } else if (this.variant === 'modal' && this.modalConfig) {
       this.modalService.open(this.modalConfig);
+      this.isModalOpen = true;
     } else {
       this.clicked.emit(event);
     }
