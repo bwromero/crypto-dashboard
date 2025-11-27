@@ -1,1 +1,140 @@
-<p>modal works!</p>
+@if (isOpen()) {
+    <div 
+      class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm transition-opacity duration-300"
+      (click)="onBackdropClick($event)"
+    >
+      <div 
+        [class]="'bg-dark-secondary rounded-2xl shadow-2xl border border-dark-primary transform transition-all duration-300 ' + 
+                 (modalType() === 'menu' ? 'max-w-md w-full mx-4' : 'max-w-sm w-full mx-4')"
+      >
+        <!-- Modal Header -->
+        <div class="flex items-center justify-between p-4 border-b border-dark-primary">
+          @if (title()) {
+            <h2 class="text-lg font-semibold text-primary">
+              {{ title() }}
+            </h2>
+          }
+          <button 
+            (click)="close()" 
+            class="p-2 rounded-lg hover:bg-dark-primary transition-colors duration-200 text-secondary hover:text-primary"
+            aria-label="Close modal"
+          >
+            <lucide-icon [name]="closeIcon" [size]="20"></lucide-icon>
+          </button>
+        </div>
+  
+        <!-- Language Selector -->
+        @if (modalType() === 'language') {
+          <div class="p-4">
+            <div class="space-y-2">
+              @for (option of options(); track option.value) {
+                <button 
+                  (click)="onOptionSelect(option)"
+                  class="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-dark-primary transition-colors duration-200 text-left"
+                >
+                  @if (option.flag) {
+                    <span class="text-2xl">{{ option.flag }}</span>
+                  }
+                  @if (option.icon && !option.flag) {
+                    <lucide-icon [img]="getIcon(option.icon)" [size]="20" class="text-secondary"></lucide-icon>
+                  }
+                  <span class="text-sm text-secondary">{{ option.label }}</span>
+                </button>
+              }
+            </div>
+          </div>
+        }
+  
+        <!-- Settings -->
+        @if (modalType() === 'settings') {
+          <div class="p-4">
+            <div class="space-y-2">
+              @for (setting of settings(); track setting.value) {
+                <div 
+                  class="flex items-center justify-between px-4 py-3 rounded-lg hover:bg-dark-primary transition-colors duration-200"
+                >
+                  <div class="flex items-center gap-3">
+                    @if (setting.icon) {
+                      <lucide-icon [img]="getIcon(setting.icon)" [size]="20" class="text-secondary"></lucide-icon>
+                    }
+                    <span class="text-sm text-secondary">{{ setting.label }}</span>
+                  </div>
+                  <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" [checked]="setting.checked" class="sr-only peer">
+                    <div class="w-11 h-6 bg-dark-primary peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-action"></div>
+                  </label>
+                </div>
+              }
+            </div>
+          </div>
+        }
+  
+        <!-- Notifications -->
+        @if (modalType() === 'notifications') {
+          <div class="p-4 max-h-96 overflow-y-auto">
+            <div class="space-y-2">
+              @for (notification of notifications(); track notification.id) {
+                <div 
+                  (click)="onNotificationClick(notification)"
+                  [class]="'flex items-start gap-3 px-4 py-3 rounded-lg hover:bg-dark-primary transition-colors duration-200 cursor-pointer ' + 
+                           (notification.read ? 'opacity-60' : '')"
+                >
+                  @if (notification.icon) {
+                    <lucide-icon [img]="getIcon(notification.icon)" [size]="20" class="text-secondary mt-1"></lucide-icon>
+                  }
+                  <div class="flex-1">
+                    <p class="text-sm font-medium text-primary">{{ notification.title }}</p>
+                    <p class="text-xs text-secondary mt-1">{{ notification.message }}</p>
+                    @if (notification.time) {
+                      <p class="text-xs text-secondary mt-1">{{ notification.time }}</p>
+                    }
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        }
+  
+        <!-- Currency Selector -->
+        @if (modalType() === 'currency') {
+          <div class="p-4">
+            <div class="space-y-2">
+              @for (option of options(); track option.value) {
+                <button 
+                  (click)="onOptionSelect(option)"
+                  class="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-dark-primary transition-colors duration-200 text-left"
+                >
+                  @if (option.symbol) {
+                    <span class="text-lg font-semibold text-primary">{{ option.symbol }}</span>
+                  }
+                  @if (option.icon && !option.symbol) {
+                    <lucide-icon [img]="getIcon(option.icon)" [size]="20" class="text-secondary"></lucide-icon>
+                  }
+                  <span class="text-sm text-secondary">{{ option.label }}</span>
+                </button>
+              }
+            </div>
+          </div>
+        }
+  
+        <!-- Menu -->
+        @if (modalType() === 'menu') {
+          <div class="p-4">
+            <div class="space-y-2">
+              @for (option of options(); track option.value) {
+                <button 
+                  (click)="onOptionSelect(option)"
+                  class="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-dark-primary transition-colors duration-200 text-left"
+                >
+                  @if (option.icon) {
+                    <lucide-icon [img]="getIcon(option.icon)" [size]="20" class="text-secondary"></lucide-icon>
+                  }
+                  <span class="text-sm text-secondary">{{ option.label }}</span>
+                </button>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  }
